@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="w-full min-h-[84.3vh] flex justify-center items-center">
+  <div class="container flex justify-center">
+    <div class="relative max-w-sm w-full lg:max-w-lg lg:flex rounded">
+      <div
+        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-black flex items-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+        title="Woman holding a mug"
+      >
+        <img src="/assets/img/icono_vozavoz_2024.png" alt="" />
+      </div>
+      <div
+        class="border-r border-b border-l rounded border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+      >
+        <div class="mb-8">
+          <p class="text-sm text-gray-600 flex items-center">
+            <svg
+              class="fill-current text-gray-500 w-3 h-3 mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
+              />
+            </svg>
+            Código de acceso
+          </p>
+          <div class="text-gray-900 font-bold text-xl mb-2">
+            Por favor digita el código de acceso dado por vozavoz.com.co
+          </div>
+          <form
+            (ngSubmit)="onSubmit(loginForm)"
+            #loginForm="ngForm"
+            class="my-4"
+          >
+            <input
+              type="password"
+              name="code"
+              id="small-input"
+              #codeInput="ngModel"
+              required
+              [(ngModel)]="code"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <div class="alertInput" *ngIf="codeInput.invalid && submitInvalid">
+              <p>El código es requerido.</p>
+            </div>
+            <div class="absolute bottom-0 right-2">
+              <button
+                type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                Verificar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

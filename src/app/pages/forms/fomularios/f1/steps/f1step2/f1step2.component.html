@@ -1,0 +1,74 @@
+<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<!-- {{ formId }} -->
+<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+  <div class="grid grid-cols-12 pt-4">
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-base">Identificación del importador</h3>
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <div class="row col-span-12 grid grid-cols-12">
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+              <p class="mb-1">Tipo de Identificación</p>
+
+              <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [class.error]="otro_tipo_documento.invalid && submitInvalid" [(ngModel)]="
+                  formF1.identificacion_de_importador.tipo_documento
+                ">
+                <option *ngFor="let doc of selectDocPN" [value]="doc.code">
+                  {{ doc.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6">
+              <div class="col-span-5" [class.col-span-6]="
+                  formF1.identificacion_de_importador.tipo_documento != 'NIT'
+                ">
+                <p class="text-base">Número de identificación</p>
+
+                <input type="number" (change)="checkDvArray(0)"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  [name]="'otro_documento' " id="" [class.error]="otro_documento.invalid && submitInvalid"
+                  #otro_documento="ngModel" [(ngModel)]="
+                    formF1.identificacion_de_importador.numero_documento
+                  " required />
+              </div>
+              <div class="col-span-1 pl-2" *ngIf="
+                  formF1.identificacion_de_importador.tipo_documento == 'NIT'
+                ">
+                <p class="text-base">D.V</p>
+                <div class="dv w-[30px]">
+                  <input type="text" placeholder="" required [name]="'otro_documento_dv' "
+                    #identificacion_otro_dv="ngModel" [(ngModel)]="formF1.identificacion_de_importador.dv"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1">
+              <p class="text-base w-full">
+                Nombre o razón social del importador
+              </p>
+
+              <input type="text" placeholder="" [name]="'nombre_otro'" #otro_nombre="ngModel"
+                style="text-transform: uppercase" required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [class.error]="otro_nombre.invalid && submitInvalid" [(ngModel)]="
+                  formF1.identificacion_de_importador.nombre_razon_social
+                " />
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2">
+    <button
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      Continuar
+    </button>
+  </div>
+</form>

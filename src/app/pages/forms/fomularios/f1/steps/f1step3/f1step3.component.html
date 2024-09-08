@@ -1,0 +1,159 @@
+<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<!-- {{ formId }} -->
+<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+  <div class="grid grid-cols-12 pt-4">
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-lg">Descripción de la operación</h3>
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF1.descripcion_de_la_operacion }} -->
+          <div class="row col-span-12 grid grid-cols-12" *ngFor="
+              let operacion of formF1.descripcion_de_la_operacion;
+              let i = index
+            ">
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <div class="flex gap-1">
+                <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img
+                  [numerales]="numeralesCambiarios"></app-tool-img>
+              </div>
+              <select id="small"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                required [name]="'otro_documento' + i" id="" [class.error]="otro_documento.invalid && submitInvalid"
+                #otro_documento="ngModel" [(ngModel)]="
+                  formF1.descripcion_de_la_operacion[i].numero_cambiario
+                ">
+
+                <option class="text-center" value="" selected>------</option>
+                <option class="text-center" [value]="item.codigo" *ngFor="let item of numeralesCambiarios">
+                  {{item.codigo}}</option>
+              </select>
+
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+              <p class="mb-1">Cod. Mda. Negociación</p>
+
+              <select [name]="'cod_mda_negociacion' + i" #cod_mda_negociacion="ngModel" required
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
+                  formF1.descripcion_de_la_operacion[i].cod_mda_negociacion
+                ">
+                <option value="">Seleccionar moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda.code">
+                  {{ moneda.code }} {{ moneda.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Vr. Total Mda Negociación</p>
+
+              <input type="text" placeholder="" (change)="selectTasa(i)"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'valor_t_mda_nego' + i" #valor_t_mda_nego="ngModel" placeholder="" required
+                [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
+                  formF1.descripcion_de_la_operacion[i].vr_total_mda_negociacion
+                " numberFormat />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Tasa de cambio a dolar</p>
+
+              <input type="number" placeholder="" (change)="selectTasa(i)"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'tasa_cambio' + i" #numero_cambiario="ngModel" placeholder="" required
+                [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
+                  formF1.descripcion_de_la_operacion[i].tasa_de_cambio
+                " />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">Valor total en dolares</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                [class.w-full]="formF1.descripcion_de_la_operacion.length > 1" disabled [name]="'numero_cambiario' + i"
+                #numero_cambiario="ngModel" placeholder="" [class.error]="numero_cambiario.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF1.descripcion_de_la_operacion[i].valor_total_dolares
+                " />
+              <!-- {{formF1.descripcion_de_la_operacion[i].valor_total_dolares}} -->
+              <button *ngIf="formF1.descripcion_de_la_operacion.length > 1"
+                class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
+                type="button" (click)="deleteImportador(i)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF1.descripcion_de_la_operacion.length < 2" (click)="agregarImportador()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar operación
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-lg text-start">
+          Información requerida para la DIAN
+        </h3>
+        <p class="text-justify mt-1">
+          INFORMACIÓN DE LOS DOCUMENTOS ADUANEROS: Si la mercancía ingresa del
+          exterior al Territorio Aduanero Nacional, debe relacionar el numero de
+          Aceptación de la Declaración de Importación. Si la mercancía ingresa
+          del exterior a la Zona Franca o es un envió courrier debe relacionar
+          el numero de la Factura Comercial expedida por el proveedor del
+          exterior, la cual puede ser Alfanumérica.
+        </p>
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF1.descripcion_de_la_operacion }} -->
+          <div class="row col-span-12 grid grid-cols-12" *ngFor="let dian of formF1.informacion_DIAN; let i = index">
+            <div class="col-span-12 md:col-span-8 p-1">
+              <p class="text-base">
+                Número de declaración de importación y/o factura comercial
+              </p>
+              <input type="number"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'otro_documento_factura' + i" id="" required required
+                [class.error]="otro_documento_factura.invalid && submitInvalid" #otro_documento_factura="ngModel"
+                [(ngModel)]="formF1.informacion_DIAN[i].numero_o_factura" />
+            </div>
+
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap">
+              <p class="text-base w-full">Valor FOB en dolares DIM y/o FRAM</p>
+
+              <input type="text" placeholder="" required numberFormat
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel" required
+                [class.error]="numero_cambiarioss.invalid && submitInvalid"
+                [(ngModel)]="formF1.informacion_DIAN[i].valor_FOB" />
+              <button *ngIf="formF1.informacion_DIAN.length > 1"
+                class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
+                type="button" (click)="deleteDIAN(i)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF1.informacion_DIAN.length < 10" (click)="agregarDIAN()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar declaración
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2">
+    <button
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      Guardar
+    </button>
+  </div>
+</form>

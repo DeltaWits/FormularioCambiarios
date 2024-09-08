@@ -1,0 +1,19 @@
+.error {
+  border-color: red !important;
+}
+
+.alertInput {
+  padding: 2px 0;
+  margin: 0;
+
+  p {
+    font-size: 12px;
+    padding: 0;
+    color: red;
+    margin: 0;
+  }
+}
+.active {
+  background: white;
+  color: #00185f;
+}

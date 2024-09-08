@@ -1,0 +1,50 @@
+<div class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4">
+  <h1 class="w-full font-semibold text-center">
+    F5: Operaciones de Cambio por Servicios, Transferencias y Otros Conceptos
+  </h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nihil
+    quisquam. Blanditiis laudantium atque tenetur illum facere! Illum veritatis
+    excepturi aut vel cumque aliquam atque molestiae modi deserunt, magnam
+    inventore.
+  </p>
+  <div class="tabs mt-4 w-full">
+    <ul class="flex flex-wrap text-base font-medium text-center text-gray-500 border-b border-gray-200">
+      <li class="mr-2">
+        <a (click)="stepNavigator = 1" aria-current="page" [class.active]="stepNavigator == 1"
+          class="inline-block p-4 bg-gray-200 rounded-t-lg">Parte 1</a>
+      </li>
+      <!-- <li class="mr-2">
+                <button
+                  type="button"
+                  [disabled]="formF5.steps.step1 == false"
+                  (click)="stepNavigator = 2"
+                  aria-current="page"
+                  [class.active]="stepNavigator == 2"
+                  class="h-full p-4 bg-gray-200 rounded-t-lg"
+                >
+                  Parte 2
+                </button>
+              </li> -->
+      <li class="mr-2">
+        <button type="button" [disabled]="formF5.steps.step1 == false" (click)="stepNavigator = 2" aria-current="page"
+          di [class.active]="stepNavigator == 2" class="h-full p-4 bg-gray-200 rounded-t-lg">
+          Parte 2
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="w-full bg-white min-h-[300px] lg:px-10">
+    <app-f5step1 *ngIf="stepNavigator == 1" (step)="changeStep($event)" [formF5]="formF5" [monedas]="monedas"
+      [formId]="formID"></app-f5step1>
+    <!-- <app-f1step2
+              *ngIf="stepNavigator == 2"
+              (step)="changeStep($event)"
+              [formF5]="formF5"
+              [monedas]="monedas"
+              [formId]="formID"
+            ></app-f1step2> -->
+    <app-f5step2 *ngIf="stepNavigator == 2" (step)="changeStep($event)" [formF5]="formF5" [monedas]="monedas"
+      [formId]="formID"></app-f5step2>
+  </div>
+</div>

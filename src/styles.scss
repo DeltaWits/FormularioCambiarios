@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f6f6f6b9;
+}
+p,
+th {
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #00185f;
+}
+
+.alertInput {
+  color: red;
+  padding: 2px 0;
+  margin: 0;
+
+  p {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+}
+form input[type="radio"] {
+  width: 20px !important;
+  height: 20px;
+  margin: 0 0 4px 5px;
+}
+@media (max-width: 1080px) {
+  p,
+  label,
+  th {
+    font-size: 0.9rem !important ;
+  }
+  .alertInput {
+    p {
+      font-size: 10px !important;
+    }
+  }
+}

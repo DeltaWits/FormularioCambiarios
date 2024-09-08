@@ -1,0 +1,181 @@
+<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<!-- {{ formId }} -->
+<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+  <div class="grid grid-cols-12 pt-4">
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-base">Descripción del préstamo</h3>
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF7.descripcion_del_prestamo }} -->
+          <div class="row col-span-12 grid grid-cols-12">
+
+
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Código propósito del préstamo</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'codigo_proposito_prestamo' " #codigo_proposito_prestamo="ngModel" placeholder="" required
+                [class.error]="codigo_proposito_prestamo.invalid && submitInvalid" [(ngModel)]="
+                        formF7.descripcion_del_prestamo.codigo_proposito_prestamo
+                      " />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+              <p class="mb-1">Código moneda</p>
+
+              <select [name]="'codigo_codigo_moneda' " #codigo_codigo_moneda="ngModel" required
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                required [class.error]="codigo_codigo_moneda.invalid && submitInvalid" [(ngModel)]="
+                                    formF7.descripcion_del_prestamo.codigo_moneda
+                                  ">
+                <option value="">Seleccionar moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda.code">
+                  {{ moneda.code }} {{ moneda.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Valor Moneda estipulada</p>
+
+              <input type="number" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'valor_moneda_estipulada3'" #valor_moneda_estipulada3="ngModel" placeholder="" required
+                [class.error]="valor_moneda_estipulada3.invalid && submitInvalid" [(ngModel)]="
+                        formF7.descripcion_del_prestamo.valor_moneda_estipulada
+                      " />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">tasa de interés</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                disabled [name]="'tasa_interes3'" #tasa_interes="ngModel" placeholder=""
+                [class.error]="tasa_interes.invalid && submitInvalid" [(ngModel)]="
+                        formF7.descripcion_del_prestamo.tasa_interes
+                      " />
+
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">Spread o valor</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                disabled [name]="'tasa_interes3'" #tasa_interes="ngModel" placeholder=""
+                [class.error]="tasa_interes.invalid && submitInvalid" [(ngModel)]="
+                                    formF7.descripcion_del_prestamo.spread_valor
+                                  " />
+
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-2 p-1 flex flex-wrap">
+              <p class="text-base w-full">plazo</p>
+
+              <input type="number" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                disabled [name]="'descripcion_del_prestamo.plazo3'" #descripcion_del_prestamo_plazo="ngModel"
+                placeholder="" [class.error]="descripcion_del_prestamo_plazo.invalid && submitInvalid" [(ngModel)]="
+                                                formF7.descripcion_del_prestamo.plazo
+                                              " />
+
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+              <p class="mb-1">Tiempo</p>
+
+              <select [name]="'descripcion_del_prestamo.tiempo' " #descripcion_del_prestamo_tiempo="ngModel" required
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                required [class.error]="descripcion_del_prestamo_tiempo.invalid && submitInvalid" [(ngModel)]="
+                                                formF7.descripcion_del_prestamo.tiempo
+                                              ">
+                <option value="">Selecciona</option>
+                <option value="Días">Días</option>
+                <option value="Meses">Meses</option>
+                <option value="Años">Años</option>
+
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">Número de depósitos por financia</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                disabled [name]="'numero_deposito_dinanciacion3'" #numero_deposito_dinanciacion="ngModel"
+                [class.error]="numero_deposito_dinanciacion.invalid && submitInvalid" [(ngModel)]="
+                                                            formF7.descripcion_del_prestamo.numero_deposito_dinanciacion
+                                                          " />
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF7.descripcion_del_prestamo.length < 10" (click)="agregarImportador()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar operación
+          </button>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-base text-start">
+          Plan de amortización
+        </h3>
+
+
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF7.descripcion_del_prestamo }} -->
+          <div class="row col-span-12 grid grid-cols-12">
+            <div class=" col-span-12 lg:col-span-6 grid grid-cols-12"
+              *ngFor="let plan of formF7.plan_de_armonizacion; let i = index">
+              <div class="col-span-12 md:col-span-6 p-1">
+                <p class="text-base">
+                  Fecha</p>
+                <input type="number"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  [name]="'otro_documento_factura' + i" id="" required
+                  [class.error]="otro_documento_factura.invalid && submitInvalid" #otro_documento_factura="ngModel"
+                  [(ngModel)]="formF7.plan_de_armonizacion[i].fecha" />
+              </div>
+
+              <div class="col-span-12 md:col-span-6  p-1 flex flex-wrap">
+                <p class="text-base w-full">Valor moneda contratada</p>
+
+                <input type="number" placeholder="" required
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                  [name]="'numero_cam' + i" #numero_cam="ngModel" [class.error]="numero_cam.invalid && submitInvalid"
+                  [(ngModel)]="
+                              formF7.plan_de_armonizacion[i].valor_cuota
+                              " />
+                <button *ngIf="formF7.plan_de_armonizacion.length > 1"
+                  class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
+                  type="button" (click)="deletePlan(i)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF7.plan_de_armonizacion.length < 30" (click)="agregarPlan()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar plan
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2">
+    <button
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      Guardar
+    </button>
+  </div>
+</form>

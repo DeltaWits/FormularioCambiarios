@@ -1,0 +1,101 @@
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <!--
+    Background backdrop, show/hide based on modal state.
+
+    Entering: "ease-out duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "ease-in duration-200"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div
+      class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+    >
+      <!--
+        Modal panel, show/hide based on modal state.
+
+        Entering: "ease-out duration-300"
+          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          To: "opacity-100 translate-y-0 sm:scale-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100 translate-y-0 sm:scale-100"
+          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      -->
+      <div
+        class="relative transform overflow-hidden rounded-lg scroll-auto bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl"
+      >
+        <div class="bg-white w-full">
+          <div class="sm:flex sm:items-start w-full">
+            <div
+              class="mt-3 w-full sm:w-8/12 text-center bg-gray-200 h-full sm:mt-0 sm:text-left px-4 pb-4 pt-5 sm:p-6 sm:pb-4"
+            >
+              <h3
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                Términos, Condiciones y Autorizaciones
+              </h3>
+              <div class="min-h-[300px] h-full overflow-y-auto max-h-[500px]">
+                <div class="col-span-12 text-justify pr-2"></div>
+              </div>
+            </div>
+            <div
+              class="mt-3 w-full ms:w-4/12 text-center sm:ml-4 sm:mt-0 sm:text-left px-4 pb-4 pt-5 sm:p-6 sm:pb-4"
+            >
+              <h3
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                Avisos
+              </h3>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500">
+                  El formulario solo se podrá diligenciar en un solo dispositivo
+                  y en un solo navegador.
+                </p>
+                <br />
+                <p class="text-sm text-gray-500">
+                  Si por algún motivo presentas interrupciones en el
+                  diligenciamiento, podrás retomar el formulario en un plazo
+                  máximo de 30 días, ingresando a través del link. Después de
+                  este tiempo tendrás que diligenciarlo nuevamente
+                </p>
+                <br />
+                <p class="text-sm text-gray-500">
+                  Por favor ten en cuenta que si borras el historial o caché de
+                  tu equipo, la información diligenciada en el formulario
+                  también se borrara.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+          <button
+            type="button"
+            (click)="acepTerms()"
+            class="inline-flex w-full text-[${colorButtons[0]}] justify-center rounded-md bg-[#9EC72D] px-3 py-2 text-sm font-semibold shadow-sm sm:ml-3 sm:w-auto"
+          >
+            Aceptar
+          </button>
+          <button
+            type="button"
+            (click)="deleteAll()"
+            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 sm:mt-0 sm:w-auto"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

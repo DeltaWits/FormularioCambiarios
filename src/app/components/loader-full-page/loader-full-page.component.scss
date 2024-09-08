@@ -1,0 +1,104 @@
+.loader-page {
+  background-color: #364a92;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container-page {
+  position: relative;
+  width: 100%;
+  z-index: 100000;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fade-up {
+  width: 95px;
+  height: 100px;
+  position: relative;
+
+  /* Inicialmente, el contenido estará fuera del contenedor */
+  left: 0;
+  animation-name: aparecer;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes aparecer {
+  0% {
+    margin-bottom: -100px;
+    opacity: 0;
+    /* El contenido está oculto debajo del contenedor */
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    margin-bottom: 0;
+    opacity: 1;
+    /* El contenido se mueve hacia arriba y queda estático */
+  }
+}
+
+figure {
+  position: absolute;
+
+  width: 105px;
+  height: 105px;
+  margin: 0;
+  margin-left: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    filter: brightness(0) invert(1);
+    height: 40px;
+    width: 40px;
+
+    animation: pop 1s;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.loader::after,
+.loader::before {
+  animation: loader 2s linear infinite;
+  content: "";
+  border: 2px solid #fff;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.loader::after {
+  opacity: 0;
+  animation-delay: 1s;
+}

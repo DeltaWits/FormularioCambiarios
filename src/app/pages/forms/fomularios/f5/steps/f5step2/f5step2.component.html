@@ -1,0 +1,138 @@
+<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<!-- {{ formId }} -->
+<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+  <div class="grid grid-cols-12 pt-4">
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-base">Descripción de la operación</h3>
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF5.descripcion_de_la_operacion }} -->
+          <div class="row col-span-12 grid grid-cols-12">
+
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+              <p class="mb-1">Cod. Mda. Negociación</p>
+
+              <select [name]="'cod_mda_negociacion' " #cod_mda_negociacion="ngModel" required
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
+                        formF5.descripcion_de_la_operacion.cod_mda_negociacion
+                      ">
+                <option value="">Seleccionar moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda.code">
+                  {{ moneda.code }} {{ moneda.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Vr. Total Mda Negociación</p>
+
+              <input type="text" placeholder="" (change)="selectTasa()"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'valor_t_mda_nego' " #valor_t_mda_nego="ngModel" placeholder="" required
+                [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
+                        formF5.descripcion_de_la_operacion.vr_total_mda_negociacion
+                      " numberFormat />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+              <p class="text-base">Tasa de cambio a dolar</p>
+
+              <input type="number" placeholder="" (change)="selectTasa()"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'descripcion_de_la_operacion.tasa_de_cambio_dolar'"
+                #descripcion_de_la_operacion_tasa_de_cambio_dolar="ngModel" placeholder="" required
+                [class.error]="descripcion_de_la_operacion_tasa_de_cambio_dolar.invalid && submitInvalid" [(ngModel)]="
+                        formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar
+                      " />
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">Valor total en dolares</p>
+
+              <input type="text" placeholder=""
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                disabled [name]="'numero_cambiario'" #numero_cambiario="ngModel" placeholder=""
+                [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
+                        formF5.descripcion_de_la_operacion.valor_total_dolares
+                      " />
+
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF5.descripcion_de_la_operacion.length < 10" (click)="agregarImportador()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar operación
+          </button>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="col-span-12 mt-4 grid grid-cols-12">
+      <div class="col-span-12">
+        <h3 class="font-semibold text-lg text-start">
+          Información de la(s) operacion(es)
+        </h3>
+
+      </div>
+      <div class="col-span-12 p-1">
+        <div class="inputs">
+          <!-- {{ formF5.descripcion_de_la_operacion }} -->
+          <div class="row col-span-12 grid grid-cols-12"
+            *ngFor="let dian of formF5.informacion_de_la_operacion; let i = index">
+
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
+              <p class="text-base w-full">Numeral Cambiario</p>
+
+              <!-- <input type="number" placeholder="" disabled [placeholder]="'No disponible'"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel"
+                [class.error]="numero_cambiarioss.invalid && submitInvalid"
+                [(ngModel)]="formF5.informacion_de_la_operacion[i].numeral_cambiario" /> -->
+              <select required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel"
+                [class.error]="numero_cambiarioss.invalid && submitInvalid"
+                [(ngModel)]="formF5.informacion_de_la_operacion[i].numero_cambiario">
+
+                <option value="" selected>------</option>
+                <option [value]="item.codigo" *ngFor="let item of numeralesCambiarios">{{item.codigo}}</option>
+              </select>
+            </div>
+            <div class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap">
+              <p class="text-base w-full">Valor en dolares</p>
+
+              <input type="number" placeholder="" required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                [name]="'numero_cam' + i" #numero_cam="ngModel" [class.error]="numero_cam.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF5.informacion_de_la_operacion[i].valor_total_dolares
+                " />
+              <button *ngIf="formF5.informacion_de_la_operacion.length > 1"
+                class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
+                type="button" (click)="deleteOperacion(i)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-end">
+          <button type="button" *ngIf="formF5.informacion_de_la_operacion.length < 10" (click)="agregarOPeracion()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Agregar Operación
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2">
+    <button
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      Guardar
+    </button>
+  </div>
+</form>

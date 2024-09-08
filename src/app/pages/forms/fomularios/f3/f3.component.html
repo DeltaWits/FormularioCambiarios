@@ -1,0 +1,62 @@
+<div class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4">
+  <h1 class="w-full font-semibold text-center p-4">
+    F3: Operaciones de Cambio por Endeudamiento externo con Razón de
+    Canalización
+  </h1>
+  <!-- <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nihil
+    quisquam. Blanditiis laudantium atque tenetur illum facere! Illum veritatis
+    excepturi aut vel cumque aliquam atque molestiae modi deserunt, magnam
+    inventore.
+  </p> -->
+  <div>
+    <form action="">
+      <div class="form-content px-10">
+        <div class="col-span-12 p-1">
+          <h2 class="text-center font-semibold text-xl">
+            Información de datos mínimos requeridos para las Operaciones de
+            Cambio por Importaciones de Bienes.
+          </h2>
+          <p class="text-center">
+            Circular Reglamentaria Externa DCIP - 83 del 12 de Septiembre de
+            2023
+          </p>
+        </div>
+        <div class="tabs mt-4 w-full">
+          <ul class="flex flex-wrap text-base font-medium text-center text-gray-500 border-b border-gray-200">
+            <li class="mr-2">
+              <a (click)="stepNavigator = 1" aria-current="page" [class.active]="stepNavigator == 1"
+                class="inline-block p-4 bg-gray-200 rounded-t-lg">Parte 1</a>
+            </li>
+            <!-- <li class="mr-2">
+                <button type="button" [disabled]="formF3.steps.step1 == false" (click)="stepNavigator = 2"
+                  aria-current="page" [class.active]="stepNavigator == 2" class="h-full p-4 bg-gray-200 rounded-t-lg">
+                  Parte 2
+                </button>
+              </li> -->
+            <li class="mr-2">
+              <button type="button" [disabled]="formF3.steps.step1 == false" (click)="stepNavigator = 2"
+                aria-current="page" di [class.active]="stepNavigator == 2" class="h-full p-4 bg-gray-200 rounded-t-lg">
+                Parte 2
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full bg-white min-h-[300px] lg:px-10">
+          <app-f3step1 *ngIf="stepNavigator == 1" (step)="changeStep($event)" [formF3]="formF3" [monedas]="monedas"
+            [formId]="formID"></app-f3step1>
+          <!-- <app-f2step2 *ngIf="stepNavigator == 2" (step)="changeStep($event)" [formF3]="formF3" [monedas]="monedas"
+              [formId]="formID"></app-f2step2> -->
+          <app-f3step2 *ngIf="stepNavigator == 2" (step)="changeStep($event)" [formF3]="formF3" [monedas]="monedas"
+            [formId]="formID"></app-f3step2>
+        </div>
+      </div>
+      <!-- <div class="flex justify-end gap-2">
+          <button
+            class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+            Guardar
+          </button>
+        </div> -->
+    </form>
+  </div>
+</div>

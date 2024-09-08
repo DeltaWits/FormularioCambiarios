@@ -1,0 +1,30 @@
+<div class="container-header bg-gradient-to-r from-[#00185F] via-[#1E5C7B] to-[#4BBEF8] flex justify-center">
+  <header class="container max-w-[1280px] px-4">
+    <nav class="flex justify-between">
+      <figure>
+        <a href="https://www.corficolombiana.com/"><img src="assets/img/tres_logos.png" alt="" /></a>
+      </figure>
+
+      <div *ngIf="empresa != ''" class="perfil flex gap-2 items-center">
+        <p class="capitalize">{{ empresa }}</p>
+        <div class="relative">
+          <!-- <button
+            type="button"
+            class="bg-inherit border-none"
+            (click)="toggleDrowActive()"
+          >
+            <i class="fa-solid fa-user text-white hover:text-green-400"></i>
+          </button> -->
+          <div class="dropdown d-flex flex-column" *ngIf="activeDrow">
+            <a class="w-100 px-4 py-2 m-2" (click)="openUser()">
+              Editar datos P</a>
+            <!-- <a>{{ usuario.rol }}</a> -->
+          </div>
+        </div>
+        <!-- <button class="btn py-2 px-4" type="button" (click)="onClosedSesion()">
+          Salir
+        </button> -->
+      </div>
+    </nav>
+  </header>
+</div>

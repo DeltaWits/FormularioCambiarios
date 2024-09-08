@@ -30,9 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/intro.js/introjs.css"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/intro.js/intro.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -44,8 +45,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -73,6 +74,7 @@
               "buildTarget": "formularios-cambiarios:build:development"
             }
           },
+          "options": {"port": 3060},
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -102,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

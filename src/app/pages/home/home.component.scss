@@ -1,0 +1,31 @@
+.container-flex {
+  flex-direction: column;
+  justify-content: start !important;
+  text-align: center;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  height: 100%;
+  min-height: 70vh;
+}
+.card {
+  border: 1px solid #364a92;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 430px;
+  box-shadow: 0 12px 20px -10px #364a92;
+  // text-align: center
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+a {
+  font-style: none;
+}
+i {
+  margin-left: 3px;
+}
+button {
+  margin-top: 0;
+}

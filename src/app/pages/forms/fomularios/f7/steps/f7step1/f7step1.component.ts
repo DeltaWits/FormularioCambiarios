@@ -1,0 +1,185 @@
+// @ts-nocheck
+import { NgFor, NgIf } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
+import { SharedModule } from 'src/app/shared.module';
+import { tiposDocumentos } from 'src/app/utils/formsData';
+import { textTipoOperacion } from '../../../f1/textosF1';
+import { IFormF7 } from 'src/app/utils/formF7';
+import { FormService } from 'src/app/services/form.service';
+
+@Component({
+  selector: 'app-f7step1',
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
+
+  templateUrl: './f7step1.component.html',
+  styleUrl: './f7step1.component.scss'
+})
+export class F7step1Component {
+  @Input() monedas: any = [];
+  @Input() formId = ''
+  @Input() formF7: IFormF7 = {
+    tipo_de_solicictud: {
+      tipo: '',
+      fecha_solicitud: '',
+      numero_de_credito: ''
+    },
+    informacion_del_residente_deudor: {
+      tipo_identificacion: '',
+      numero_identifiacion: '',
+      nombre_razon_social: '',
+      codigo_ciudad: '',
+      direccion: '',
+      telefono: '',
+      correo: '',
+      codigo_CIIU: '',
+    },
+    informacion_del_acreedor: {
+      tipo_identificacion: '',
+      numero_identifiacion: '',
+      nombre_razon_social: '',
+      pais: '',
+      tipo_presario_deudor: '',
+      correo: '',
+      codigo_CIIU: '',
+    },
+    descripcion_del_prestamo: {
+      codigo_proposito_prestamo: '',
+      codigo_moneda: '',
+      valor_moneda_estipulada: '',
+      tasa_interes: '',
+      spread_valor: '',
+      plazo: '',
+      tiempo: '',
+      numero_deposito_dinanciacion: ''
+    },
+
+  }
+  @Output() step = new EventEmitter<string>();
+  submitInvalid = false
+  textTipoOperacion = textTipoOperacion
+
+  ShowPopUp = false;
+
+  selectDocPN = tiposDocumentos;
+  MessaggePopUp = {
+    titulo: 'titulo',
+    descripcion: 'texto explicativo',
+    tipe: 'simple',
+  };
+  switchState: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private formService: FormService,
+    private router: Router
+  ) { }
+  ngOnInit(): void {
+    console.log("monedas", this.monedas)
+  }
+  onSwitchChange(num: number) {
+    if (num == 1) {
+    }
+    console.log('Switch State:', this.switchState);
+    this.switchState = !this.switchState
+  }// @ts-nocheck
+  // checkDv1(inputNum: number) {
+  //   if (
+
+  //     inputNum == 1
+  //   ) {
+
+
+
+  //     this.formF7.identificacion_de_la_declaracion.dv = this.calculateDV(
+
+  //       this.formF7.identificacion_de_la_declaracion.nit_imc
+  //     );
+  //   } else if (
+
+  //     inputNum == 2
+  //   ) {
+  //     this.formF7.identificacion_operacion_anterior.dv = this.calculateDV(
+
+  //       this.formF7.identificacion_operacion_anterior.nit_imc
+  //     );
+  //   }
+  // }
+  calculateDV(numNit: any) {
+    var vpri, x, y, z;
+    let stringNit = numNit.toString();
+    // Se limpia el Nit
+    // numNit = numNit.replace(/\s/g, ''); // Espacios
+    // numNit = numNit.replace(/,/g, ''); // Comas
+    // numNit = numNit.replace(/\./g, ''); // Puntos
+    // numNit = numNit.replace(/-/g, ''); // Guiones
+
+    // Se valida el nit
+    if (isNaN(numNit)) {
+      alert("El nit/cédula '" + numNit + "' no es válido(a).");
+      return '';
+    }
+
+    // Procedimiento
+    vpri = new Array(16);
+    z = stringNit.length;
+
+    vpri[1] = 3;
+    vpri[2] = 7;
+    vpri[3] = 13;
+    vpri[4] = 17;
+    vpri[5] = 19;
+    vpri[6] = 23;
+    vpri[7] = 29;
+    vpri[8] = 37;
+    vpri[9] = 41;
+    vpri[10] = 43;
+    vpri[11] = 47;
+    vpri[12] = 53;
+    vpri[13] = 59;
+    vpri[14] = 67;
+    vpri[15] = 71;
+
+    x = 0;
+    y = 0;
+    for (var i = 0; i < z; i++) {
+      y = stringNit.substr(i, 1);
+      // console.log ( y + "x" + vpri[z-i] + ":" ) ;
+
+      x += y * vpri[z - i];
+      // console.log ( x ) ;
+    }
+
+    y = x % 11;
+    console.log(y);
+
+    return (y > 1 ? 11 - y : y).toString();
+  }
+  validateForm(step1Form: NgForm) {
+
+    if (step1Form.valid) {
+      this.submitInvalid = false;
+      this.formF7.steps.step1 = true
+      this.formService.saveFormDataFId(this.formF7, this.formId);
+      this.step.emit('2');
+    } else {
+      console.log("entro", step1Form.valid)
+      this.submitInvalid = true;
+
+      this.MessaggePopUp.titulo = 'Alerta';
+      this.MessaggePopUp.descripcion =
+        'Hay campos sin diligenciar, verificar para continuar. *Los campos faltantes se muestran en rojo.';
+      this.MessaggePopUp.tipe = 'alert';
+
+      this.showActivePopUp(true);
+      // @ts-ignore: Desactivar comprobaciones de TypeScript para esta sección
+    }
+  }
+  showActivePopUp(status: boolean) {
+    this.ShowPopUp = status;
+  }
+}
+

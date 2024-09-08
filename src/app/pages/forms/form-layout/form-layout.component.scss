@@ -1,0 +1,29 @@
+.error {
+  border-color: red !important;
+}
+
+.inputs-radios {
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    margin-left: 10px;
+  }
+  input {
+    margin-top: 0;
+  }
+}
+.inputRadio {
+  width: 20px !important;
+  height: 20px;
+  margin: 0 0 4px 5px;
+}
+select {
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  text-wrap: wrap;
+}

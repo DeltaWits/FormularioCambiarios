@@ -1,0 +1,35 @@
+.error {
+  border-color: red;
+}
+.z-100 {
+  z-index: 1000;
+}
+.error {
+  border: 1px solid red;
+}
+
+.alertInput {
+  color: red;
+
+  padding: 2px 0;
+  margin: 0;
+
+  p {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+}
+select option {
+  width: 200px;
+  height: auto;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+select {
+  // max-width: 200px; /* Ajusta este valor según sea necesario */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
