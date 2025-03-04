@@ -29,10 +29,10 @@ export let UserData = {
 }
 export const tiposDocumentos = [
   {
-    code: ' CC',
-    name: 'cédula de ciudadanía',
+    code: 'CC',
+    name: 'Cédula de ciudadanía',
   },
-  { code: 'CE', name: 'cédula de extranjería' },
+  { code: 'CE', name: 'Cédula de extranjería' },
   { code: 'TI', name: 'Tarjeta de identidad' },
   { code: 'RC', name: 'Registro civil' },
   { code: 'PB', name: 'Pasaporte' },
@@ -42,10 +42,10 @@ export const tiposDocumentos = [
 export const tiposDocumentos2 = [
   { code: 'NIT', name: 'NIT' },
   {
-    code: ' CC',
-    name: 'cédula de ciudadanía',
+    code: 'CC',
+    name: 'Cédula de ciudadanía',
   },
-  { code: 'CE', name: 'cédula de extranjería' },
+  { code: 'CE', name: 'Cédula de extranjería' },
   { code: 'TI', name: 'Tarjeta de identidad' },
   { code: 'RC', name: 'Registro civil' },
   { code: 'PB', name: 'Pasaporte' },

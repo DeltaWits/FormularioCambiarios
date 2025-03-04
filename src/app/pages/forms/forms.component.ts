@@ -36,7 +36,7 @@ import * as introJs from 'intro.js';
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
 })
-export class FormsComponent implements OnInit, AfterViewInit {
+export class FormsComponent implements AfterViewInit {
 
   loader = false;
   formsD = formsData;
@@ -61,10 +61,8 @@ export class FormsComponent implements OnInit, AfterViewInit {
     private elementRef: ElementRef,
     private router: Router
   ) { }
-  ngAfterViewInit(): void {
 
-  }
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.getForm();
     // this.startTour();
 
@@ -80,7 +78,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
         } else {
           this.status = 'valid';
           this.termsandcodditions = localStorage.getItem('termsandcodditions');
-          const storedValue = localStorage.getItem('tutorialActivate' || null);
+          const storedValue = localStorage.getItem('tutorialActivate');
 
 
           if (this.termsandcodditions && storedValue == null) {
@@ -154,8 +152,6 @@ export class FormsComponent implements OnInit, AfterViewInit {
 
   startTour() {
 
-
-    console.log("entroT2")
     const introJS = introJs.default();
     const step1Element = this.elementRef.nativeElement.querySelector('#step1');
     console.log(step1Element)
@@ -170,15 +166,15 @@ export class FormsComponent implements OnInit, AfterViewInit {
       introJS.setOptions({
         tooltipClass: 'custom-intro-tooltip',
         nextLabel: 'Siguiente',
-        prevLabel: 'Atras',
+        prevLabel: 'Atrás',
 
         scrollTo: 'tooltip',
-        doneLabel: 'Terminar',
+        doneLabel: 'Continuar',
 
         // scrollToElement: false,
 
         steps: [
-          { intro: "Bienvenido a continuación se mostrara como crear los formularios!" },
+          { intro: "Bienvenido a continuación se mostrara como crear los formularios" },
           {
             element: step1Element, // Selector del elemento que deseas resaltar en el tour
             intro:
@@ -214,13 +210,13 @@ export class FormsComponent implements OnInit, AfterViewInit {
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },
-          {
-            element: step6Element, // Selector del elemento que deseas resaltar en el tour
-            intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Cuando todos los formularios este resueltos, podrá descargar un excel con toda la información de estos</p></div > ',
-            position: 'top',
-            tooltipClass: 'step3-tooltip',
-          },
+          // {
+          //   element: step6Element, // Selector del elemento que deseas resaltar en el tour
+          //   intro:
+          //     '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Cuando todos los formularios este resueltos, podrá descargar un excel con toda la información de estos</p></div > ',
+          //   position: 'top',
+          //   tooltipClass: 'step3-tooltip',
+          // },
           // {
           //   element: step2Element, // Selector del elemento que deseas resaltar en el tour
           //   intro:
@@ -256,7 +252,9 @@ export class FormsComponent implements OnInit, AfterViewInit {
           1,
         );
       }
-      localStorage.setItem('tutorialActivate', JSON.stringify(true));
+      this.router.navigate(['/form/F1/prueba']);
+
+      // localStorage.setItem('tutorialActivate', JSON.stringify(true));
 
 
     });

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
+import { ToolImgComponent } from 'src/app/components/Modals/tool-img/tool-img.component';
 import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
@@ -13,7 +14,7 @@ import { exchangeRates } from 'src/app/utils/monedas';
 @Component({
   selector: 'app-f2step3',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent],
+  imports: [FormsModule, ToolImgComponent, ReactiveFormsModule, SharedModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent],
 
   templateUrl: './f2step3.component.html',
   styleUrl: './f2step3.component.scss'
@@ -65,7 +66,7 @@ export class F2step3Component {
 
     if (step1Form.valid) {
       this.submitInvalid = false;
-      if (this.formF2.informacion_DIAN_total.Reintegro_neto == this.formF2.descripcion_de_la_operacion.valor_total_dolares) {
+      if (this.formF2.informacion_DIAN_total.Reintegro_neto == this.formF2.descripcion_de_la_operacion.valor_total_dolares || this.formF2.informacion_DIAN[0].valor_reintegrado_en_USD == '') {
         this.formF2.steps.step1 = true
         this.formService.saveFormDataFId(this.formF2, this.formId, true);
 

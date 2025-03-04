@@ -1,23 +1,24 @@
 // @ts-nocheck
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
-import { IFormF3, numeralesCambiariosF3 } from 'src/app/utils/formF3';
+import { IFormF3, numeralesCambiariosF3Egreso, numeralesCambiariosF3Ingreso } from 'src/app/utils/formF3';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
 import { PopUpAlertComponent } from "../../../../../../components/Modals/pop-up-alert/pop-up-alert.component";
+import { ToolImgComponent } from 'src/app/components/Modals/tool-img/tool-img.component';
 
 @Component({
   selector: 'app-f3step2',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
+  imports: [FormsModule, ToolImgComponent, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
   templateUrl: './f3step2.component.html',
   styleUrl: './f3step2.component.scss'
 })
-export class F3step2Component {
+export class F3step2Component implements OnInit {
   @Input() monedas: any = [];
   @Input() formId = ''
   @Input() formF3: IFormF3 = {
@@ -40,7 +41,7 @@ export class F3step2Component {
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
-  numeralesCambiarios: any = numeralesCambiariosF3
+  numeralesCambiarios: any = []
   ShowPopUp = false;
   exchangeRates = exchangeRates
   MessaggePopUp = {
@@ -55,7 +56,16 @@ export class F3step2Component {
     private formService: FormService,
     private router: Router
   ) { }
-
+  ngOnInit(): void {
+    this.validateNumerales()
+  }
+  validateNumerales() {
+    if (this.formF3.tipo_de_operacion.ingreso_o_egreso == 'Ingreso') {
+      this.numeralesCambiarios = numeralesCambiariosF3Ingreso
+    } else {
+      this.numeralesCambiarios = numeralesCambiariosF3Egreso
+    }
+  }
   validateForm(step1Form: NgForm) {
 
     if (step1Form.valid) {

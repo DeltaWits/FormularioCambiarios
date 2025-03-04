@@ -1,18 +1,20 @@
 import { NgIf } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { F1Component } from 'src/app/components/pdf/f1/f1.component';
 import { F2Component } from 'src/app/components/pdf/f2/f2.component';
 import { F3Component } from 'src/app/components/pdf/f3/f3.component';
 import { IForm, IForms } from 'src/app/utils/formsData';
 import jsPDF from 'jspdf';
+import { FormService } from '../../services/form.service';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-pdf-modal',
   standalone: true,
-  imports: [F1Component, F2Component, F3Component, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, F1Component, F2Component, F3Component, NgIf],
   templateUrl: './pdf-modal.component.html',
   styleUrl: './pdf-modal.component.scss',
 })
-export class PdfModalComponent {
+export class PdfModalComponent implements OnInit {
 
   @ViewChild('pagina1') pagina1!: ElementRef;
   @Input() status = false;
@@ -24,12 +26,40 @@ export class PdfModalComponent {
     estado: 'proceso',
   };
   @Output() changeModal = new EventEmitter<boolean>();
-
+  submitInvalid = false
+  usuario = {
+    nombre: '',
+    documento: ''
+  }
   fechaActual: Date = new Date();
   loader = false;
+  loader2 = false;
+  constructor(private formService: FormService) {
+
+  }
+  ngOnInit(): void {
+    const data = this.formService.getUser()
+    if (data) {
+      this.usuario = data
+    }
+  }
   closedModal() {
     this.changeModal.emit(false);
   }
+
+  validateForm(step1Form: NgForm) {
+    this.loader2 = true
+    if (step1Form.valid) {
+      this.submitInvalid = false;
+      this.formService.saveUser(this.usuario.nombre, this.usuario.documento);
+      setTimeout(() => {
+        this.loader2 = false
+      }, 500);
+    } else {
+      this.submitInvalid = true;
+    }
+  }
+
   async downloadPDF() {
     this.loader = true;
     // this.formService.saveForm(this.form);

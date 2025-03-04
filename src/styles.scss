@@ -49,3 +49,71 @@ form input[type="radio"] {
     }
   }
 }
+// .introjs-bullets {
+//   display: none;
+// }
+.introjs-arrow {
+  display: none !important;
+}
+// .introjs-tooltip {
+//   border-radius: 20px !important;
+// }
+// .step1-tooltip {
+//   min-width: 600px !important;
+//   max-width: 600px !important;
+// }
+// .step2-tooltip {
+//   min-width: 300px !important;
+//   max-width: 400px !important;
+// }
+.introjs-tooltiptext {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  text-align: center;
+  p {
+    // text-align: justify;
+
+    text-align: center;
+  }
+}
+.introjs-prevbutton {
+  display: none !important;
+}
+.introjs-helperLayer {
+  box-shadow: rgba(33, 33, 33, 0.8) 0px 0px 1px 0px,
+    rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px !important;
+}
+.introjs-tooltipbuttons {
+  border-top: none !important;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 0.5rem 1rem !important;
+  .introjs-button {
+    border: none;
+    background-color: inherit;
+    // font-style: italic;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: #9ec72d;
+    color: #00185f !important;
+  }
+  .introjs-button:focus {
+    border: none;
+
+    background: #9ec72d;
+    box-shadow: none !important;
+  }
+  .introjs-button:hover {
+    background-color: #ebeaea !important;
+    background-color: inherit;
+  }
+}
+.introjs-bullets {
+  padding-top: 0 !important;
+}
+.introjs-helperLayer,
+.introjs-overlay {
+  // max-height: 95vh;
+}

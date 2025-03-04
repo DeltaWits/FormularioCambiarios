@@ -18,13 +18,13 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [checkCodeGuard],
+    // canActivate: [checkCodeGuard],
   },
-  {
-    path: 'code',
-    canActivate: [redirectGuard],
-    component: CodeAccessPageComponent,
-  },
+  // {
+  //   path: 'code',
+  //   canActivate: [redirectGuard],
+  //   component: CodeAccessPageComponent,
+  // },
   {
     path: 'forms',
     component: FormsComponent,

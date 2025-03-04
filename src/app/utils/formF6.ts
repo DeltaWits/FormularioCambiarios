@@ -45,7 +45,8 @@ export interface IFormF6 {
   }],
   informacion_transmision_procedimientos_credito: {
     tipo_transmision: string,
-    numero_de_creaditos_sustituir: []
+    numero_de_creaditos_sustituir: string,
+    codigo_moneda: string
   },
   datos_del_deudor: {
     naturaleza: string,

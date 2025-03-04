@@ -10,11 +10,12 @@ import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.componen
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
 import { SharedModule } from 'src/app/shared.module';
 import { textTipoOperacion } from './textosF3A';
-import { numeralesCambiariosF3 } from 'src/app/utils/formF3';
+import { numeralesCambiariosF3Egreso, numeralesCambiariosF3Ingreso } from 'src/app/utils/formF3';
+import { ToolImgComponent } from 'src/app/components/Modals/tool-img/tool-img.component';
 @Component({
   selector: 'app-f3-a',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, Tool1Component, SharedModule, PopUpAlertComponent, NgIf, NgFor],
+  imports: [FormsModule, ReactiveFormsModule, ToolImgComponent, Tool1Component, SharedModule, PopUpAlertComponent, NgIf, NgFor],
 
   templateUrl: './f3-a.component.html',
   styleUrl: './f3-a.component.scss',
@@ -77,7 +78,7 @@ export class F3AComponent implements OnInit {
   textTipoOperacion = textTipoOperacion
   ShowPopUp = false;
 
-  numeralesCambiarios: any = numeralesCambiariosF3
+  numeralesCambiarios: any = []
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
@@ -90,6 +91,14 @@ export class F3AComponent implements OnInit {
     this.getForm();
     // this.formID = route.params.get('id');
     console.log(this.monedas, this.formsD.empresas);
+    this.validateNumerales()
+  }
+  validateNumerales() {
+    if (this.formF3A.tipo_de_operacion.ingreso_o_egreso == 'Ingreso') {
+      this.numeralesCambiarios = numeralesCambiariosF3Ingreso
+    } else {
+      this.numeralesCambiarios = numeralesCambiariosF3Egreso
+    }
   }
   changeStep(step: any) {
     this.stepNavigator = parseInt(step);

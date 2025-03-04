@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
@@ -13,7 +13,7 @@ import { FormService } from 'src/app/services/form.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   email: any = '';
   loader = true;
   ngForm = NgForm;
@@ -24,8 +24,8 @@ export class HomeComponent {
     private authService: AuthService,
     private formService: FormService,
     private router: Router
-  ) {}
-  ngOnInit(): void {
+  ) { }
+  ngAfterViewInit(): void {
     this.ValidCode();
   }
 

@@ -166,86 +166,89 @@
           V. Tipo de identidad
         </h4>
       </div>
-      <div class="col-span-6 border p-2 mr-2">
-        <div class="text-[11px] flex w-full justify-between">
-          <p class="text-[11px]">Devolución</p>
+      <div class="col-span-6 border px-2 pt-2 mr-2">
+        <div class="text-11px flex w-full justify-between">
+          <p class="text-11px">Devolución</p>
           <div class="flex gap-2">
             <div class="flex gap-1">
-              <p class="text-[11px]">SI</p>
-              <div
-                class="border-[1px] p-1.5"
-                [class.bg-yellow-200]="
-                  form.data.declaracion_detalle.devolucion == true
-                "
-              ></div>
+              <p class="text-11px">SI</p>
+              <input
+                type="checkbox"
+                disabled
+                [value]="form.data.declaracion_detalle.devolucion == true"
+              />
             </div>
             <div class="flex gap-1">
-              <p class="text-[11px]">NO</p>
-              <div
-                class="border-[1px] p-1.5"
-                [class.bg-yellow-200]="
-                  form.data.declaracion_detalle.devolucion == false
-                "
-              ></div>
+              <p class="text-11px">NO</p>
+              <input
+                type="checkbox"
+                disabled
+                [value]="form.data.declaracion_detalle.devolucion == false"
+              />
             </div>
           </div>
         </div>
-        <div class="text-[11px] flex w-full justify-between mt-2">
-          <p class="text-[11px]">Información consolidada</p>
+        <div class="text-11px flex w-full justify-between mt-2">
+          <p class="text-11px">Información consolidada</p>
           <div class="flex gap-2">
             <div class="flex gap-1">
-              <p class="text-[11px]">SI</p>
-              <div
-                class="border-[1px] p-1.5"
-                [class.bg-yellow-200]="
+              <p class="text-11px">SI</p>
+              <input
+                type="checkbox"
+                disabled
+                [value]="
                   form.data.declaracion_detalle.informacion_consolidada == true
                 "
-              ></div>
+              />
             </div>
             <div class="flex gap-1">
-              <p class="text-[11px]">NO</p>
-              <div
-                class="border-[1px] p-1.5"
-                [class.bg-yellow-200]="
+              <p class="text-11px">NO</p>
+              <input
+                type="checkbox"
+                [checked]="
                   form.data.declaracion_detalle.informacion_consolidada == false
                 "
-              ></div>
+              />
             </div>
           </div>
         </div>
       </div>
-      <div class="col-span-6 border p-2 grid grid-cols-12">
+      <div class="col-span-6 border px-2 pt-2 grid grid-cols-12">
         <div class="col-span-4 flex flex-col items-center">
-          <p class="text-[11px]">Patrimonio Autónomo</p>
-          <div
-            class="border-[1px] p-1.5 max-w-2"
-            [class.bg-yellow-200]="
-              form.data.tipo_identidad.tipo == 'Patrimonio Autónomo'
-            "
-          ></div>
+          <p class="text-11px">Patrimonio Autónomo</p>
+          <input
+            type="checkbox"
+            class=""
+            disable
+            [checked]="form.data.tipo_identidad.tipo == 'Patrimonio Autónomo'"
+          />
         </div>
         <div class="col-span-4 flex flex-col items-center">
-          <p class="text-[11px]">Fondo de Capital Privado</p>
-          <div
-            class="border-[1px] p-1.5 max-w-2"
-            [class.bg-yellow-200]="
+          <p class="text-11px">Fondo de Capital Privado</p>
+          <input
+            type="checkbox"
+            class=""
+            disable
+            [checked]="
               form.data.tipo_identidad.tipo == 'Fondo de Capital Privado'
             "
-          ></div>
+          />
         </div>
         <div class="col-span-4 flex flex-col items-center">
-          <p class="text-[11px]">Fondo de Inv Colectiva</p>
-          <div
-            class="border-[1px] p-1.5 max-w-2"
-            [class.bg-yellow-200]="
+          <p class="text-11px">Fondo de Inv Colectiva</p>
+          <input
+            type="checkbox"
+            class=""
+            disable
+            [checked]="
               form.data.tipo_identidad.tipo == 'Fondo de Inversion Colectiva'
             "
-          ></div>
+          />
         </div>
         <div class="col-span-4">
-          <p class="text-[11px]">Otros</p>
+          <p class="text-11px">Otros</p>
           <p
-            class="text-[11px] mt-2 text-center px-2 pb-1.5 w-full min-h-[15px] border rounded-sm bg-blue-100"
+            class="text-11px mt-3 text-center px-2 pb-1.5 w-full min-h-[15px] border rounded-sm bg-blue-100"
           >
             {{ form.data.tipo_identidad.otros }}
           </p>
@@ -269,26 +272,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              class="text-center"
-              *ngFor="
-                let item of form.data.identificacion_de_exportador;
-                let i = index
-              "
-            >
+            <tr class="text-center">
               <td class="py-0.5 text-[11px]">
-                {{ form.data.identificacion_de_exportador[i].tipo_documento }}
+                {{ form.data.identificacion_de_exportador.tipo_documento }}
               </td>
               <td class="py-0.5 text-[11px]">
-                {{ form.data.identificacion_de_exportador[i].numero_documento }}
+                {{ form.data.identificacion_de_exportador.numero_documento }}
               </td>
               <td class="py-0.5 text-[11px]">
-                {{ form.data.identificacion_de_exportador[i].dv }}
+                {{ form.data.identificacion_de_exportador.dv }}
               </td>
               <td class="py-0.5 text-[11px]">
-                {{
-                  form.data.identificacion_de_exportador[i].nombre_razon_social
-                }}
+                {{ form.data.identificacion_de_exportador.nombre_razon_social }}
               </td>
             </tr>
           </tbody>
@@ -311,34 +306,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              class="text-center"
-              *ngFor="
-                let item of form.data.descripcion_de_la_operacion;
-                let i = index
-              "
-            >
+            <tr class="text-center">
               <td class="py-0.5 text-[11px]">
-                {{ form.data.descripcion_de_la_operacion[i].numero_cambiario }}
+                {{ form.data.descripcion_de_la_operacion.numero_cambiario }}
+              </td>
+              <td class="py-0.5 text-[11px]">
+                {{ form.data.descripcion_de_la_operacion.cod_mda_negociacion }}
               </td>
               <td class="py-0.5 text-[11px]">
                 {{
-                  form.data.descripcion_de_la_operacion[i].cod_mda_negociacion
+                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion
                 }}
               </td>
               <td class="py-0.5 text-[11px]">
-                {{
-                  form.data.descripcion_de_la_operacion[i]
-                    .vr_total_mda_negociacion
-                }}
-              </td>
-              <td class="py-0.5 text-[11px]">
-                {{ form.data.descripcion_de_la_operacion[i].tasa_de_cambio }}
+                {{ form.data.descripcion_de_la_operacion.tasa_de_cambio }}
               </td>
               <td class="py-0.5 text-[11px]">
                 {{
-                  form.data.descripcion_de_la_operacion[i]
-                    .vr_total_mda_negociacion
+                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion
                 }}
               </td>
             </tr>
@@ -346,7 +331,7 @@
         </table>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-sm w-100 font-semibold text-start mb-2">
           VII. Información requerida para la DIAN
         </h4>
         <p class="text-[11px] text-justify mt-2">
@@ -450,9 +435,9 @@
         </h4>
       </div>
       <div class="col-span-12 border p-2 grid grid-cols-2">
-        <div class="col-span-1">
-          <p class="text-[11px]">Nombre</p>
-          <div class="p-3 border"></div>
+        <div class="col-span-1 pr-1">
+          <p class="text-11px">Nombre</p>
+          <div class="px-3 py-1 border text-11px">{{ usuario.nombre }}</div>
         </div>
         <div class="col-span-1">
           <p class="text-[11px]">Firma</p>

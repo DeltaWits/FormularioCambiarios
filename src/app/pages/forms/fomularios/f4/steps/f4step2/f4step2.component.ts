@@ -1,25 +1,27 @@
 // @ts-nocheck
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
-import { numeralesCambiariosF4 } from 'src/app/utils/formF4';
+import { numeralesCambiariosF4Egreso, numeralesCambiariosF4Ingreso } from 'src/app/utils/formF4';
 import { IFormF4 } from 'src/app/utils/formF4';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
+import { ToolImgComponent } from '../../../../../../components/Modals/tool-img/tool-img.component';
+import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 
 @Component({
   selector: 'app-f4step2',
   standalone: true,
 
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
+  imports: [FormsModule, Tool1Component, ToolImgComponent, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
   templateUrl: './f4step2.component.html',
   styleUrl: './f4step2.component.scss'
 })
-export class F4step2Component {
+export class F4step2Component implements OnInit {
   @Input() monedas: any = [];
   @Input() formId = ''
   @Input() formF4: IFormF4 = {
@@ -62,7 +64,7 @@ export class F4step2Component {
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
-  numeralesCambiarios: any = numeralesCambiariosF4
+  numeralesCambiarios: any = numeralesCambiariosF4Ingreso
   ShowPopUp = false;
   exchangeRates = exchangeRates
   MessaggePopUp = {
@@ -70,14 +72,161 @@ export class F4step2Component {
     descripcion: 'texto explicativo',
     tipe: 'simple',
   };
-  selectDocPN = tiposDocumentos;
+  selectDocR = tiposDocumentos;
 
   constructor(
     // private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) { this.formF4.descripcionde_la_operacion.moneda_registro = 'COP' }
+  ) {
+    this.formF4.descripcionde_la_operacion.moneda_registro = 'COP';
+  }
+  ngOnInit(): void {
+    this.chagenIDOptions();
+    this.validateNumerales()
 
+  }
+  validateNumerales() {
+    console.log("operacon", this.formF4.tipo_de_operacion.ingreso_o_egreso)
+    if (this.formF4.tipo_de_operacion.ingreso_o_egreso == 'Ingreso') {
+      this.numeralesCambiarios = numeralesCambiariosF4Ingreso
+    } else {
+      this.numeralesCambiarios = numeralesCambiariosF4Egreso
+    }
+  }
+  chagenIDOptions() {
+    if (this.formF4.destino_inversion == 'EMPA2') {
+      this.selectDocR = [{
+        code: 'TI',
+        name: 'Tarjeta de identidad',
+      }, {
+        code: 'RC',
+        name: 'Registro civil',
+      }, {
+        code: 'CC',
+        name: 'Cédula de ciudadanía',
+      },
+      {
+        code: 'CE',
+        name: 'Cédula de extranjería',
+      },
+      {
+        code: 'PB',
+        name: 'Pasaporte',
+      },
+      {
+        code: 'NIT',
+        name: 'NIT',
+      },
+      {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      }]
+
+    } else if (this.formF4.destino_inversion == 'IFAE') {
+      this.selectDocR = [{
+        code: 'TI',
+        name: 'Tarjeta de identidad',
+      }, {
+        code: 'RC',
+        name: 'Registro civil',
+      }, {
+        code: 'CC',
+        name: 'Cédula de ciudadanía',
+      },
+      {
+        code: 'CE',
+        name: 'Cédula de extranjería',
+      },
+      {
+        code: 'PB',
+        name: 'Pasaporte',
+      },
+      {
+        code: 'NIT',
+        name: 'NIT',
+      },
+      {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      }]
+
+    } else if (this.formF4.destino_inversion == 'INPF') {
+      this.selectDocR = [{
+        code: 'TI',
+        name: 'Tarjeta de identidad',
+      }, {
+        code: 'RC',
+        name: 'Registro civil',
+      }, {
+        code: 'CC',
+        name: 'Cédula de ciudadanía',
+      },
+      {
+        code: 'CE',
+        name: 'Cédula de extranjería',
+      },
+      {
+        code: 'PB',
+        name: 'Pasaporte',
+      },
+      {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      },
+      {
+        code: 'NR',
+        name: 'No residente',
+      },
+      {
+        code: 'NIT',
+        name: 'NIT',
+      },
+        ,
+      {
+        code: 'NDC',
+        name: 'NO declarado',
+      },]
+
+    }
+
+    else {
+      this.selectDocR = [{
+        code: 'TI',
+        name: 'Tarjeta de identidad',
+      }, {
+        code: 'RC',
+        name: 'Registro civil',
+      }, {
+        code: 'CC',
+        name: 'Cédula de ciudadanía',
+      },
+      {
+        code: 'CE',
+        name: 'Cédula de extranjería',
+      },
+      {
+        code: 'PB',
+        name: 'Pasaporte',
+      },
+      {
+        code: 'NIT',
+        name: 'NIT',
+      },
+      {
+        code: 'NR',
+        name: 'NO residente',
+      }, {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      }, {
+        code: 'NDC',
+        name: 'NO declarado',
+      }
+      ]
+    }
+
+  }
   validateForm(step1Form: NgForm) {
 
     if (step1Form.valid) {

@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
@@ -11,6 +11,7 @@ import { numeralesCambiariosF1 } from '../../../../../../utils/formF1';
 import { SharedModule } from 'src/app/shared.module';
 import { ToolImgComponent } from "../../../../../../components/Modals/tool-img/tool-img.component";
 
+import * as introJs from 'intro.js';
 @Component({
   selector: 'app-f1step3',
   standalone: true,
@@ -19,7 +20,7 @@ import { ToolImgComponent } from "../../../../../../components/Modals/tool-img/t
   templateUrl: './f1step3.component.html',
   styleUrl: './f1step3.component.scss'
 })
-export class F1step3Component {
+export class F1step3Component implements OnInit {
   @Input() monedas: any = [];
   @Input() formId = ''
   @Input() formF1: any = {
@@ -51,9 +52,23 @@ export class F1step3Component {
   constructor(
     // private route: ActivatedRoute,
     private formService: FormService,
-    private router: Router
-  ) { }
+    private router: Router,
 
+    private elementRef: ElementRef,
+  ) { }
+  ngOnInit(): void {
+    console.log("monedas", this.monedas)
+    const storedValue = localStorage.getItem('tutorialActivate' || null);
+
+
+    if (storedValue == null) {
+
+      setTimeout(() => {
+        this.startTour();
+      }, 500);
+    }
+    // this.startTour()
+  }
   validateForm(step1Form: NgForm) {
 
     if (step1Form.valid) {
@@ -117,5 +132,88 @@ export class F1step3Component {
         (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
       );
     }
+  }
+  startTour() {
+
+    const introJS = introJs.default();
+    const step1Element = this.elementRef.nativeElement.querySelector('#step1');
+    // console.log(step1Element)
+    const step2Element = this.elementRef.nativeElement.querySelector('#step2');
+    const step3Element = this.elementRef.nativeElement.querySelector('#step3');
+    if (step1Element) {
+
+      introJS.setOptions({
+        tooltipClass: 'custom-intro-tooltip',
+        nextLabel: 'Siguiente',
+        prevLabel: 'Atrás',
+
+        scrollTo: 'tooltip',
+        doneLabel: 'Terminar',
+
+        // scrollToElement: false,
+
+        steps: [
+          {
+            element: step1Element, // Selector del elemento que deseas resaltar en el tour
+            intro:
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Esta es una ayuda para mas información, al darle click en ver nos saldrá una un modal con la información de cada numeral cambiario dependiendo del formulario</p></div > ',
+            position: 'top',
+            tooltipClass: 'step3-tooltip',
+          },
+          {
+            element: step2Element, // Selector del elemento que deseas resaltar en el tour
+            intro:
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Con estos botones puedes agregar mas campos dependiendo del formulario</p></div > ',
+            position: 'top',
+            tooltipClass: 'step3-tooltip',
+          },
+          {
+            element: step3Element, // Selector del elemento que deseas resaltar en el tour
+            intro:
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Una vez hayas terminado de ingresar toda la información necesaria, dale guardar y ya podrás descargar el pdf en la pagina principal </p></div > ',
+            position: 'top',
+            tooltipClass: 'step3-tooltip',
+          },
+          { intro: "Ya estas listo para comenzar a crear tus formularios, ¡Buena suerte!" },
+
+
+          // {
+          //   element: step6Element, // Selector del elemento que deseas resaltar en el tour
+          //   intro:
+          //     '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Cuando todos los formularios este resueltos, podrá descargar un excel con toda la información de estos</p></div > ',
+          //   position: 'top',
+          //   tooltipClass: 'step3-tooltip',
+          // },
+          // {
+          //   element: step2Element, // Selector del elemento que deseas resaltar en el tour
+          //   intro:
+          //     '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center">  <p>Aquí podrás ver el las insignias completadas y pendientes del Muver.</p></div>',
+          //   position: 'right',
+          //   tooltipClass: 'step3-tooltip',
+          // },
+
+
+          // Agrega más pasos según lo necesites
+        ],
+      });
+    }
+    introJS.start();
+
+    introJS.onexit(() => {
+
+      if (introJS._currentStep !== introJS._introItems.length - 1) {
+        localStorage.setItem('tutorialActivate', JSON.stringify(true));
+
+        this.router.navigate(['/forms']);
+      }
+
+    });
+    introJS.oncomplete(() => {
+      this.router.navigate(['/forms']);
+
+      localStorage.setItem('tutorialActivate', JSON.stringify(true));
+
+
+    });
   }
 }

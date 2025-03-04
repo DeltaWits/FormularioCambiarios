@@ -48,6 +48,7 @@ export class F4Component {
     Identificacion_de_la_empresa_reseptora: {
       tipo_identificacion: '',
       numero_identifiacion: '',
+      dv: '',
       nombre: '',
       pais: '',
       correo: '',
@@ -58,6 +59,7 @@ export class F4Component {
     informacion_administrador_del_encargo: {
       tipo_identificacion: '',
       numero_identifiacion: '',
+      dv: '',
       nombre: '',
 
     },

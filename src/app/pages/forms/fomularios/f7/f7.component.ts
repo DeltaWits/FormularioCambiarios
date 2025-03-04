@@ -68,7 +68,8 @@ export class F7Component {
     }],
     informacion_transmision_procedimientos_credito: {
       tipo_transmision: '',
-      numero_de_creaditos_sustituir: []
+      numero_de_creaditos_sustituir: '',
+      codigo_moneda: ''
     },
     datos_del_deudor: {
       naturaleza: '',

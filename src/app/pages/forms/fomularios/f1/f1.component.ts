@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { monedasCasaDeBolsa, monedasCorfi } from '../../../../utils/monedas';
 import { IForms, tiposDocumentos } from 'src/app/utils/formsData';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,7 +23,7 @@ import { IFormF1 } from 'src/app/utils/formF1';
     '../../form-layout/form-layout.component.scss',
   ],
 })
-export class F1Component implements OnInit {
+export class F1Component implements AfterViewInit {
   @Input() formsD: IForms | any = {};
   monedas: any = [];
   submitInvalid = true;
@@ -83,7 +83,7 @@ export class F1Component implements OnInit {
     private formService: FormService,
     private router: Router
   ) { }
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.route.params.subscribe((params) => {
       this.formID = params['id']; // Obtiene el valor del parámetro 'muverID' de la URL
     });

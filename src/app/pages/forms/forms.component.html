@@ -1,59 +1,26 @@
 <app-loader-full-page *ngIf="!loader"></app-loader-full-page>
-<app-terminos-y-condiciones
-  *ngIf="termsandcodditions != 'true' && status === 'valid'"
-/>
-<app-pop-up-alert
-  *ngIf="ShowPopUp === true"
-  (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"
-></app-pop-up-alert>
-<app-modal-select-form
-  [status]="showModalForms"
-  [formsD]="formsD"
-  (changeModal)="openModal($event)"
-></app-modal-select-form>
-<app-pdf-modal
-  [status]="showModalPDF"
-  [form]="formModalData"
-  (changeModal)="openModalPDF($event)"
-></app-pdf-modal>
+<app-terminos-y-condiciones *ngIf="termsandcodditions != 'true' && status === 'valid'" />
+<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-modal-select-form [status]="showModalForms" [formsD]="formsD"
+  (changeModal)="openModal($event)"></app-modal-select-form>
+<app-pdf-modal [status]="showModalPDF" [form]="formModalData" (changeModal)="openModalPDF($event)"></app-pdf-modal>
 <div *ngIf="loader == true">
   <app-new-form></app-new-form>
-  <app-user-data
-    [showModal]="showModalUserData"
-    (showPopUpUser)="openModalUser($event)"
-  ></app-user-data>
-  <app-header
-    [empresa]="formsD.empresa"
-    (showPopUpUser)="openModalUser($event)"
-  ></app-header>
-  <div
-    class="w-full min-h-[84.3vh] h-full bg flex justify-center bg-fondo items-start md:p-4"
-  >
-    <div
-      *ngIf="status === 'failed'"
-      class="w-full min-h-[84.3vh] flex justify-center relative items-center z-0 bg-white"
-    >
+  <app-user-data [showModal]="showModalUserData" (showPopUpUser)="openModalUser($event)"></app-user-data>
+  <app-header [empresa]="formsD.empresa" (showPopUpUser)="openModalUser($event)"></app-header>
+  <div class="w-full min-h-[84.3vh] h-full bg flex justify-center bg-fondo items-start md:p-4">
+    <div *ngIf="status === 'failed'"
+      class="w-full min-h-[84.3vh] flex justify-center relative items-center z-0 bg-white">
       <app-error-form-page></app-error-form-page>
     </div>
-    <div
-      *ngIf="status == 'valid'"
-      class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4"
-    >
-      <h1 class="w-full font-semibold text-center">Formularios Cambiarios</h1>
+    <div *ngIf="status == 'valid'" class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4">
+      <h1 class="w-full text-2xl font-semibold text-center">Formularios Cambiarios</h1>
       <p class="py-2 text-justify">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur
-        dicta eius eaque quis, dolorem itaque quasi, laboriosam autem magnam
-        placeat cum quam rerum modi illo, veritatis nihil accusantium vero
-        quaerat.
+
       </p>
-      <button
-        type="button"
-        id="step1"
-        #step1
-        (click)="openModal(true)"
-        class="absolute top-4 right-4 text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-      >
+      <button type="button" id="step1" #step1 (click)="openModal(true)"
+        class="absolute top-4 right-4 text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 ">
         Crear Formulario
       </button>
       <div class="w-full border border-black">
@@ -71,39 +38,24 @@
             formsD.forms.length
           }} -->
           <tbody>
-            <tr
-              class="text-center"
-              *ngFor="let form of formsD.forms; let i = index"
-            >
+            <tr class="text-center" *ngFor="let form of formsD.forms; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ form.tipo }}</td>
               <td>{{ form.fecha_create }}</td>
               <td>{{ form.estado }}</td>
               <td class="py-2">
                 <div class="w-full flex justify-center gap-2 items-center">
-                  <button
-                    type="button"
-                    id="step3"
-                    (click)="onClickUpdateForm(form.id, form.tipo)"
-                    class="text-white m-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5"
-                  >
+                  <button type="button" id="step3" (click)="onClickUpdateForm(form.id, form.tipo)"
+                    class="text-white m-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5">
                     <i class="fa fa-pencil"></i>
                   </button>
-                  <button
-                    type="button"
-                    id="step4"
-                    (click)="openModalPDF(true, form)"
-                    class="text-white m-0 bg-green-700 hover:bg-green-800 focus:ring-4 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5"
-                  >
+                  <button type="button" id="step4" (click)="openModalPDF(true, form)"
+                    class="text-white m-0 bg-green-700 hover:bg-green-800 focus:ring-4 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5">
                     <i class="fa-solid fa-download"></i>
                   </button>
 
-                  <button
-                    type="button"
-                    id="step5"
-                    (click)="deleteForm(form.id)"
-                    class="focus:outline-none text-white bg-red-700 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5"
-                  >
+                  <button type="button" id="step5" (click)="deleteForm(form.id)"
+                    class="focus:outline-none text-white bg-red-700 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5">
                     <i class="fa fa-trash"></i>
                   </button>
                 </div>
@@ -113,13 +65,13 @@
         </table>
       </div>
       <div class="flex mt-2">
-        <button
-          type="button"
-          id="step6"
-          class="text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-        >
-          Descargar Excel
-        </button>
+        <!-- <button
+            type="button"
+            id="step6"
+            class="text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 "
+          >
+            Descargar Excel
+          </button> -->
       </div>
     </div>
   </div>

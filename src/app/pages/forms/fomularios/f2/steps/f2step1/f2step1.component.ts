@@ -7,6 +7,7 @@ import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/services/form.service';
 import { tiposDocumentos } from 'src/app/utils/formsData';
+import { textTipoIdentidad } from '../../../f1/textosF1';
 
 @Component({
   selector: 'app-f2step1',
@@ -18,7 +19,7 @@ import { tiposDocumentos } from 'src/app/utils/formsData';
 export class F2step1Component implements OnInit {
   @Input() monedas: any = [];
   @Input() formId = ''
-
+  textTipoIdentidad = textTipoIdentidad
   textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   submitInvalid = false

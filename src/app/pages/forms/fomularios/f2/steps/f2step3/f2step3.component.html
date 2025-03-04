@@ -1,61 +1,97 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
 <form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-base">Descripción de la operación</h3>
+        <h3 class="font-semibold text-lg">Descripción de la operación</h3>
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <!-- {{ formF2.descripcion_de_la_operacion }} -->
           <div class="row col-span-12 grid grid-cols-12">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
+              <p class="">Cod. Mda. Negociación</p>
 
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
-              <p class="mb-1">Cod. Mda. Negociación</p>
-
-              <select [name]="'cod_mda_negociacion' " #cod_mda_negociacion="ngModel" required
+              <select
+                [name]="'cod_mda_negociacion'"
+                #cod_mda_negociacion="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
-                        formF2.descripcion_de_la_operacion.cod_mda_negociacion
-                      ">
+                required
+                [class.error]="cod_mda_negociacion.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF2.descripcion_de_la_operacion.cod_mda_negociacion
+                "
+              >
                 <option value="">Seleccionar moneda</option>
                 <option *ngFor="let moneda of monedas" [value]="moneda.code">
                   {{ moneda.code }} {{ moneda.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base">Vr. Total Mda Negociación</p>
 
-              <input type="text" placeholder="" (change)="selectTasa()"
+              <input
+                type="text"
+                placeholder=""
+                (change)="selectTasa()"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'valor_t_mda_nego' " #valor_t_mda_nego="ngModel" placeholder="" required
-                [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
-                        formF2.descripcion_de_la_operacion.vr_total_mda_negociacion
-                      " numberFormat />
+                [name]="'valor_t_mda_nego'"
+                #valor_t_mda_nego="ngModel"
+                placeholder=""
+                required
+                [class.error]="valor_t_mda_nego.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF2.descripcion_de_la_operacion.vr_total_mda_negociacion
+                "
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base">Tasa de cambio a dolar</p>
 
-              <input type="number" placeholder="" (change)="selectTasa()"
+              <input
+                type="number"
+                placeholder=""
+                (change)="selectTasa()"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'tasa_cambio'" #numero_cambiario3="ngModel" placeholder="" required
-                [class.error]="numero_cambiario3.invalid && submitInvalid" [(ngModel)]="
-                        formF2.descripcion_de_la_operacion.tasa_de_cambio
-                      " />
+                [name]="'tasa_cambio'"
+                #numero_cambiario3="ngModel"
+                placeholder=""
+                required
+                [class.error]="numero_cambiario3.invalid && submitInvalid"
+                [(ngModel)]="formF2.descripcion_de_la_operacion.tasa_de_cambio"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+            >
               <p class="text-base w-full">Valor total en dolares</p>
 
-              <input type="text" placeholder=""
+              <input
+                type="text"
+                placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
-                disabled [name]="'numero_cambiario3'" #numero_cambiario="ngModel" placeholder=""
-                [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
-                        formF2.descripcion_de_la_operacion.valor_total_dolares
-                      " />
-
+                disabled
+                [name]="'numero_cambiario3'"
+                #numero_cambiario="ngModel"
+                placeholder=""
+                [class.error]="numero_cambiario.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF2.descripcion_de_la_operacion.valor_total_dolares
+                "
+              />
             </div>
           </div>
         </div>
@@ -71,10 +107,10 @@
 
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-base text-start">
+        <h3 class="font-semibold text-lg text-start">
           Información requerida para la DIAN
         </h3>
-        <h3 class="font-semibold text-base">
+        <h3 class="font-semibold text-lg">
           Información de los documentos de Exportación
         </h3>
         <p class="text-justify mt-1">
@@ -88,47 +124,78 @@
       <div class="col-span-12 p-1">
         <div class="inputs">
           <!-- {{ formF2.descripcion_de_la_operacion }} -->
-          <div class="row col-span-12 grid grid-cols-12" *ngFor="let dian of formF2.informacion_DIAN; let i = index">
+          <div
+            class="row col-span-12 grid grid-cols-12"
+            *ngFor="let dian of formF2.informacion_DIAN; let i = index"
+          >
             <div class="col-span-12 md:col-span-6 lg:col-span-5 p-1">
               <p class="text-base">
                 Número de declaración de importación y/o factura comercial
               </p>
-              <input type="number"
+              <input
+                type="number"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'otro_documento_factura' + i" id="" required
-                [class.error]="otro_documento_factura.invalid && submitInvalid" #otro_documento_factura="ngModel"
-                [(ngModel)]="formF2.informacion_DIAN[i].numero_o_factura" />
+                [name]="'otro_documento_factura' + i"
+                id=""
+                [class.error]="otro_documento_factura.invalid && submitInvalid"
+                #otro_documento_factura="ngModel"
+                [(ngModel)]="formF2.informacion_DIAN[i].numero_o_factura"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
-              <p class="text-base w-full">Numeral Cambiario</p>
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap"
+            >
+              <div class="flex gap-1">
+                <p class="text-base flex gap-1">Numeral cambiario</p>
+                <app-tool-img [numerales]="numeralesCambiarios"></app-tool-img>
+              </div>
 
               <!-- <input type="number" placeholder="" disabled [placeholder]="'No disponible'"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel"
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
                 [(ngModel)]="formF2.informacion_DIAN[i].numeral_cambiario" /> -->
-              <select required (change)="validateDIAN(i)"
+              <select
+                (change)="validateDIAN(i)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel"
+                [name]="'numero_cambiariosss' + i"
+                #numero_cambiarioss="ngModel"
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
-                [(ngModel)]="formF2.informacion_DIAN[i].numeral_cambiario">
-
+                [(ngModel)]="formF2.informacion_DIAN[i].numeral_cambiario"
+              >
                 <option value="" selected>------</option>
-                <option [value]="item.codigo" *ngFor="let item of numeralesCambiarios">{{item.codigo}}</option>
+                <option
+                  [value]="item.codigo"
+                  *ngFor="let item of numeralesCambiarios"
+                >
+                  {{ item.codigo }}
+                </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap"
+            >
               <p class="text-base w-full">Valor reintegrado DEX en USD</p>
 
-              <input type="number" placeholder="" required
+              <input
+                type="number"
+                placeholder=""
+                r
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
-                [name]="'numero_cam' + i" #numero_cam="ngModel" [class.error]="numero_cam.invalid && submitInvalid"
+                [name]="'numero_cam' + i"
+                #numero_cam="ngModel"
+                [class.error]="numero_cam.invalid && submitInvalid"
                 [(ngModel)]="
                   formF2.informacion_DIAN[i].valor_reintegrado_en_USD
-                " (change)="validateDIAN(i)" />
-              <button *ngIf="formF2.informacion_DIAN.length > 1"
+                "
+                (change)="validateDIAN(i)"
+              />
+              <button
+                *ngIf="formF2.informacion_DIAN.length > 1"
                 class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
-                type="button" (click)="deleteDIAN(i)">
+                type="button"
+                (click)="deleteDIAN(i)"
+              >
                 <i class="fa fa-trash"></i>
               </button>
             </div>
@@ -136,8 +203,12 @@
         </div>
 
         <div class="w-full flex justify-end">
-          <button type="button" *ngIf="formF2.informacion_DIAN.length < 10" (click)="agregarDIAN()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+          <button
+            type="button"
+            *ngIf="formF2.informacion_DIAN.length < 10"
+            (click)="agregarDIAN()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+          >
             Agregar declaración
           </button>
         </div>
@@ -145,40 +216,68 @@
       <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
         <p class="text-base w-full">Total Valor FOB</p>
 
-        <input type="number" placeholder="" disabled
+        <input
+          type="number"
+          placeholder=""
+          disabled
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-          [name]="'total_valorFoB'" #total_valorFoB="ngModel" [class.error]="total_valorFoB.invalid && submitInvalid"
-          [(ngModel)]="formF2.informacion_DIAN_total.total_valorFoB" />
+          [name]="'total_valorFoB'"
+          #total_valorFoB="ngModel"
+          [class.error]="total_valorFoB.invalid && submitInvalid"
+          [(ngModel)]="formF2.informacion_DIAN_total.total_valorFoB"
+        />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
         <p class="text-base w-full">Total gastos de exportación</p>
 
-        <input type="number" placeholder="" disabled
+        <input
+          type="number"
+          placeholder=""
+          disabled
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-          [name]="'total_gastosFoB'" #total_gastosFoB="ngModel" [class.error]="total_valorFoB.invalid && submitInvalid"
-          [(ngModel)]="formF2.informacion_DIAN_total.total_gastos_de_exportacion" />
+          [name]="'total_gastosFoB'"
+          #total_gastosFoB="ngModel"
+          [class.error]="total_valorFoB.invalid && submitInvalid"
+          [(ngModel)]="
+            formF2.informacion_DIAN_total.total_gastos_de_exportacion
+          "
+        />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
         <p class="text-base w-full">Deducciones</p>
 
-        <input type="text" placeholder="" required numberFormat (change)="validateDIAN(0)"
+        <input
+          type="text"
+          placeholder=""
+          (change)="validateDIAN(0)"
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-          [name]="'total_deduccion'" #total_deduccion="ngModel" [class.error]="total_deduccion.invalid && submitInvalid"
-          [(ngModel)]="formF2.informacion_DIAN_total.Deducciones" />
+          [name]="'total_deduccion'"
+          #total_deduccion="ngModel"
+          [class.error]="total_deduccion.invalid && submitInvalid"
+          [(ngModel)]="formF2.informacion_DIAN_total.Deducciones"
+        />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
         <p class="text-base w-full">Reintegro neto</p>
 
-        <input type="number" placeholder="" disabled [placeholder]="'No disponible'"
+        <input
+          type="number"
+          placeholder=""
+          disabled
+          [placeholder]="'No disponible'"
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-          [name]="'total_valorr'" #total_valorr="ngModel" [class.error]="total_valorr.invalid && submitInvalid"
-          [(ngModel)]="formF2.informacion_DIAN_total.Reintegro_neto" />
+          [name]="'total_valorr'"
+          #total_valorr="ngModel"
+          [class.error]="total_valorr.invalid && submitInvalid"
+          [(ngModel)]="formF2.informacion_DIAN_total.Reintegro_neto"
+        />
       </div>
     </div>
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Guardar
     </button>
   </div>

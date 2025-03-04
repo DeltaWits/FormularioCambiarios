@@ -1,20 +1,28 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
 <form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
-      <div class="hidden xl:block  xl:col-span-3"></div>
+      <div class="hidden xl:block xl:col-span-3"></div>
 
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <div class="flex gap-1">
-          <p class="mb-1" for="">Tipo de solicitud</p>
+          <p class="" for="">Tipo de solicitud</p>
           <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
         </div>
-        <select name="tipo_operacion" id="" #tipo_de_operacion_tipo="ngModel"
-          [(ngModel)]="formF7.tipo_de_solicictud.tipo" required
+        <select
+          name="tipo_operacion"
+          id=""
+          #tipo_de_operacion_tipo="ngModel"
+          [(ngModel)]="formF7.tipo_de_solicictud.tipo"
+          required
           [class.error]="tipo_de_operacion_tipo.invalid && submitInvalid"
-          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3">
+          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
+        >
           <option value=""></option>
           <option value="Inicial">Inicial</option>
           <option value="Modificación">Modificación</option>
@@ -23,132 +31,213 @@
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <div class="flex gap-1">
-          <p class="mb-1" for="">Fecha: </p>
+          <p class="" for="">Fecha:</p>
           <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
         </div>
-        <input type="text" disabled name="tipo_operacion_fecha_solicitud" id=""
-          #tipo_de_operacion_fecha_solicitud="ngModel" [(ngModel)]="formF7.tipo_de_solicictud.fecha_solicitud" required
-          [class.error]="tipo_de_operacion_fecha_solicitud.invalid && submitInvalid"
-          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3" />
+        <input
+          type="text"
+          disabled
+          name="tipo_operacion_fecha_solicitud"
+          id=""
+          #tipo_de_operacion_fecha_solicitud="ngModel"
+          [(ngModel)]="formF7.tipo_de_solicictud.fecha_solicitud"
+          required
+          [class.error]="
+            tipo_de_operacion_fecha_solicitud.invalid && submitInvalid
+          "
+          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
+        />
 
         <!-- <option value="Devolución">Devolución</option> -->
-
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <div class="flex gap-1">
-          <p class="mb-1" for="">Número crédito </p>
+          <p class="" for="">Número crédito</p>
           <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
         </div>
-        <input type="text" name="tipo_operacion_numero_de_credito" id="" #tipo_de_operacion_numero_de_credito="ngModel"
-          [(ngModel)]="formF7.tipo_de_solicictud.numero_de_credito" required
-          [class.error]="tipo_de_operacion_numero_de_credito.invalid && submitInvalid"
-          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3" />
+        <input
+          type="text"
+          name="tipo_operacion_numero_de_credito"
+          id=""
+          #tipo_de_operacion_numero_de_credito="ngModel"
+          [(ngModel)]="formF7.tipo_de_solicictud.numero_de_credito"
+          required
+          [class.error]="
+            tipo_de_operacion_numero_de_credito.invalid && submitInvalid
+          "
+          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
+        />
 
         <!-- <option value="Devolución">Devolución</option> -->
-
       </div>
-
     </div>
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-lg">Información del residente o deudor
+        <h3 class="font-semibold text-lg">
+          Información del residente o acreedor
         </h3>
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <div class="row col-span-12 grid grid-cols-12">
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
-              <p class="mb-1">Tipo de Identificación</p>
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
+              <p class="">Tipo de Identificación</p>
 
-              <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
+              <select
+                [name]="'otro_tipo_documento'"
+                #otro_tipo_documento="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid"
-                [(ngModel)]="formF7.informacion_del_residente_deudor.tipo_identificacion">
+                [(ngModel)]="
+                  formF7.informacion_del_residente_deudor.tipo_identificacion
+                "
+              >
                 <option *ngFor="let doc of selectDocPN" [value]="doc.code">
                   {{ doc.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
-              <div class="col-span-5" [class.col-span-6]="
-                        true
-                      ">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6"
+            >
+              <div class="col-span-5" [class.col-span-6]="true">
                 <p class="text-base">Número de identificación</p>
 
-                <input type="number"
+                <input
+                  type="number"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                  [name]="'informacion_del_residente_deudor_'" id=""
-                  [class.error]="informacion_del_residente_deudor_.invalid && submitInvalid"
-                  #informacion_del_residente_deudor_="ngModel" [(ngModel)]="
-                          formF7.informacion_del_residente_deudor.numero_identifiacion
-                        " required />
+                  [name]="'informacion_del_residente_deudor_'"
+                  id=""
+                  [class.error]="
+                    informacion_del_residente_deudor_.invalid && submitInvalid
+                  "
+                  #informacion_del_residente_deudor_="ngModel"
+                  [(ngModel)]="
+                    formF7.informacion_del_residente_deudor.numero_identifiacion
+                  "
+                  required
+                />
               </div>
-
             </div>
 
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Nombre o razón social</p>
 
-              <input type="text" placeholder="" [name]="'nombre_otro2'" #otro_nombre3="ngModel"
-                style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="otro_nombre3.invalid && submitInvalid" [(ngModel)]="
-                        formF7.informacion_del_residente_deudor.nombre_razon_social
-                      " />
-            </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-              <p class="text-base">Código ciudad</p>
-
-              <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                name="informacion_del_residente_deudor.codigo_cuidad" #informacion_del_residente_codigo_cuidad="ngModel"
-                [class.error]="
-                                                      informacion_del_residente_codigo_cuidad.invalid &&
-                                                      submitInvalid
-                                                    " [(ngModel)]="
-                                                      formF7.informacion_del_residente_deudor.codigo_ciudad " />
-            </div>
-            <div class="col-span-12 md:col-span-6  p-1">
-              <p class="text-base">Dirección </p>
-
-              <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                name="informacion_del_residente_deudor.direccion" #informacion_del_residente_deudor_direccion="ngModel"
-                [class.error]="
-                                                      informacion_del_residente_deudor_direccion.invalid &&
-                                                      submitInvalid
-                                                    " [(ngModel)]="
-                                                      formF7.informacion_del_residente_deudor.direccion " />
-            </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-3 p-1 flex flex-wrap gap-x-1">
-              <p class="text-base w-full">Teléfono (Nvl. nacional)</p>
-
-              <input type="text" placeholder="" [name]="'nombre_otro_telefono3'" #otro_nombre_telefono3="ngModel"
-                style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="otro_nombre_telefono3.invalid && submitInvalid" [(ngModel)]="
-                                                  formF7.informacion_del_residente_deudor.telefono
-                                                " />
-            </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
-              <p class="text-base w-full">Correo</p>
-
-              <input type="email" email placeholder="" [name]="'nombre_otro_correo'" #otro_nombre_correo="ngModel"
+              <input
+                type="text"
+                placeholder=""
+                [name]="'informacion_del_residente_deudor_nombre_otro2'"
+                #informacion_del_residente_deudor_nombre_otro2="ngModel"
+                style="text-transform: uppercase"
                 required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="otro_nombre_correo.invalid && submitInvalid" [(ngModel)]="
-                                                  formF7.informacion_del_residente_deudor.correo
-                                                " />
+                [class.error]="
+                  informacion_del_residente_deudor_nombre_otro2.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF7.informacion_del_residente_deudor.nombre_razon_social
+                "
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+            >
+              <p class="text-base">Código ciudad</p>
+
+              <input
+                type="text"
+                placeholder=""
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                name="informacion_del_residente_deudor.codigo_cuidad"
+                #informacion_del_residente_codigo_cuidad="ngModel"
+                [class.error]="
+                  informacion_del_residente_codigo_cuidad.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF7.informacion_del_residente_deudor.codigo_ciudad
+                "
+              />
+            </div>
+            <div class="col-span-12 md:col-span-6 p-1">
+              <p class="text-base">Dirección</p>
+
+              <input
+                type="text"
+                placeholder=""
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                name="informacion_del_residente_deudor.direccion"
+                #informacion_del_residente_deudor_direccion="ngModel"
+                [class.error]="
+                  informacion_del_residente_deudor_direccion.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="formF7.informacion_del_residente_deudor.direccion"
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-3 p-1 flex flex-wrap gap-x-1"
+            >
+              <p class="text-base w-full">Teléfono (Nvl. nacional)</p>
+
+              <input
+                type="text"
+                placeholder=""
+                [name]="'nombre_otro_telefono3'"
+                #otro_nombre_telefono3="ngModel"
+                style="text-transform: uppercase"
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [class.error]="otro_nombre_telefono3.invalid && submitInvalid"
+                [(ngModel)]="formF7.informacion_del_residente_deudor.telefono"
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
+              <p class="text-base w-full">Correo</p>
+
+              <input
+                type="email"
+                email
+                placeholder=""
+                [name]="'nombre_otro_correo22'"
+                #otro_nombre_correo22="ngModel"
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [class.error]="otro_nombre_correo22.invalid && submitInvalid"
+                [(ngModel)]="formF7.informacion_del_residente_deudor.correo"
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Código CIIU</p>
 
-              <input type="text" placeholder="" [name]="'informacion_del_residente_deudor.codigo_CIIU'"
-                #informacion_del_residente_deudor_codigo_CIIU="ngModel" style="text-transform: uppercase" required
+              <input
+                type="text"
+                placeholder=""
+                [name]="'informacion_del_residente_deudor.codigo_CIIU'"
+                #informacion_del_residente_deudor_codigo_CIIU="ngModel"
+                style="text-transform: uppercase"
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="informacion_del_residente_deudor_codigo_CIIU.invalid && submitInvalid" [(ngModel)]="
-                                                              formF7.informacion_del_residente_deudor.codigo_CIIU
-                                                            " />
+                [class.error]="
+                  informacion_del_residente_deudor_codigo_CIIU.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF7.informacion_del_residente_deudor.codigo_CIIU
+                "
+              />
             </div>
             <!-- <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
                   <p class="text-base">País</p>
@@ -162,119 +251,167 @@
                                         " [(ngModel)]="
                                           formF7.informacion_del_residente_deudor.pais " />
                 </div> -->
-
           </div>
         </div>
       </div>
-
-
     </div>
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-lg">Información del acreedor
+        <h3 class="font-semibold text-lg">
+          Información del no residente deudor
         </h3>
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <div class="row col-span-12 grid grid-cols-12">
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
-              <p class="mb-1">Tipo de Identificación</p>
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
+              <p class="">Tipo de Identificación</p>
 
-              <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
+              <select
+                [name]="'otro_tipo_documento'"
+                #otro_tipo_documento="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid"
-                [(ngModel)]="formF7.informacion_del_acreedor.tipo_identificacion">
+                [(ngModel)]="
+                  formF7.informacion_del_acreedor.tipo_identificacion
+                "
+              >
                 <option *ngFor="let doc of selectDocPN" [value]="doc.code">
                   {{ doc.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
-              <div class="col-span-5" [class.col-span-6]="
-                    true
-                  ">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6"
+            >
+              <div class="col-span-5" [class.col-span-6]="true">
                 <p class="text-base">Número de identificación</p>
 
-                <input type="number"
+                <input
+                  type="number"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                  [name]="'informacion_del_acreedor_'" id=""
-                  [class.error]="informacion_del_acreedor_.invalid && submitInvalid"
-                  #informacion_del_acreedor_="ngModel" [(ngModel)]="
-                      formF7.informacion_del_acreedor.numero_identifiacion
-                    " required />
+                  [name]="'informacion_del_acreedor_'"
+                  id=""
+                  [class.error]="
+                    informacion_del_acreedor_.invalid && submitInvalid
+                  "
+                  #informacion_del_acreedor_="ngModel"
+                  [(ngModel)]="
+                    formF7.informacion_del_acreedor.numero_identifiacion
+                  "
+                  required
+                />
               </div>
-
             </div>
 
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Nombre o razón social</p>
 
-              <input type="text" placeholder="" [name]="'nombre_otro2'" #otro_nombre3="ngModel"
-                style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="otro_nombre3.invalid && submitInvalid" [(ngModel)]="
-                    formF7.informacion_del_acreedor.nombre_razon_social
-                  " />
-            </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-              <p class="text-base">País</p>
-
-              <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                name="informacion_del_acreedor.pais" #informacion_del_acreedor_telefono="ngModel" [class.error]="
-                                                    informacion_del_acreedor_telefono.invalid &&
-                                                    submitInvalid
-                                                  " [(ngModel)]="
-                                                    formF7.informacion_del_acreedor.pais " />
-            </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-              <p class="text-base">Tipo de prestatario o deudor</p>
-
-              <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                name="informacion_del_acreedor.codigo_cuidad" #informacion_del_residente_codigo_cuidad="ngModel"
-                [class.error]="informacion_del_residente_codigo_cuidad.invalid &&
-                           submitInvalid
-                                                " [(ngModel)]="
-                                                  formF7.informacion_del_acreedor.tipo_presario_deudor " />
-            </div>
-
-
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
-              <p class="text-base w-full">Correo</p>
-
-              <input type="email" email placeholder="" [name]="'nombre_otro_correo'" #otro_nombre_correo="ngModel"
+              <input
+                type="text"
+                placeholder=""
+                [name]="'nombre_otro2'"
+                #otro_nombre3="ngModel"
+                style="text-transform: uppercase"
                 required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="otro_nombre_correo.invalid && submitInvalid" [(ngModel)]="
-                                              formF7.informacion_del_acreedor.correo
-                                            " />
+                [class.error]="otro_nombre3.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF7.informacion_del_acreedor.nombre_razon_social
+                "
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-2 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+            >
+              <p class="text-base">País</p>
+
+              <input
+                type="text"
+                placeholder=""
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                name="informacion_del_acreedor.pais"
+                #informacion_del_acreedor_telefono="ngModel"
+                [class.error]="
+                  informacion_del_acreedor_telefono.invalid && submitInvalid
+                "
+                [(ngModel)]="formF7.informacion_del_acreedor.pais"
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+            >
+              <p class="text-base">Tipo de prestatario o deudor</p>
+
+              <input
+                type="text"
+                placeholder=""
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                name="informacion_del_acreedor.codigo_cuidad"
+                #informacion_del_residente_codigo_cuidad="ngModel"
+                [class.error]="
+                  informacion_del_residente_codigo_cuidad.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF7.informacion_del_acreedor.tipo_presario_deudor
+                "
+              />
+            </div>
+
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
+              <p class="text-base w-full">Correo</p>
+
+              <input
+                type="email"
+                email
+                placeholder=""
+                [name]="'nombre_otro_correo'"
+                #otro_nombre_correo="ngModel"
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [class.error]="otro_nombre_correo.invalid && submitInvalid"
+                [(ngModel)]="formF7.informacion_del_acreedor.correo"
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-2 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Código CIIU</p>
 
-              <input type="text" placeholder="" [name]="'informacion_del_acreedor.codigo_CIIU'"
-                #informacion_del_acreedor_codigo_CIIU="ngModel" style="text-transform: uppercase" required
+              <input
+                type="text"
+                placeholder=""
+                [name]="'informacion_del_acreedor.codigo_CIIU'"
+                #informacion_del_acreedor_codigo_CIIU="ngModel"
+                style="text-transform: uppercase"
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [class.error]="informacion_del_acreedor_codigo_CIIU.invalid && submitInvalid" [(ngModel)]="
-                                                          formF7.informacion_del_acreedor.codigo_CIIU
-                                                        " />
+                [class.error]="
+                  informacion_del_acreedor_codigo_CIIU.invalid && submitInvalid
+                "
+                [(ngModel)]="formF7.informacion_del_acreedor.codigo_CIIU"
+              />
             </div>
-
-
           </div>
         </div>
       </div>
-
-
     </div>
-
-
   </div>
 
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Guardar
     </button>
   </div>

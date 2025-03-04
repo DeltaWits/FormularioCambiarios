@@ -214,7 +214,8 @@
       <div class="col-span-12 md:col-span-6 p-1">
         <div class="flex gap-1">
           <p class="mb-1" for="">Tipo de identidad</p>
-          <app-tool1 [content]="textTipoOperacion"></app-tool1>
+          <app-tool1
+            [content]="'Cuando se trate de un Consorcio / Unión Temporal, se deberá suministrar el número de identificación de un participante.'"></app-tool1>
         </div>
         <select name="tipo_operacion" id="" name="tipo_identidad_tipo" #tipo_identidad_tipo="ngModel"
           [(ngModel)]="formF5.tipo_identidad.tipo" required [class.error]="tipo_identidad_tipo.invalid && submitInvalid"
@@ -264,7 +265,7 @@
             <div class="col-span-5" [class.col-span-6]="
                 formF5.identificacion_de_la_empresa.tipo_identificacion != 'NIT'
               ">
-              <p class="text-base">Número de identificación</p>
+              <p class="text-base mb-1">Número de identificación</p>
 
               <input type="number" (change)="checkDv1(3)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
@@ -277,7 +278,7 @@
             <div class="col-span-1 pl-2" *ngIf="
                 formF5.identificacion_de_la_empresa.tipo_identificacion == 'NIT'
               ">
-              <p class="text-base">D.V</p>
+              <p class="text-base mb-1">D.V</p>
               <div class="dv w-[30px]">
                 <input type="text" placeholder="" required [name]="'identificacion_de_la_empresa__dv'"
                   #identificacion_otro_dv="ngModel" [(ngModel)]="formF5.identificacion_de_la_empresa.dv"

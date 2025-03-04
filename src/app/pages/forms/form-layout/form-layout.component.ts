@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -26,7 +26,7 @@ import { formsData } from 'src/app/utils/formsData';
   templateUrl: './form-layout.component.html',
   styleUrl: './form-layout.component.scss',
 })
-export class FormLayoutComponent implements OnInit {
+export class FormLayoutComponent implements AfterViewInit {
   loader = false;
   formsD = formsData;
 
@@ -35,8 +35,8 @@ export class FormLayoutComponent implements OnInit {
     private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) {}
-  ngOnInit(): void {
+  ) { }
+  ngAfterViewInit(): void {
     this.getForm();
   }
   async getForm() {

@@ -1,16 +1,17 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { IForm } from 'src/app/utils/formsData';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-f1',
   standalone: true,
-  imports: [HeaderComponent, NgFor],
+  imports: [HeaderComponent, NgFor, NgIf],
   templateUrl: './f1.component.html',
   styleUrl: './f1.component.scss',
 })
-export class F1Component {
+export class F1Component implements OnInit {
   @Input() form: IForm = {
     id: '',
     tipo: '',
@@ -18,4 +19,14 @@ export class F1Component {
     fecha_create: '',
     estado: 'proceso',
   };
+  usuario = {
+    nombre: ''
+  }
+  constructor(private formService: FormService) { }
+  ngOnInit(): void {
+    const data = this.formService.getUser()
+    if (data) {
+      this.usuario = data
+    }
+  }
 }

@@ -39,6 +39,35 @@ export class F4step1Component {
       numero_deuda_externa: '',
       numero_declaracion_cambio: ''
     },
+    destino_inversion: '',
+    Identificacion_de_la_empresa_reseptora: {
+      tipo_identificacion: '',
+      numero_identifiacion: '',
+      dv: '',
+      nombre: '',
+      pais: '',
+      correo: '',
+      codigo_CIIU: '',
+      telefono: '',
+      direccion: '',
+    },
+    informacion_administrador_del_encargo: {
+      tipo_identificacion: '',
+      numero_identifiacion: '',
+      dv: '',
+      nombre: '',
+
+    },
+    identificacion_del_inversionista: {
+      tipo_identificacion: '',
+      numero_identifiacion: '',
+      nombre: '',
+      pais: '',
+      correo: '',
+      codigo_CIIU: '',
+      telefono: '',
+      direccion: '',
+    },
 
   }
   @Output() step = new EventEmitter<string>();
@@ -48,6 +77,8 @@ export class F4step1Component {
   ShowPopUp = false;
 
   selectDocPN = tiposDocumentos;
+  selectDocR = tiposDocumentos;
+  selectDocI = tiposDocumentos;
   MessaggePopUp = {
     titulo: 'titulo',
     descripcion: 'texto explicativo',
@@ -63,10 +94,70 @@ export class F4step1Component {
   ngOnInit(): void {
     console.log("monedas", this.monedas)
   }
+  chagenIDOptions(num: number) {
+    if (num == 1) {
+      this.selectDocR = [{
+        code: 'NIT',
+        name: 'Nit',
+      },
+      {
+        code: 'REC',
+        name: 'Receptor en constitución',
+      },
+      {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      },
+      {
+        code: 'NR',
+        name: 'No residente',
+      }]
+
+    } else if (num == 2) {
+      this.selectDocR = [{
+        code: 'NIT',
+        name: 'NIT',
+      },
+      {
+        code: 'REC',
+        name: 'Receptor en constitución',
+      },
+
+      {
+        code: 'NR',
+        name: 'No residente',
+      }]
+
+    } else if (num == 3) {
+      this.selectDocR = [{
+        code: 'NIT',
+        name: 'NIT',
+      }]
+
+    }
+    else if (num == 4) {
+      this.selectDocR = [{
+        code: 'NIT',
+        name: 'NIT',
+      }, {
+        code: 'REC',
+        name: 'Receptor en constitución',
+      }, {
+        code: 'PA',
+        name: 'Patrimonio autónomo',
+      }]
+    }
+    else {
+      this.selectDocR = [{
+        code: '',
+        name: '',
+      }]
+    }
+
+  }
   onSwitchChange(num: number) {
     if (num == 1) {
     }
-    console.log('Switch State:', this.switchState);
     this.switchState = !this.switchState
   }// @ts-nocheck
   checkDv1(inputNum: number) {
@@ -88,6 +179,24 @@ export class F4step1Component {
       this.formF4.identificacion_operacion_anterior.dv = this.calculateDV(
 
         this.formF4.identificacion_operacion_anterior.nit_imc
+      );
+    }
+    else if (
+
+      inputNum == 3
+    ) {
+      this.formF4.Identificacion_de_la_empresa_reseptora.dv = this.calculateDV(
+
+        this.formF4.Identificacion_de_la_empresa_reseptora.numero_identifiacion
+      );
+    }
+    else if (
+
+      inputNum == 4
+    ) {
+      this.formF4.informacion_administrador_del_encargo.dv = this.calculateDV(
+
+        this.formF4.informacion_administrador_del_encargo.numero_identifiacion
       );
     }
   }

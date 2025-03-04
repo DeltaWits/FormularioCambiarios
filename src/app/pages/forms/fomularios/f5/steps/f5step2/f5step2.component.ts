@@ -73,7 +73,7 @@ export class F5step2Component {
 
       // }
     } else {
-      console.log("entro", step1Form.valid)
+      // console.log("entro", step1Form.valid)
       this.submitInvalid = true;
       this.showActivePopUp(true);
 
@@ -103,15 +103,16 @@ export class F5step2Component {
 
   selectTasa() {
     // const currency = exchangeRates.find(rate => rate.code === this.formF5.descripcion_de_la_operacion[index].cod_mda_negociacion);
-    // @ts-ignore:
-    if (this.formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar != '' && this.formF5.descripcion_de_la_operacion.valor_total_dolares != ' ') {
+
+    if (this.formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar != '' && this.formF5.descripcion_de_la_operacion.vr_total_mda_negociacion != ' ') {
       const tasaDeCambio = this.formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar;
       const vrTotalMdaNegociacion = this.formF5.descripcion_de_la_operacion.vr_total_mda_negociacion.replace(/[^\d]/g, '');
       // console.log("valorTM", vrTotalMdaNegociacion)
       this.formF5.descripcion_de_la_operacion.valor_total_dolares = parseFloat(
-        // @ts-ignore:
+
         (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
       );
+      console.log("ddd")
     }
   }
   // validateDIAN(i: any) {

@@ -77,7 +77,7 @@ export class F5step1Component implements OnInit {
     private router: Router
   ) { }
   ngOnInit(): void {
-    console.log("monedas", this.monedas)
+    // console.log("monedas", this.monedas)
   }
   onSwitchChange(num: number) {
     if (num == 1) {
@@ -153,7 +153,7 @@ export class F5step1Component implements OnInit {
     }
 
     y = x % 11;
-    console.log(y);
+    // console.log(y);
 
     return (y > 1 ? 11 - y : y).toString();
   }
@@ -165,7 +165,7 @@ export class F5step1Component implements OnInit {
       this.formService.saveFormDataFId(this.formF5, this.formId);
       this.step.emit('2');
     } else {
-      console.log("entro", step1Form.valid)
+      // console.log("entro", step1Form.valid)
       this.submitInvalid = true;
       this.showActivePopUp(true);
 

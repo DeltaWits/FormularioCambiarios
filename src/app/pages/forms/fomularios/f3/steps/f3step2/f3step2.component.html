@@ -105,7 +105,10 @@
           <div class="row col-span-12 grid grid-cols-12"
             *ngFor="let info of formF3.informacion_de_numerales; let i = index">
             <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
-              <p class="text-base">Numeral cambiario</p>
+              <div class="flex gap-1">
+                <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img
+                  [numerales]="numeralesCambiarios"></app-tool-img>
+              </div>
               <select id="small"
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 required [name]="'otro_numeral_cambiario'+i " id=""
@@ -143,7 +146,7 @@
             <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
               <p class="text-base w-full">Valor Moneda estipulada</p>
 
-              <input type="text" placeholder="" required numberFormat
+              <input type="text" placeholder="" required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
                 [name]="'valor_moneda_estipulada'+i " #valor_moneda_estipulada="ngModel" required
                 [class.error]="valor_moneda_estipulada.invalid && submitInvalid"
@@ -159,7 +162,7 @@
 
         <div class="w-full flex justify-end">
           <button type="button" *ngIf="formF3.informacion_de_numerales.length < 10" (click)="agregarInfo()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 ">
             Agregar numeral
           </button>
         </div>

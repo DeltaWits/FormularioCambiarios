@@ -16,7 +16,7 @@
             ">
             <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
               <div class="flex gap-1">
-                <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img
+                <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img id="step1"
                   [numerales]="numeralesCambiarios"></app-tool-img>
               </div>
               <select id="small"
@@ -33,18 +33,20 @@
 
             </div>
             <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
-              <p class="mb-1">Cod. Mda. Negociación</p>
+              <p class="">Cod. Mda. Negociación</p>
 
-              <select [name]="'cod_mda_negociacion' + i" #cod_mda_negociacion="ngModel" required
+              <select [name]="'cod_mda_negociacion'" #cod_mda_negociacion="ngModel" required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
-                  formF1.descripcion_de_la_operacion[i].cod_mda_negociacion
+                  formF1.descripcion_de_la_operacion[0].cod_mda_negociacion
                 ">
                 <option value="">Seleccionar moneda</option>
                 <option *ngFor="let moneda of monedas" [value]="moneda.code">
                   {{ moneda.code }} {{ moneda.name }}
                 </option>
+                {{ i >1 ? 2:2}}
               </select>
+
             </div>
             <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
               <p class="text-base">Vr. Total Mda Negociación</p>
@@ -54,7 +56,7 @@
                 [name]="'valor_t_mda_nego' + i" #valor_t_mda_nego="ngModel" placeholder="" required
                 [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
                   formF1.descripcion_de_la_operacion[i].vr_total_mda_negociacion
-                " numberFormat />
+                " />
             </div>
             <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
               <p class="text-base">Tasa de cambio a dolar</p>
@@ -87,8 +89,9 @@
         </div>
 
         <div class="w-full flex justify-end">
-          <button type="button" *ngIf="formF1.descripcion_de_la_operacion.length < 2" (click)="agregarImportador()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+          <button type="button" id="step2" *ngIf="formF1.descripcion_de_la_operacion.length < 2"
+            (click)="agregarImportador()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 ">
             Agregar operación
           </button>
         </div>
@@ -119,7 +122,7 @@
               </p>
               <input type="number"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'otro_documento_factura' + i" id="" required required
+                [name]="'otro_documento_factura' + i" id=""
                 [class.error]="otro_documento_factura.invalid && submitInvalid" #otro_documento_factura="ngModel"
                 [(ngModel)]="formF1.informacion_DIAN[i].numero_o_factura" />
             </div>
@@ -127,7 +130,7 @@
             <div class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap">
               <p class="text-base w-full">Valor FOB en dolares DIM y/o FRAM</p>
 
-              <input type="text" placeholder="" required numberFormat
+              <input type="text" placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
                 [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel" required
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
@@ -142,8 +145,8 @@
         </div>
 
         <div class="w-full flex justify-end">
-          <button type="button" *ngIf="formF1.informacion_DIAN.length < 10" (click)="agregarDIAN()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+          <button type="button" *ngIf="formF1.informacion_DIAN.length < 20" (click)="agregarDIAN()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 ">
             Agregar declaración
           </button>
         </div>
@@ -151,7 +154,7 @@
     </div>
   </div>
   <div class="flex justify-center gap-2 mt-2">
-    <button
+    <button id="step3"
       class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
       Guardar
     </button>
