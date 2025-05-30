@@ -171,16 +171,14 @@
               <input
                 type="checkbox"
                 disabled
-                [value]="form.data.declaracion_detalle.devolucion == true"
-              />
+                [attr.checked]="form.data.declaracion_detalle.devolucion === true ? true : null"/>
             </div>
             <div class="flex gap-1">
               <p class="text-11px">NO</p>
               <input
                 type="checkbox"
                 disabled
-                [value]="form.data.declaracion_detalle.devolucion == false"
-              />
+                [attr.checked]="form.data.declaracion_detalle.devolucion === false ? true : null"/>
             </div>
           </div>
         </div>
@@ -191,19 +189,16 @@
               <p class="text-11px">SI</p>
               <input
                 type="checkbox"
-                disabled
-                [value]="
-                  form.data.declaracion_detalle.informacion_consolidada == true
-                "
+                disabled 
+                [attr.checked]="form.data.declaracion_detalle.informacion_consolidada === true ? true : null"
               />
             </div>
             <div class="flex gap-1">
               <p class="text-11px">NO</p>
               <input
                 type="checkbox"
-                [checked]="
-                  form.data.declaracion_detalle.informacion_consolidada == false
-                "
+                disabled 
+                [attr.checked]="form.data.declaracion_detalle.informacion_consolidada === false ? true : null"
               />
             </div>
           </div>
@@ -214,31 +209,24 @@
           <p class="text-11px">Patrimonio Autónomo</p>
           <input
             type="checkbox"
-            class=""
-            disable
-            [checked]="form.data.tipo_identidad.tipo == 'Patrimonio Autónomo'"
+            disabled
+            [attr.checked]="form.data.tipo_identidad.tipo === 'Patrimonio Autónomo' ? true : null"
           />
         </div>
         <div class="col-span-4 flex flex-col items-center">
           <p class="text-11px">Fondo de Capital Privado</p>
           <input
             type="checkbox"
-            class=""
-            disable
-            [checked]="
-              form.data.tipo_identidad.tipo == 'Fondo de Capital Privado'
-            "
+            disabled
+            [attr.checked]="form.data.tipo_identidad.tipo === 'Fondo de Capital Privado' ? true : null"
           />
         </div>
         <div class="col-span-4 flex flex-col items-center">
           <p class="text-11px">Fondo de Inv Colectiva</p>
           <input
             type="checkbox"
-            class=""
-            disable
-            [checked]="
-              form.data.tipo_identidad.tipo == 'Fondo de Inversion Colectiva'
-            "
+            disabled
+            [attr.checked]="form.data.tipo_identidad.tipo === 'Fondo de Inversion Colectiva' ? true : null"
           />
         </div>
         <div class="col-span-4">

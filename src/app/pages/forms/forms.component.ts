@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorFormPageComponent } from 'src/app/components/error-form-page/error-form-page.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
@@ -57,7 +57,7 @@ export class FormsComponent implements AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
-
+    private cdr: ChangeDetectorRef,
     private elementRef: ElementRef,
     private router: Router
   ) { }
@@ -70,40 +70,40 @@ export class FormsComponent implements AfterViewInit {
   async getForm() {
     this.formsD = this.formService.getForm();
     if (this.formsD != null) {
-      setTimeout(() => {
-        this.loader = true;
-        if (!this.formsD) {
-          this.status = 'failed';
+      this.loader = true;
+      if (!this.formsD) {
+        this.status = 'failed';
+      } else {
+        this.status = 'valid';
+        this.termsandcodditions = localStorage.getItem('termsandcodditions');
+        const storedValue = localStorage.getItem('tutorialActivate');
 
-        } else {
-          this.status = 'valid';
-          this.termsandcodditions = localStorage.getItem('termsandcodditions');
-          const storedValue = localStorage.getItem('tutorialActivate');
-
-
-          if (this.termsandcodditions && storedValue == null) {
-            if (this.formsD.forms.length == 0) {
-              this.addForm = true
-              this.formsD.forms.push({
-                id: '',
-                tipo: '',
-                data: '',
-                fecha_create: '',
-                estado: 'proceso'
-              })
-            }
-            setTimeout(() => {
-              this.startTour();
-            }, 500);
+        if (this.termsandcodditions && storedValue == null) {
+          if (this.formsD.forms.length == 0) {
+            this.addForm = true;
+            this.formsD.forms.push({
+              id: '',
+              tipo: '',
+              data: '',
+              fecha_create: '',
+              estado: 'proceso'
+            });
+            this.cdr.detectChanges(); // Force change detection
           }
-
-
+          setTimeout(() => {
+            this.startTour();
+          }, 500);
         }
-
-        // this.startTour();
-      }, 2000);
+      }
+      this.cdr.detectChanges(); // Force change detection
+    } else {
+      this.formsD = {
+        code: '',
+        empresa: '',
+        forms: []
+      };
+      this.cdr.detectChanges(); // Force change detection
     }
-
     console.log(this.formsD);
   }
   showActivePopUp(status: boolean) {

@@ -237,7 +237,13 @@
                 [(ngModel)]="
                   formF7.informacion_del_residente_deudor.codigo_CIIU
                 "
+                list="codigo_CIIU"
               />
+              <datalist id="codigo_CIIU">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                  {{ item.Nombre }}
+                </option>
+              </datalist>
             </div>
             <!-- <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
                   <p class="text-base">País</p>
@@ -342,7 +348,17 @@
                   informacion_del_acreedor_telefono.invalid && submitInvalid
                 "
                 [(ngModel)]="formF7.informacion_del_acreedor.pais"
+                list="pais2"
               />
+              <datalist id="pais2">
+                <option
+                  *ngFor="let pais of paises"
+                  [value]="pais.Nombre"
+                  [selected]="pais.Codigo === 'CO'"
+                >
+                  {{ pais.Nombre }}
+                </option>
+              </datalist>
             </div>
             <div
               class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
@@ -400,7 +416,13 @@
                   informacion_del_acreedor_codigo_CIIU.invalid && submitInvalid
                 "
                 [(ngModel)]="formF7.informacion_del_acreedor.codigo_CIIU"
+                list="codigo_CIIU2"
               />
+              <datalist id="codigo_CIIU2">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                  {{ item.Nombre }}
+                </option>
+              </datalist>
             </div>
           </div>
         </div>

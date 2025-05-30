@@ -2,9 +2,9 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Directive({
-  selector: '[numberFormat][ngModel]',
+  selector: '[dolarFormat][ngModel]',
 })
-export class NumberFormatDirectiveComponent {
+export class dolarFormatDirectiveComponent {
   constructor(
     // private elementRef: ElementRef,
     private model: NgModel,

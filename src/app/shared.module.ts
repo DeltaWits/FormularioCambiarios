@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NumberFormatDirectiveComponent } from './common/formats/number-format-directive/number-format-directive.component';
+import { DolarFormatDirective } from './components/formats/formaDolar';
 
 @NgModule({
-  declarations: [NumberFormatDirectiveComponent],
+  declarations: [DolarFormatDirective],
   imports: [CommonModule, FormsModule,],
-  exports: [NumberFormatDirectiveComponent]
+  exports: [DolarFormatDirective]
 })
 export class SharedModule { }

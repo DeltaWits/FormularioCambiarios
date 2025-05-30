@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
@@ -11,6 +11,7 @@ import { IFormF4 } from 'src/app/utils/formF4';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { textTipoOperacion } from '../../textosF4';
 
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-f4step1',
   standalone: true,
@@ -18,7 +19,7 @@ import { textTipoOperacion } from '../../textosF4';
   templateUrl: './f4step1.component.html',
   styleUrl: './f4step1.component.scss'
 })
-export class F4step1Component {
+export class F4step1Component implements AfterViewInit {
   @Input() monedas: any = [];
   @Input() formId = ''
   @Input() formF4: IFormF4 = {
@@ -70,6 +71,10 @@ export class F4step1Component {
     },
 
   }
+
+  paises: { Nombre: string | any; Codigo: string }[] = [];
+
+  ciiu: any;
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
   textTipoOperacion = textTipoOperacion
@@ -90,9 +95,13 @@ export class F4step1Component {
     private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) { }
-  ngOnInit(): void {
+  ) {
+    this.getPaises()
+    this.loadExcelFromCiiu()
+  }
+  ngAfterViewInit(): void {
     console.log("monedas", this.monedas)
+    this.getPaises()
   }
   chagenIDOptions(num: number) {
     if (num == 1) {
@@ -272,5 +281,57 @@ export class F4step1Component {
   }
   showActivePopUp(status: boolean) {
     this.ShowPopUp = status;
+  }
+
+  getPaises() {
+    // this.paises = Object.keys(countries).map((code) => {
+    //   return {
+    //     name: (countries as { [code: string]: Country })[code].name,
+    //     code: code,
+    //   };
+    // });
+    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.paises = XLSX.utils.sheet_to_json(worksheet, {
+            raw: true,
+          });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
+
+  loadExcelFromCiiu() {
+    const fileUrl = './assets/ciiu.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
   }
 }

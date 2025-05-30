@@ -10,13 +10,14 @@ import { exchangeRates } from 'src/app/utils/monedas';
 import { numeralesCambiariosF1 } from '../../../../../../utils/formF1';
 import { SharedModule } from 'src/app/shared.module';
 import { ToolImgComponent } from "../../../../../../components/Modals/tool-img/tool-img.component";
+import { dolarFormatPipe } from 'src/app/pipes/currency-format.pipe';
 
 import * as introJs from 'intro.js';
 @Component({
   selector: 'app-f1step3',
   standalone: true,
 
-  imports: [FormsModule, ToolImgComponent, ReactiveFormsModule, SharedModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent, ToolImgComponent],
+  imports: [FormsModule, ToolImgComponent, ReactiveFormsModule, SharedModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent, ToolImgComponent, dolarFormatPipe],
   templateUrl: './f1step3.component.html',
   styleUrl: './f1step3.component.scss'
 })
@@ -58,7 +59,7 @@ export class F1step3Component implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
-    const storedValue = localStorage.getItem('tutorialActivate' || null);
+    const storedValue = localStorage.getItem('tutorialActivate');
 
 
     if (storedValue == null) {
@@ -122,15 +123,36 @@ export class F1step3Component implements OnInit {
     );
   }
   selectTasa(index: number) {
-    // const currency = exchangeRates.find(rate => rate.code === this.formF1.descripcion_de_la_operacion[index].cod_mda_negociacion);
-    // @ts-ignore:
-    if (this.formF1.descripcion_de_la_operacion[index].tasa_de_cambio != '' && this.formF1.descripcion_de_la_operacion[index].vr_total_mda_negociacion != '') {
-      const tasaDeCambio = this.formF1.descripcion_de_la_operacion[index].tasa_de_cambio;
-      const vrTotalMdaNegociacion = this.formF1.descripcion_de_la_operacion[index].vr_total_mda_negociacion.replace(/[^\d]/g, '');
-      // console.log("valorTM", vrTotalMdaNegociacion)
-      this.formF1.descripcion_de_la_operacion[index].valor_total_dolares = parseFloat(
-        (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
+    const operacion = this.formF1.descripcion_de_la_operacion[index];
+
+    if (
+      operacion.tasa_de_cambio !== '' &&
+      operacion.vr_total_mda_negociacion !== ''
+    ) {
+      // 1. Convertir tasa_de_cambio a número
+      const tasaDeCambio = parseFloat(
+        operacion.tasa_de_cambio.toString().replace(',', '.')
       );
+
+      // 2. Limpiar y convertir valor de negociación a número
+      const cleanValue = operacion.vr_total_mda_negociacion
+        .replace(/\./g, '')   // eliminar separador de miles
+        .replace(',', '.');   // cambiar coma decimal por punto
+
+      const vrTotal = parseFloat(cleanValue);
+
+      // 3. Si todo es válido, calcular y formatear
+      if (!isNaN(tasaDeCambio) && !isNaN(vrTotal)) {
+        const resultado = tasaDeCambio * vrTotal;
+
+        // 4. Guardar con formato europeo (de-DE): "1.234,56"
+        operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      } else {
+        operacion.valor_total_dolares = '';
+      }
     }
   }
   startTour() {

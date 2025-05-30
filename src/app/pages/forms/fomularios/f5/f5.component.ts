@@ -109,8 +109,8 @@ export class F5Component implements OnInit {
     if (this.formF5.identificacion_de_la_declaracion
       .fecha_tramine == '') {
       this.setFechaTramiteHoy()
-      this.formF5.identificacion_de_la_declaracion.nit_imc = this.formsD.empresa == 'Corficolombiaba' ? '890300653' : '800203186';
-      this.formF5.identificacion_de_la_declaracion.dv = this.formsD.empresa == 'Corficolombiaba' ? '6' : '5';
+      this.formF5.identificacion_de_la_declaracion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
+      this.formF5.identificacion_de_la_declaracion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }
 

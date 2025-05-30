@@ -7,10 +7,16 @@ import { IForm, IForms } from 'src/app/utils/formsData';
 import jsPDF from 'jspdf';
 import { FormService } from '../../services/form.service';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { PdfService } from '../../services/pdf.service';
+import { F3aComponent } from "src/app/components/pdf/f3-a/f3a.component";
+import { F4Component } from "src/app/components/pdf/f4/f4.component";
+import { F5Component } from "src/app/components/pdf/f5/f5.component";
+import { F6Component } from "src/app/components/pdf/f6/f6.component";
+import { F7Component } from "src/app/components/pdf/f7/f7.component";
 @Component({
   selector: 'app-pdf-modal',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, F1Component, F2Component, F3Component, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, F1Component, F2Component, F3Component, NgIf, F3aComponent, F4Component, F5Component, F6Component, F7Component],
   templateUrl: './pdf-modal.component.html',
   styleUrl: './pdf-modal.component.scss',
 })
@@ -34,7 +40,7 @@ export class PdfModalComponent implements OnInit {
   fechaActual: Date = new Date();
   loader = false;
   loader2 = false;
-  constructor(private formService: FormService) {
+  constructor(private formService: FormService, private pdfService: PdfService) {
 
   }
   ngOnInit(): void {
@@ -57,6 +63,48 @@ export class PdfModalComponent implements OnInit {
       }, 500);
     } else {
       this.submitInvalid = true;
+    }
+  }
+
+  async sendHtmlToApi() {
+    this.loader = true;
+    if (!this.pagina1 || !this.pagina1.nativeElement) {
+      console.error('❌ No se encontró el elemento HTML.');
+      return;
+    }
+
+    const htmlContent = this.pagina1.nativeElement.innerHTML; // 🔹 Cambio de outerHTML a innerHTML
+    console.log('📄 HTML que se enviará:', htmlContent);
+
+    try {
+      const pdfBlob = await this.pdfService.sendHtml(htmlContent); // 🟢 Recibe el PDF como Blob
+
+      if (!pdfBlob || !(pdfBlob instanceof Blob)) {
+        this.loader = false;
+        throw new Error('La API no devolvió un Blob válido.');
+      }
+
+      console.log('✅ HTML enviado correctamente');
+      // 🔹 Obtener el tipo de formulario para el nombre del archivo
+      const formType = this.form?.tipo || 'Desconocido';
+      const fileName = `FormularioCambiarios_${formType}.pdf`;
+
+      // 🔹 FORZAR DESCARGA DEL PDF
+      const blob = new Blob([pdfBlob], { type: 'application/pdf' });
+      const blobUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      this.loader = false;
+      // 🔹 Liberar memoria
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      this.loader = false;
+      console.error('❌ Error enviando el HTML:', error);
     }
   }
 

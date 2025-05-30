@@ -109,8 +109,8 @@ export class F1Component implements AfterViewInit {
     if (this.formF1.identificacion_de_la_operacion
       .fecha_tramite == '') {
       this.setFechaTramiteHoy()
-      this.formF1.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'Corficolombiaba' ? '890300653' : '800203186';
-      this.formF1.identificacion_de_la_operacion.dv = this.formsD.empresa == 'Corficolombiaba' ? '6' : '5';
+      this.formF1.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
+      this.formF1.identificacion_de_la_operacion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }
 

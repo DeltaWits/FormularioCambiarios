@@ -99,8 +99,8 @@ export class F3Component {
     if (this.formF3.identificacion_de_la_declaracion
       .fecha_tramite == '') {
       this.setFechaTramiteHoy()
-      this.formF3.identificacion_de_la_declaracion.nit_imc = this.formsD.empresa == 'Corficolombiaba' ? '890300653' : '800203186';
-      this.formF3.identificacion_de_la_declaracion.dv = this.formsD.empresa == 'Corficolombiaba' ? '6' : '5';
+      this.formF3.identificacion_de_la_declaracion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
+      this.formF3.identificacion_de_la_declaracion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }
   }

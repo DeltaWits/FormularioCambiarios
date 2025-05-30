@@ -1,0 +1,456 @@
+<div class="w-[816px] h-[1544px] relative p-0 bg-white">
+  <app-header></app-header>
+  <img
+    class="w-3 absolute left-0 bottom-12"
+    src="assets/img/vigilado-superintendencia-financiera-de-colombia.png"
+    alt=""
+  />
+  <div class="mt-0.5">
+    <div class="grid grid-cols-12 px-5">
+      <div class="col-span-8 p-3">
+        <h1 class="text-center text-base font-semibold m-0">
+          F7: Informe Crédito Externo Otorgado a Residentes - Deuda Externa
+          Pasiva Antiguo Formulario No. 7<br />
+          Informe de Crédito Externo Otorgado a No Residentes - Deuda Externa
+          Activa<br />
+          <span class="text-11px"
+            >Circular Reglamentaria Externa DCIP - 83 del 12 de Septiembre
+            de2023</span
+          >
+        </h1>
+      </div>
+      <div class="col-span-4 p-3">
+        <div>
+          <h4 class="text-sm w-100 font-semibold text-start">
+            I. Tipo de operación
+          </h4>
+          <div class="grid grid-cols-12">
+            <div class="col-span-10 border p-1 py-1.5">
+              <p class="text-11px text-end">Inicial</p>
+            </div>
+            <div
+              class="col-span-2 border border-l-0 p-1 py-1.5"
+              [class.bg-black]="form.data.tipo_de_solicictud.tipo == 'Inicial'"
+            ></div>
+            <div class="col-span-10 border p-1 py-1.5">
+              <p class="text-11px text-end">Modificación</p>
+            </div>
+            <div
+              class="col-span-2 border-l-0 border p-1 py-1.5"
+              [class.bg-black]="
+                form.data.tipo_de_solicictud.tipo == 'Modificación'
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-3 p-1">
+        <p class="text-11px text-start pb-1">Fecha</p>
+        <p
+          class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+        >
+          {{ form.data.tipo_de_solicictud.fecha_solicitud }}
+        </p>
+      </div>
+      <div class="col-span-3 p-1">
+        <p class="text-11px text-start pb-1">Número crédito</p>
+        <p
+          class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+        >
+          {{ form.data.tipo_de_solicictud.numero_de_credito }}
+        </p>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          II. Información del residente o acreedor
+        </h4>
+      </div>
+      <div class="grid grid-cols-12 col-span-12 border p-2">
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tipo de Identificación</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.tipo_identificacion }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Número de identificación</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{
+              form.data.informacion_del_residente_deudor.numero_identifiacion
+            }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Nombre o razón social</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.nombre_razon_social }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Código ciudad</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.codigo_ciudad }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Dirección</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.direccion }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Teléfono (Nvl. nacional)</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.telefono }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Correo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.correo }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Código CIIU</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_residente_deudor.codigo_CIIU }}
+          </p>
+        </div>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          III. Información del no residente deudor
+        </h4>
+      </div>
+      <div class="grid grid-cols-12 col-span-12 border p-2">
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tipo de Identificación</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.tipo_identificacion }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Número de identificación</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.numero_identifiacion }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Nombre o razón social</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.nombre_razon_social }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">País</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.pais }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tipo de prestatario o deudor</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.tipo_presario_deudor }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Correo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.correo }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Código CIIU</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.informacion_del_acreedor.codigo_CIIU }}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          IV. Descripción del préstamo
+        </h4>
+      </div>
+      <div class="grid grid-cols-12 col-span-12 border p-2">
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Código propósito del préstamo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.codigo_proposito_prestamo }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Código moneda</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.codigo_moneda }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Valor Moneda estipulada</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.valor_moneda_estipulada }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tasa de interés</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.tasa_interes }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Spread o valor</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.spread_valor }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Plazo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.plazo }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tiempo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.descripcion_del_prestamo.tiempo }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">
+            Número de depósitos por financia
+          </p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{
+              form.data.descripcion_del_prestamo.numero_deposito_dinanciacion
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          V. Plan de amortización
+        </h4>
+      </div>
+      <div class="col-span-12 p-2 border">
+        <table class="w-full">
+          <thead class="p-2 border-b-[1px] border-black">
+            <tr>
+              <th class="py-2 text-11px">Fecha</th>
+              <th class="py-2 text-11px">Valor moneda contratada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="text-center"
+              *ngFor="let item of form.data.plan_de_armonizacion; let i = index"
+            >
+              <td class="py-0.5 text-11px">
+                {{ form.data.plan_de_armonizacion[i].fecha }}
+              </td>
+              <td class="py-0.5 text-11px">
+                {{ form.data.plan_de_armonizacion[i].valor_cuota }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          VI. Información para la transmisión de otros procedimientos especiales
+          de crédito
+        </h4>
+      </div>
+      <div class="grid grid-cols-12 col-span-12 border p-2">
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tipo</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{
+              form.data.informacion_transmision_procedimientos_credito
+                .tipo_transmision
+            }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">
+            Número de crédito Segun el Tipo
+          </p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{
+              form.data.informacion_transmision_procedimientos_credito
+                .numero_de_creaditos_sustituir
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          VII. Información del Deudor o informacion del acreedor
+        </h4>
+      </div>
+      <div class="grid grid-cols-12 col-span-12 border p-2">
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Naturaleza</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.datos_del_deudor.naturaleza }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">Tipo de empresa</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.datos_del_deudor.tipo_empresa }}
+          </p>
+        </div>
+        <div class="col-span-3 pr-1">
+          <p class="text-11px">¿Es vigilado por alguna superintendencia?</p>
+          <div class="flex gap-2">
+            <div class="flex gap-1">
+              <p class="text-11px">SI</p>
+              <input
+                type="checkbox"
+                disabled
+                [attr.checked]="
+                  form.data.datos_del_deudor.es_vigilado_superintendencia ===
+                  'SI'
+                    ? true
+                    : null
+                "
+              />
+            </div>
+            <div class="flex gap-1">
+              <p class="text-11px">NO</p>
+              <input
+                type="checkbox"
+                disabled
+                [attr.checked]="
+                  form.data.datos_del_deudor.es_vigilado_superintendencia ===
+                  'NO'
+                    ? true
+                    : null
+                "
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">
+            Si se encuentra vigilado por alguna superintendencia, indique cuál
+          </p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{
+              form.data.datos_del_deudor.es_vigilado_superintendencia === "SI"
+                ? form.data.datos_del_deudor.tipo_empresa
+                : ""
+            }}
+          </p>
+        </div>
+        <div class="col-span-3 p-1">
+          <p class="text-11px text-start pb-1">sector</p>
+          <p
+            class="text-11px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          >
+            {{ form.data.datos_del_deudor.tipo_empresa }}
+          </p>
+        </div>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          VIII. Información de la(s) operacion(es)
+        </h4>
+      </div>
+      <div class="col-span-12 p-2 border flex flex-wrap mt-2">
+        <p class="text-11px text-justify mt-1">Observaciones</p>
+        <div class="w-[90%] p-2 border-b-[1px]"></div>
+        <div class="w-full p-2 border-b-[1px]"></div>
+        <div class="w-full p-2 border-b-[1px]"></div>
+        <div class="w-full p-2 border-b-[1px]"></div>
+      </div>
+      <div class="col-span-12 p-1 mt-2">
+        <p class="text-[8px] text-justify">
+          Declaro bajo gravedad de juramento que la información aquí
+          suministrada es cierta, completa y actualizada, corresponde a los
+          datos mínimos de las operaciones de cambio requeridos por las
+          autoridades cambiarias competentes, entiendo y asumo la
+          responsabilidad por cualquier falsedad o inconsistencia en esta
+          información. A su vez, reconozco y acepto que CORFICOLOMBIANA Y/O CASA
+          DE BOLSA. en su calidad de Intermediario del Mercado Cambiario en caso
+          de ser requerido por las autoridades administrativas y sancionatorias
+          competentes, frente a esta operación, entregue la información mínima
+          suministrada, la cual se entenderá como cierta y veraz. He leído el
+          formato y el instructivo que con la firma se está aceptando las
+          condiciones de esta solicitud.
+        </p>
+      </div>
+      <div class="col-span-12 p-1">
+        <h4 class="text-sm w-100 font-semibold text-start">
+          IX. Identificación del declarante
+        </h4>
+      </div>
+      <div class="col-span-12 border p-2 grid grid-cols-2">
+        <div class="col-span-1 pr-1">
+          <p class="text-11px">Nombre</p>
+          <div class="px-3 py-1 border text-11px">{{ usuario.nombre }}</div>
+        </div>
+        <div class="col-span-1">
+          <p class="text-11px">Firma</p>
+          <div class="p-5 border-b-[1px]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

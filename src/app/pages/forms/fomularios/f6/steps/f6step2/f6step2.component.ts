@@ -68,7 +68,8 @@ export class F6step2Component {
     // private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   validateForm(step1Form: NgForm) {
 
@@ -150,4 +151,54 @@ export class F6step2Component {
   //     }
   //   }
   // }
+  getPaises() {
+    // this.paises = Object.keys(countries).map((code) => {
+    //   return {
+    //     name: (countries as { [code: string]: Country })[code].name,
+    //     code: code,
+    //   };
+    // });
+    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.paises = XLSX.utils.sheet_to_json(worksheet, {
+            raw: true,
+          });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
+  loadExcelFromCiiu() {
+    const fileUrl = './assets/ciiu.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
 }

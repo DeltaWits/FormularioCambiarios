@@ -9,11 +9,13 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 import { NgFor, NgIf } from '@angular/common';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
+import { SharedModule } from 'src/app/shared.module';
 
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-f5step1',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent],
+  imports: [FormsModule, ReactiveFormsModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent, SharedModule],
 
   templateUrl: './f5step1.component.html',
   styleUrl: './f5step1.component.scss'

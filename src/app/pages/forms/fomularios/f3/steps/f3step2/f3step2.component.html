@@ -1,94 +1,161 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
 <form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-lg">Descripción de la declaración de cambio</h3>
+        <h3 class="font-semibold text-lg">
+          Descripción de la declaración de cambio
+        </h3>
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <!-- {{ formF3.descripcion_de_la_operacion }} -->
           <div class="row col-span-12 grid grid-cols-12">
-
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
               <p class="mb-1">Cod. Mda. Negociación</p>
 
-              <select [name]="'cod_mda_negociacion' " #cod_mda_negociacion="ngModel" required
+              <select
+                [name]="'cod_mda_negociacion'"
+                #cod_mda_negociacion="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
-                  formF3.detalle_de_la_declaracion.codigo_moneda
-                ">
+                required
+                [class.error]="cod_mda_negociacion.invalid && submitInvalid"
+                [(ngModel)]="formF3.detalle_de_la_declaracion.codigo_moneda"
+              >
                 <option value="">Seleccionar moneda</option>
                 <option *ngFor="let moneda of monedas" [value]="moneda.code">
                   {{ moneda.code }} {{ moneda.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base">Vr. Total Mda Negociación</p>
 
-              <input type="text" placeholder="" (change)="selectTasa(1)"
+              <input
+                type="text"
+                placeholder=""
+                (change)="selectTasa(1)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'detalle_de_la_declaracion.valor_total' " #detalle_de_la_declaracion_valor_total="ngModel"
-                placeholder="" required [class.error]="detalle_de_la_declaracion_valor_total.invalid && submitInvalid"
+                [name]="'detalle_de_la_declaracion.valor_total'"
+                #detalle_de_la_declaracion_valor_total="ngModel"
+                placeholder=""
+                required
+                [class.error]="
+                  detalle_de_la_declaracion_valor_total.invalid && submitInvalid
+                "
                 [(ngModel)]="
                   formF3.detalle_de_la_declaracion.valor_total_moneda
-                " numberFormat />
+                "
+                dolarFormat
+              />
             </div>
 
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base">Tasa de cambio a dolar</p>
 
-              <input type="number" placeholder="" (change)="selectTasa(1)"
+              <input
+                type="text"
+                placeholder=""
+                (change)="selectTasa(1)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'detalle_de_la_declaracion_tasa_de_cambio_dolar' "
-                #detalle_de_la_declaracion_tasa_de_cambio_dolar="ngModel" placeholder="" required
-                [class.error]="detalle_de_la_declaracion_tasa_de_cambio_dolar.invalid && submitInvalid" [(ngModel)]="
+                [name]="'detalle_de_la_declaracion_tasa_de_cambio_dolar'"
+                #detalle_de_la_declaracion_tasa_de_cambio_dolar="ngModel"
+                placeholder=""
+                required
+                [class.error]="
+                  detalle_de_la_declaracion_tasa_de_cambio_dolar.invalid &&
+                  submitInvalid
+                "
+                dolarFormat
+                [(ngModel)]="
                   formF3.detalle_de_la_declaracion.tasa_de_cambio_dolar
-                " />
+                "
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+            >
               <p class="text-base w-full">Valor total en dolares</p>
 
-              <input type="text" placeholder=""
+              <input
+                type="text"
+                placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
-                disabled [name]="'etalle_de_la_declaracion.valor_total_dolares' "
-                #etalle_de_la_declaracion_valor_total_dolares="ngModel" placeholder=""
-                [class.error]="etalle_de_la_declaracion_valor_total_dolares.invalid && submitInvalid" [(ngModel)]="
+                disabled
+                [name]="'etalle_de_la_declaracion.valor_total_dolares'"
+                #etalle_de_la_declaracion_valor_total_dolares="ngModel"
+                placeholder=""
+                dolarFormat
+                [class.error]="
+                  etalle_de_la_declaracion_valor_total_dolares.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
                   formF3.detalle_de_la_declaracion.valor_total_dolares
-                " />
+                "
+              />
               <!-- {{formF3.detalle_de_la_declaracion.valor_total_dolares}} -->
-
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base">Tasa de cambio moneda estipulada</p>
 
-              <input type="number" placeholder="" (change)="selectTasa(2)" class=" bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500
-                focus:border-blue-500 block w-full pX-2.5 py-1" [name]="'tasa_cambio' " #numero_cambiario="ngModel"
-                placeholder="" required [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
-                              formF3.detalle_de_la_declaracion.tasa_cambio_moneda_negociacion
-                            " />
+              <input
+                type="number"
+                placeholder=""
+                (change)="selectTasa(2)"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                [name]="'tasa_cambio'"
+                #numero_cambiario="ngModel"
+                placeholder=""
+                required
+                [class.error]="numero_cambiario.invalid && submitInvalid"
+                [(ngModel)]="
+                  formF3.detalle_de_la_declaracion
+                    .tasa_cambio_moneda_negociacion
+                "
+                dolarFormat
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <p class="text-base w-full">Valor total en moneda Estipulada</p>
 
-              <input type="text" placeholder=""
+              <input
+                type="text"
+                placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                disabled [name]="'detalle_de_la_declaracion.valor_moneda_stipulada' "
-                #detalle_de_la_declaracion_valor_moneda_stipulada="ngModel" placeholder=""
-                [class.error]="detalle_de_la_declaracion_valor_moneda_stipulada.invalid && submitInvalid" [(ngModel)]="
-                              formF3.detalle_de_la_declaracion.valor_moneda_stipulada
-                            " />
+                disabled
+                [name]="'detalle_de_la_declaracion.valor_moneda_stipulada'"
+                #detalle_de_la_declaracion_valor_moneda_stipulada="ngModel"
+                placeholder=""
+                [class.error]="
+                  detalle_de_la_declaracion_valor_moneda_stipulada.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF3.detalle_de_la_declaracion.valor_moneda_stipulada
+                "
+                dolarFormat
+              />
               <!-- {{formF3.detalle_de_la_declaracion.valor_total_dolares}} -->
-
             </div>
-
           </div>
         </div>
-
-
       </div>
     </div>
 
@@ -97,63 +164,102 @@
         <h3 class="font-semibold text-lg text-start">
           Información de numerales
         </h3>
-
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <!-- {{ formF3.descripcion_de_la_operacion }} -->
-          <div class="row col-span-12 grid grid-cols-12"
-            *ngFor="let info of formF3.informacion_de_numerales; let i = index">
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+          <div
+            class="row col-span-12 grid grid-cols-12"
+            *ngFor="let info of formF3.informacion_de_numerales; let i = index"
+          >
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
               <div class="flex gap-1">
-                <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img
-                  [numerales]="numeralesCambiarios"></app-tool-img>
+                <p class="text-base flex gap-1">Numeral cambiario</p>
+                <app-tool-img [numerales]="numeralesCambiarios"></app-tool-img>
               </div>
-              <select id="small"
+              <select
+                id="small"
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                required [name]="'otro_numeral_cambiario'+i " id=""
-                [class.error]="otro_numeral_cambiario.invalid && submitInvalid" #otro_numeral_cambiario="ngModel"
+                required
+                [name]="'otro_numeral_cambiario' + i"
+                id=""
+                [class.error]="otro_numeral_cambiario.invalid && submitInvalid"
+                #otro_numeral_cambiario="ngModel"
                 [(ngModel)]="
-                              formF3.informacion_de_numerales[i].numeral_cambiario
-                            ">
-
+                  formF3.informacion_de_numerales[i].numeral_cambiario
+                "
+              >
                 <option value="" selected>------</option>
-                <option [value]="item.codigo" *ngFor="let item of numeralesCambiarios">{{item.codigo}}</option>
+                <option
+                  [value]="item.codigo"
+                  *ngFor="let item of numeralesCambiarios"
+                >
+                  {{ item.codigo }}
+                </option>
               </select>
-
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
-              <p class="text-base">
-                Valor moneda negociación
-              </p>
-              <input type="number"
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
+              <p class="text-base">Valor moneda negociación</p>
+              <input
+                type="text"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'valor_total_moneda'+i " id="" required
-                [class.error]="valor_total_moneda.invalid && submitInvalid" #valor_total_moneda="ngModel"
-                [(ngModel)]="formF3.informacion_de_numerales[i].valor_total_moneda" />
+                [name]="'valor_total_moneda' + i"
+                id=""
+                required
+                [class.error]="valor_total_moneda.invalid && submitInvalid"
+                #valor_total_moneda="ngModel"
+                [(ngModel)]="
+                  formF3.informacion_de_numerales[i].valor_total_moneda
+                "
+                dolarFormat
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
-              <p class="text-base">
-                Valor moneda en dolares
-              </p>
-              <input type="number"
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+            >
+              <p class="text-base">Valor moneda en dolares</p>
+              <input
+                type="text"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
-                [name]="'valor_dolares'+i " id="" required [class.error]="valor_dolares.invalid && submitInvalid"
-                #valor_dolares="ngModel" [(ngModel)]="formF3.informacion_de_numerales[i].valor_dolares" />
+                [name]="'valor_dolares' + i"
+                id=""
+                required
+                [class.error]="valor_dolares.invalid && submitInvalid"
+                #valor_dolares="ngModel"
+                [(ngModel)]="formF3.informacion_de_numerales[i].valor_dolares"
+                dolarFormat
+              />
             </div>
 
-
-            <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+            >
               <p class="text-base w-full">Valor Moneda estipulada</p>
 
-              <input type="text" placeholder="" required
+              <input
+                type="text"
+                placeholder=""
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
-                [name]="'valor_moneda_estipulada'+i " #valor_moneda_estipulada="ngModel" required
+                [name]="'valor_moneda_estipulada' + i"
+                #valor_moneda_estipulada="ngModel"
+                required
                 [class.error]="valor_moneda_estipulada.invalid && submitInvalid"
-                [(ngModel)]="formF3.informacion_de_numerales[i].valor_moneda_estipulada" />
-              <button *ngIf="formF3.informacion_de_numerales.length > 1"
+                [(ngModel)]="
+                  formF3.informacion_de_numerales[i].valor_moneda_estipulada
+                "
+                dolarFormat
+              />
+              <button
+                *ngIf="formF3.informacion_de_numerales.length > 1"
                 class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
-                type="button" (click)="deleteInfo(i)">
+                type="button"
+                (click)="deleteInfo(i)"
+              >
                 <i class="fa fa-trash"></i>
               </button>
             </div>
@@ -161,8 +267,12 @@
         </div>
 
         <div class="w-full flex justify-end">
-          <button type="button" *ngIf="formF3.informacion_de_numerales.length < 10" (click)="agregarInfo()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 ">
+          <button
+            type="button"
+            *ngIf="formF3.informacion_de_numerales.length < 10"
+            (click)="agregarInfo()"
+            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+          >
             Agregar numeral
           </button>
         </div>
@@ -171,7 +281,8 @@
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Guardar
     </button>
   </div>

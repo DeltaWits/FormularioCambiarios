@@ -61,7 +61,7 @@
               <p class="text-base">Valor Moneda estipulada</p>
 
               <input
-                type="number"
+                type="text"
                 placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [name]="'valor_moneda_estipulada3'"
@@ -74,6 +74,7 @@
                 [(ngModel)]="
                   formF7.descripcion_del_prestamo.valor_moneda_estipulada
                 "
+                dolarFormat
               />
             </div>
             <div
@@ -214,7 +215,7 @@
                 <p class="text-base w-full">Valor moneda contratada</p>
 
                 <input
-                  type="number"
+                  type="text"
                   placeholder=""
                   required
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
@@ -222,6 +223,7 @@
                   #valor_cuota="ngModel"
                   [class.error]="valor_cuota.invalid && submitInvalid"
                   [(ngModel)]="formF7.plan_de_armonizacion[i].valor_cuota"
+                  dolarFormat
                 />
                 <button
                   *ngIf="formF7.plan_de_armonizacion.length > 1"

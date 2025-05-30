@@ -126,32 +126,89 @@ export class F2step3Component {
     );
   }
   selectTasa() {
-    // const currency = exchangeRates.find(rate => rate.code === this.formF2.descripcion_de_la_operacion[index].cod_mda_negociacion);
-    // @ts-ignore:
-    if (this.formF2.descripcion_de_la_operacion.tasa_de_cambio != '' && this.formF2.descripcion_de_la_operacion.vr_total_mda_negociacion != ' ') {
-      const tasaDeCambio = this.formF2.descripcion_de_la_operacion.tasa_de_cambio;
-      const vrTotalMdaNegociacion = this.formF2.descripcion_de_la_operacion.vr_total_mda_negociacion.replace(/[^\d]/g, '');
-      // console.log("valorTM", vrTotalMdaNegociacion)
-      this.formF2.descripcion_de_la_operacion.valor_total_dolares = parseFloat(
-        (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
+    const operacion = this.formF2.descripcion_de_la_operacion;
+
+    if (
+      operacion.tasa_de_cambio !== '' &&
+      operacion.vr_total_mda_negociacion.trim() !== ''
+    ) {
+      // Convertir tasa_de_cambio (con coma decimal) a número
+      const tasaDeCambio = parseFloat(
+        operacion.tasa_de_cambio.toString().replace(',', '.')
       );
+
+      // Limpiar el valor de negociación: quitar puntos y cambiar coma por punto
+      const cleanValue = operacion.vr_total_mda_negociacion
+        .replace(/\./g, '')   // eliminar separador de miles
+        .replace(',', '.');   // convertir coma decimal a punto
+
+      const vrTotal = parseFloat(cleanValue);
+
+      // Si ambos valores son válidos, calcular y formatear el resultado
+      if (!isNaN(tasaDeCambio) && !isNaN(vrTotal)) {
+        const resultado = tasaDeCambio * vrTotal;
+
+        operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      } else {
+        operacion.valor_total_dolares = '';
+      }
     }
   }
+
   validateDIAN(i: any) {
-    if (this.formF2.informacion_DIAN[i].valor_reintegrado_en_USD != '' && this.formF2.informacion_DIAN[i].numeral_cambiario != '') {
-      let sumaFOB = 0, sumaGastos = 0, sumaDeducciones = 0
-      this.formF2.informacion_DIAN.forEach((info: any) => {
-        console.log("sdsd", info.numeral_cambiario)
-        if (info.numeral_cambiario != '1510') {
-          sumaFOB = sumaFOB + parseFloat(info.valor_reintegrado_en_USD)
-        } else if (info.numeral_cambiario == '1510') {
-          sumaGastos = sumaGastos + parseFloat(info.valor_reintegrado_en_USD)
+    const informacionDIAN = this.formF2.informacion_DIAN;
+    const totales = this.formF2.informacion_DIAN_total;
+
+    if (
+      informacionDIAN[i].valor_reintegrado_en_USD !== '' &&
+      informacionDIAN[i].numeral_cambiario !== ''
+    ) {
+      let sumaFOB = 0, sumaGastos = 0;
+
+      informacionDIAN.forEach((info: any) => {
+        let valor = info.valor_reintegrado_en_USD
+          ?.replace(/\./g, '')   // quitar puntos de miles
+          ?.replace(',', '.');   // cambiar coma decimal por punto
+
+        const monto = parseFloat(valor);
+
+        if (!isNaN(monto)) {
+          if (info.numeral_cambiario !== '1510') {
+            sumaFOB += monto;
+          } else {
+            sumaGastos += monto;
+          }
         }
       });
 
-      this.formF2.informacion_DIAN_total.total_valorFoB = sumaFOB
-      this.formF2.informacion_DIAN_total.total_gastos_de_exportacion = sumaGastos
-      this.formF2.informacion_DIAN_total.Reintegro_neto = sumaFOB + sumaGastos - this.formF2.informacion_DIAN_total.Deducciones.replace(/[^\d]/g, '')
+      // Deducciones: limpiar y convertir a número
+      const deduccionesRaw = totales.Deducciones
+        ?.replace(/\./g, '')
+        ?.replace(',', '.');
+
+      const deducciones = parseFloat(deduccionesRaw) || 0;
+
+      const reintegroNeto = sumaFOB + sumaGastos - deducciones;
+
+      // Guardar los valores formateados en formato europeo
+      totales.total_valorFoB = sumaFOB.toLocaleString('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      totales.total_gastos_de_exportacion = sumaGastos.toLocaleString('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      totales.Reintegro_neto = reintegroNeto.toLocaleString('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
     }
   }
+
 }

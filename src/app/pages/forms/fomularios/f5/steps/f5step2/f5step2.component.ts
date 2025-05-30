@@ -7,14 +7,15 @@ import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-
 import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
-import { IFormF5, numeralesCambiariosF5 } from 'src/app/utils/formF5';
+import { IFormF5, numeralesCambiariosF5Ingreso, numeralesCambiariosF5Egreso } from 'src/app/utils/formF5';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
+import { ToolImgComponent } from "../../../../../../components/Modals/tool-img/tool-img.component";
 
 @Component({
   selector: 'app-f5step2',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, Tool1Component, NgIf, NgFor, PopUpAlertComponent],
+  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgIf, NgFor, PopUpAlertComponent, ToolImgComponent],
   templateUrl: './f5step2.component.html',
   styleUrl: './f5step2.component.scss'
 })
@@ -37,7 +38,8 @@ export class F5step2Component {
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
-  numeralesCambiarios: any = numeralesCambiariosF5
+  numeralesCambiarios: any = numeralesCambiariosF5Ingreso
+  numeralesCambiariosEgreso: any = numeralesCambiariosF5Egreso
   ShowPopUp = false;
   exchangeRates = exchangeRates
   MessaggePopUp = {
@@ -51,7 +53,9 @@ export class F5step2Component {
     // private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) { }
+  ) {
+    this.loadExcelFromCiiu()
+  }
 
   validateForm(step1Form: NgForm) {
 
@@ -102,19 +106,40 @@ export class F5step2Component {
   }
 
   selectTasa() {
-    // const currency = exchangeRates.find(rate => rate.code === this.formF5.descripcion_de_la_operacion[index].cod_mda_negociacion);
+    const operacion = this.formF5.descripcion_de_la_operacion;
 
-    if (this.formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar != '' && this.formF5.descripcion_de_la_operacion.vr_total_mda_negociacion != ' ') {
-      const tasaDeCambio = this.formF5.descripcion_de_la_operacion.tasa_de_cambio_dolar;
-      const vrTotalMdaNegociacion = this.formF5.descripcion_de_la_operacion.vr_total_mda_negociacion.replace(/[^\d]/g, '');
-      // console.log("valorTM", vrTotalMdaNegociacion)
-      this.formF5.descripcion_de_la_operacion.valor_total_dolares = parseFloat(
-
-        (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
+    if (
+      operacion.tasa_de_cambio_dolar !== '' &&
+      operacion.vr_total_mda_negociacion.trim() !== ''
+    ) {
+      // 1. Convertir tasa de cambio (con coma decimal) a número
+      const tasa = parseFloat(
+        operacion.tasa_de_cambio_dolar.toString().replace(',', '.')
       );
-      console.log("ddd")
+
+      // 2. Limpiar y convertir valor de negociación
+      const valorLimpio = operacion.vr_total_mda_negociacion
+        .replace(/\./g, '')   // quitar puntos de miles
+        .replace(',', '.');   // cambiar coma decimal por punto
+
+      const monto = parseFloat(valorLimpio);
+
+      // 3. Calcular y asignar si los valores son válidos
+      if (!isNaN(tasa) && !isNaN(monto)) {
+        const resultado = tasa * monto;
+
+        operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+
+        console.log("ddd");
+      } else {
+        operacion.valor_total_dolares = '';
+      }
     }
   }
+
   // validateDIAN(i: any) {
   //   if (this.formF5.informacion_DIAN[i].valor_reintegrado_en_USD != '' && this.formF5.informacion_DIAN[i].numeral_cambiario != '') {
   //     let sumaFOB = 0, sumaGastos = 0, sumaDeducciones = 0
@@ -132,4 +157,26 @@ export class F5step2Component {
   //     this.formF5.informacion_DIAN_total.Reintegro_neto = sumaFOB + sumaGastos - this.formF5.informacion_DIAN_total.Deducciones.replace(/[^\d]/g, '')
   //   }
   // }
+
+  loadExcelFromCiiu() {
+    const fileUrl = './assets/ciiu.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
 }

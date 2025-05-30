@@ -582,7 +582,7 @@
               <select
                 [name]="'Identificacion_de_la_empresa_reseptora_tipo_documento'"
                 #Identificacion_de_la_empresa_reseptora_tipo_documento="ngModel"
-                required
+               
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_tipo_documento.invalid &&
@@ -609,7 +609,7 @@
                     .tipo_identificacion != 'NIT'
                 "
               >
-                <p class="text-base">Número de identificación2</p>
+                <p class="text-base">Número de identificación</p>
 
                 <input
                   type="number"
@@ -626,7 +626,6 @@
                     formF4.Identificacion_de_la_empresa_reseptora
                       .numero_identifiacion
                   "
-                  required
                 />
               </div>
               <div
@@ -664,7 +663,7 @@
                 [name]="'Identificacion_de_la_empresa_reseptora_otro2'"
                 #Identificacion_de_la_empresa_reseptora_nombre3="ngModel"
                 style="text-transform: uppercase"
-                required
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_nombre3.invalid &&
@@ -681,7 +680,7 @@
               <input
                 type="text"
                 placeholder=""
-                required
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.pais"
                 #Identificacion_de_la_empresa_reseptora_pais="ngModel"
@@ -690,7 +689,17 @@
                   submitInvalid
                 "
                 [(ngModel)]="formF4.Identificacion_de_la_empresa_reseptora.pais"
+                list="pais2"
               />
+              <datalist id="pais2">
+                <option
+                  *ngFor="let pais of paises"
+                  [value]="pais.Nombre"
+                  [selected]="pais.Codigo === 'CO'"
+                >
+                  {{ pais.Nombre }}
+                </option>
+              </datalist>
             </div>
             <div
               class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
@@ -698,9 +707,9 @@
               <p class="text-base">Código CIIU</p>
 
               <input
-                type="number"
+                type="text"
                 placeholder=""
-                required
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora_codigo_CIIU"
                 #Identificacion_de_la_empresa_reseptora_codigo_CIIU="ngModel"
@@ -711,7 +720,13 @@
                 [(ngModel)]="
                   formF4.Identificacion_de_la_empresa_reseptora.codigo_CIIU
                 "
+                list="codigo_CIIU"
               />
+              <datalist id="codigo_CIIU">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                  {{ item.Nombre }}
+                </option>
+              </datalist>
             </div>
             <div
               class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
@@ -724,7 +739,7 @@
                 placeholder=""
                 [name]="'Identificacion_de_la_empresa_reseptora_correo'"
                 #Identificacion_de_la_empresa_reseptora_correo="ngModel"
-                required
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_correo.invalid &&
@@ -734,6 +749,19 @@
                   formF4.Identificacion_de_la_empresa_reseptora.correo
                 "
               />
+              <div
+                class="text-red-500"
+                *ngIf="Identificacion_de_la_empresa_reseptora_correo.invalid"
+              >
+                <small
+                  *ngIf="
+                    Identificacion_de_la_empresa_reseptora_correo.invalid &&
+                    submitInvalid
+                  "
+                >
+                  Correo invalido
+                </small>
+              </div>
             </div>
             <div
               class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
@@ -743,16 +771,26 @@
               <input
                 type="text"
                 placeholder=""
-                [name]="'nombre_otro_telefono3'"
+                name="nombre_otro_telefono3"
                 #otro_nombre_telefono3="ngModel"
-                style="text-transform: uppercase"
-                required
+                pattern="^[0-9]{7,15}$"
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 [class.error]="otro_nombre_telefono3.invalid && submitInvalid"
                 [(ngModel)]="
                   formF4.Identificacion_de_la_empresa_reseptora.telefono
                 "
               />
+              <div
+                class="text-red-500"
+                *ngIf="
+                  otro_nombre_telefono3.invalid && otro_nombre_telefono3.touched
+                "
+              >
+                <small *ngIf="otro_nombre_telefono3.errors?.['pattern']">
+                  Solo se permiten números (entre 7 y 15 dígitos).
+                </small>
+              </div>
             </div>
             <div
               class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-6 p-1"
@@ -762,7 +800,7 @@
               <input
                 type="text"
                 placeholder=""
-                required
+                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.direccion"
                 #Identificacion_de_la_empresa_reseptora_direccion="ngModel"
@@ -790,7 +828,7 @@
                 <select
                   [name]="'otro_tipo_documento2'"
                   #otro_tipo_documento2="ngModel"
-                  required
+                 
                   class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                   [class.error]="otro_tipo_documento2.invalid && submitInvalid"
                   [(ngModel)]="
@@ -814,7 +852,7 @@
                       .tipo_identificacion != 'NIT'
                   "
                 >
-                  <p class="text-base">Número de identificación2</p>
+                  <p class="text-base">Número de identificación</p>
 
                   <input
                     type="number"
@@ -831,7 +869,7 @@
                       formF4.informacion_administrador_del_encargo
                         .numero_identifiacion
                     "
-                    required
+                    
                   />
                 </div>
                 <div
@@ -846,7 +884,7 @@
                     <input
                       type="text"
                       placeholder=""
-                      required
+                      
                       [name]="'informacion_administrador_del_encargo_dv'"
                       #informacion_administrador_del_encargo__dv="ngModel"
                       [(ngModel)]="
@@ -869,7 +907,7 @@
                   [name]="'informacion_administrador_del_encargo_nombre'"
                   #informacion_administrador_del_encargo_nombre="ngModel"
                   style="text-transform: uppercase"
-                  required
+                  
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
                   [class.error]="
                     informacion_administrador_del_encargo_nombre.invalid &&

@@ -1,10 +1,12 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ChangeDetectorRef, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -23,20 +25,26 @@ export class HomeComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private formService: FormService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: object
   ) { }
   ngAfterViewInit(): void {
-    this.ValidCode();
+    if (isPlatformBrowser(this.platformId)) {
+      this.ValidCode();
+    }
   }
 
   ValidCode() {
-    const dataCode = this.authService.getUserCodeExist();
+    if (isPlatformBrowser(this.platformId)) {
+      const dataCode = this.authService.getUserCodeExist();
 
-    if (dataCode != false) {
-      const ruta = '/forms';
-
-      this.router.navigateByUrl(ruta);
+      if (dataCode !== undefined && dataCode !== false) {
+        const ruta = '/forms';
+        this.router.navigateByUrl(ruta);
+      }
     }
+  }
     // else {
     //   this.status = 'init';
     //   const code = this.authService.saveUsercode(this.email);
@@ -46,15 +54,15 @@ export class HomeComponent implements AfterViewInit {
     //     this.loader = false;
     //   }, 1000);
     // }
-  }
-  login(imc: 'corficolombiana' | 'casa de bolsa') {
-    const code = this.authService.saveUsercode();
-    this.formService.saveForm(code, imc);
-    const ruta = '/forms';
-
-    this.router.navigateByUrl(ruta);
-  }
-  resetForm() {
-    this.authService.removeUserCode();
-  }
+    login(imc: 'corficolombiana' | 'casa de bolsa') {
+      const code = this.authService.saveUsercode();
+      this.formService.saveForm(code, imc);
+      const ruta = '/forms';
+  
+      this.router.navigateByUrl(ruta);
+    }
+    resetForm() {
+      this.authService.removeUserCode();
+    }
 }
+  

@@ -4,7 +4,7 @@ import { monedasCasaDeBolsa, monedasCorfi } from '../../../../utils/monedas';
 import { IForms, tiposDocumentos } from 'src/app/utils/formsData';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/services/form.service';
-import { IFormF3A } from 'src/app/utils/formF3A';
+import { IFormF3A, razonNoGeneroDeselbolso } from 'src/app/utils/formF3A';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
@@ -25,6 +25,7 @@ export class F3AComponent implements OnInit {
   stepNavigator = 1
   monedas: any = [];
   formID = ''
+  razonNoGeneroDeselbolso = razonNoGeneroDeselbolso
   formF3A: IFormF3A = {
     steps: {
       step1: false,
@@ -119,8 +120,8 @@ export class F3AComponent implements OnInit {
     if (this.formF3A.identificacion_del_informe
       .fecha_tramite == '') {
       this.setFechaTramiteHoy()
-      this.formF3A.identificacion_del_informe.nit_imc = this.formsD.empresa == 'Corficolombiaba' ? '890300653' : '800203186';
-      this.formF3A.identificacion_del_informe.dv = this.formsD.empresa == 'Corficolombiaba' ? '6' : '5';
+      this.formF3A.identificacion_del_informe.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
+      this.formF3A.identificacion_del_informe.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }
   }

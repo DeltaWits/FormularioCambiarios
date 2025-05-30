@@ -17,3 +17,16 @@
   background: white;
   color: #00185f;
 }
+select option {
+  width: 200px;
+  height: auto;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+select {
+  // max-width: 200px; /* Ajusta este valor según sea necesario */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

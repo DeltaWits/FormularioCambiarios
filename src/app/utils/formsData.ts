@@ -1,6 +1,6 @@
 export interface IForms {
   code: string;
-  empresa: 'Corficolombiaba' | 'Casa de bolsa' | '';
+  empresa: 'corficolombiana' | 'casa de bolsa' | '';
   forms: IForm[];
 }
 export interface IForm {

@@ -19,12 +19,14 @@ export class AuthService {
       code,
       environment.SECRET.trim()
     ).toString();
-    localStorage.setItem('token', token);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem('token', token);
+    }
   }
   saveUsercode() {
     let fechaActual = new Date().getTime();
     // fechaExpiracion.setDate(fechaActual.getDate() + 2);
-    let fechaExpiracion = new Date(fechaActual + 30 * 86400000).getTime();
+    let fechaExpiracion = new Date(fechaActual + 90 * 86400000).getTime();
     const data = {
       code: this.generateRandomCode(8),
       dateExpire: fechaExpiracion,
@@ -33,13 +35,13 @@ export class AuthService {
       JSON.stringify(data),
       environment.SECRET.trim()
     ).toString();
-    localStorage.setItem('user-code', userCode);
+    if (localStorage) localStorage.setItem('user-code', userCode);
     return data.code;
   }
 
   getCode(): boolean | null {
-    if (typeof localStorage !== 'undefined') {
-      const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const token = window.localStorage.getItem('token');
       if (token) {
         try {
           const decrypted = CryptoJS.AES.decrypt(
@@ -100,29 +102,28 @@ export class AuthService {
     }
   }
   getUserCodeExist() {
-    const userCode: any = localStorage.getItem('user-code');
-    if (userCode) {
-      return this.validUserCode();
+    // Check if we're in browser environment
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const userCode: any = window.localStorage.getItem('user-code');
+      if (userCode) {
+        return this.validUserCode();
+      }
     }
     return false;
   }
   setCode() {
-    let data = {
-      email: '',
-      code: '',
-    };
-    const userCode: any = localStorage.getItem('user-code');
-    if (userCode) {
-      const code = CryptoJS.AES.decrypt(
-        userCode,
-        environment.SECRET.trim()
-      ).toString(CryptoJS.enc.Utf8);
-      data = JSON.parse(code);
-
-      return data;
-    } else {
-      return false;
+    if (localStorage) {
+      const userCode = localStorage.getItem('user-code');
+      if (userCode) {
+        const code = CryptoJS.AES.decrypt(
+          userCode,
+          environment.SECRET.trim()
+        ).toString(CryptoJS.enc.Utf8);
+        const data = JSON.parse(code);
+        this.randomCode = data.code;
+      }
     }
+
   }
   removeToken() {
     localStorage.removeItem('token');

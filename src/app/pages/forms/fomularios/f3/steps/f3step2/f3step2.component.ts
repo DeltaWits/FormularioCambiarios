@@ -137,26 +137,49 @@ export class F3step2Component implements OnInit {
   //   );
   // }
   selectTasa(num: number) {
-    // const currency = exchangeRates.find(rate => rate.code === this.formF3.detalle_de_la_declaracion[index].cod_mda_negociacion);
-    // @ts-ignore:
-    if (num == 1) {
-      if (this.formF3.detalle_de_la_declaracion.tasa_de_cambio_dolar != '' && this.formF3.detalle_de_la_declaracion.valor_total_moneda != '') {
-        const tasaDeCambio = this.formF3.detalle_de_la_declaracion.tasa_de_cambio_dolar;
-        const vrTotalMdaNegociacion = this.formF3.detalle_de_la_declaracion.valor_total_moneda.replace(/[^\d]/g, '');
-        // console.log("valorTM", vrTotalMdaNegociacion)
-        this.formF3.detalle_de_la_declaracion.valor_total_dolares = parseFloat(
-          (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
+    const detalle = this.formF3.detalle_de_la_declaracion;
+
+    // Limpiar y convertir valor total moneda
+    const valorMonedaLimpio = detalle.valor_total_moneda
+      ?.replace(/\./g, '')
+      ?.replace(',', '.');
+
+    const valorTotal = parseFloat(valorMonedaLimpio);
+
+    if (!isNaN(valorTotal)) {
+      if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
+        const tasa = parseFloat(
+          detalle.tasa_de_cambio_dolar.toString().replace(',', '.')
         );
-      }
-    } else if (num == 2) {
-      if (this.formF3.detalle_de_la_declaracion.tasa_cambio_moneda_negociacion != '' && this.formF3.detalle_de_la_declaracion.valor_total_moneda != '') {
-        const tasaDeCambio = this.formF3.detalle_de_la_declaracion.tasa_cambio_moneda_negociacion;
-        const vrTotalMdaNegociacion = this.formF3.detalle_de_la_declaracion.valor_total_moneda.replace(/[^\d]/g, '');
-        // console.log("valorTM", vrTotalMdaNegociacion)
-        this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada = parseFloat(
-          (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
+
+        if (!isNaN(tasa)) {
+          const resultado = tasa * valorTotal;
+
+          detalle.valor_total_dolares = resultado.toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+        } else {
+          detalle.valor_total_dolares = '';
+        }
+
+      } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
+        const tasa = parseFloat(
+          detalle.tasa_cambio_moneda_negociacion.toString().replace(',', '.')
         );
+
+        if (!isNaN(tasa)) {
+          const resultado = tasa * valorTotal;
+
+          detalle.valor_moneda_stipulada = resultado.toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+        } else {
+          detalle.valor_moneda_stipulada = '';
+        }
       }
     }
   }
+
 }

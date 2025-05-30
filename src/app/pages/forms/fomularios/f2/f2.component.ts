@@ -8,11 +8,12 @@ import { F2step1Component } from './steps/f2step1/f2step1.component';
 import { F2step2Component } from './steps/f2step2/f2step2.component';
 import { F3step3Component } from '../f3/steps/f3step3/f3step3.component';
 import { F2step3Component } from './steps/f2step3/f2step3.component';
+import { SharedModule } from 'src/app/shared.module';
 
 @Component({
   selector: 'app-f2',
   standalone: true,
-  imports: [NgFor, NgIf, F2step1Component, F2step2Component, F2step3Component],
+  imports: [NgFor, NgIf, F2step1Component, F2step2Component, F2step3Component, SharedModule],
   templateUrl: './f2.component.html',
   styleUrls: [
     './f2.component.scss',
@@ -112,8 +113,8 @@ export class F2Component implements OnInit {
     if (this.formF2.identificacion_de_la_operacion
       .fecha_tramite == '') {
       this.setFechaTramiteHoy()
-      this.formF2.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'Corficolombiaba' ? '890300653' : '800203186';
-      this.formF2.identificacion_de_la_operacion.dv = this.formsD.empresa == 'Corficolombiaba' ? '6' : '5';
+      this.formF2.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '80020318622';
+      this.formF2.identificacion_de_la_operacion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }
   }
