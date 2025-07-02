@@ -67,14 +67,14 @@
         [(ngModel)]="formF3.identificacion_de_la_declaracion.fecha_tramite" required [class.error]="
           identificacion_de_la_declaracion_fecha_tramite.invalid && submitInvalid
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
       <div class="col-span-5">
         <p class="text-base">Nit del IMC</p>
 
         <input type="number" (change)="checkDv1(1)"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           disabled name="identificacion_de_la_declaracion_nit_imc" id=""
           #identificacion_de_la_declaracion_nit_imc="ngModel" [class.error]="
             identificacion_de_la_declaracion_nit_imc.invalid && submitInvalid
@@ -88,7 +88,7 @@
             disabled [class.error]="
               identificacion_de_la_declaracion_dv.invalid && submitInvalid
             "
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
 
       <input type="number" placeholder=""
         [disabled]="formF3.tipo_de_operacion.tipo == '' || formF3.tipo_de_operacion.tipo == 'Inicial'"
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         required name="identificacion_de_la_declaracion.numero_declaracion"
         #identificacion_de_la_declaracion_numero_declaracion="ngModel" [class.error]="
           identificacion_de_la_declaracion_numero_declaracion.invalid &&
@@ -121,14 +121,14 @@
             identificacion_operacion_anterior_fecha_operacion.invalid &&
             submitInvalid
           " [(ngModel)]="formF3.identificacion_operacion_anterior.fecha_operacion" required
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
         <div class="col-span-5">
           <p class="text-base">Nit del IMC</p>
 
           <input type="number" (change)="checkDv1(2)"
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             name="identificacion_operacion_anterior_nit_imc" id="" [class.error]="
               identificacion_operacion_anterior_nit_imc.invalid && submitInvalid
             " #identificacion_operacion_anterior_nit_imc="ngModel"
@@ -141,15 +141,15 @@
               #identificacion_operacion_anterior_dv="ngModel" [class.error]="
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
               " [(ngModel)]="formF3.identificacion_operacion_anterior.dv"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
           </div>
         </div>
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-        <p class="text-base">Numero deuda externa (Si aplica)</p>
+        <p class="text-base"> Número deuda externa (Si aplica)</p>
 
         <input type="number" placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion.deuda_externa"
           #identificacion_operacion_anterior_numero_deuda_externa="ngModel" [class.error]="
             identificacion_operacion_anterior_numero_deuda_externa.invalid &&
@@ -162,7 +162,7 @@
         <p class="text-base">Número declaración de cambio</p>
 
         <input type="number" placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion_anterio.numero_declaracion"
           #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel" [class.error]="
             identificacion_operacion_anterior_numero_declaracion_cambio.invalid &&
@@ -184,7 +184,7 @@
 
               <input type="text" [name]="'detalle_del_credito_numero_prestamo'"
                 #detalle_del_credito_numero_prestamo="ngModel" required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="detalle_del_credito_numero_prestamo.invalid && submitInvalid"
                 [(ngModel)]="formF3.detalle_del_credito.numero_prestamo" />
 
@@ -195,7 +195,7 @@
 
               <select [name]="'detalle_del_credito_tipo_documento'" #detalle_del_credito_tipo_documento="ngModel"
                 required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="detalle_del_credito_tipo_documento.invalid && submitInvalid"
                 [(ngModel)]="formF3.detalle_del_credito.tipo_identificacion">
                 <option *ngFor="let doc of selectDocPN" [value]="doc.code">
@@ -210,7 +210,7 @@
                 <p class="text-base">Número de identificación</p>
 
                 <input type="number" (change)="checkDv1(3)"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'detalle_del_credito_documento'" id=""
                   [class.error]="detalle_del_credito_documento.invalid && submitInvalid"
                   #detalle_del_credito_documento="ngModel" [(ngModel)]="
@@ -224,7 +224,7 @@
                 <div class="dv w-[30px]">
                   <input type="text" placeholder="" required [name]="'otro_documento_dv'"
                     #identificacion_otro_dv="ngModel" [(ngModel)]="formF3.detalle_del_credito.dv"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
                 </div>
               </div>
             </div>
@@ -233,7 +233,7 @@
 
               <input type="text" placeholder="" [name]="'detalle_del_credito.nombre_deudor'"
                 #detalle_del_credito_nombre_deudor="ngModel" style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="detalle_del_credito_nombre_deudor.invalid && submitInvalid" [(ngModel)]="
                     formF3.detalle_del_credito.nombre_deudor
                   " />
@@ -243,7 +243,7 @@
 
               <input type="text" placeholder="" [name]="'detalle_del_credito.nombre_acreedor'"
                 #detalle_del_credito_nombre_acreedor="ngModel" style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="detalle_del_credito_nombre_acreedor.invalid && submitInvalid" [(ngModel)]="
                                 formF3.detalle_del_credito.nombre_acreedor
                               " />

@@ -33,7 +33,7 @@
             >
               <div class="flex gap-1">
                 <p class="mb-1" for="">Tipo de operación</p>
-                <app-tool1 [content]="textTipoOperacion"></app-tool1>
+                <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
               </div>
               <select
                 name="tipo_operacion"
@@ -43,7 +43,7 @@
                 required
                 [class.error]="tipo_de_operacion_tipo.invalid && submitInvalid"
                 disabled
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               >
                 <option value="Inicial">Inicial</option>
                 <!-- <option value="Devolución">Devolución</option> -->
@@ -66,7 +66,7 @@
                 [class.error]="
                   tipo_de_operacion_ingreso_o_egreso.invalid && submitInvalid
                 "
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               >
                 <option value=""></option>
                 <option value="Ingreso">Ingreso</option>
@@ -89,12 +89,12 @@
                 [class.error]="
                   tipo_de_operacion_fecha_presentacion.invalid && submitInvalid
                 "
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               />
             </div>
           </div>
           <div class="col-span-12">
-            <h3 class="font-semibold text-lg">Identificación del informe</h3>
+            <h3 class="font-semibold text-lg">Identificación del declaración u operación</h3>
           </div>
           <div
             class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
@@ -112,7 +112,7 @@
                 identificacion_del_informe_fecha_tramite.invalid &&
                 submitInvalid
               "
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             />
           </div>
           <div
@@ -124,7 +124,7 @@
               <input
                 type="number"
                 (change)="checkDv1(1)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 disabled
                 name="identificacion_del_informe_nit_imc"
                 id=""
@@ -150,7 +150,7 @@
                   [class.error]="
                     identificacion_del_informe_dv.invalid && submitInvalid
                   "
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@
                 formF3A.tipo_de_operacion.tipo == '' ||
                 formF3A.tipo_de_operacion.tipo == 'Inicial'
               "
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               required
               name="identificacion_del_informe.numero_declaracion"
               #identificacion_del_informe_numero_declaracion="ngModel"
@@ -185,7 +185,7 @@
             <div class="col-span-12">
               <h3 class="font-semibold text-lg">Detalle del crédito</h3>
             </div>
-            <div class="col-span-12 p-1">
+            <div class="col-span-12 ">
               <div class="inputs">
                 <div class="row col-span-12 grid grid-cols-12">
                   <div
@@ -198,7 +198,7 @@
                       [name]="'descripcion_de_la_operacion_numero_prestamo'"
                       #descripcion_de_la_operacion_numero_prestamo="ngModel"
                       required
-                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_numero_prestamo.invalid &&
                         submitInvalid
@@ -217,7 +217,7 @@
                       [name]="'descripcion_de_la_operacion_tipo_documento'"
                       #descripcion_de_la_operacion_tipo_documento="ngModel"
                       required
-                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_tipo_documento.invalid &&
                         submitInvalid
@@ -249,7 +249,7 @@
                       <input
                         type="number"
                         (change)="checkDv1(3)"
-                        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                         [name]="'descripcion_de_la_operacion_documento'"
                         id=""
                         [class.error]="
@@ -280,7 +280,7 @@
                           [name]="'otro_documento_dv'"
                           #identificacion_otro_dv="ngModel"
                           [(ngModel)]="formF3A.descripcion_de_la_operacion.dv"
-                          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                         />
                       </div>
                     </div>
@@ -288,7 +288,7 @@
                   <div
                     class="col-span-12 md:col-span-6 p-1 flex flex-wrap gap-x-1"
                   >
-                    <p class="text-base w-full">Nombre del deudor</p>
+                    <p class="text-base w-full">Nombre o razón social de deudor</p>
 
                     <input
                       type="text"
@@ -297,7 +297,7 @@
                       #descripcion_de_la_operacion_nombre_deudor="ngModel"
                       style="text-transform: uppercase"
                       required
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_nombre_deudor.invalid &&
                         submitInvalid
@@ -319,7 +319,7 @@
                       #descripcion_de_la_operacion_nombre_acreedor="ngModel"
                       style="text-transform: uppercase"
                       required
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_nombre_acreedor.invalid &&
                         submitInvalid
@@ -338,7 +338,7 @@
                       [name]="'cod_mda_negociacion'"
                       #cod_mda_negociacion="ngModel"
                       required
-                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       required
                       [class.error]="
                         cod_mda_negociacion.invalid && submitInvalid
@@ -364,7 +364,7 @@
                     <input
                       type="text"
                       placeholder=""
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'valor_t_mda_nego'"
                       #valor_t_mda_nego="ngModel"
                       placeholder=""
@@ -385,7 +385,7 @@
                     <input
                       type="text"
                       placeholder=""
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'numero_cambiario'"
                       #numero_cambiario="ngModel"
                       placeholder=""
@@ -407,7 +407,7 @@
                 de cambio
               </h3>
             </div>
-            <div class="col-span-12 p-1">
+            <div class="col-span-12 ">
               <div class="inputs">
                 <!-- {{ formF3A.descripcion_de_la_operacion }} -->
                 <div
@@ -418,7 +418,7 @@
                   </p>
                   <select
                     placeholder="Código: descripcion"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     required
                     name="razon_por_no_desembolso_o_no_genero_declaracion"
                     #razon_por_no_desembolso_o_no_genero_declaracion="ngModel"
@@ -473,7 +473,7 @@
                     </div>
                     <select
                       id="small"
-                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       required
                       [name]="'otro_numeral_cambiario' + i"
                       id=""
@@ -500,7 +500,7 @@
                     <p class="text-base">Valor moneda negociación</p>
                     <input
                       type="text"
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'valor_total_moneda' + i"
                       id=""
                       required
@@ -525,7 +525,7 @@
                       placeholder=""
                       required
                       dolarFormat
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                       [name]="'valor_moneda_estipulada' + i"
                       #valor_moneda_estipulada="ngModel"
                       required
@@ -551,7 +551,7 @@
               <div class="w-full flex justify-end">
                 <button
                   type="button"
-                  *ngIf="formF3A.informacion_de_numerales.length < 3"
+                  *ngIf="formF3A.informacion_de_numerales.length < 5"
                   (click)="agregarInfo()"
                   class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
                 >

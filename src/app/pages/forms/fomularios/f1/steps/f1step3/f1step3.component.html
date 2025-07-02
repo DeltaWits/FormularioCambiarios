@@ -32,7 +32,7 @@
               </div>
               <select
                 id="small"
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 required
                 [name]="'otro_documento' + i"
                 id=""
@@ -61,7 +61,7 @@
                 [name]="'cod_mda_negociacion'"
                 #cod_mda_negociacion="ngModel"
                 required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 required
                 [class.error]="cod_mda_negociacion.invalid && submitInvalid"
                 [(ngModel)]="
@@ -86,7 +86,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa(i)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_t_mda_nego' + i"
                 #valor_t_mda_nego="ngModel"
                 placeholder=""
@@ -110,7 +110,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa(i)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'tasa_cambio' + i"
                 #numero_cambiario="ngModel"
                 placeholder=""
@@ -130,7 +130,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 [class.w-full]="formF1.descripcion_de_la_operacion.length > 1"
                 disabled
                 [name]="'numero_cambiario' + i"
@@ -176,11 +176,11 @@
           Información requerida para la DIAN
         </h3>
         <p class="text-justify mt-1">
-          INFORMACIÓN DE LOS DOCUMENTOS ADUANEROS: Si la mercancía ingresa del
-          exterior al Territorio Aduanero Nacional, debe relacionar el numero de
+          Si la mercancía ingresa del
+          exterior al Territorio Aduanero Nacional, debe relacionar el número de
           Aceptación de la Declaración de Importación. Si la mercancía ingresa
           del exterior a la Zona Franca o es un envió courrier debe relacionar
-          el numero de la Factura Comercial expedida por el proveedor del
+          el número de la Factura Comercial expedida por el proveedor del
           exterior, la cual puede ser Alfanumérica.
         </p>
       </div>
@@ -197,7 +197,7 @@
               </p>
               <input
                 type="number"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento_factura' + i"
                 id=""
                 [class.error]="otro_documento_factura.invalid && submitInvalid"
@@ -214,7 +214,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 [name]="'numero_cambiariosss' + i"
                 #numero_cambiarioss="ngModel"
                 required
@@ -249,6 +249,16 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-span-12">
+    <p class="text-base">Observaciones</p>
+    <textarea
+      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+      [name]="'observaciones'"
+      #observaciones="ngModel"
+      [class.error]="observaciones.invalid && submitInvalid"
+      [(ngModel)]="formF1.observaciones"
+    ></textarea>
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button

@@ -105,7 +105,7 @@
           identificacion_de_la_declaracion_fecha_tramite.invalid &&
           submitInvalid
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
       />
     </div>
     <div
@@ -117,7 +117,7 @@
         <input
           type="number"
           (change)="checkDv1(1)"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           disabled
           name="identificacion_de_la_declaracion_nit_imc"
           id=""
@@ -143,7 +143,7 @@
             [class.error]="
               identificacion_de_la_declaracion_dv.invalid && submitInvalid
             "
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           />
         </div>
       </div>
@@ -159,7 +159,7 @@
           formF4.tipo_de_operacion.tipo == '' ||
           formF4.tipo_de_operacion.tipo == 'Inicial'
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         required
         name="identificacion_de_la_declaracion.numero_declaracion"
         #identificacion_de_la_declaracion_numero_declaracion="ngModel"
@@ -196,7 +196,7 @@
           "
           [(ngModel)]="formF4.identificacion_operacion_anterior.fecha_operacion"
           required
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         />
       </div>
       <div
@@ -208,7 +208,7 @@
           <input
             type="number"
             (change)="checkDv1(2)"
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             name="identificacion_operacion_anterior_nit_imc"
             id=""
             [class.error]="
@@ -232,18 +232,18 @@
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
               "
               [(ngModel)]="formF4.identificacion_operacion_anterior.dv"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             />
           </div>
         </div>
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-        <p class="text-base">Numero deuda externa (Si aplica)</p>
+        <p class="text-base">Número deuda externa (Si aplica)</p>
 
         <input
           type="number"
           placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion.deuda_externa"
           #identificacion_operacion_anterior_numero_deuda_externa="ngModel"
           [class.error]="
@@ -261,7 +261,7 @@
         <input
           type="number"
           placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion_anterio.numero_declaracion"
           #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel"
           [class.error]="
@@ -568,7 +568,7 @@
       <div class="col-span-12">
         <h3 class="font-semibold text-lg">
           Identificación de la empresa receptora o administrador local del fondo
-          de inversion (Portafolio)
+          deInversión(Portafolio)
         </h3>
       </div>
       <div class="col-span-12 p-1">
@@ -583,7 +583,7 @@
                 [name]="'Identificacion_de_la_empresa_reseptora_tipo_documento'"
                 #Identificacion_de_la_empresa_reseptora_tipo_documento="ngModel"
                
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_tipo_documento.invalid &&
                   submitInvalid
@@ -614,7 +614,7 @@
                 <input
                   type="number"
                   (change)="checkDv1(3)"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'Identificacion_de_la_empresa_reseptora'"
                   id=""
                   [class.error]="
@@ -646,7 +646,7 @@
                     [(ngModel)]="
                       formF4.Identificacion_de_la_empresa_reseptora.dv
                     "
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   />
                 </div>
               </div>
@@ -664,7 +664,7 @@
                 #Identificacion_de_la_empresa_reseptora_nombre3="ngModel"
                 style="text-transform: uppercase"
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_nombre3.invalid &&
                   submitInvalid
@@ -681,7 +681,7 @@
                 type="text"
                 placeholder=""
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.pais"
                 #Identificacion_de_la_empresa_reseptora_pais="ngModel"
                 [class.error]="
@@ -710,7 +710,7 @@
                 type="text"
                 placeholder=""
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora_codigo_CIIU"
                 #Identificacion_de_la_empresa_reseptora_codigo_CIIU="ngModel"
                 [class.error]="
@@ -740,7 +740,7 @@
                 [name]="'Identificacion_de_la_empresa_reseptora_correo'"
                 #Identificacion_de_la_empresa_reseptora_correo="ngModel"
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_correo.invalid &&
                   submitInvalid
@@ -775,7 +775,7 @@
                 #otro_nombre_telefono3="ngModel"
                 pattern="^[0-9]{7,15}$"
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_telefono3.invalid && submitInvalid"
                 [(ngModel)]="
                   formF4.Identificacion_de_la_empresa_reseptora.telefono
@@ -801,7 +801,7 @@
                 type="text"
                 placeholder=""
                 
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.direccion"
                 #Identificacion_de_la_empresa_reseptora_direccion="ngModel"
                 [class.error]="
@@ -829,7 +829,7 @@
                   [name]="'otro_tipo_documento2'"
                   #otro_tipo_documento2="ngModel"
                  
-                  class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="otro_tipo_documento2.invalid && submitInvalid"
                   [(ngModel)]="
                     formF4.informacion_administrador_del_encargo
@@ -857,7 +857,7 @@
                   <input
                     type="number"
                     (change)="checkDv1(4)"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     [name]="'informacion_administrador_del_encargo_numero'"
                     id=""
                     [class.error]="
@@ -890,7 +890,7 @@
                       [(ngModel)]="
                         formF4.informacion_administrador_del_encargo.dv
                       "
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     />
                   </div>
                 </div>
@@ -908,7 +908,7 @@
                   #informacion_administrador_del_encargo_nombre="ngModel"
                   style="text-transform: uppercase"
                   
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="
                     informacion_administrador_del_encargo_nombre.invalid &&
                     submitInvalid

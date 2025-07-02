@@ -35,7 +35,8 @@ export class F1step3Component implements OnInit {
     informacion_DIAN: [{
       numero_o_factura: '',
       valor_FOB: ''
-    }]
+    }],
+    observaciones: '',
   }
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();

@@ -17,12 +17,12 @@
             <div
               class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
             >
-              <p class="text-base">Código propósito del préstamo</p>
+              <p class="text-base">Propósito del préstamo</p>
 
               <select
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'codigo_proposito_prestamo'"
                 #codigo_proposito_prestamo="ngModel"
                 placeholder=""
@@ -48,7 +48,7 @@
                 [name]="'codigo_codigo_moneda'"
                 #codigo_codigo_moneda="ngModel"
                 required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 required
                 [class.error]="codigo_codigo_moneda.invalid && submitInvalid"
                 [(ngModel)]="formF7.descripcion_del_prestamo.codigo_moneda"
@@ -67,7 +67,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_moneda_estipulada3'"
                 #valor_moneda_estipulada3="ngModel"
                 placeholder=""
@@ -89,7 +89,7 @@
               <select
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 required
                 [name]="'tasa_interes3'"
                 #tasa_interes="ngModel"
@@ -110,7 +110,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'tasa_interes3'"
                 #tasa_interes="ngModel"
                 placeholder=""
@@ -127,7 +127,7 @@
                 type="number"
                 placeholder=""
                 required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'descripcion_del_prestamo_plazo3'"
                 #descripcion_del_prestamo_plazo="ngModel"
                 placeholder=""
@@ -146,7 +146,7 @@
                 [name]="'descripcion_del_prestamo.tiempo'"
                 #descripcion_del_prestamo_tiempo="ngModel"
                 required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 required
                 [class.error]="
                   descripcion_del_prestamo_tiempo.invalid && submitInvalid
@@ -168,7 +168,7 @@
                 type="text"
                 placeholder=""
                 required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 [name]="'numero_deposito_dinanciacion3'"
                 #numero_deposito_dinanciacion="ngModel"
                 [class.error]="
@@ -207,7 +207,7 @@
                 <p class="text-base">Fecha</p>
                 <input
                   type="date"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'otro_documento_factura' + i"
                   id=""
                   required
@@ -226,7 +226,7 @@
                   type="text"
                   placeholder=""
                   required
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                   [name]="'valor_cuota' + i"
                   #valor_cuota="ngModel"
                   [class.error]="valor_cuota.invalid && submitInvalid"
@@ -277,14 +277,14 @@
               <select
                 [name]="'tipo_transmision'"
                 #tipo_transmision="ngModel"
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="tipo_transmision.invalid && submitInvalid"
                 [(ngModel)]="
                   formF7.informacion_transmision_procedimientos_credito
                     .tipo_transmision
                 "
               >
-                <option value="">Seleccionar moneda</option>
+                <option value="">Seleccionar</option>
                 <option
                   *ngIf="formF7.tipo_de_solicictud.tipo == 'Modificación'"
                   value="Fraccionamiento"
@@ -341,7 +341,7 @@
               <input
                 type="number"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'numero_de_creaditos_sustituir'"
                 #numero_de_creaditos_sustituir="ngModel"
                 placeholder=""
@@ -366,7 +366,7 @@
               <input
                 type="number"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'numero_de_creaditos_sustituir'"
                 #numero_de_creaditos_sustituir="ngModel"
                 placeholder=""
@@ -402,7 +402,7 @@
                 placeholder=""
                 [name]="'informacion_residente_naturaleza'"
                 #informacion_residente_naturaleza="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   informacion_residente_naturaleza.invalid && submitInvalid
                 "
@@ -419,7 +419,7 @@
                 placeholder=""
                 [name]="'informacion_residente_tipo_empresa'"
                 #informacion_residente_tipo_empresa="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   informacion_residente_naturaleza.invalid && submitInvalid
                 "
@@ -485,7 +485,7 @@
                 placeholder=""
                 [name]="'informacion_residente_tipo_empresa'"
                 #informacion_residente_tipo_empresa="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   informacion_residente_naturaleza.invalid && submitInvalid
                 "
@@ -502,7 +502,7 @@
                 placeholder=""
                 [name]="'informacion_residente_tipo_empresa'"
                 #informacion_residente_tipo_empresa="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   informacion_residente_naturaleza.invalid && submitInvalid
                 "

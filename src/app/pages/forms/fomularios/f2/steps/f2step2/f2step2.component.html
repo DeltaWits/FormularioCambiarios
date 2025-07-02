@@ -17,7 +17,7 @@
               <p class="mb-1">Tipo de Identificación</p>
 
               <select [name]="'otro_tipo_documento' + i" #otro_tipo_documento="ngModel" required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid" [(ngModel)]="
                   formF2.identificacion_de_exportador.tipo_documento
                 ">
@@ -33,7 +33,7 @@
                 <p class="text-base">Número de identificación</p>
 
                 <input type="number" (change)="checkDvArray(i)"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'otro_documento' + i" id="" [class.error]="otro_documento.invalid && submitInvalid"
                   #otro_documento="ngModel" [(ngModel)]="
                     formF2.identificacion_de_exportador.numero_documento
@@ -46,7 +46,7 @@
                 <div class="dv w-[30px]">
                   <input type="text" placeholder="" required [name]="'otro_documento_dv' + i"
                     #identificacion_otro_dv="ngModel" [(ngModel)]="formF2.identificacion_de_exportador.dv"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
 
               <input type="text" placeholder="" [name]="'nombre_otro' + i" #otro_nombre="ngModel"
                 style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 [class.error]="otro_nombre.invalid && submitInvalid" [(ngModel)]="
                   formF2.identificacion_de_exportador.nombre_razon_social
                 " />

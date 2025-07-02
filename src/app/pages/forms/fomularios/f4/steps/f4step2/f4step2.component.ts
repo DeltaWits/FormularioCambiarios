@@ -13,6 +13,7 @@ import { exchangeRates } from 'src/app/utils/monedas';
 import { ToolImgComponent } from '../../../../../../components/Modals/tool-img/tool-img.component';
 import { Tool1Component } from 'src/app/components/tooltips/tool1/tool1.component';
 
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-f4step2',
   standalone: true,
@@ -25,7 +26,6 @@ export class F4step2Component implements OnInit {
   @Input() monedas: any = [];
   @Input() formId = ''
   @Input() formF4: IFormF4 = {
-
 
     identificacion_del_inversionista: {
       tipo_identificacion: '',
@@ -63,6 +63,8 @@ export class F4step2Component implements OnInit {
   }
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
+  
+  ciiu: any;
   submitInvalid = false
   numeralesCambiarios: any = numeralesCambiariosF4Ingreso
   ShowPopUp = false;
@@ -80,6 +82,7 @@ export class F4step2Component implements OnInit {
     private router: Router
   ) {
     this.formF4.descripcionde_la_operacion.moneda_registro = 'COP';
+    this.loadExcelFromCiiu()
   }
   ngOnInit(): void {
     this.chagenIDOptions();
@@ -337,4 +340,26 @@ export class F4step2Component implements OnInit {
       }
     }
   }
+
+   loadExcelFromCiiu() {
+      const fileUrl = './assets/ciiu.xlsx';
+      fetch(fileUrl)
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => {
+          if (arrayBuffer) {
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+              type: 'array',
+            });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+            // Los datos del archivo Excel están disponibles en this.excelData
+          } else {
+            console.error('No se pudo cargar el archivo Excel.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al cargar el archivo Excel:', error);
+        });
+    }
 }

@@ -52,14 +52,14 @@
         [(ngModel)]="formF5.identificacion_de_la_declaracion.fecha_tramine" required disabled [class.error]="
           identificacion_de_la_declaracion_fecha_tramite.invalid && submitInvalid
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
       <div class="col-span-5">
         <p class="text-base">Nit del IMC</p>
 
         <input type="number" (change)="checkDv1(1)"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion_nit_imc" id="" disabled
           #identificacion_de_la_declaracion_nit_imc="ngModel" [class.error]="
             identificacion_de_la_declaracion_nit_imc.invalid && submitInvalid
@@ -73,7 +73,7 @@
             [class.error]="
               identificacion_de_la_declaracion_dv.invalid && submitInvalid
             "
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
       <p class="text-base">Número declaración </p>
 
       <input type="number" placeholder=""
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         [disabled]="formF5.tipo_de_operacion.tipo == '' || formF5.tipo_de_operacion.tipo == 'Inicial'"
         name="identificacion_de_la_declaracion.numero_declaracion"
         #identificacion_de_la_declaracion_numero_declaracion="ngModel" [class.error]="
@@ -106,14 +106,14 @@
             identificacion_operacion_anterior_fecha_operacion.invalid &&
             submitInvalid
           " [(ngModel)]="formF5.identificacion_operacion_anterior.fecha_operacion" required
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
         <div class="col-span-5">
           <p class="text-base">Nit del IMC</p>
 
           <input type="number" (change)="checkDv1(2)"
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             name="identificacion_operacion_anterior_nit_imc" id="" [class.error]="
               identificacion_operacion_anterior_nit_imc.invalid && submitInvalid
             " #identificacion_operacion_anterior_nit_imc="ngModel"
@@ -126,15 +126,15 @@
               #identificacion_operacion_anterior_dv="ngModel" [class.error]="
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
               " [(ngModel)]="formF5.identificacion_operacion_anterior.dv"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
           </div>
         </div>
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-        <p class="text-base">Numero deuda externa (Si aplica)</p>
+        <p class="text-base">Número deuda externa (Si aplica)</p>
 
         <input type="number" placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion.numero_declaracion"
           #identificacion_operacion_anterior_numero_deuda_externa="ngModel" [class.error]="
             identificacion_operacion_anterior_numero_deuda_externa.invalid &&
@@ -147,7 +147,7 @@
         <p class="text-base">Número declaración de cambio</p>
 
         <input type="number" placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_declaracion.numero_declaracion"
           #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel" [class.error]="
             identificacion_operacion_anterior_numero_declaracion_cambio.invalid &&
@@ -215,7 +215,7 @@
         <div class="flex gap-1">
           <p class="mb-1" for="">Tipo de entidad</p>
           <app-tool1
-            [content]="'Cuando se trate de un Consorcio / Unión Temporal, se deberá suministrar el número de identificación de un participante.'"></app-tool1>
+            [content]="'Cuando se trate de un Consorcio / Unión Temporal seleccionar el tipo de Entidad “Otro” y suministrar el número de identificación de un participante.'"></app-tool1>
         </div>
         <select name="tipo_operacion" id="" name="tipo_identidad_tipo" #tipo_identidad_tipo="ngModel"
           [(ngModel)]="formF5.tipo_identidad.tipo" required [class.error]="tipo_identidad_tipo.invalid && submitInvalid"
@@ -225,8 +225,8 @@
           <option value="Fondo de Capital Privado">
             Fondo de Capital Privado
           </option>
-          <option value="Fondo de Inversion Colectiva">
-            Fondo de Inversion Colectiva
+          <option value="Fondo deInversiónColectiva">
+            Fondo deInversiónColectiva
           </option>
           <option value="Otro">Otro</option>
         </select>
@@ -235,7 +235,7 @@
         <div class="col-span-12 lg:col-span-12 xl:col-span-6" *ngIf="formF5.tipo_identidad.tipo == 'OTRO'">
           <label class="text-base">¿Cual?</label>
           <input placeholder=""
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             required name="tipo_identidad_otros" #tipo_identidad_otros="ngModel"
             [class.error]="tipo_identidad_otros.invalid && submitInvalid" [(ngModel)]="formF5.tipo_identidad.otros" />
         </div>
@@ -253,7 +253,7 @@
             <p class="mb-1">Tipo de Identificación</p>
 
             <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
-              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="otro_tipo_documento.invalid && submitInvalid"
               [(ngModel)]="formF5.identificacion_de_la_empresa.tipo_identificacion">
               <option *ngFor="let doc of selectDocPN" [value]="doc.code">
@@ -268,7 +268,7 @@
               <p class="text-base mb-1">Número de identificación</p>
 
               <input type="number" (change)="checkDv1(3)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'identificacion_de_la_empresa_'" id=""
                 [class.error]="identificacion_de_la_empresa_.invalid && submitInvalid"
                 #identificacion_de_la_empresa_="ngModel" [(ngModel)]="
@@ -282,7 +282,7 @@
               <div class="dv w-[30px]">
                 <input type="text" placeholder="" required [name]="'identificacion_de_la_empresa__dv'"
                   #identificacion_otro_dv="ngModel" [(ngModel)]="formF5.identificacion_de_la_empresa.dv"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1" />
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
               </div>
             </div>
           </div>
@@ -292,7 +292,7 @@
 
             <input type="text" placeholder="" [name]="'nombre_otro'" #otro_nombre="ngModel"
               style="text-transform: uppercase" required
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="otro_nombre.invalid && submitInvalid" [(ngModel)]="
                 formF5.identificacion_de_la_empresa.nombre
               " />
@@ -301,7 +301,7 @@
             <p class="text-base">Teléfono</p>
 
             <input type="tel" placeholder="" required
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="identificacion_de_la_empresa.telefono" #identificacion_de_la_empresa_telefono="ngModel"
               [class.error]="
                                   identificacion_de_la_empresa_telefono.invalid &&
@@ -313,7 +313,7 @@
             <p class="text-base">Dirección</p>
 
             <input type="text" placeholder="" required
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="identificacion_de_la_empresa.direccion" #identificacion_de_la_empresa_direccion="ngModel"
               [class.error]="
                                   identificacion_de_la_empresa_direccion.invalid &&
@@ -325,7 +325,7 @@
             <p class="text-base">Ciudad</p>
 
             <input type="text" placeholder="" required
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="identificacion_de_la_empresa.ciudad" #identificacion_de_la_empresa_ciudad="ngModel" [class.error]="
                                     identificacion_de_la_empresa_ciudad.invalid &&
                                     submitInvalid

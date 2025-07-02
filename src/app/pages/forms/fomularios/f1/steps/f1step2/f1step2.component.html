@@ -22,7 +22,7 @@
                 [name]="'otro_tipo_documento'"
                 #otro_tipo_documento="ngModel"
                 required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid"
                 [(ngModel)]="formF1.identificacion_de_importador.tipo_documento"
               >
@@ -45,7 +45,7 @@
                 <input
                   type="number"
                   (change)="checkDvArray(0)"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'otro_documento'"
                   id=""
                   [class.error]="otro_documento.invalid && submitInvalid"
@@ -71,7 +71,7 @@
                     [name]="'otro_documento_dv'"
                     #identificacion_otro_dv="ngModel"
                     [(ngModel)]="formF1.identificacion_de_importador.dv"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   />
                 </div>
               </div>
@@ -90,7 +90,7 @@
                 #otro_nombre="ngModel"
                 style="text-transform: uppercase"
                 required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre.invalid && submitInvalid"
                 [(ngModel)]="
                   formF1.identificacion_de_importador.nombre_razon_social

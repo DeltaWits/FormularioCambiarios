@@ -16,7 +16,7 @@
               <p class="mb-1">Tipo de Identificación</p>
 
               <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
-                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid"
                 [(ngModel)]="formF4.identificacion_del_inversionista.tipo_identificacion">
                 <option *ngFor="let doc of selectDocR" [value]="doc.code">
@@ -31,7 +31,7 @@
                 <p class="text-base mb-1">Número de identificación</p>
 
                 <input type="number"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'identificacion_del_inversionista_'" id=""
                   [class.error]="identificacion_del_inversionista_.invalid && submitInvalid"
                   #identificacion_del_inversionista_="ngModel" [(ngModel)]="
@@ -46,7 +46,7 @@
 
               <input type="text" placeholder="" [name]="'nombre_otro2'" #otro_nombre3="ngModel"
                 style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre3.invalid && submitInvalid" [(ngModel)]="
                     formF4.identificacion_del_inversionista.nombre
                   " />
@@ -55,7 +55,7 @@
               <p class="text-base">País</p>
 
               <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="identificacion_del_inversionista.pais" #identificacion_del_inversionista_telefono="ngModel"
                 [class.error]="
                                       identificacion_del_inversionista_telefono.invalid &&
@@ -68,7 +68,7 @@
 
               <input type="email" email placeholder="" [name]="'nombre_otro_correo'" #otro_nombre_correo="ngModel"
                 required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_correo.invalid && submitInvalid" [(ngModel)]="
                                 formF4.identificacion_del_inversionista.correo
                               " />
@@ -78,17 +78,24 @@
 
               <input type="text" placeholder="" [name]="'identificacion_del_inversionista.codigo_CIIU'"
                 #identificacion_del_inversionista_codigo_CIIU="ngModel" style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="identificacion_del_inversionista_codigo_CIIU.invalid && submitInvalid" [(ngModel)]="
                                             formF4.identificacion_del_inversionista.codigo_CIIU
-                                          " />
+                                          " list="codigo_CIIU" />
+            
+              <datalist id="codigo_CIIU">
+                
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                  {{ item.Nombre }}
+                </option>
+              </datalist>
             </div>
             <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1">
               <p class="text-base w-full">Teléfono (Nvl. nacional)</p>
 
               <input type="text" placeholder="" [name]="'nombre_otro_telefono3'" #otro_nombre_telefono3="ngModel"
                 style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_telefono3.invalid && submitInvalid" [(ngModel)]="
                                 formF4.identificacion_del_inversionista.telefono
                               " />
@@ -97,7 +104,7 @@
               <p class="text-base">Dirección (Nvl. nacional)</p>
 
               <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="identificacion_del_inversionista.direccion" #identificacion_del_inversionista_direccion="ngModel"
                 [class.error]="
                                       identificacion_del_inversionista_direccion.invalid &&
@@ -130,7 +137,7 @@
                 [numerales]="numeralesCambiarios"></app-tool-img>
             </div>
             <select id="small"
-              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               required [name]="'otro_numeral_cambiario' " id=""
               [class.error]="otro_numeral_cambiario.invalid && submitInvalid" #otro_numeral_cambiario="ngModel"
               [(ngModel)]="
@@ -146,7 +153,7 @@
             <p class="">Cod. Mda. Negociación</p>
 
             <select [name]="'cod_mda_negociacion' " #cod_mda_negociacion="ngModel" required
-              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
                             formF4.descripcionde_la_operacion.codigo_moneda
                           ">
@@ -160,7 +167,7 @@
             <p class="text-base">Vr. Total Mda Negociación</p>
 
             <input type="text" placeholder="" (change)="selectTasa(1)"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [name]="'valor_t_mda_nego' " #valor_t_mda_nego="ngModel" placeholder="" required
               [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
                             formF4.descripcionde_la_operacion.valor_moneda_negociacion
@@ -170,7 +177,7 @@
             <p class="text-base">Tasa de cambio a dolar</p>
 
             <input type="text" placeholder="" (change)="selectTasa(1)"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [name]="'tasa_cambio'" #descripcionde_la_operacion_tasa_cambio_dolar="ngModel" placeholder="" required
               [class.error]="descripcionde_la_operacion_tasa_cambio_dolar.invalid && submitInvalid" [(ngModel)]="
                             formF4.descripcionde_la_operacion.tasa_cambio_dolar
@@ -180,7 +187,7 @@
             <p class="text-base w-full">Valor total en dolares</p>
 
             <input type="text" placeholder=""
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               disabled [name]="'numero_cambiario'" #numero_cambiario="ngModel" placeholder=""
               [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
                             formF4.descripcionde_la_operacion.valor_total_dolares
@@ -192,7 +199,7 @@
             <p class="mb-1">Moneda de registro</p>
 
             <input type="text" [name]="'moneda_registro' " #moneda_registro2="ngModel" disabled
-              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [defaultValue]="'COP'" [class.error]="moneda_registro2.invalid && submitInvalid" [(ngModel)]="
                                       formF4.descripcionde_la_operacion.moneda_registro
                                     " />
@@ -202,7 +209,7 @@
             <p class="text-base mb-1">Tasa de cambio a pesos</p>
 
             <input type="text" placeholder="" (change)="selectTasa(2)"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [name]="'tasa_cambio_pesos'" #descripcionde_la_operacion_tasa_cambio_pesos="ngModel" placeholder=""
               required [class.error]="descripcionde_la_operacion_tasa_cambio_pesos.invalid && submitInvalid"
               [(ngModel)]="
@@ -213,7 +220,7 @@
             <p class="text-base w-full">Valor total en pesos</p>
 
             <input type="text" placeholder=""
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               disabled [name]="'valor_total_pesos'" #valor_total_pesos="ngModel" placeholder=""
               [class.error]="valor_total_pesos.invalid && submitInvalid" [(ngModel)]="
                                       formF4.descripcionde_la_operacion.valor_total_pesos
@@ -224,11 +231,11 @@
             <div class="flex gap-1">
               <p class="mb-1" for="">Participantes</p>
               <app-tool1
-                [content]="'Número adquirido de acciones, cuotas, partes de interés o aportes en que se encuentra representado el capital de la  empresa receptora de inversión.  Nota: este campo no debe ser diligenciado en los siguientes casos:  \n 1. INversión extranjera en Colombia \n 2. Inversion colombiana en el exterior \n 3. Cuando el destino corresponda a actos o contratos sin participación en el capital de una empresa ' "></app-tool1>
+                [content]="'Número adquirido de acciones, cuotas, partes de interés o aportes en que se encuentra representado el capital de la  empresa receptora de inversión. \n Nota: este campo no debe ser diligenciado en los siguientes casos:  \n 1. INversión extranjera en Colombia \n 2.Inversióncolombiana en el exterior \n 3. Cuando el destino corresponda a actos o contratos sin participación en el capital de una empresa ' "></app-tool1>
             </div>
 
             <input type="number" placeholder=""
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="descripcionde_la_operacion_participantes" #descripcionde_la_operacion_participantes="ngModel"
               [class.error]="
                                                 descripcionde_la_operacion_participantes.invalid &&
@@ -240,7 +247,7 @@
             <p class="text-base mb-1">Motivo sin participaciones</p>
 
             <input type="text" placeholder="" required
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="descripcionde_la_operacion_motivo" #descripcionde_la_operacion_motivo="ngModel" [class.error]="
                                                 descripcionde_la_operacion_motivo.invalid &&
                                                 submitInvalid
@@ -270,7 +277,7 @@
 
             <input type="text" placeholder="" [name]="'informacion_residente_naturaleza'"
               #informacion_residente_naturaleza="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
                                   formF4.informacion_residente.naturaleza
                                 " />
@@ -278,12 +285,17 @@
           <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1">
             <p class="text-base w-full">Tipo de empresa</p>
 
-            <input type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
+            <select type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
               #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
                                             formF4.informacion_residente.tipo_empresa
-                                          " />
+                                          ">
+              <option value="">Seleccionar tipo de empresa</option>
+              <option value="privada">Privada</option>
+              <option value="publica">Publica</option>
+              <option value="mixta">Mixta</option>
+            </select>
           </div>
 
           <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 p-1">
@@ -311,7 +323,7 @@
 
             <input type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
               #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
                                                       formF4.informacion_residente.tipo_empresa
                                                     " />
@@ -321,7 +333,7 @@
 
             <input type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
               #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
                                                       formF4.informacion_residente.tipo_empresa
                                                     " />
