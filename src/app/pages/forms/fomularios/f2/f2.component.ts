@@ -77,7 +77,8 @@ export class F2Component implements OnInit {
       total_gastos_de_exportacion: '',
       Deducciones: '',
       Reintegro_neto: ''
-    }
+    },
+    observaciones: ''
 
   }
 

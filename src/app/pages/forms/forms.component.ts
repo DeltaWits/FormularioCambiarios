@@ -174,7 +174,7 @@ export class FormsComponent implements AfterViewInit {
         // scrollToElement: false,
 
         steps: [
-          { intro: "Bienvenido a continuación se mostrara como crear los formularios" },
+          { intro: "¡Bienvenido! a continuación se mostrara como crear los formularios" },
           {
             element: step1Element, // Selector del elemento que deseas resaltar en el tour
             intro:

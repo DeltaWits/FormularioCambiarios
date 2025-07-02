@@ -19,7 +19,7 @@
             >
               <p class="text-base">Código propósito del préstamo</p>
 
-              <input
+              <select
                 type="text"
                 placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
@@ -33,7 +33,11 @@
                 [(ngModel)]="
                   formF7.descripcion_del_prestamo.codigo_proposito_prestamo
                 "
-              />
+              >
+                <option *ngFor="let tipo of codigoPropositoPrestamo" [value]="tipo.id">
+                {{ tipo.descripcion }}
+                </option>
+              </select>
             </div>
             <div
               class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
@@ -82,7 +86,7 @@
             >
               <p class="text-base w-full">Tasa de interés</p>
 
-              <input
+              <select
                 type="text"
                 placeholder=""
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] pX-2.5 py-1"
@@ -92,7 +96,11 @@
                 placeholder=""
                 [class.error]="tasa_interes.invalid && submitInvalid"
                 [(ngModel)]="formF7.descripcion_del_prestamo.tasa_interes"
-              />
+              >
+                <option *ngFor="let tipo of tasasInteres" [value]="tipo.descripcion">
+                  {{ tipo.descripcion }}
+                </option>
+              </select>
             </div>
             <div
               class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"

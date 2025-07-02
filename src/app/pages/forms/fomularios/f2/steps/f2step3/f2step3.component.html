@@ -29,7 +29,6 @@
                 [(ngModel)]="
                   formF2.descripcion_de_la_operacion.cod_mda_negociacion
                 "
-                dolarFormat
               >
                 <option value="">Seleccionar moneda</option>
                 <option *ngFor="let moneda of monedas" [value]="moneda.code">
@@ -275,6 +274,18 @@
           [(ngModel)]="formF2.informacion_DIAN_total.Reintegro_neto"
         />
       </div>
+    </div>
+    <div class="col-span-12">
+      <p class="text-base w-full">Observaciones</p>
+
+      <textarea
+        placeholder=""
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
+        [name]="'observaciones'"
+        #observaciones="ngModel"
+        [class.error]="observaciones.invalid && submitInvalid"
+        [(ngModel)]="formF2.observaciones"
+      ></textarea>
     </div>
   </div>
   <div class="flex justify-center gap-2 mt-2">

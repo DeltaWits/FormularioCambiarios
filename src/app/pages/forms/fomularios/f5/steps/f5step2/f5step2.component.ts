@@ -107,36 +107,31 @@ export class F5step2Component {
 
   selectTasa() {
     const operacion = this.formF5.descripcion_de_la_operacion;
-
+  
     if (
       operacion.tasa_de_cambio_dolar !== '' &&
-      operacion.vr_total_mda_negociacion.trim() !== ''
+      operacion.vr_total_mda_negociacion !== ''
     ) {
-      // 1. Convertir tasa de cambio (con coma decimal) a número
-      const tasa = parseFloat(
-        operacion.tasa_de_cambio_dolar.toString().replace(',', '.')
-      );
-
-      // 2. Limpiar y convertir valor de negociación
-      const valorLimpio = operacion.vr_total_mda_negociacion
-        .replace(/\./g, '')   // quitar puntos de miles
-        .replace(',', '.');   // cambiar coma decimal por punto
-
-      const monto = parseFloat(valorLimpio);
-
-      // 3. Calcular y asignar si los valores son válidos
-      if (!isNaN(tasa) && !isNaN(monto)) {
-        const resultado = tasa * monto;
-
+      const tasaDeCambio = operacion.tasa_de_cambio_dolar.toString();
+      const vrTotal = operacion.vr_total_mda_negociacion.toString();
+  
+      if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+        const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const decimalPlaces = resultado.toString().includes('.')
+          ? resultado.toString().split('.')[1].length
+          : 0;
+        const fractionDigits = Math.min(decimalPlaces, 10);
+  
         operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
+          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          useGrouping: true,
         });
-
-        console.log("ddd");
       } else {
         operacion.valor_total_dolares = '';
       }
+    } else {
+      operacion.valor_total_dolares = '';
     }
   }
 

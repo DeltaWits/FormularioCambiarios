@@ -13,7 +13,7 @@ export class FormService {
       JSON.stringify(formData),
       environment.SECRET.trim()
     ).toString();
-    localStorage.setItem('forms', form);
+    localStorage.setItem('formsCambiarios', form);
   }
   saveUser(nombre: string, documento: string) {
     let formData = { nombre: nombre, documento: documento };
@@ -28,7 +28,7 @@ export class FormService {
       JSON.stringify(formData),
       environment.SECRET.trim()
     ).toString();
-    localStorage.setItem('forms', form);
+    localStorage.setItem('formsCambiarios', form);
   }
   saveFormDataFId(formData: any, id: string, status?: boolean) {
     let form: IForms = this.getForm()
@@ -41,11 +41,11 @@ export class FormService {
       JSON.stringify(form),
       environment.SECRET.trim()
     ).toString();
-    localStorage.setItem('forms', formSave);
+    localStorage.setItem('formsCambiarios', formSave);
   }
   getForm(): any | null {
     if (typeof localStorage !== 'undefined') {
-      const forms: any = localStorage.getItem('forms');
+      const forms: any = localStorage.getItem('formsCambiarios');
       if (forms) {
         try {
           const decrypted = CryptoJS.AES.decrypt(

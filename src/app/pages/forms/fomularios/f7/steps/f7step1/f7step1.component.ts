@@ -7,7 +7,7 @@ import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-
 import { SharedModule } from 'src/app/shared.module';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { textTipoOperacion } from '../../../f1/textosF1';
-import { IFormF7 } from 'src/app/utils/formF7';
+import { IFormF7, tipoPresarioDeudor } from 'src/app/utils/formF7';
 import { FormService } from 'src/app/services/form.service';
 import * as XLSX from 'xlsx';
 
@@ -59,6 +59,8 @@ export class F7step1Component {
     },
 
   }
+  
+  tipoPresarioDeudor = tipoPresarioDeudor;
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
   textTipoOperacion = textTipoOperacion
@@ -86,6 +88,10 @@ export class F7step1Component {
   }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
+    this.selectDocPN.push({
+      name: 'No Residente',
+      code: 'NR'
+    })
   }
   onSwitchChange(num: number) {
     if (num == 1) {

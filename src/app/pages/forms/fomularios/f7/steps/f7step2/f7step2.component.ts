@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-up-alert.component';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
-import { IFormF7, numeralesCambiariosF7 } from 'src/app/utils/formF7';
+import { IFormF7, numeralesCambiariosF7, tasasInteres, codigoPropositoPrestamo } from 'src/app/utils/formF7';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
 @Component({
@@ -51,6 +51,8 @@ export class F7step2Component {
     },
   }
   // textTipoOperacion = textTipoOperacion
+  codigoPropositoPrestamo = codigoPropositoPrestamo;
+  tasasInteres = tasasInteres;
   @Output() step = new EventEmitter<string>();
   submitInvalid = false
   numeralesCambiarios: any = numeralesCambiariosF7

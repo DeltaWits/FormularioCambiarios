@@ -169,12 +169,12 @@
           <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
             <p class="text-base">Tasa de cambio a dolar</p>
 
-            <input type="number" placeholder="" (change)="selectTasa(1)"
+            <input type="text" placeholder="" (change)="selectTasa(1)"
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
               [name]="'tasa_cambio'" #descripcionde_la_operacion_tasa_cambio_dolar="ngModel" placeholder="" required
               [class.error]="descripcionde_la_operacion_tasa_cambio_dolar.invalid && submitInvalid" [(ngModel)]="
                             formF4.descripcionde_la_operacion.tasa_cambio_dolar
-                          " />
+                          " dolarFormat />
           </div>
           <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
             <p class="text-base w-full">Valor total en dolares</p>
@@ -201,7 +201,7 @@
           <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
             <p class="text-base mb-1">Tasa de cambio a pesos</p>
 
-            <input type="number" placeholder="" (change)="selectTasa(1)"
+            <input type="text" placeholder="" (change)="selectTasa(2)"
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
               [name]="'tasa_cambio_pesos'" #descripcionde_la_operacion_tasa_cambio_pesos="ngModel" placeholder=""
               required [class.error]="descripcionde_la_operacion_tasa_cambio_pesos.invalid && submitInvalid"
@@ -217,7 +217,7 @@
               disabled [name]="'valor_total_pesos'" #valor_total_pesos="ngModel" placeholder=""
               [class.error]="valor_total_pesos.invalid && submitInvalid" [(ngModel)]="
                                       formF4.descripcionde_la_operacion.valor_total_pesos
-                                    " />
+                                    " dolarFormat />
 
           </div>
           <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
@@ -227,7 +227,7 @@
                 [content]="'Número adquirido de acciones, cuotas, partes de interés o aportes en que se encuentra representado el capital de la  empresa receptora de inversión.  Nota: este campo no debe ser diligenciado en los siguientes casos:  \n 1. INversión extranjera en Colombia \n 2. Inversion colombiana en el exterior \n 3. Cuando el destino corresponda a actos o contratos sin participación en el capital de una empresa ' "></app-tool1>
             </div>
 
-            <input type="number" placeholder="" required
+            <input type="number" placeholder=""
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pX-2.5 py-1"
               name="descripcionde_la_operacion_participantes" #descripcionde_la_operacion_participantes="ngModel"
               [class.error]="

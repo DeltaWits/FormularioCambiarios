@@ -287,25 +287,53 @@ export class F4step2Component implements OnInit {
   //   );
   // }
   selectTasa(num: number) {
-    // const currency = exchangeRates.find(rate => rate.code === this.formF4.descripcionde_la_operacion[index].cod_mda_negociacion);
-    // @ts-ignore:
-
-    if (this.formF4.descripcionde_la_operacion.tasa_cambio_dolar != '' && this.formF4.descripcionde_la_operacion.valor_moneda_negociacion != '') {
-      const tasaDeCambio = this.formF4.descripcionde_la_operacion.tasa_cambio_dolar;
-      const vrTotalMdaNegociacion = this.formF4.descripcionde_la_operacion.valor_moneda_negociacion.replace(/[^\d]/g, '');
-      // console.log("valorTM", vrTotalMdaNegociacion)
-      this.formF4.descripcionde_la_operacion.valor_total_dolares = parseFloat(
-        (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
-      );
-
-      if (this.formF4.descripcionde_la_operacion.tasa_cambio_pesos != '' && this.formF4.descripcionde_la_operacion.valor_total_moneda != '') {
-        const tasaDeCambio = this.formF4.descripcionde_la_operacion.tasa_cambio_pesos;
-        const vrTotalMdaNegociacion = this.formF4.descripcionde_la_operacion.valor_moneda_negociacion.replace(/[^\d]/g, '');
-        // console.log("valorTM", vrTotalMdaNegociacion)
-        this.formF4.descripcionde_la_operacion.valor_total_pesos = parseFloat(
-          (tasaDeCambio * vrTotalMdaNegociacion).toFixed(2)
-        );
-
+  
+    // Validate required fields
+    if (
+      this.formF4.descripcionde_la_operacion.tasa_cambio_dolar !== '' && 
+      this.formF4.descripcionde_la_operacion.valor_moneda_negociacion !== ''
+    ) {
+      const tasaDeCambio = this.formF4.descripcionde_la_operacion.tasa_cambio_dolar.toString();
+      const vrTotal = this.formF4.descripcionde_la_operacion.valor_moneda_negociacion.toString();
+      
+      if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+        const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const decimalPlaces = resultado.toString().includes('.')
+          ? resultado.toString().split('.')[1].length
+          : 0;
+        const fractionDigits = Math.min(decimalPlaces, 10);
+        
+        this.formF4.descripcionde_la_operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
+          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          useGrouping: true,
+        });
+      } else {
+        this.formF4.descripcionde_la_operacion.valor_total_dolares = '';
+      }
+    }
+  
+    // Calculate pesos if needed
+    if (
+      this.formF4.descripcionde_la_operacion.tasa_cambio_pesos !== '' &&
+      this.formF4.descripcionde_la_operacion.valor_moneda_negociacion !== ''
+    ) {
+      const tasaDeCambio = this.formF4.descripcionde_la_operacion.tasa_cambio_pesos.toString();
+      const vrTotal = this.formF4.descripcionde_la_operacion.valor_moneda_negociacion.toString();
+      if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+        const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const decimalPlaces = resultado.toString().includes('.')
+          ? resultado.toString().split('.')[1].length
+          : 0;
+        const fractionDigits = Math.min(decimalPlaces, 10);
+        
+        this.formF4.descripcionde_la_operacion.valor_total_pesos = resultado.toLocaleString('de-DE', {
+          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          useGrouping: true,
+        });
+      } else {
+        this.formF4.descripcionde_la_operacion.valor_total_pesos = '';
       }
     }
   }

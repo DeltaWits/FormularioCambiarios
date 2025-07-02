@@ -67,41 +67,46 @@ export class F3step2Component implements OnInit {
     }
   }
   validateForm(step1Form: NgForm) {
-
     if (step1Form.valid) {
-
-
       this.submitInvalid = false;
-      let suma = 0
-      this.formF3.informacion_de_numerales.map((numeral) => {
-        suma = suma + parseFloat(numeral.valor_moneda_estipulada)
-      })
-      if (suma == this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada) {
-        this.formF3.steps.step1 = true
+  
+      // Get the total stipulated value and clean it
+      const totalStipulated = this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada;
+      const totalStipulatedClean = parseFloat(totalStipulated?.replace(/,/g, '.').replace(/\./g, '') || '0');
+  
+      // Calculate sum of numeral values
+      let suma = 0;
+      this.formF3.informacion_de_numerales.forEach((numeral) => {
+        const valor = numeral.valor_moneda_estipulada;
+        const valorClean = parseFloat(valor?.replace(/,/g, '.').replace(/\./g, '') || '0');
+        suma += valorClean;
+      });
+  
+      // Round both numbers to 4 decimal places for accurate comparison
+      const sumaRounded = Math.round(suma * 10000) / 10000;
+      const totalRounded = Math.round(totalStipulatedClean * 10000) / 10000;
+  
+      // Check if values are valid numbers
+      const isValidNumbers = !isNaN(sumaRounded) && !isNaN(totalRounded);
+  
+      if (isValidNumbers && sumaRounded === totalRounded) {
+        this.formF3.steps.step1 = true;
         this.formService.saveFormDataFId(this.formF3, this.formId, true);
-
-
         this.router.navigateByUrl('/forms');
       } else {
         this.showActivePopUp(true);
-
         this.MessaggePopUp.titulo = 'Alerta';
         this.MessaggePopUp.descripcion =
           'La suma de los valores de moneda estipulada debe ser igual al valor total de moneda estipulada';
         this.MessaggePopUp.tipe = 'alert';
-
       }
     } else {
-      console.log("entro", step1Form.valid)
       this.submitInvalid = true;
       this.showActivePopUp(true);
-
       this.MessaggePopUp.titulo = 'Alerta';
       this.MessaggePopUp.descripcion =
-        'Hay campos sin diligenciar, verificar para continuar. *Los campos faltantes se muestran en rojo.';
+        'Hay campos sin diligenciar, verificar para continuar. *Los campos faltantes se muestran en rojo.';
       this.MessaggePopUp.tipe = 'alert';
-
-      // @ts-ignore: Desactivar comprobaciones de TypeScript para esta sección
     }
   }
   showActivePopUp(status: boolean) {
@@ -136,50 +141,105 @@ export class F3step2Component implements OnInit {
   //     1,
   //   );
   // }
+  // selectTasa(num: number) {
+  //   const detalle = this.formF3.detalle_de_la_declaracion;
+
+  //   // Limpiar y convertir valor total moneda
+  //   const valorMonedaLimpio = detalle.valor_total_moneda
+  //     ?.replace(/\./g, '')
+  //     ?.replace(',', '.');
+
+  //   const valorTotal = parseFloat(valorMonedaLimpio);
+
+  //   if (!isNaN(valorTotal)) {
+  //     if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
+  //       const tasa = parseFloat(
+  //         detalle.tasa_de_cambio_dolar.toString().replace(',', '.')
+  //       );
+
+  //       if (!isNaN(tasa)) {
+  //         const resultado = tasa * valorTotal;
+
+  //         detalle.valor_total_dolares = resultado.toLocaleString('de-DE', {
+  //           minimumFractionDigits: 2,
+  //           maximumFractionDigits: 2
+  //         });
+  //       } else {
+  //         detalle.valor_total_dolares = '';
+  //       }
+
+  //     } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
+  //       const tasa = parseFloat(
+  //         detalle.tasa_cambio_moneda_negociacion.toString().replace(',', '.')
+  //       );
+
+  //       if (!isNaN(tasa)) {
+  //         const resultado = tasa * valorTotal;
+
+  //         detalle.valor_moneda_stipulada = resultado.toLocaleString('de-DE', {
+  //           minimumFractionDigits: 2,
+  //           maximumFractionDigits: 2
+  //         });
+  //       } else {
+  //         detalle.valor_moneda_stipulada = '';
+  //       }
+  //     }
+  //   }
+  // }
   selectTasa(num: number) {
+
     const detalle = this.formF3.detalle_de_la_declaracion;
+    if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
 
-    // Limpiar y convertir valor total moneda
-    const valorMonedaLimpio = detalle.valor_total_moneda
-      ?.replace(/\./g, '')
-      ?.replace(',', '.');
-
-    const valorTotal = parseFloat(valorMonedaLimpio);
-
-    if (!isNaN(valorTotal)) {
-      if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
-        const tasa = parseFloat(
-          detalle.tasa_de_cambio_dolar.toString().replace(',', '.')
-        );
-
-        if (!isNaN(tasa)) {
-          const resultado = tasa * valorTotal;
-
+      if (
+        detalle.tasa_de_cambio_dolar !== '' &&
+        detalle.valor_total_moneda !== ''
+      ) {
+        const tasaDeCambio = detalle.tasa_de_cambio_dolar.toString();
+        const vrTotal = detalle.valor_total_moneda.toString();
+        if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+          const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+          const decimalPlaces = resultado.toString().includes('.')
+            ? resultado.toString().split('.')[1].length
+            : 0;
+          const fractionDigits = Math.min(decimalPlaces, 10);
           detalle.valor_total_dolares = resultado.toLocaleString('de-DE', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
+            minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+            maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+            useGrouping: true,
           });
         } else {
           detalle.valor_total_dolares = '';
         }
+      } else {
+        detalle.valor_total_dolares = '';
+      }
 
-      } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
-        const tasa = parseFloat(
-          detalle.tasa_cambio_moneda_negociacion.toString().replace(',', '.')
-        );
+    } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
 
-        if (!isNaN(tasa)) {
-          const resultado = tasa * valorTotal;
-
+      if (
+        detalle.tasa_cambio_moneda_negociacion !== '' &&
+        detalle.valor_total_moneda !== ''
+      ) {
+        const tasaDeCambio = detalle.tasa_cambio_moneda_negociacion.toString();
+        const vrTotal = detalle.valor_total_moneda.toString();
+        if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+          const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+          const decimalPlaces = resultado.toString().includes('.')
+            ? resultado.toString().split('.')[1].length
+            : 0;
+          const fractionDigits = Math.min(decimalPlaces, 10);
           detalle.valor_moneda_stipulada = resultado.toLocaleString('de-DE', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
+            minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+            maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+            useGrouping: true,
           });
         } else {
           detalle.valor_moneda_stipulada = '';
         }
+      } else {
+        detalle.valor_moneda_stipulada = '';
       }
     }
   }
-
 }

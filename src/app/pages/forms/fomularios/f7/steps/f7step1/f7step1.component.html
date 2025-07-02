@@ -365,7 +365,7 @@
             >
               <p class="text-base">Tipo de prestatario o deudor</p>
 
-              <input
+              <select
                 type="text"
                 placeholder=""
                 required
@@ -379,7 +379,11 @@
                 [(ngModel)]="
                   formF7.informacion_del_acreedor.tipo_presario_deudor
                 "
-              />
+              >
+                <option *ngFor="let tipo of tipoPresarioDeudor" [value]="tipo.descripcion">
+                  {{ tipo.descripcion }}
+                </option>
+              </select>
             </div>
 
             <div

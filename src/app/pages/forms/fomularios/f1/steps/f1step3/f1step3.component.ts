@@ -124,36 +124,38 @@ export class F1step3Component implements OnInit {
   }
   selectTasa(index: number) {
     const operacion = this.formF1.descripcion_de_la_operacion[index];
-
+  
     if (
       operacion.tasa_de_cambio !== '' &&
       operacion.vr_total_mda_negociacion !== ''
     ) {
-      // 1. Convertir tasa_de_cambio a número
-      const tasaDeCambio = parseFloat(
-        operacion.tasa_de_cambio.toString().replace(',', '.')
-      );
-
-      // 2. Limpiar y convertir valor de negociación a número
-      const cleanValue = operacion.vr_total_mda_negociacion
-        .replace(/\./g, '')   // eliminar separador de miles
-        .replace(',', '.');   // cambiar coma decimal por punto
-
-      const vrTotal = parseFloat(cleanValue);
-
-      // 3. Si todo es válido, calcular y formatear
-      if (!isNaN(tasaDeCambio) && !isNaN(vrTotal)) {
-        const resultado = tasaDeCambio * vrTotal;
-
-        // 4. Guardar con formato europeo (de-DE): "1.234,56"
+      const tasaDeCambio =operacion.tasa_de_cambio.toString();
+      const vrTotal = operacion.vr_total_mda_negociacion.toString();
+      if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
+        const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const decimalPlaces = resultado.toString().includes('.') 
+        ? resultado.toString().split('.')[1].length 
+        : 0;
+        const fractionDigits = Math.min(decimalPlaces, 10);
         operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+          minimumFractionDigits: fractionDigits<4? fractionDigits : 4,
+          maximumFractionDigits: fractionDigits<4? fractionDigits : 4,
+          useGrouping: true,
         });
       } else {
         operacion.valor_total_dolares = '';
       }
+    } else {
+      operacion.valor_total_dolares = '';
     }
+  }  
+
+  parseEuropeanNumber(input: string): number {
+    if (!input) return NaN;
+  
+    // Elimina los separadores de miles
+    const cleaned = input.replace(/\./g, '').replace(',', '.');
+    return parseFloat(cleaned);
   }
   startTour() {
 
@@ -178,21 +180,21 @@ export class F1step3Component implements OnInit {
           {
             element: step1Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Esta es una ayuda para mas información, al darle click en ver nos saldrá una un modal con la información de cada numeral cambiario dependiendo del formulario</p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Esta es una ayuda para obtener más información. Al hacer clic en ‘Ver’, se abrirá un modal con los datos de cada numeral cambiario, según el formulario</p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },
           {
             element: step2Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Con estos botones puedes agregar mas campos dependiendo del formulario</p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Con estos botones puedes agregar más campos dependiendo del formulario</p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },
           {
             element: step3Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Una vez hayas terminado de ingresar toda la información necesaria, dale guardar y ya podrás descargar el pdf en la pagina principal </p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Una vez ingreses toda la información necesaria, haz clic en ‘Guardar’. Luego podrás descargar el PDF desde la página principal. </p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },

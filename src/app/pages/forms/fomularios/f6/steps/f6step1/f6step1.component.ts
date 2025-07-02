@@ -7,7 +7,7 @@ import { PopUpAlertComponent } from 'src/app/components/Modals/pop-up-alert/pop-
 import { SharedModule } from 'src/app/shared.module';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { textTipoOperacion } from '../../../f1/textosF1';
-import { IFormF6 } from 'src/app/utils/formF6';
+import { IFormF6, tipoPresarioDeudor } from 'src/app/utils/formF6';
 import { FormService } from 'src/app/services/form.service';
 
 import * as XLSX from 'xlsx';
@@ -63,12 +63,13 @@ export class F6step1Component {
   submitInvalid = false
   textTipoOperacion = textTipoOperacion
 
+  tipoPresarioDeudor = tipoPresarioDeudor;
   ShowPopUp = false;
 
   paises: { Nombre: string | any; Codigo: string }[] = [];
 
   ciiu: any;
-  selectDocPN = tiposDocumentos;
+  selectDocPN = tiposDocumentos
   MessaggePopUp = {
     titulo: 'titulo',
     descripcion: 'texto explicativo',
@@ -86,6 +87,10 @@ export class F6step1Component {
   }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
+    this.selectDocPN.push({
+      name: 'No Residente',
+      code: 'NR'
+    })
   }
   onSwitchChange(num: number) {
     if (num == 1) {

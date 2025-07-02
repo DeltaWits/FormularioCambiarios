@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared.module';
 import { IFormF6, numeralesCambiariosF6 } from 'src/app/utils/formF6';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
+import { codigoPropositoPrestamo, tasasInteres } from 'src/app/utils/formF6';
 
 @Component({
   selector: 'app-f6step2',
@@ -51,6 +52,8 @@ export class F6step2Component {
       sector: ''
     },
   }
+  codigoPropositoPrestamo = codigoPropositoPrestamo;
+  tasasInteres = tasasInteres;
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   submitInvalid = false

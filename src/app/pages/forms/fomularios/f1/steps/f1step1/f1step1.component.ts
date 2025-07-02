@@ -64,7 +64,7 @@ export class F1step1Component implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
-    const storedValue = localStorage.getItem('tutorialActivate' || null);
+    const storedValue = localStorage.getItem('tutorialActivate');
 
 
     if (storedValue == null) {
@@ -197,25 +197,24 @@ export class F1step1Component implements OnInit {
         // scrollToElement: false,
 
         steps: [
-          { intro: "Cada formulario es diferente pero con una estructura similar " },
           {
             element: step1Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Recuerda llenar los campos correspondientes, trata de empezar siempre por tipo de operación  </p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Recuerda completar los campos correspondientes; trata de empezar siempre por el tipo de operación.  </p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },
           {
             element: step2Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Si ves estos signos (?), al pasar el mouse por encima de ellos nos saldrá un texto de ayuda </p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Consulta los textos de ayuda pasando el mouse por encima del signo (?).</p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },
           {
             element: step3Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Una vez hayas completado los campos necesarios no olvides darle continuar para guardar tus datos </p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Completa los campos necesarios y haz clic en Continuar para guardar tus datos </p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },

@@ -58,5 +58,38 @@ export interface IFormF7 {
 
 
 }
+export const codigoPropositoPrestamo = [
+  { id: 43, descripcion: 'Anticipos para futuras capitalizaciones' },
+  { id: 35, descripcion: 'Capital de trabajo' },
+  { id: 47, descripcion: 'Crédito externo activo derivado de la ejecución de avales o garantías' },
+  { id: 33, descripcion: 'Exportaciones' },
+  { id: 36, descripcion: 'Exportaciones - Venta de instrumentos de pago' },
+  { id: 37, descripcion: 'Proceso de reorganización empresarial internacional, o actos o negocios jurídicos' },
+  
+]
+
+export const tasasInteres = [
+  { id: 1, descripcion: 'PRIME RATE' },
+  { id: 2, descripcion: 'LIBOR 1 MES' },
+  { id: 4, descripcion: 'Otra' },
+  { id: 5, descripcion: 'Sin interés' },
+  { id: 8, descripcion: 'LIBOR 2 MESES' },
+  { id: 9, descripcion: 'LIBOR 3 MESES' },
+  { id: 10, descripcion: 'LIBOR 6 MESES' },
+  { id: 11, descripcion: 'LIBOR 12 MESES' },
+  { id: 3, descripcion: 'Fija' },
+  { id: 12, descripcion: 'DTF - estipulada en moneda legal' },
+  { id: 13, descripcion: 'UVR - estipulada en moneda legal' },
+  { id: 14, descripcion: 'IPC - estipulada en moneda legal' },
+  { id: 15, descripcion: 'IBR - estipulada en moneda legal' },
+  { id: 15, descripcion: 'SOFR' },
+  { id: 16, descripcion: 'ESTR' }
+];
+
+export const tipoPresarioDeudor = [
+  { id: 2, descripcion: 'Filial o sucursal de banco colombiano' },
+  { id: 19, descripcion: 'No residentes personas jurídicas o asimiladas' },
+  { id: 20, descripcion: 'Otros no residentes personas naturales' },
+]
 
 export const numeralesCambiariosF7 = []
