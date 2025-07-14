@@ -47,8 +47,8 @@ export class F4step2Component implements OnInit {
       moneda_registro: 'COP',
       tasa_cambio_pesos: '',
       valor_total_pesos: '',
-      participantes: '',
-      motivo_sin_participantes: ''
+      participaciones: '',
+      motivo_sin_participaciones: ''
 
     },
     informacion_residente: {

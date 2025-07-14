@@ -141,24 +141,21 @@
           " />
       </div>
     </div>
-    <div class="col-span-12 lg:col-span-6 mt-4 grid grid-cols-12">
+    <div class="col-span-12 lg:col-span-6 mt-4 grid grid-cols-12 pr-2">
       <div class="col-span-12">
         <h3 class="font-semibold text-lg">Detalle de la declaración</h3>
       </div>
 
       <div class="col-span-12 flex items-center justify-between p-1">
         <p class="text-base">Devolución</p>
-        <div>
-          <div class="flex gap-1 justify-center">
-            <div class="switch-container">
-              <label class="switch">
-                <input type="checkbox" name="declaracion_detalle_devolucion" #declaracion_detalle_devolucion="ngModel"
-                  [(ngModel)]="formF1.declaracion_detalle.devolucion" />
-                <span class="slider"></span>
-              </label>
-            </div>
-            <!-- {{ formF1.declaracion_detalle.devolucion }} -->
-          </div>
+       
+        <div class="flex gap-1 justify-center items-center h-9">
+          <label for="">SI</label>
+          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.devolucion" required value="SI">
+          <label class="ml-2" for="">NO</label>
+          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.devolucion" required value="NO">
         </div>
       </div>
       <div class="col-span-12 flex items-center justify-between p-1">
@@ -168,29 +165,15 @@
               'Indique si usted es proveedor de servicios de pago agregado que está entregando información consolidada'
             "></app-tool1>
         </div>
-
-        <div>
-          <div class="flex gap-1 justify-center">
-            <div class="switch-container">
-              <label class="switch">
-                <input type="checkbox" name="declaracion_detalle_informacion_consolidada"
-                  #declaracion_detalle_informacion_consolidada="ngModel" [(ngModel)]="
-                    formF1.declaracion_detalle.informacion_consolidada
-                  " />
-                <span class="slider"></span>
-              </label>
-            </div>
-          </div>
-          <!-- <div
-            class="alertInput text-center"
-            *ngIf="
-              declaracion_detalle_informacion_consolidada.invalid &&
-              submitInvalid
-            "
-          >
-            <p>Campo obligatorio.</p>
-          </div> -->
+        <div class="flex gap-1 justify-center items-center h-9">
+          <label for="">SI</label>
+          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada" required value="SI">
+          <label class="ml-2" for="">NO</label>
+          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada" required value="NO">
         </div>
+       
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6 mt-4">
@@ -211,18 +194,18 @@
           <option value="Fondo deInversiónColectiva">
             Fondo deInversiónColectiva
           </option>
-          <option value="OTRO">Otro</option>
+          <option value="Otros">Otros</option>
         </select>
       </div>
-      <div class="w-full grid grid-cols-12 gap-1">
-        <div class="col-span-12 lg:col-span-12 xl:col-span-6" *ngIf="formF1.tipo_identidad.tipo == 'OTRO'">
+      <!-- <div class="w-full grid grid-cols-12 gap-1">
+        <div class="col-span-12 lg:col-span-12 xl:col-span-6" *ngIf="formF1.tipo_identidad.tipo == 'Otros'">
           <label class="text-base">¿Cual?</label>
           <input placeholder=""
             class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             required name="tipo_identidad_otros" #tipo_identidad_otros="ngModel"
             [class.error]="tipo_identidad_otros.invalid && submitInvalid" [(ngModel)]="formF1.tipo_identidad.otros" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="col-span-12 mt-4 grid grid-cols-12">

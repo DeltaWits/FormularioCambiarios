@@ -15,6 +15,7 @@ import { FormService } from 'src/app/services/form.service';
 import { formsData } from 'src/app/utils/formsData';
 
 import * as introJs from 'intro.js';
+import { Tool1Component } from "../../components/tooltips/tool1/tool1.component";
 @Component({
   selector: 'app-forms',
   standalone: true,
@@ -31,8 +32,8 @@ import * as introJs from 'intro.js';
     UserDataComponent,
     PopUpAlertComponent,
     TerminosYCondicionesComponent,
-
-  ],
+    Tool1Component
+],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
 })
@@ -178,7 +179,7 @@ export class FormsComponent implements AfterViewInit {
           {
             element: step1Element, // Selector del elemento que deseas resaltar en el tour
             intro:
-              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Al dar click se abrirá un popUp con una lista de los formularios a crear </p></div > ',
+              '<div  class="d-flex gap-2 flex-column justify-content-center align-items-center"> <p>Al hacer clic, se abrirá una ventana emergente con opciones de formularios a crear </p></div > ',
             position: 'top',
             tooltipClass: 'step3-tooltip',
           },

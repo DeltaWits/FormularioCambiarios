@@ -61,7 +61,6 @@
                 />
               </div>
               <div
-                *ngIf="form?.tipo == 'F6' || form?.tipo == 'F7'"
                 class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1"
               >
                 <p class="text-base w-full">Documento</p>
@@ -102,11 +101,11 @@
             </button>
           </form>
         </div>
-        <div class="px-4 py-2 flex w-full justify-end border-t">
+        <div *ngIf="" class="px-4 py-2 flex w-full justify-end border-t">
           <button
             type="button"
             (click)="sendHtmlToApi()"
-            class="text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:darkoutline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 :bg-gray-700"
+            class="text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:darkoutline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 "
           >
             <div role="status" *ngIf="loader">
               <svg

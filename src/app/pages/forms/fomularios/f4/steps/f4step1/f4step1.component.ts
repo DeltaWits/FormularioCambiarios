@@ -41,6 +41,7 @@ export class F4step1Component implements AfterViewInit {
       numero_declaracion_cambio: ''
     },
     destino_inversion: '',
+    destino_inversion_code: '',
     Identificacion_de_la_empresa_reseptora: {
       tipo_identificacion: '',
       numero_identifiacion: '',

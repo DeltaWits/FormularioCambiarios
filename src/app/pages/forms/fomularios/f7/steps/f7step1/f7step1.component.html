@@ -65,6 +65,7 @@
           [class.error]="
             tipo_de_operacion_numero_de_credito.invalid && submitInvalid
           "
+          onlyAlfaNums
           class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
         />
 
@@ -164,7 +165,13 @@
                 [(ngModel)]="
                   formF7.informacion_del_residente_deudor.codigo_ciudad
                 "
+                list="ciudades"
               />
+              <datalist id="ciudades">
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.codigo">
+                  {{ ciudad.Nombre }}
+                </option>
+              </datalist>
             </div>
             <div class="col-span-12 md:col-span-6 p-1">
               <p class="text-base">Dirección</p>
@@ -215,6 +222,7 @@
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_correo22.invalid && submitInvalid"
                 [(ngModel)]="formF7.informacion_del_residente_deudor.correo"
+                appEmailDomainValidator
               />
             </div>
             <div
@@ -401,6 +409,7 @@
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_correo.invalid && submitInvalid"
                 [(ngModel)]="formF7.informacion_del_acreedor.correo"
+                appEmailDomainValidator
               />
             </div>
             <div

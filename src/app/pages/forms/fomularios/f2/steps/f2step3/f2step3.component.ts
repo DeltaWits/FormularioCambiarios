@@ -73,13 +73,12 @@ export class F2step3Component {
       const valorReintegradoUSD = parseFloat(this.formF2.informacion_DIAN[0].valor_reintegrado_en_USD?.replace(/,/g, '.').replace(/\./g, '') || '0');
 
       // Round both numbers to 4 decimal places for comparison
-      const reintegroNetoRounded = Math.round(reintegroNeto * 10000) / 10000;
-      const valorTotalDolaresRounded = Math.round(valorTotalDolares * 10000) / 10000;
-
+      const reintegroNetoRounded = Math.round(parseFloat(this.formF2.informacion_DIAN_total.Reintegro_neto));
+      const valorTotalDolaresRounded = Math.round(parseFloat(this.formF2.descripcion_de_la_operacion.valor_total_dolares));
       // Check if values are valid numbers
       const isReintegroValid = !isNaN(reintegroNetoRounded) && !isNaN(valorTotalDolaresRounded);
       const isValorReintegradoValid = !isNaN(valorReintegradoUSD);
-
+      console.log(isReintegroValid, reintegroNetoRounded, valorTotalDolaresRounded, isValorReintegradoValid)
       if (isReintegroValid && reintegroNetoRounded === valorTotalDolaresRounded && isValorReintegradoValid) {
         this.formF2.steps.step1 = true
         this.formService.saveFormDataFId(this.formF2, this.formId, true);
@@ -91,21 +90,19 @@ export class F2step3Component {
 
         this.MessaggePopUp.titulo = 'Alerta';
         this.MessaggePopUp.descripcion =
-          'El reintegro neto debe ser igual al valor total en dolares';
+          'El reintegro neto debe ser igual al valor total en dólares';
         this.MessaggePopUp.tipe = 'alert';
 
       }
     } else {
-      console.log("entro", step1Form.valid)
       this.submitInvalid = true;
       this.showActivePopUp(true);
 
       this.MessaggePopUp.titulo = 'Alerta';
       this.MessaggePopUp.descripcion =
-        'Hay campos sin diligenciar, verificar para continuar. *Los campos faltantes se muestran en rojo.';
+      'Hay campos sin diligenciar, verificar para continuar. *Los campos faltantes se muestran en rojo.';
       this.MessaggePopUp.tipe = 'alert';
 
-      // @ts-ignore: Desactivar comprobaciones de TypeScript para esta sección
     }
   }
   showActivePopUp(status: boolean) {

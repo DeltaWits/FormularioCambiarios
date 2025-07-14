@@ -20,7 +20,7 @@
       </div>
       <div class="col-span-4 p-3">
         <div>
-          <h4 class="text-sm w-100 font-semibold text-start">
+          <h4 class="text-10px w-100 font-semibold text-start">
             I. Tipo de operación
           </h4>
           <div class="grid grid-cols-12">
@@ -56,7 +56,7 @@
       <div class="col-span-3 p-1">
         <p class="text-10px text-start pb-1">Operación de</p>
         <p
-          class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
         >
           {{ form.data.tipo_de_operacion.ingreso_o_egreso }}
         </p>
@@ -64,14 +64,14 @@
       <div class="col-span-3 p-1">
         <p class="text-10px text-start pb-1">Devolucion</p>
         <p
-          class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
         >
           {{ form.data.tipo_de_operacion.devolucion }}
         </p>
       </div>
 
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           II. Identificación de la declaración
         </h4>
       </div>
@@ -79,7 +79,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha del Tramite</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.fecha_tramite }}
           </p>
@@ -88,7 +88,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.nit_imc }}
             </p>
@@ -96,7 +96,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.dv }}
             </p>
@@ -108,14 +108,14 @@
             <span class="text-[10px]">(Uso exclusivo IMC)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.numero_declaracion }}
           </p>
         </div>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           III. Identificación de la operación anterior
           <span class="text-xs">(Para cambio de formulario o corrección)</span>
         </h4>
@@ -124,7 +124,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha de la operación inicial</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
           </p>
@@ -133,7 +133,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.nit_imc }}
             </p>
@@ -141,7 +141,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.dv }}
             </p>
@@ -152,7 +152,7 @@
             Deuda externa <span class="text-[10px]">(si aplica)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior.numero_deuda_externa
@@ -164,7 +164,7 @@
             Número de declaración de cambio
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior
@@ -175,7 +175,7 @@
       </div>
 
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           IV. Detalle del crédito
         </h4>
       </div>
@@ -184,7 +184,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Número de préstamo</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_del_credito.numero_prestamo }}
           </p>
@@ -192,7 +192,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tipo de Identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_del_credito.tipo_identificacion }}
           </p>
@@ -200,7 +200,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Número de identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_del_credito.numero_identificacion }}
           </p>
@@ -208,7 +208,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Nombre del deudor</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_del_credito.nombre_deudor }}
           </p>
@@ -216,7 +216,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Nombre del acreedor</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_del_credito.nombre_acreedor }}
           </p>
@@ -224,7 +224,7 @@
       </div>
 
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           V. Descripción de la declaración de cambio
         </h4>
       </div>
@@ -233,7 +233,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Cod. Mda. Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_de_la_declaracion.codigo_moneda }}
           </p>
@@ -241,25 +241,25 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Vr. Total Mda Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.detalle_de_la_declaracion.valor_total_moneda }}
+            {{ form.data.detalle_de_la_declaracion.valor_total_moneda | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tasa de cambio a dólar</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.detalle_de_la_declaracion.tasa_de_cambio_dolar }}
+            {{ form.data.detalle_de_la_declaracion.tasa_de_cambio_dolar | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Valor total en dólares</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.detalle_de_la_declaracion.valor_total_dolares }}
+            {{ form.data.detalle_de_la_declaracion.valor_total_dolares | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
@@ -267,7 +267,7 @@
             Tasa de cambio moneda estipulada
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.detalle_de_la_declaracion.tasa_cambio_moneda_negociacion
@@ -279,7 +279,7 @@
             Valor total en moneda Estipulada
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.detalle_de_la_declaracion.valor_moneda_stipulada }}
           </p>
@@ -287,17 +287,17 @@
       </div>
 
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           VI. Información de numerales
         </h4>
       </div>
       <div class="col-span-12 p-2 border">
         <table class="w-full">
-          <thead class="p-2 border-b-[1px] border-black">
+          <thead class="p-2 border-b-[1px] border-b-1px border-black">
             <tr>
               <th class="py-2 text-10px">Numeral cambiario</th>
               <th class="py-2 text-10px">Valor moneda negociación</th>
-              <th class="py-2 text-10px">Valor moneda en dolares</th>
+              <th class="py-2 text-10px">Valor moneda en dólares</th>
               <th class="py-2 text-10px">Valor Moneda estipulada</th>
             </tr>
           </thead>
@@ -313,14 +313,14 @@
                 {{ form.data.informacion_de_numerales[i].numeral_cambiario }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.informacion_de_numerales[i].valor_total_moneda }}
+                {{ form.data.informacion_de_numerales[i].valor_total_moneda | dolarFormat: '$' }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.informacion_de_numerales[i].valor_dolares }}
+                {{ form.data.informacion_de_numerales[i].valor_dolares | dolarFormat: '$' }}
               </td>
               <td class="py-0.5 text-10px">
                 {{
-                  form.data.informacion_de_numerales[i].valor_moneda_estipulada
+                  form.data.informacion_de_numerales[i].valor_moneda_estipulada | dolarFormat: '$'
                 }}
               </td>
             </tr>
@@ -330,10 +330,10 @@
 
       <!-- <div class="col-span-12 p-2 border flex flex-wrap mt-2">
         <p class="text-10px text-justify mt-1">Observaciones</p>
-        <div class="w-[90%] p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
+        <div class="w-[90%] p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
       </div> -->
       <div class="col-span-12 p-1 mt-2">
         <p class="text-[8px] text-justify">
@@ -352,18 +352,21 @@
         </p>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           VII. Identificación del declarante
         </h4>
       </div>
-      <div class="col-span-12 border p-2 grid grid-cols-2">
-        <div class="col-span-1 pr-1">
+      <div class="col-span-12 border p-2 grid grid-cols-12">
+        <div class="col-span-6 pr-1">
           <p class="text-10px">Nombre</p>
-          <div class="px-3 py-1 border text-10px">{{ usuario.nombre }}</div>
+          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.nombre }}</div>
+          <p class="text-10px mt-2">Documento</p>
+          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.documento }}</div>
         </div>
-        <div class="col-span-1">
+        
+        <div class="col-span-6">
           <p class="text-10px">Firma</p>
-          <div class="p-5 border-b-[1px]"></div>
+          <div class="p-5 border-b-[1px] border-b-1px pt-4"></div>
         </div>
       </div>
     </div>

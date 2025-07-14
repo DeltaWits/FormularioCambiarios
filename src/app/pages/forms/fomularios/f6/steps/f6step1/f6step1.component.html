@@ -214,6 +214,7 @@
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_correo23.invalid && submitInvalid"
                 [(ngModel)]="formF6.informacion_del_residente_deudor.correo"
+                appEmailDomainValidator
               />
             </div>
             <div
@@ -398,6 +399,7 @@
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_correo.invalid && submitInvalid"
                 [(ngModel)]="formF6.informacion_del_acreedor.correo"
+                appEmailDomainValidator
               />
             </div>
             <div

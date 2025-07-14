@@ -43,11 +43,11 @@ export interface IFormF7 {
     valor_cuota: string | number,
 
   }],
-  informacion_transmision_procedimientos_credito: {
+  informacion_transmision_procedimientos_credito: [{
     tipo_transmision: string,
     numero_de_creaditos_sustituir: string
     codigo_moneda: string
-  },
+  }],
   datos_del_deudor: {
     naturaleza: string,
     tipo_empresa: string,
@@ -55,7 +55,7 @@ export interface IFormF7 {
     cual_superintendencia: string,
     sector: string
   },
-
+  observaciones: string
 
 }
 export const codigoPropositoPrestamo = [

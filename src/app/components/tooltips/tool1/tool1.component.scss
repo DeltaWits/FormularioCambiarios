@@ -1,5 +1,5 @@
 .tooltip {
-  position: relativo;
+  position: relative;
   border-radius: 4px;
   z-index: 10;
 }
@@ -9,13 +9,15 @@
 .tooltipContent {
   position: absolute;
   margin-top: -40px;
-  max-width: 500px;
+  width: max-content;
+  max-width: 90vw;
+  min-width: 150px;
   color: #fff;
   bottom: 20px;
-  min-width: 150px;
   margin-left: -70px;
   border-radius: 4px;
   padding: 0.5rem;
   z-index: 10;
   display: none;
+  word-wrap: break-word;
 }

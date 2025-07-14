@@ -20,7 +20,7 @@
       </div>
       <div class="col-span-4 p-3">
         <div>
-          <h4 class="text-sm w-100 font-semibold text-start">
+          <h4 class="text-10px w-100 font-semibold text-start">
             I. Tipo de operación
           </h4>
           <div class="grid grid-cols-12">
@@ -56,7 +56,7 @@
       <div class="col-span-3 p-1">
         <p class="text-10px text-start pb-1">Operación de</p>
         <p
-          class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
         >
           {{ form.data.tipo_de_operacion.ingreso_o_egreso }}
         </p>
@@ -64,13 +64,13 @@
       <div class="col-span-3 p-1">
         <p class="text-10px text-start pb-1">Devolucion</p>
         <p
-          class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+          class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
         >
           {{ form.data.tipo_de_operacion.devolucion }}
         </p>
       </div>
       <div class="col-span-12 px-1 pb-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           II. Identificación de la declaración
         </h4>
       </div>
@@ -78,7 +78,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha del Tramite</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.fecha_tramite }}
           </p>
@@ -87,7 +87,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.nit_imc }}
             </p>
@@ -95,7 +95,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.dv }}
             </p>
@@ -107,14 +107,14 @@
             <span class="text-[10px]">(Uso exclusivo IMC)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.numero_declaracion }}
           </p>
         </div>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           III. Identificación de la operación anterior (Para Cambio de
           Formulario o Corrección)
         </h4>
@@ -123,7 +123,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha de la operación inicial</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
           </p>
@@ -132,7 +132,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.nit_imc }}
             </p>
@@ -140,7 +140,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.dv }}
             </p>
@@ -151,7 +151,7 @@
             Número deuda externa <span class="text-[10px]">(si aplica)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior.numero_deuda_externa
@@ -163,7 +163,7 @@
             Número de declaración de cambio
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior
@@ -173,7 +173,7 @@
         </div>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           IV. Destino de la inversion
           <span class="text-xs">IECO - INVERSIÓN EXTRANJERA EN COLOMBIA</span>
         </h4>
@@ -182,23 +182,23 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Destino de la inversion</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.destino_inversion }}
           </p>
         </div>
       </div>
       <div class="col-span-6 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           V. Identificación de la empresa receptora o administrador local del
           fondo deInversión(Portafolio)
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
-        <div class="col-span-3 p-1">
+        <div class="col-span-3 pr-1">
           <p class="text-10px text-start pb-1">Tipo de Identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.Identificacion_de_la_empresa_reseptora
@@ -210,7 +210,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Número de identificación2</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{
                 form.data.Identificacion_de_la_empresa_reseptora
@@ -221,7 +221,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.Identificacion_de_la_empresa_reseptora.dv }}
             </p>
@@ -230,7 +230,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Nombre</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.nombre }}
           </p>
@@ -238,7 +238,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">País</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.pais }}
           </p>
@@ -246,7 +246,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Código CIIU</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.codigo_CIIU }}
           </p>
@@ -254,7 +254,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Correo</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.correo }}
           </p>
@@ -262,7 +262,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Teléfono</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.telefono }}
           </p>
@@ -270,14 +270,14 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Dirección</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.Identificacion_de_la_empresa_reseptora.direccion }}
           </p>
         </div>
       </div>
       <div class="col-span-6 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           VI. Información del administrador del encargo fiduciario
         </h4>
       </div>
@@ -285,7 +285,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tipo de Identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.informacion_administrador_del_encargo
@@ -297,7 +297,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Número de identificación2</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{
                 form.data.informacion_administrador_del_encargo
@@ -308,7 +308,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.informacion_administrador_del_encargo.dv }}
             </p>
@@ -317,7 +317,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Nombre</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.informacion_administrador_del_encargo.nombre }}
           </p>
@@ -325,7 +325,7 @@
       </div>
 
       <div class="col-span-6 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           VII. Identificación del inversionista (nacional o extranjero) o fondo
           deInversión(Portafolio)
         </h4>
@@ -335,7 +335,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tipo de Identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.tipo_identificacion }}
           </p>
@@ -343,7 +343,7 @@
         <div class="col-span-3 pr-1">
           <p class="text-10px text-start pb-1">Número de identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_del_inversionista.numero_identifiacion
@@ -353,7 +353,7 @@
         <div class="col-span-3 pl-1">
           <p class="text-10px text-start pb-1">Nombre</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.nombre }}
           </p>
@@ -362,7 +362,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">País</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.pais }}
           </p>
@@ -370,7 +370,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Correo</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.correo }}
           </p>
@@ -378,7 +378,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Código CIIU</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.codigo_CIIU }}
           </p>
@@ -386,7 +386,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Teléfono (Nvl. nacional)</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.telefono }}
           </p>
@@ -394,7 +394,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Dirección (Nvl. nacional)</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_del_inversionista.direccion }}
           </p>
@@ -402,7 +402,7 @@
       </div>
 
       <div class="col-span-6 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           VIII. Descripción de la operación
         </h4>
       </div>
@@ -411,7 +411,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Numeral cambiario</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.descripcionde_la_operacion.numeral_cambiario }}
           </p>
@@ -419,7 +419,7 @@
         <div class="col-span-3 pr-1">
           <p class="text-10px text-start pb-1">Cod. Mda. Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.descripcionde_la_operacion.codigo_moneda }}
           </p>
@@ -427,32 +427,32 @@
         <div class="col-span-3 pl-1">
           <p class="text-10px text-start pb-1">Vr. Total Mda Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.valor_moneda_negociacion }}
+            {{ form.data.descripcionde_la_operacion.valor_moneda_negociacion | dolarFormat: '$' }}
           </p>
         </div>
 
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tasa de cambio a dólar</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.tasa_cambio_dolar }}
+            {{ form.data.descripcionde_la_operacion.tasa_cambio_dolar | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Valor total en dólares</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.valor_total_dolares }}
+            {{ form.data.descripcionde_la_operacion.valor_total_dolares | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Moneda de registro</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.descripcionde_la_operacion.moneda_registro }}
           </p>
@@ -460,40 +460,48 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tasa de cambio a pesos</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.tasa_cambio_pesos }}
+            {{ form.data.descripcionde_la_operacion.tasa_cambio_pesos | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Valor total en pesos</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.valor_total_pesos }}
+            {{ form.data.descripcionde_la_operacion.valor_total_pesos | dolarFormat: '$' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">Participantes</p>
+          <p class="text-10px text-start pb-1">Participaciones</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcionde_la_operacion.participantes }}
+            {{ form.data.descripcionde_la_operacion.participaciones }}
+          </p>
+        </div>
+        <div *ngIf="form.data.descripcionde_la_operacion.participaciones == 0" class="col-span-9 p-1">
+          <p class="text-10px text-start pb-1">Participaciones</p>
+          <p
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+          >
+            {{ form.data.descripcionde_la_operacion.motivo_sin_participaciones }}
           </p>
         </div>
       </div>
 
       <div class="col-span-6 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           IX. Información del residente persona jurídica
         </h4>
       </div>
 
       <div class="grid grid-cols-12 col-span-12 border p-2">
-        <div class="col-span-3 p-1">
+        <div class="col-span-3 pr-1">
           <p class="text-10px text-start pb-1">Naturaleza</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.informacion_residente.naturaleza }}
           </p>
@@ -501,14 +509,14 @@
         <div class="col-span-3 pr-1">
           <p class="text-10px text-start pb-1">Tipo de empresa</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.informacion_residente.tipo_empresa }}
           </p>
         </div>
-        <div class="col-span-3 pr-1">
+        <div class="col-span-4 pr-1">
           <p class="text-10px">¿Es vigilado por alguna superintendencia?</p>
-          <div class="flex gap-2">
+          <div class="flex gap-2 w-full justify-center">
             <div class="flex gap-1">
               <p class="text-10px">SI</p>
               <input
@@ -537,12 +545,12 @@
             </div>
           </div>
         </div>
-        <div class="col-span-3 p-1">
+        <div class="col-span-6 p-1">
           <p class="text-10px text-start pb-1">
             Si se encuentra vigilado por alguna superintendencia, indique cuál
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.informacion_residente.es_vigilado_superintendencia ===
@@ -554,9 +562,9 @@
         </div>
 
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">sector</p>
+          <p class="text-10px text-start pb-1">Sector</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 w-full border rounded-sm bg-blue-100"
+            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.informacion_residente.tipo_empresa }}
           </p>
@@ -564,7 +572,7 @@
       </div>
 
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start mb-2">
+        <h4 class="text-10px w-100 font-semibold text-start mb-2">
           X. Información requerida para la DIAN
         </h4>
         <p class="text-10px text-justify mt-4">
@@ -578,12 +586,12 @@
       </div>
       <div class="col-span-12 p-2 border">
         <table class="w-full">
-          <thead class="p-2 border-b-[1px] border-black">
+          <thead class="p-2 border-b-[1px] border-b-1px border-black">
             <tr>
               <th class="py-2 text-10px">
                 Número de declaración de importación y/o factura comercial
               </th>
-              <th class="py-2 text-10px">Valor FOB en dolares DIM y/o FRAM</th>
+              <th class="py-2 text-10px">Valor FOB en dólares DIM y/o FRAM</th>
             </tr>
           </thead>
           <tbody>
@@ -595,7 +603,7 @@
                 {{ form.data.informacion_DIAN[i].numero_o_factura }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.informacion_DIAN[i].valor_FOB }}
+                {{ form.data.informacion_DIAN[i].valor_FOB | dolarFormat: '$' }}
               </td>
             </tr>
           </tbody>
@@ -603,10 +611,10 @@
       </div>
       <div class="col-span-12 p-2 border flex flex-wrap mt-2">
         <p class="text-10px text-justify mt-1">Observaciones</p>
-        <div class="w-[90%] p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
-        <div class="w-full p-2 border-b-[1px]"></div>
+        <div class="w-[90%] p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
+        <div class="w-full p-2 border-b-[1px] border-b-1px"></div>
       </div>
       <div class="col-span-12 p-1 mt-2">
         <p class="text-[8px] text-justify">
@@ -624,19 +632,23 @@
           condiciones de esta solicitud.
         </p>
       </div>
+      
       <div class="col-span-12 p-1">
-        <h4 class="text-sm w-100 font-semibold text-start">
+        <h4 class="text-10px w-100 font-semibold text-start">
           XI. Identificación del declarante
         </h4>
       </div>
-      <div class="col-span-12 border p-2 grid grid-cols-2">
-        <div class="col-span-1 pr-1">
+      <div class="col-span-12 border p-2 grid grid-cols-12">
+        <div class="col-span-6 pr-1">
           <p class="text-10px">Nombre</p>
-          <div class="px-3 py-1 border text-10px">{{ usuario.nombre }}</div>
+          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.nombre }}</div>
+          <p class="text-10px mt-2">Documento</p>
+          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.documento }}</div>
         </div>
-        <div class="col-span-1">
+        
+        <div class="col-span-6">
           <p class="text-10px">Firma</p>
-          <div class="p-5 border-b-[1px]"></div>
+          <div class="p-5 border-b-[1px] border-b-1px pt-4"></div>
         </div>
       </div>
     </div>

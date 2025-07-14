@@ -50,7 +50,6 @@ export class F1step2Component {
       this.formService.saveFormDataFId(this.formF1, this.formId);
       this.step.emit('3');
     } else {
-      console.log("entro", step1Form.valid)
       this.submitInvalid = true;
       this.showActivePopUp(true);
 

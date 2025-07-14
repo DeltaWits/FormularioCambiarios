@@ -39,11 +39,11 @@ export class F6step2Component {
       valor_cuota: '',
 
     }],
-    informacion_transmision_procedimientos_credito: {
+    informacion_transmision_procedimientos_credito:[ {
       tipo_transmision: '',
       numero_de_creaditos_sustituir: '',
       codigo_moneda: ''
-    },
+    }],
     datos_del_deudor: {
       naturaleza: '',
       tipo_empresa: '',
@@ -51,6 +51,7 @@ export class F6step2Component {
       cual_superintendencia: '',
       sector: ''
     },
+    observaciones: ''
   }
   codigoPropositoPrestamo = codigoPropositoPrestamo;
   tasasInteres = tasasInteres;
@@ -115,6 +116,19 @@ export class F6step2Component {
       index,
       1,
     );
+  }
+  addItem() {
+    this.formF6.informacion_transmision_procedimientos_credito.push({
+      tipo_transmision: '',
+      numero_de_creaditos_sustituir: '',
+      codigo_moneda: ''
+    });
+  }
+
+  removeItem(index: number) {
+    if (this.formF6.informacion_transmision_procedimientos_credito.length > 1) {
+      this.formF6.informacion_transmision_procedimientos_credito.splice(index, 1);
+    }
   }
   // agregarImportador() {
   //   this.formF6.descripcionde_la_operacion.push({

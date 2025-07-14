@@ -24,6 +24,7 @@ export interface IFormF4 {
     numero_declaracion_cambio: string | number
   },
   destino_inversion: string,
+  destino_inversion_code:string,
   Identificacion_de_la_empresa_reseptora: {
     tipo_identificacion: string,
     numero_identifiacion: string | number,
@@ -62,8 +63,8 @@ export interface IFormF4 {
     moneda_registro: string,
     tasa_cambio_pesos: string,
     valor_total_pesos: string,
-    participantes: string,
-    motivo_sin_participantes: string
+    participaciones: string,
+    motivo_sin_participaciones: string
 
   }
   informacion_residente: {

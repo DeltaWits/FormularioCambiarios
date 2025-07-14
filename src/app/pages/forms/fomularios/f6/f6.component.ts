@@ -65,11 +65,11 @@ export class F6Component {
       valor_cuota: '',
 
     }],
-    informacion_transmision_procedimientos_credito: {
+    informacion_transmision_procedimientos_credito:[ {
       tipo_transmision: '',
       numero_de_creaditos_sustituir: '',
       codigo_moneda: ''
-    },
+    }],
     datos_del_deudor: {
       naturaleza: '',
       tipo_empresa: '',
@@ -77,6 +77,7 @@ export class F6Component {
       cual_superintendencia: '',
       sector: ''
     },
+    observaciones: ''
   }
   constructor(
     private route: ActivatedRoute,

@@ -45,6 +45,7 @@ export class F4Component {
       numero_declaracion_cambio: ''
     },
     destino_inversion: '',
+    destino_inversion_code: '',
     Identificacion_de_la_empresa_reseptora: {
       tipo_identificacion: '',
       numero_identifiacion: '',
@@ -83,8 +84,8 @@ export class F4Component {
       moneda_registro: 'COP',
       tasa_cambio_pesos: '',
       valor_total_pesos: '',
-      participantes: '',
-      motivo_sin_participantes: ''
+      participaciones: '',
+      motivo_sin_participaciones: ''
 
     },
     informacion_residente: {

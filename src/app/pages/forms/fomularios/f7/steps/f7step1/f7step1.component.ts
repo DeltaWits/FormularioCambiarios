@@ -78,6 +78,7 @@ export class F7step1Component {
   paises: { Nombre: string | any; Codigo: string }[] = [];
 
   ciiu: any;
+  ciudades: any;
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
@@ -85,6 +86,7 @@ export class F7step1Component {
   ) {
     this.loadExcelFromCiiu()
     this.getPaises()
+    this.loadExcelFromCities()
   }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
@@ -235,6 +237,27 @@ export class F7step1Component {
           const firstSheetName = workbook.SheetNames[0];
           const worksheet = workbook.Sheets[firstSheetName];
           this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
+  loadExcelFromCities() {
+    const fileUrl = './assets/ciudades.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciudades = XLSX.utils.sheet_to_json(worksheet, { raw: true });
           // Los datos del archivo Excel están disponibles en this.excelData
         } else {
           console.error('No se pudo cargar el archivo Excel.');

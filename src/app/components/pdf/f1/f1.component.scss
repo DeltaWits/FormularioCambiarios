@@ -1,7 +1,4 @@
-p {
-  margin-top: -6px;
-  margin-bottom: 10px;
-}
+
 td {
   border: 1px #bbb9b9 solid;
 }
@@ -14,7 +11,9 @@ td {
 .py-1 p {
   font-weight: 800;
 }
-.bg-blue-100 {
-  margin-bottom: 2px !important;
-  min-height: 20px;
+.mtr-2{
+ margin-top: 10px;
+}
+.min-h-15px {
+  min-height: 24px;
 }

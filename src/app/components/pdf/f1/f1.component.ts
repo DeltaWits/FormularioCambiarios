@@ -3,11 +3,12 @@ import { HeaderComponent } from '../header/header.component';
 import { IForm } from 'src/app/utils/formsData';
 import { NgFor, NgIf } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
+import { dolarFormatPipe } from 'src/app/pipes/currency-format.pipe';
 
 @Component({
   selector: 'app-f1',
   standalone: true,
-  imports: [HeaderComponent, NgFor, NgIf],
+  imports: [HeaderComponent, NgFor, NgIf,dolarFormatPipe],
   templateUrl: './f1.component.html',
   styleUrl: './f1.component.scss',
 })
@@ -20,7 +21,8 @@ export class F1Component implements OnInit {
     estado: 'proceso',
   };
   usuario = {
-    nombre: ''
+    nombre: '',
+    documento: ''
   }
   constructor(private formService: FormService) { }
   ngOnInit(): void {

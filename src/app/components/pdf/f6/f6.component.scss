@@ -1,7 +1,4 @@
-p {
-    margin-top: -6px;
-    margin-bottom: 10px;
-  }
+
   td {
     border: 1px #bbb9b9 solid;
   }
@@ -18,4 +15,6 @@ p {
     margin-bottom: 2px !important;
     min-height: 20px;
   }
-  
+  .min-h-15px {
+    min-height: 24px;
+  }

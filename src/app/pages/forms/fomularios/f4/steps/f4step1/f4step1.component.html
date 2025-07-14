@@ -54,7 +54,7 @@
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <div class="flex gap-1">
-          <p class="mb-1 text-center w-full" for="">Devolucion</p>
+          <p class="mb-1 text-center w-full" for="">Devolución</p>
           <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
         </div>
 
@@ -92,7 +92,7 @@
       <h3 class="font-semibold text-lg">Identificación de la declaración</h3>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-      <p class="text-base">Fecha de tramite</p>
+      <p class="text-base">Fecha de trámite</p>
       <input
         type="date"
         name="identificacion_de_la_declaracion.fecha_tramite"
@@ -276,12 +276,27 @@
     </div>
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-lg">Destino de la inversion</h3>
+        <h3 class="font-semibold text-lg">Destino de la inversión</h3>
       </div>
-      <div class="col-span-12 grid grid-cols-12 gap-y-2">
-        <h4 class="col-span-12 text-base">
-          IECO - INVERSIÓN EXTRANJERA EN COLOMBIA
-        </h4>
+      <div class="col-span-12">
+        <select 
+        name="destino_inversion_code" 
+        id="" 
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"  
+        required
+        [class.error]="
+          destino_inversion_code.invalid && submitInvalid
+        "
+        #destino_inversion_code="ngModel" 
+        [(ngModel)]="formF4.destino_inversion_code">
+          <option value=""></option>
+          <option value="IECO">IECO - INVERSIÓN EXTRANJERA EN COLOMBIA</option>
+          <option value="ICEX">ICEX - INVERSIÓN COLOMBIANA EN EL EXTERIOR</option>
+          <option value="IEPO">IEPO - INVERSIÓN EXTRANJERA EN COLOMBIA DE PORTAFOLIO</option>
+          <option value="IFAE">IFAE - INVERSIÓN FINANCIERA Y EN ACTIVOS EN EL EXTERIOR</option>
+        </select>
+      </div>
+      <div *ngIf="formF4.destino_inversion_code == 'IECO'" class="col-span-12 grid grid-cols-12 gap-y-2 mt-2">
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -501,8 +516,7 @@
           </div>
         </div>
       </div>
-      <div class="col-span-12 lg:col-span-6 mt-2">
-        <h4 class="text-base">ICEX - INVERSIÓN COLOMBIANA EN EL EXTERIOR</h4>
+      <div *ngIf="formF4.destino_inversion_code == 'ICEX'" class="col-span-12 lg:col-span-6 mt-2">
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -520,10 +534,7 @@
         </div>
       </div>
 
-      <div class="col-span-12 lg:col-span-6 mt-2">
-        <h4 class="text-base">
-          IFAE - INVERSIÓN FINANCIERA Y EN ACTIVOS EN EL EXTERIOR
-        </h4>
+      <div *ngIf="formF4.destino_inversion_code == 'IFAE'" class="col-span-12 lg:col-span-6 mt-2">
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -543,12 +554,8 @@
         </div>
       </div>
 
-      <div class="col-span-12 flex gap-2 mt-2">
-        <h4 class="text-base">
-          IEPO - INVERSIÓN EXTRANJERA EN COLOMBIA DE PORTAFOLIO
-        </h4>
-      </div>
-      <div class="col-span-12 lg:col-span-6 flex gap-2">
+      
+      <div *ngIf="formF4.destino_inversion_code == 'IEPO'" class="col-span-12 lg:col-span-6 flex gap-2 mt-2">
         <input
           type="radio"
           name="destino_inversion"
@@ -739,7 +746,7 @@
                 placeholder=""
                 [name]="'Identificacion_de_la_empresa_reseptora_correo'"
                 #Identificacion_de_la_empresa_reseptora_correo="ngModel"
-                
+                appEmailDomainValidator
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_correo.invalid &&

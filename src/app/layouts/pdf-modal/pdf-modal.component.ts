@@ -13,6 +13,8 @@ import { F4Component } from "src/app/components/pdf/f4/f4.component";
 import { F5Component } from "src/app/components/pdf/f5/f5.component";
 import { F6Component } from "src/app/components/pdf/f6/f6.component";
 import { F7Component } from "src/app/components/pdf/f7/f7.component";
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-pdf-modal',
   standalone: true,
@@ -28,6 +30,7 @@ export class PdfModalComponent implements OnInit {
     id: '',
     tipo: '',
     data: {},
+    empresa: '',
     fecha_create: '',
     estado: 'proceso',
   };
@@ -54,14 +57,20 @@ export class PdfModalComponent implements OnInit {
   }
 
   validateForm(step1Form: NgForm) {
-    this.loader2 = true
-    if (step1Form.valid) {
+    if (step1Form.valid && this.form.empresa !== 'corficolombiana' ) {
+      this.loader2 = true
       this.submitInvalid = false;
       this.formService.saveUser(this.usuario.nombre, this.usuario.documento);
       setTimeout(() => {
         this.loader2 = false
       }, 500);
     } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, completa todos los campos correctamente.',
+      });
+
       this.submitInvalid = true;
     }
   }

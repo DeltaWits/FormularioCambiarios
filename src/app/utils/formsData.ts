@@ -7,6 +7,7 @@ export interface IForm {
   id: string;
   tipo: string;
   data: any;
+  empresa?: 'corficolombiana' | 'casa de bolsa' | '';
   fecha_create: string;
   estado: 'resuelto' | 'proceso';
 }
@@ -16,7 +17,8 @@ export const formsData: IForms = {
   forms: [{
     id: '',
     tipo: '',
-    data: '',
+    empresa: '',
+    data: {},
     fecha_create: '',
     estado: 'proceso'
   }],

@@ -72,7 +72,7 @@ export class F5step2Component {
 
       //   this.MessaggePopUp.titulo = 'Alerta';
       //   this.MessaggePopUp.descripcion =
-      //     'El reintegro neto debe ser igual al valor total en dolares';
+      //     'El reintegro neto debe ser igual al valor total en dólares';
       //   this.MessaggePopUp.tipe = 'alert';
 
       // }
