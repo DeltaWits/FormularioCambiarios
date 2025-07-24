@@ -76,6 +76,7 @@ export interface IFormF4 {
     sector: string,
 
   }
+  observaciones: string
 }
 
 export const numeralesCambiariosF4Ingreso = [

@@ -31,7 +31,7 @@ export class DolarFormatDirective {
     const decimalPlaces = cleanedValue.includes('.') 
     ? cleanedValue.split('.')[1].length 
     : 0;
-    const fractionDigits = Math.min(decimalPlaces, 10);
+    const fractionDigits = Math.min(decimalPlaces, 4);
     const [integerPart, decimalPart] = cleanedValue.split('.');
     if (decimalPart?.length > fractionDigits) {
       cleanedValue = `${integerPart}.${decimalPart.slice(0, fractionDigits)}`;

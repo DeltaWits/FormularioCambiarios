@@ -27,7 +27,6 @@
                 #codigo_proposito_prestamo="ngModel"
                 placeholder=""
                 required
-                maxlength="3"
                 [class.error]="
                   codigo_proposito_prestamo.invalid && submitInvalid
                 "
@@ -37,8 +36,8 @@
                 list="codigo_proposito_prestamo"
               >
               <datalist id="codigo_proposito_prestamo">
-                <option *ngFor="let tipo of codigoPropositoPrestamo" [value]="tipo.id">
-                {{ tipo.descripcion }}
+                <option *ngFor="let tipo of codigoPropositoPrestamo" [value]="tipo.id + ' - ' + tipo.descripcion">
+                {{ tipo.id + ' - ' + tipo.descripcion }}
                 </option>
               </datalist>
             </div>
@@ -173,7 +172,6 @@
               <input
                 type="text"
                 placeholder=""
-                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
                 [name]="'numero_deposito_dinanciacion3'"
                 #numero_deposito_dinanciacion="ngModel"
@@ -264,246 +262,10 @@
         </div>
       </div>
     </div>
-    <div class="col-span-12 mt-4 grid grid-cols-12">
-      <div class="col-span-12">
-        <h3 class="font-semibold text-lg text-start">
-          Información para la transmisión de otros procedimientos especiales de
-          crédito
-        </h3>
-      </div>
-      <div class="col-span-12 p-1">
-        <div class="inputs">
-          <div class="row col-span-12 grid grid-cols-12">
-            <div *ngFor="let item of formF7.informacion_transmision_procedimientos_credito; let i = index" class="col-span-12 p-1">
-              <div class="grid grid-cols-12 gap-2">
-                <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
-                  <p class="">Tipo</p>
-                  <select
-                    [name]="'tipo_transmision' + i"
-                    #tipo_transmision="ngModel"
-                    class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                    [class.error]="tipo_transmision.invalid && submitInvalid"
-                    [(ngModel)]="item.tipo_transmision"
-                  >
-                    <option value="">Seleccionar</option>
-                    <option
-                      *ngIf="formF7.tipo_de_solicictud.tipo == 'Modificación'"
-                      value="Fraccionamiento"
-                    >
-                      Fraccionamiento
-                    </option>
-                    <option value="Sustitución">Sustitución</option>
-                    <option value="Consolidación">Consolidación</option>
-                    <option value="Indexación">Indexación</option>
-                  </select>
-                </div>
-                <div *ngIf="item.tipo_transmision != ''" class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap">
-                  <p class="text-base w-full">
-                    {{
-                      item.tipo_transmision == 'Fraccionamiento' ? 'Número de crédito a fraccionar' :
-                      item.tipo_transmision == 'Sustitución' ? 'Número de crédito a sustituir' :
-                      item.tipo_transmision == 'Consolidación' ? 'Número de crédito a consolidar' :
-                      item.tipo_transmision == 'Indexación' ? 'Número de crédito a indexar' :
-                      ''
-                    }}
-                  </p>
-                  <input
-                    type="number"
-                    placeholder=""
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                    [name]="'numero_de_creaditos_sustituir' + i"
-                    #numero_de_creaditos_sustituir="ngModel"
-                    [class.error]="numero_de_creaditos_sustituir.invalid && submitInvalid"
-                    [(ngModel)]="item.numero_de_creaditos_sustituir"
-                  />
-                </div>
-                <div
-                  *ngIf="item.tipo_transmision == 'Indexación'"
-                  class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap"
-                >
-                  <p class="text-base w-full">Código moneda a indexar</p>
-                  <input
-                    type="number"
-                    placeholder=""
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                    [name]="'codigo_moneda' + i"
-                    #codigo_moneda="ngModel"
-                    [class.error]="codigo_moneda.invalid && submitInvalid"
-                    [(ngModel)]="item.codigo_moneda"
-                  />
-                </div>
-                <div class="col-span-1 flex justify-start items-end">
-                  <button
-                    *ngIf="formF7.informacion_transmision_procedimientos_credito.length > 1"
-                    (click)="removeItem(i)"
-                    type="button"
-                    class="text-red-600 hover:text-red-800 text-sm"
-                  >
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-12 flex justify-end mt-2">
-            <button
-              *ngIf="formF7.informacion_transmision_procedimientos_credito.length < 30"
-              (click)="addItem()"
-              type="button"
-              class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
-            >
-              Agregar transmisión
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-12 mt-4 grid grid-cols-12">
-      <div class="col-span-12">
-        <h3 class="font-semibold text-lg">
-          Información del Deudor o informacion del acreedor
-        </h3>
-      </div>
-      <div class="col-span-12 p-1">
-        <div class="inputs">
-          <div class="row col-span-12 grid grid-cols-12">
-            <div
-              class="col-span-12 md:col-span-6 lg:col-span-4 p-1 flex flex-wrap gap-x-1"
-            >
-              <p class="text-base w-full">Naturaleza</p>
-
-              <input
-                type="text"
-                placeholder=""
-                [name]="'informacion_residente_naturaleza'"
-                #informacion_residente_naturaleza="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="
-                  informacion_residente_naturaleza.invalid && submitInvalid
-                "
-                [(ngModel)]="formF7.datos_del_deudor.naturaleza"
-              />
-            </div>
-            <div
-              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1"
-            >
-              <p class="text-base w-full">Tipo de empresa</p>
-
-              <select
-                type="text"
-                placeholder=""
-                [name]="'informacion_residente_tipo_empresa'"
-                #informacion_residente_tipo_empresa="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="
-                  informacion_residente_naturaleza.invalid && submitInvalid
-                "
-                [(ngModel)]="formF7.datos_del_deudor.tipo_empresa"
-              >
-                <option value=""></option>
-                <option value="Privada">Privada</option>
-                <option value="Publica">Publica</option>
-                <option value="Mixta">Mixta</option>
-              </select>
-            </div>
-
-            <div
-              class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 p-1"
-            >
-              <div class="">
-                <p class="text-base text-center">
-                  ¿Es vigilado por alguna superintendencia?
-                </p>
-                <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
-              </div>
-
-              <div class="flex gap-1 justify-center items-center h-9">
-                <label for="">SI</label>
-                <input
-                  type="radio"
-                  name="es_vigilado_superintendencia"
-                  id=""
-                  #es_vigilado_superintendencia="ngModel"
-                  [(ngModel)]="
-                    formF7.datos_del_deudor.es_vigilado_superintendencia
-                  "
-                  value="SI"
-                />
-                <label class="ml-2" for="">NO</label>
-                <input
-                  type="radio"
-                  name="es_vigilado_superintendencia"
-                  id=""
-                  #es_vigilado_superintendencia="ngModel"
-                  [(ngModel)]="
-                    formF7.datos_del_deudor.es_vigilado_superintendencia
-                  "
-                  value="NO"
-                />
-              </div>
-              <div
-                class="alertInput text-center"
-                *ngIf="es_vigilado_superintendencia.invalid && submitInvalid"
-              >
-                <p>Campo obligatorio</p>
-              </div>
-            </div>
-
-            <div
-              *ngIf="
-                formF7.datos_del_deudor.es_vigilado_superintendencia == 'SI'
-              "
-              class="col-span-12 md:col-span-6 xl:col-span-6 p-1 flex flex-wrap gap-x-1"
-            >
-              <p class="text-base w-full">
-                Si se encuentra vigilado por alguna superintendencia, indique
-                cual
-              </p>
-
-              <input
-                type="text"
-                placeholder=""
-                [name]="'cual_superintendencia'"
-                #cual_superintendencia="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="
-                  cual_superintendencia.invalid && submitInvalid
-                "
-                [(ngModel)]="formF7.datos_del_deudor.cual_superintendencia"
-              />
-            </div>
-            <div
-              class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1"
-            >
-              <p class="text-base w-full">sector</p>
-
-              <input
-                type="text"
-                placeholder=""
-                [name]="'sector'"
-                #sector="ngModel"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="
-                  sector.invalid && submitInvalid
-                "
-                [(ngModel)]="formF7.datos_del_deudor.sector"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
+    
   </div>
-  <div class="col-span-12">
-    <p class="text-base">Observaciones</p>
-    <textarea
-      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-      [name]="'observaciones'"
-      #observaciones="ngModel"
-      [class.error]="observaciones.invalid && submitInvalid"
-      [(ngModel)]="formF7.observaciones"
-    ></textarea>
-  </div>
+  
   <div class="flex justify-center gap-2 mt-2">
     <button
       class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"

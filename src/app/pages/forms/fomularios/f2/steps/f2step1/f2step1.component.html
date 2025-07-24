@@ -4,7 +4,7 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form (ngSubmit)="validateForm(step1Form)" (keydown.enter)="$event.preventDefault()" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden lg:block lg:col-span-3 xl:col-span-5"></div>
@@ -75,7 +75,7 @@
       </div>
       <div class="col-span-1 pl-2">
         <p class="text-base">D.V</p>
-        <div class="dv w-[30px]">
+        <div class="dv w-[35px]">
           <input
             type="text"
             placeholder=""
@@ -164,7 +164,7 @@
         </div>
         <div class="col-span-1 pl-2">
           <p class="text-base">D.V</p>
-          <div class="dv w-[30px]">
+          <div class="dv w-[35px]">
             <input
               type="text"
               placeholder=""
@@ -337,7 +337,7 @@
               <p class="text-base">Número de identificación</p>
 
               <input
-                type="number"
+                type="text"
                 (change)="checkDv1(3)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento'"
@@ -347,6 +347,7 @@
                 [(ngModel)]="
                   formF2.identificacion_de_exportador.numero_documento
                 "
+                onlyAlfaNums
                 required
               />
             </div>
@@ -357,7 +358,7 @@
               "
             >
               <p class="text-base">D.V</p>
-              <div class="dv w-[30px]">
+              <div class="dv w-[35px]">
                 <input
                   type="text"
                   placeholder=""

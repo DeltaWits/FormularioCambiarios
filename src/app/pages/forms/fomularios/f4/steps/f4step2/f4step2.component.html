@@ -30,13 +30,13 @@
                   ">
                 <p class="text-base mb-1">Número de identificación</p>
 
-                <input type="number"
+                <input type="text"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'identificacion_del_inversionista_'" id=""
                   [class.error]="identificacion_del_inversionista_.invalid && submitInvalid"
                   #identificacion_del_inversionista_="ngModel" [(ngModel)]="
                       formF4.identificacion_del_inversionista.numero_identifiacion
-                    " required />
+                    " required onlyAlfaNums/>
               </div>
 
             </div>
@@ -57,11 +57,17 @@
               <input type="text" placeholder="" required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="identificacion_del_inversionista.pais" #identificacion_del_inversionista_telefono="ngModel"
-                [class.error]="
-                                      identificacion_del_inversionista_telefono.invalid &&
-                                      submitInvalid
-                                    " [(ngModel)]="
-                                      formF4.identificacion_del_inversionista.pais " />
+                [class.error]="identificacion_del_inversionista_telefono.invalid && submitInvalid" [(ngModel)]="
+                                      formF4.identificacion_del_inversionista.pais " list="pais2" />
+                <datalist id="pais2">
+                  <option
+                    *ngFor="let pais of paises"
+                    [value]="pais.Codigo"
+                    [selected]="pais.Codigo === 'CO'"
+                  >
+                    {{ pais.Codigo }} : {{ pais.Nombre }}
+                  </option>
+                </datalist>
             </div>
             <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
               <p class="text-base w-full">Correo</p>
@@ -87,7 +93,7 @@
 
               <datalist id="codigo_CIIU">
 
-                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -249,13 +255,21 @@
             class="col-span-12  lg:col-span-6  p-1">
             <p class="text-base mb-1">Motivo sin participaciones</p>
 
-            <input type="text" placeholder="" required
+            <select type="text" placeholder="" required
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               name="descripcionde_la_operacion_motivo" #descripcionde_la_operacion_motivo="ngModel" [class.error]="
                 descripcionde_la_operacion_motivo.invalid &&
                 submitInvalid
               " [(ngModel)]="
-                formF4.descripcionde_la_operacion.motivo_sin_participaciones " />
+                formF4.descripcionde_la_operacion.motivo_sin_participaciones " 
+                >
+                <option value="1. Inversión a Plazos">1. Inversión a Plazos</option>
+                <option value="2. Prima en Colocación de Aportes">2. Prima en Colocación de Aportes</option>
+                <option value="3. Aumento valor Nominal sin emisión de participación">
+                  3. Aumento valor Nominal sin emisión de participación</option>
+                <option value="4. Capital no representado en participaciones">
+                  4. Capital no representado en participaciones</option>
+                </select>
           </div>
         </div>
       </div>
@@ -267,84 +281,9 @@
               </button>
             </div> -->
     </div>
+   
   </div>
-  <div class="col-span-12 mt-4 grid grid-cols-12">
-    <div class="col-span-12">
-      <h3 class="font-semibold text-base">Información del residente persona jurídica</h3>
-    </div>
-    <div class="col-span-12 p-1">
-      <div class="inputs">
-        <div class="row col-span-12 grid grid-cols-12">
-          <div class="col-span-12 md:col-span-6 lg:col-span-4  p-1 flex flex-wrap gap-x-1">
-            <p class="text-base w-full">Naturaleza</p>
 
-            <input type="text" placeholder="" [name]="'informacion_residente_naturaleza'"
-              #informacion_residente_naturaleza="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
-                                  formF4.informacion_residente.naturaleza
-                                " />
-          </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1">
-            <p class="text-base w-full">Tipo de empresa</p>
-
-            <select type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
-              #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
-                                            formF4.informacion_residente.tipo_empresa
-                                          ">
-              <option value="">Seleccionar tipo de empresa</option>
-              <option value="privada">Privada</option>
-              <option value="publica">Publica</option>
-              <option value="mixta">Mixta</option>
-            </select>
-          </div>
-
-          <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 p-1">
-            <div class="">
-              <p class="text-base text-center">¿Es vigilado por alguna superintendencia?</p>
-              <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
-            </div>
-
-            <div class="flex gap-1 justify-center items-center h-9">
-              <label for="">SI</label>
-              <input type="radio" name="es_vigilado_superintendencia" id="" #es_vigilado_superintendencia="ngModel"
-                [(ngModel)]="formF4.informacion_residente.es_vigilado_superintendencia" value="SI" />
-              <label class="ml-2" for="">NO</label>
-              <input type="radio" name="es_vigilado_superintendencia" id="" #es_vigilado_superintendencia="ngModel"
-                [(ngModel)]="formF4.informacion_residente.es_vigilado_superintendencia" value="NO" />
-            </div>
-            <div class="alertInput text-center" *ngIf="es_vigilado_superintendencia.invalid && submitInvalid">
-              <p>Campo obligatorio</p>
-            </div>
-          </div>
-
-          <div *ngIf="formF4.informacion_residente.es_vigilado_superintendencia =='SI'"
-            class="col-span-12 md:col-span-6 xl:col-span-6 p-1 flex flex-wrap gap-x-1">
-            <p class="text-base w-full">Si se encuentra vigilado por alguna superintendencia, indique cual</p>
-
-            <input type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
-              #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
-                                                      formF4.informacion_residente.tipo_empresa
-                                                    " />
-          </div>
-          <div class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1">
-            <p class="text-base w-full">Sector</p>
-
-            <input type="text" placeholder="" [name]="'informacion_residente_tipo_empresa'"
-              #informacion_residente_tipo_empresa="ngModel"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [class.error]="informacion_residente_naturaleza.invalid && submitInvalid" [(ngModel)]="
-                                                      formF4.informacion_residente.tipo_empresa
-                                                    " />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
       class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">

@@ -284,13 +284,13 @@
             "
           />
         </div>
-        <div class="col-span-8 mt-1  mtr-2">
+        <!-- <div class="col-span-8 mt-1  mtr-2">
           <p
             class="text-10px  text-center px-2 pb-1.5 w-full min-h-15px border rounded-sm"
           >
             {{ form.data.tipo_identidad.otros }}
           </p>
-        </div>
+        </div> -->
       </div>
       <div class="col-span-12 p-1">
         <h4 class="text-10px w-100 font-semibold text-start">
@@ -385,7 +385,7 @@
           <p
             class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_de_la_operacion.tasa_de_cambio_dolar }}
+            {{ form.data.descripcion_de_la_operacion.tasa_de_cambio_dolar | dolarFormat: '$'}}
           </p>
         </div>
         <div class="col-span-3 p-1">

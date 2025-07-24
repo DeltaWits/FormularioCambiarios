@@ -96,7 +96,8 @@ export class F4Component {
       cual_superintendencia: '',
       sector: '',
 
-    }
+    },
+    observaciones: ''
   }
   constructor(
     private route: ActivatedRoute,

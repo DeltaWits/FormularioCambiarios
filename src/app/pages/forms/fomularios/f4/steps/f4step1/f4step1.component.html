@@ -131,7 +131,7 @@
       </div>
       <div class="col-span-1 pl-2">
         <p class="text-base">D.V</p>
-        <div class="dv w-[30px]">
+        <div class="dv w-[35px]">
           <input
             type="text"
             placeholder=""
@@ -221,7 +221,7 @@
         </div>
         <div class="col-span-1 pl-2">
           <p class="text-base">D.V</p>
-          <div class="dv w-[30px]">
+          <div class="dv w-[35px]">
             <input
               type="text"
               placeholder=""
@@ -619,7 +619,7 @@
                 <p class="text-base">Número de identificación</p>
 
                 <input
-                  type="number"
+                  type="text"
                   (change)="checkDv1(3)"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'Identificacion_de_la_empresa_reseptora'"
@@ -633,6 +633,7 @@
                     formF4.Identificacion_de_la_empresa_reseptora
                       .numero_identifiacion
                   "
+                  onlyAlfaNums
                 />
               </div>
               <div
@@ -643,7 +644,7 @@
                 "
               >
                 <p class="text-base">D.V</p>
-                <div class="dv w-[30px]">
+                <div class="dv w-[35px]">
                   <input
                     type="text"
                     placeholder=""
@@ -701,10 +702,9 @@
               <datalist id="pais2">
                 <option
                   *ngFor="let pais of paises"
-                  [value]="pais.Nombre"
-                  [selected]="pais.Codigo === 'CO'"
+                  [value]="pais.Codigo"
                 >
-                  {{ pais.Nombre }}
+                {{ pais.Codigo }} : {{ pais.Nombre }}
                 </option>
               </datalist>
             </div>
@@ -730,7 +730,7 @@
                 list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU">
-                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -862,7 +862,7 @@
                   <p class="text-base">Número de identificación</p>
 
                   <input
-                    type="number"
+                    type="text"
                     (change)="checkDv1(4)"
                     class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     [name]="'informacion_administrador_del_encargo_numero'"
@@ -876,7 +876,7 @@
                       formF4.informacion_administrador_del_encargo
                         .numero_identifiacion
                     "
-                    
+                    onlyAlfaNums
                   />
                 </div>
                 <div
@@ -887,7 +887,7 @@
                   "
                 >
                   <p class="text-base">D.V</p>
-                  <div class="dv w-[30px]">
+                  <div class="dv w-[35px]">
                     <input
                       type="text"
                       placeholder=""

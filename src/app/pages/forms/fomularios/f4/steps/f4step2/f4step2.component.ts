@@ -59,11 +59,13 @@ export class F4step2Component implements OnInit {
       cual_superintendencia: '',
       sector: '',
 
-    }
+    },
+    observaciones: ''
   }
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
   
+  paises: { Nombre: string | any; Codigo: string }[] = [];
   ciiu: any;
   submitInvalid = false
   numeralesCambiarios: any = numeralesCambiariosF4Ingreso
@@ -82,12 +84,13 @@ export class F4step2Component implements OnInit {
     private router: Router
   ) {
     this.formF4.descripcionde_la_operacion.moneda_registro = 'COP';
-    this.loadExcelFromCiiu()
+    
   }
   ngOnInit(): void {
     this.chagenIDOptions();
     this.validateNumerales()
-
+    this.loadExcelFromCiiu()
+    this.getPaises()
   }
   validateNumerales() {
     console.log("operacon", this.formF4.tipo_de_operacion.ingreso_o_egreso)
@@ -340,8 +343,36 @@ export class F4step2Component implements OnInit {
       }
     }
   }
-
-   loadExcelFromCiiu() {
+  async   getPaises() {
+      // this.paises = Object.keys(countries).map((code) => {
+      //   return {
+      //     name: (countries as { [code: string]: Country })[code].name,
+      //     code: code,
+      //   };
+      // });
+      const fileUrl = '../../../../../../../assets/paises.xlsx';
+      fetch(fileUrl)
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => {
+          if (arrayBuffer) {
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+              type: 'array',
+            });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            this.paises = XLSX.utils.sheet_to_json(worksheet, {
+              raw: true,
+            });
+            // Los datos del archivo Excel están disponibles en this.excelData
+          } else {
+            console.error('No se pudo cargar el archivo Excel.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al cargar el archivo Excel:', error);
+        });
+    }
+  async loadExcelFromCiiu() {
       const fileUrl = './assets/ciiu.xlsx';
       fetch(fileUrl)
         .then((response) => response.arrayBuffer())

@@ -82,7 +82,7 @@
       </div>
       <div class="col-span-1 pl-2">
         <p class="text-base">D.V</p>
-        <div class="dv w-[30px]">
+        <div class="dv w-[35px]">
           <input type="text" placeholder="" required name="identificacion_de_la_declaracion.dv"
             #identificacion_de_la_declaracion_dv="ngModel" [(ngModel)]="formF3.identificacion_de_la_declaracion.dv"
             disabled [class.error]="
@@ -136,7 +136,7 @@
         </div>
         <div class="col-span-1 pl-2">
           <p class="text-base">D.V</p>
-          <div class="dv w-[30px]">
+          <div class="dv w-[35px]">
             <input type="text" placeholder="" required name="identificacion_operacion_anterior.dv"
               #identificacion_operacion_anterior_dv="ngModel" [class.error]="
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
@@ -209,19 +209,19 @@
                   ">
                 <p class="text-base">Número de identificación</p>
 
-                <input type="number" (change)="checkDv1(3)"
+                <input type="text" (change)="checkDv1(3)"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'detalle_del_credito_documento'" id=""
                   [class.error]="detalle_del_credito_documento.invalid && submitInvalid"
                   #detalle_del_credito_documento="ngModel" [(ngModel)]="
                       formF3.detalle_del_credito.numero_identificacion
-                    " required />
+                    " required onlyAlfaNums />
               </div>
               <div class="col-span-1 pl-2" *ngIf="
                     formF3.detalle_del_credito.tipo_identificacion == 'NIT'
                   ">
                 <p class="text-base">D.V</p>
-                <div class="dv w-[30px]">
+                <div class="dv w-[35px]">
                   <input type="text" placeholder="" required [name]="'otro_documento_dv'"
                     #identificacion_otro_dv="ngModel" [(ngModel)]="formF3.detalle_del_credito.dv"
                     class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />

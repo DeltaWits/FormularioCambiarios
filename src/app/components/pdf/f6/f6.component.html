@@ -203,7 +203,7 @@
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
-        <div class="col-span-3 p-1">
+        <div class="col-span-12 p-1">
           <p class="text-10px text-start pb-1"> Propósito del préstamo</p>
           <p
             class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
@@ -224,7 +224,7 @@
           <p
             class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_del_prestamo.valor_moneda_estipulada | dolarFormat: '$' }}
+            {{ form.data.descripcion_del_prestamo.valor_moneda_estipulada  }}
           </p>
         </div>
         <div class="col-span-3 p-1">
@@ -240,7 +240,7 @@
           <p
             class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_del_prestamo.spread_valor | dolarFormat: '$' }}
+            {{ form.data.descripcion_del_prestamo.spread_valor  }}
           </p>
         </div>
         <div class="col-span-3 p-1">
@@ -294,139 +294,14 @@
                 {{ form.data.plan_de_armonizacion[i].fecha }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.plan_de_armonizacion[i].valor_cuota | dolarFormat: '$' }}
+                {{ form.data.plan_de_armonizacion[i].valor_cuota }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
-          VI. Información para la transmisión de otros procedimientos especiales
-          de crédito
-        </h4>
-      </div>
-      <div class="grid grid-cols-12 col-span-12 border p-2 mb-2">
-      <ng-container *ngFor="let item of form.data.informacion_transmision_procedimientos_credito; let i = index">
-          <div class="col-span-3 p-1">
-            <p class="text-10px text-start pb-1">Tipo</p>
-            <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-            >
-              {{ item.tipo_transmision }}
-            </p>
-          </div>
-          <div class="col-span-3 p-1">
-            <p class="text-10px text-start pb-1">
-              {{
-                item.tipo_transmision == 'Fraccionamiento' ? 'Número de crédito a fraccionar' :
-                item.tipo_transmision == 'Sustitución' ? 'Número de crédito a sustituir' :
-                item.tipo_transmision == 'Consolidación' ? 'Número de crédito a consolidar' :
-                item.tipo_transmision == 'Indexación' ? 'Número de crédito a indexar' :
-                ''
-              }}
-            </p>
-            <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-            >
-              {{ item.numero_de_creaditos_sustituir }}
-            </p>
-          </div>
-          <div *ngIf="item.tipo_transmision == 'Indexación'" class="col-span-3 p-1">
-            <p class="text-10px text-start pb-1">Código moneda a indexar</p>
-            <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-            >
-              {{ item.codigo_moneda }}
-            </p>
-          </div>
-        </ng-container>
-      </div>
-      <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
-          VII. Información del Deudor o informacion del acreedor
-        </h4>
-      </div>
-      <div class="grid grid-cols-12 col-span-12 border p-2">
-        <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">Naturaleza</p>
-          <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-          >
-            {{ form.data.datos_del_deudor.naturaleza }}
-          </p>
-        </div>
-        <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">Tipo de empresa</p>
-          <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-          >
-            {{ form.data.datos_del_deudor.tipo_empresa }}
-          </p>
-        </div>
-        <div class="col-span-4 pr-1">
-          <p class="text-10px">¿Es vigilado por alguna superintendencia?</p>
-          <div class="flex gap-2 w-full justify-center">
-            <div class="flex gap-1">
-              <p class="text-10px">SI</p>
-              <input
-                type="checkbox"
-                disabled
-                [attr.checked]="
-                  form.data.datos_del_deudor.es_vigilado_superintendencia ===
-                  'SI'
-                    ? true
-                    : null
-                "
-              />
-            </div>
-            <div class="flex gap-1">
-              <p class="text-10px">NO</p>
-              <input
-                type="checkbox"
-                disabled
-                [attr.checked]="
-                  form.data.datos_del_deudor.es_vigilado_superintendencia ===
-                  'NO'
-                    ? true
-                    : null
-                "
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-span-6 p-1">
-          <p class="text-10px text-start pb-1">
-            Si se encuentra vigilado por alguna superintendencia, indique cuál
-          </p>
-          <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-          >
-            {{
-              form.data.datos_del_deudor.es_vigilado_superintendencia === "SI"
-                ? form.data.datos_del_deudor.tipo_empresa
-                : ""
-            }}
-          </p>
-        </div>
-        <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">sector</p>
-          <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
-          >
-            {{ form.data.datos_del_deudor.tipo_empresa }}
-          </p>
-        </div>
-      </div>
-      <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
-          VIII. Información de la(s) operacion(es)
-        </h4>
-      </div>
-      <div class="col-span-12 p-2 border flex flex-wrap mt-2">
-        <p class="text-10px text-justify mt-1">Observaciones</p>
-        <div class="w-[90%] text-start p-2 text-10px  min-h-100px"> {{ form.data.observaciones }}</div>
-      </div>
+      
+      
       <div class="col-span-12 p-1 mt-2">
         <p class="text-[8px] text-justify">
           Declaro bajo gravedad de juramento que la información aquí
@@ -445,7 +320,7 @@
       </div>
       <div class="col-span-12 p-1">
         <h4 class="text-10px w-100 font-semibold text-start">
-          IX. Identificación del declarante
+          VI. Identificación del declarante
         </h4>
       </div>
       <div class="col-span-12 border p-2 grid grid-cols-12">

@@ -76,6 +76,8 @@ export class F7step1Component {
   switchState: boolean = false;
 
   paises: { Nombre: string | any; Codigo: string }[] = [];
+  isLoadingPaises = false;
+  errorLoadingPaises = false;
 
   ciiu: any;
   ciudades: any;
@@ -84,16 +86,19 @@ export class F7step1Component {
     private formService: FormService,
     private router: Router
   ) {
-    this.loadExcelFromCiiu()
-    this.getPaises()
-    this.loadExcelFromCities()
   }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
-    this.selectDocPN.push({
-      name: 'No Residente',
-      code: 'NR'
-    })
+    if(!this.selectDocPN.find((item: any) => item.code == 'NR')){
+      this.selectDocPN.push({
+        name: 'No Residente',
+        code: 'NR'
+      })
+    }
+    
+    this.getPaises()
+    this.loadExcelFromCiiu()
+    this.loadExcelFromCities()
   }
   onSwitchChange(num: number) {
     if (num == 1) {
@@ -196,13 +201,9 @@ export class F7step1Component {
   showActivePopUp(status: boolean) {
     this.ShowPopUp = status;
   }
-  getPaises() {
-    // this.paises = Object.keys(countries).map((code) => {
-    //   return {
-    //     name: (countries as { [code: string]: Country })[code].name,
-    //     code: code,
-    //   };
-    // });
+  async getPaises() {
+    this.isLoadingPaises = true;
+    this.errorLoadingPaises = false;
     const fileUrl = '../../../../../../../assets/paises.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
@@ -216,16 +217,19 @@ export class F7step1Component {
           this.paises = XLSX.utils.sheet_to_json(worksheet, {
             raw: true,
           });
-          // Los datos del archivo Excel están disponibles en this.excelData
         } else {
+          this.errorLoadingPaises = true;
           console.error('No se pudo cargar el archivo Excel.');
         }
+        this.isLoadingPaises = false;
       })
       .catch((error) => {
+        this.errorLoadingPaises = true;
         console.error('Error al cargar el archivo Excel:', error);
+        this.isLoadingPaises = false;
       });
   }
-  loadExcelFromCiiu() {
+  async loadExcelFromCiiu() {
     const fileUrl = './assets/ciiu.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
@@ -246,7 +250,7 @@ export class F7step1Component {
         console.error('Error al cargar el archivo Excel:', error);
       });
   }
-  loadExcelFromCities() {
+  async loadExcelFromCities() {
     const fileUrl = './assets/ciudades.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
@@ -268,4 +272,3 @@ export class F7step1Component {
       });
   }
 }
-

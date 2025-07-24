@@ -1,7 +1,7 @@
 <app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
   [Messagge]="MessaggePopUp"></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form (keydown.enter)="$event.preventDefault()" (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden lg:block lg:col-span-3 xl:col-span-5"></div>
@@ -51,7 +51,7 @@
       </div>
       <div class="col-span-1 pl-2">
         <p class="text-base">D.V</p>
-        <div class="dv w-[30px]">
+        <div class="dv w-[35px]">
           <input type="text" placeholder="" required disabled name="identificacion_de_la_operacion.dv"
             #identificacion_de_la_operacion_dv="ngModel" [(ngModel)]="formF1.identificacion_de_la_operacion.dv"
             [class.error]="
@@ -105,7 +105,7 @@
         </div>
         <div class="col-span-1 pl-2">
           <p class="text-base">D.V</p>
-          <div class="dv w-[30px]">
+          <div class="dv w-[35px]">
             <input type="text" placeholder="" required name="identificacion_operacion_anterior.dv"
               #identificacion_operacion_anterior_dv="ngModel" [class.error]="
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
@@ -233,18 +233,18 @@
               ">
               <p class="text-base mb-1">Número de identificación</p>
 
-              <input type="number" (change)="checkDv1(3)"
+              <input type="text" (change)="checkDv1(3)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento'" id="" [class.error]="otro_documento.invalid && submitInvalid"
                 #otro_documento="ngModel" [(ngModel)]="
                   formF1.identificacion_de_importador.numero_documento
-                " required />
+                " required onlyAlfaNums />
             </div>
             <div class="col-span-1 pl-2" *ngIf="
                 formF1.identificacion_de_importador.tipo_documento == 'NIT'
               ">
               <p class="text-base mb-1">D.V</p>
-              <div class="dv w-[30px]">
+              <div class="dv w-[35px]">
                 <input type="text" placeholder="" required [name]="'otro_documento_dv'"
                   #identificacion_otro_dv="ngModel" [(ngModel)]="formF1.identificacion_de_importador.dv"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1">

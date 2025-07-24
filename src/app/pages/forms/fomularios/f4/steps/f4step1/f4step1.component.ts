@@ -102,7 +102,6 @@ export class F4step1Component implements AfterViewInit {
   }
   ngAfterViewInit(): void {
     console.log("monedas", this.monedas)
-    this.getPaises()
   }
   chagenIDOptions(num: number) {
     if (num == 1) {

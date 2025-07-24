@@ -138,7 +138,7 @@
             </div>
             <div class="col-span-1 pl-2">
               <p class="text-base">D.V</p>
-              <div class="dv w-[30px]">
+              <div class="dv w-[35px]">
                 <input
                   type="text"
                   placeholder=""
@@ -247,7 +247,7 @@
                       <p class="text-base mb-1">Número de identificación</p>
 
                       <input
-                        type="number"
+                        type="text"
                         (change)="checkDv1(3)"
                         class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                         [name]="'descripcion_de_la_operacion_documento'"
@@ -261,6 +261,7 @@
                           formF3A.descripcion_de_la_operacion
                             .numero_identificacion
                         "
+                        onlyAlfaNums
                         required
                       />
                     </div>
@@ -272,7 +273,7 @@
                       "
                     >
                       <p class="text-base">D.V</p>
-                      <div class="dv w-[30px]">
+                      <div class="dv w-[35px]">
                         <input
                           type="text"
                           placeholder=""

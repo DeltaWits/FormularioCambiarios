@@ -4,7 +4,7 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form (ngSubmit)="validateForm(step1Form)" (keydown.enter)="$event.preventDefault()" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
@@ -135,13 +135,14 @@
                 Número de declaración de importación y/o factura comercial
               </p>
               <input
-                type="number"
+                type="text"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento_factura' + i"
                 id=""
                 [class.error]="otro_documento_factura.invalid && submitInvalid"
                 #otro_documento_factura="ngModel"
                 [(ngModel)]="formF2.informacion_DIAN[i].numero_o_factura"
+                onlyAlfaNums
               />
             </div>
             <div

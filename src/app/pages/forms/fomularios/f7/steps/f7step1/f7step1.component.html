@@ -108,7 +108,7 @@
                 <p class="text-base">Número de identificación</p>
 
                 <input
-                  type="number"
+                  type="text"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'informacion_del_residente_deudor_'"
                   id=""
@@ -119,6 +119,7 @@
                   [(ngModel)]="
                     formF7.informacion_del_residente_deudor.numero_identifiacion
                   "
+                  onlyAlfaNums
                   required
                 />
               </div>
@@ -248,7 +249,7 @@
                 list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU">
-                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -305,7 +306,7 @@
                 <p class="text-base">Número de identificación</p>
 
                 <input
-                  type="number"
+                  type="text"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'informacion_del_acreedor_'"
                   id=""
@@ -316,6 +317,7 @@
                   [(ngModel)]="
                     formF7.informacion_del_acreedor.numero_identifiacion
                   "
+                  onlyAlfaNums
                   required
                 />
               </div>
@@ -358,13 +360,18 @@
                 [(ngModel)]="formF7.informacion_del_acreedor.pais"
                 list="pais2"
               />
+              <div *ngIf="isLoadingPaises" class="mt-2">
+                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900"></div>
+              </div>
+              <div *ngIf="errorLoadingPaises" class="mt-2 text-red-500">
+                Error al cargar los países. Por favor, inténtelo de nuevo.
+              </div>
               <datalist id="pais2">
                 <option
                   *ngFor="let pais of paises"
-                  [value]="pais.Nombre"
-                  [selected]="pais.Codigo === 'CO'"
+                  [value]="pais.Codigo"
                 >
-                  {{ pais.Nombre }}
+                {{ pais.Codigo }} : {{ pais.Nombre }}
                 </option>
               </datalist>
             </div>
@@ -429,10 +436,10 @@
                   informacion_del_acreedor_codigo_CIIU.invalid && submitInvalid
                 "
                 [(ngModel)]="formF7.informacion_del_acreedor.codigo_CIIU"
-                list="codigo_CIIU2"
+                list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU2">
-                <option *ngFor="let item of ciiu" [value]="item.codigo">
+                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
                   {{ item.Nombre }}
                 </option>
               </datalist>

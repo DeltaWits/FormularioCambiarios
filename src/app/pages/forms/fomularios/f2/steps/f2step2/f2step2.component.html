@@ -1,7 +1,7 @@
 <app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
   [Messagge]="MessaggePopUp"></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form (ngSubmit)="validateForm(step1Form)" (keydown.enter)="$event.preventDefault()" #step1Form="ngForm">
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
@@ -32,18 +32,18 @@
                 ">
                 <p class="text-base">Número de identificación</p>
 
-                <input type="number" (change)="checkDvArray(i)"
+                <input type="text" (change)="checkDvArray(i)"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'otro_documento' + i" id="" [class.error]="otro_documento.invalid && submitInvalid"
                   #otro_documento="ngModel" [(ngModel)]="
                     formF2.identificacion_de_exportador.numero_documento
-                  " required />
+                  " required  onlyAlfaNums />
               </div>
               <div class="col-span-1 pl-2" *ngIf="
                   formF2.identificacion_de_exportador.tipo_documento == 'NIT'
                 ">
                 <p class="text-base">D.V</p>
-                <div class="dv w-[30px]">
+                <div class="dv w-[35px]">
                   <input type="text" placeholder="" required [name]="'otro_documento_dv' + i"
                     #identificacion_otro_dv="ngModel" [(ngModel)]="formF2.identificacion_de_exportador.dv"
                     class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
