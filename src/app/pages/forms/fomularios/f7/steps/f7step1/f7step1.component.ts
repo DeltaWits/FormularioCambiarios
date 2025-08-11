@@ -204,7 +204,7 @@ export class F7step1Component {
   async getPaises() {
     this.isLoadingPaises = true;
     this.errorLoadingPaises = false;
-    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    const fileUrl = './assets/paises.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {

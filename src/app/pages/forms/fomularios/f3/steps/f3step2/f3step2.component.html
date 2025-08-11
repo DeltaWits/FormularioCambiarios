@@ -4,7 +4,11 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="validateForm(step1Form)"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
@@ -39,13 +43,13 @@
             <div
               class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
             >
-              <p class="text-base">Vr. Total Mda Negociación</p>
+              <p class="mb-1">Vr. Total Mda Negociación</p>
 
               <input
                 type="text"
                 placeholder=""
                 (change)="selectTasa(1)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'detalle_de_la_declaracion.valor_total'"
                 #detalle_de_la_declaracion_valor_total="ngModel"
                 placeholder=""
@@ -63,13 +67,13 @@
             <div
               class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
             >
-              <p class="text-base">Tasa de cambio a dólar</p>
+              <p class="mb-1">Tasa de cambio a dólar</p>
 
               <input
                 type="text"
                 placeholder=""
                 (change)="selectTasa(1)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'detalle_de_la_declaracion_tasa_de_cambio_dolar'"
                 #detalle_de_la_declaracion_tasa_de_cambio_dolar="ngModel"
                 placeholder=""
@@ -85,14 +89,14 @@
               />
             </div>
             <div
-              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
             >
-              <p class="text-base w-full">Valor total en dólares</p>
+              <p class="mb-1">Valor total en dólares</p>
 
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
+                class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 disabled
                 [name]="'etalle_de_la_declaracion.valor_total_dolares'"
                 #etalle_de_la_declaracion_valor_total_dolares="ngModel"
@@ -109,9 +113,9 @@
               <!-- {{formF3.detalle_de_la_declaracion.valor_total_dolares}} -->
             </div>
             <div
-              class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
             >
-              <p class="text-base">Tasa de cambio moneda estipulada</p>
+              <p class="mb-1">Tasa de cambio moneda estipulada</p>
 
               <input
                 type="text"
@@ -271,7 +275,7 @@
             type="button"
             *ngIf="formF3.informacion_de_numerales.length < 10"
             (click)="agregarInfo()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+            class="text-white mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
           >
             Agregar numeral
           </button>
@@ -281,7 +285,7 @@
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
     >
       Guardar
     </button>

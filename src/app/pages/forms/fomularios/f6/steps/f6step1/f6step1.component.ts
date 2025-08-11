@@ -82,9 +82,6 @@ export class F6step1Component {
     private formService: FormService,
     private router: Router
   ) {
-    this.getPaises()
-    this.loadExcelFromCiiu()
-    this.getCiudades()
   }
   ngOnInit(): void {
     console.log("monedas", this.monedas)
@@ -94,6 +91,10 @@ export class F6step1Component {
         code: 'NR'
       })
     }
+    
+    this.getPaises()
+    this.loadExcelFromCiiu()
+    this.getCiudades()
   }
   onSwitchChange(num: number) {
     if (num == 1) {
@@ -203,7 +204,7 @@ export class F6step1Component {
     //     code: code,
     //   };
     // });
-    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    const fileUrl = './assets/paises.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {
@@ -248,13 +249,7 @@ export class F6step1Component {
       });
   }
   async getCiudades() {
-    // this.paises = Object.keys(countries).map((code) => {
-    //   return {
-    //     name: (countries as { [code: string]: Country })[code].name,
-    //     code: code,
-    //   };
-    // });
-    const fileUrl = '../../../../../../../assets/ciudades.xlsx';
+    const fileUrl = './assets/ciudades.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {

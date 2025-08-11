@@ -1,20 +1,37 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (keydown.enter)="$event.preventDefault()" (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="validateForm(step1Form)"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden lg:block lg:col-span-3 xl:col-span-5"></div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4 p-1">
-      </div>
-      <div id="step1" class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
+      <div
+        class="col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4 p-1"
+      ></div>
+      <div
+        id="step1"
+        class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+      >
         <div class="flex gap-1">
           <p class="mb-1" for="">Tipo de operación</p>
           <app-tool1 [content]="textTipoOperacion"></app-tool1>
         </div>
-        <select name="tipo_operacion" id="" #tipo_de_operacion="ngModel" [(ngModel)]="formF1.tipo_de_operacion" required
+        <select
+          name="tipo_operacion"
+          id=""
+          #tipo_de_operacion="ngModel"
+          [(ngModel)]="formF1.tipo_de_operacion"
+          required
           [class.error]="tipo_de_operacion.invalid && submitInvalid"
-          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3">
+          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
+        >
           <option value=""></option>
           <option value="Inicial">Inicial</option>
           <option value="Corrección">Corrección</option>
@@ -22,61 +39,96 @@
           <!-- <option value="Devolución">Devolución</option> -->
         </select>
       </div>
-
     </div>
     <div class="col-span-12">
       <h3 class="font-semibold text-lg">
-        Identificación de la declaración <span class="text-xs">(campos automáticos)</span>
+        Identificación de la declaración
+        <span class="text-xs">(campos automáticos)</span>
       </h3>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
       <p class="text-base">Fecha de tramite</p>
-      <input type="date" name="identificacion_de_la_operacion.fecha_tramite" id=""
+      <input
+        type="date"
+        name="identificacion_de_la_operacion.fecha_tramite"
+        id=""
         #identificacion_de_la_operacion_fecha_tramite="ngModel"
-        [(ngModel)]="formF1.identificacion_de_la_operacion.fecha_tramite" required disabled [class.error]="
+        [(ngModel)]="formF1.identificacion_de_la_operacion.fecha_tramite"
+        required
+        disabled
+        [class.error]="
           identificacion_de_la_operacion_fecha_tramite.invalid && submitInvalid
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
+        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+      />
     </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
+    <div
+      class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6"
+    >
       <div class="col-span-5">
         <p class="text-base">Nit del IMC</p>
 
-        <input type="number" (change)="checkDv1(1)"
+        <input
+          type="number"
+          (change)="checkDv1(1)"
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-          name="identificacion_de_la_operacion_nit_imc" id="" disabled #identificacion_de_la_operacion_nit_imc="ngModel"
+          name="identificacion_de_la_operacion_nit_imc"
+          id=""
+          disabled
+          #identificacion_de_la_operacion_nit_imc="ngModel"
           [class.error]="
             identificacion_de_la_operacion_nit_imc.invalid && submitInvalid
-          " [(ngModel)]="formF1.identificacion_de_la_operacion.nit_imc" required />
+          "
+          [(ngModel)]="formF1.identificacion_de_la_operacion.nit_imc"
+          required
+        />
       </div>
       <div class="col-span-1 pl-2">
         <p class="text-base">D.V</p>
         <div class="dv w-[35px]">
-          <input type="text" placeholder="" required disabled name="identificacion_de_la_operacion.dv"
-            #identificacion_de_la_operacion_dv="ngModel" [(ngModel)]="formF1.identificacion_de_la_operacion.dv"
+          <input
+            type="text"
+            placeholder=""
+            required
+            disabled
+            name="identificacion_de_la_operacion.dv"
+            #identificacion_de_la_operacion_dv="ngModel"
+            [(ngModel)]="formF1.identificacion_de_la_operacion.dv"
             [class.error]="
               identificacion_de_la_operacion_dv.invalid && submitInvalid
             "
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
+            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-      <p class="text-base">Número declaración </p>
+      <p class="text-base">Número declaración</p>
 
-      <input type="number" placeholder=""
+      <input
+        type="number"
+        placeholder=""
         class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-        [disabled]="formF1.tipo_de_operacion == '' || formF1.tipo_de_operacion == 'Inicial'"
+        [disabled]="
+          formF1.tipo_de_operacion == '' ||
+          formF1.tipo_de_operacion == 'Inicial'
+        "
         name="identificacion_de_la_operacion.numero_declaracion"
-        #identificacion_de_la_operacion_numero_declaracion="ngModel" [class.error]="
+        #identificacion_de_la_operacion_numero_declaracion="ngModel"
+        [class.error]="
           identificacion_de_la_operacion_numero_declaracion.invalid &&
           submitInvalid
-        " [(ngModel)]="formF1.identificacion_de_la_operacion.numero_declaracion" />
+        "
+        [(ngModel)]="formF1.identificacion_de_la_operacion.numero_declaracion"
+      />
     </div>
-    <div class="col-span-12 mt-4 grid grid-cols-12" *ngIf="
+    <div
+      class="col-span-12 mt-4 grid grid-cols-12"
+      *ngIf="
         formF1.tipo_de_operacion != '' && formF1.tipo_de_operacion != 'Inicial'
-      ">
+      "
+    >
       <div class="col-span-12">
         <h3 class="font-semibold text-base">
           Identificación de la operación anterior
@@ -85,60 +137,93 @@
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <p class="text-base">Fecha de la operación inicial</p>
-        <input type="date" name="identificacion_operacion_anterior.fecha_operacion" id=""
-          #identificacion_operacion_anterior_fecha_operacion="ngModel" [class.error]="
+        <input
+          type="date"
+          name="identificacion_operacion_anterior.fecha_operacion"
+          id=""
+          #identificacion_operacion_anterior_fecha_operacion="ngModel"
+          [class.error]="
             identificacion_operacion_anterior_fecha_operacion.invalid &&
             submitInvalid
-          " [(ngModel)]="formF1.identificacion_operacion_anterior.fecha_operacion" required
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
+          "
+          [(ngModel)]="formF1.identificacion_operacion_anterior.fecha_operacion"
+          required
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+        />
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6">
+      <div
+        class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 grid grid-cols-6"
+      >
         <div class="col-span-5">
           <p class="text-base">Nit del IMC</p>
 
-          <input type="number" (change)="checkDv1(2)"
+          <input
+            type="number"
+            (change)="checkDv1(2)"
             class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-            name="identificacion_operacion_anterior_nit_imc" id="" [class.error]="
+            name="identificacion_operacion_anterior_nit_imc"
+            id=""
+            [class.error]="
               identificacion_operacion_anterior_nit_imc.invalid && submitInvalid
-            " #identificacion_operacion_anterior_nit_imc="ngModel"
-            [(ngModel)]="formF1.identificacion_operacion_anterior.nit_imc" required />
+            "
+            #identificacion_operacion_anterior_nit_imc="ngModel"
+            [(ngModel)]="formF1.identificacion_operacion_anterior.nit_imc"
+            required
+          />
         </div>
         <div class="col-span-1 pl-2">
           <p class="text-base">D.V</p>
           <div class="dv w-[35px]">
-            <input type="text" placeholder="" required name="identificacion_operacion_anterior.dv"
-              #identificacion_operacion_anterior_dv="ngModel" [class.error]="
+            <input
+              type="text"
+              placeholder=""
+              required
+              name="identificacion_operacion_anterior.dv"
+              #identificacion_operacion_anterior_dv="ngModel"
+              [class.error]="
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
-              " [(ngModel)]="formF1.identificacion_operacion_anterior.dv"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
+              "
+              [(ngModel)]="formF1.identificacion_operacion_anterior.dv"
+              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+            />
           </div>
         </div>
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <p class="text-base">Número deuda externa (Si aplica)</p>
 
-        <input type="number" placeholder=""
+        <input
+          type="number"
+          placeholder=""
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_operacion.numero_declaracion"
-          #identificacion_operacion_anterior_numero_deuda_externa="ngModel" [class.error]="
+          #identificacion_operacion_anterior_numero_deuda_externa="ngModel"
+          [class.error]="
             identificacion_operacion_anterior_numero_deuda_externa.invalid &&
             submitInvalid
-          " [(ngModel)]="
+          "
+          [(ngModel)]="
             formF1.identificacion_operacion_anterior.numero_deuda_externa
-          " />
+          "
+        />
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
         <p class="text-base">Número declaración de cambio</p>
 
-        <input type="number" placeholder=""
+        <input
+          type="number"
+          placeholder=""
           class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_operacion.numero_declaracion"
-          #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel" [class.error]="
+          #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel"
+          [class.error]="
             identificacion_operacion_anterior_numero_declaracion_cambio.invalid &&
             submitInvalid
-          " [(ngModel)]="
+          "
+          [(ngModel)]="
             formF1.identificacion_operacion_anterior.numero_declaracion_cambio
-          " />
+          "
+        />
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6 mt-4 grid grid-cols-12 pr-2">
@@ -148,32 +233,62 @@
 
       <div class="col-span-12 flex items-center justify-between p-1">
         <p class="text-base">Devolución</p>
-       
+
         <div class="flex gap-1 justify-center items-center h-9">
           <label for="">SI</label>
-          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF1.declaracion_detalle.devolucion" required value="SI">
+          <input
+            type="radio"
+            name="tipo_operacion_devolucion"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.devolucion"
+            required
+            value="SI"
+          />
           <label class="ml-2" for="">NO</label>
-          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF1.declaracion_detalle.devolucion" required value="NO">
+          <input
+            type="radio"
+            name="tipo_operacion_devolucion"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.devolucion"
+            required
+            value="NO"
+          />
         </div>
       </div>
       <div class="col-span-12 flex items-center justify-between p-1">
         <div class="flex gap-1 items-center">
           <p class="text-base lg:text-center">Información consolidada</p>
-          <app-tool1 id="step2" [content]="
+          <app-tool1
+            id="step2"
+            [content]="
               'Indique si usted es proveedor de servicios de pago agregado que está entregando información consolidada'
-            "></app-tool1>
+            "
+          ></app-tool1>
         </div>
         <div class="flex gap-1 justify-center items-center h-9">
           <label for="">SI</label>
-          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada" required value="SI">
+          <input
+            type="radio"
+            name="informacion_consolidada"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada"
+            required
+            value="SI"
+          />
           <label class="ml-2" for="">NO</label>
-          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada" required value="NO">
+          <input
+            type="radio"
+            name="informacion_consolidada"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF1.declaracion_detalle.informacion_consolidada"
+            required
+            value="NO"
+          />
         </div>
-       
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6 mt-4">
@@ -183,16 +298,23 @@
           <p class="mb-1" for="">Tipo de entidad</p>
           <app-tool1 [content]="textTipoIdentidad"></app-tool1>
         </div>
-        <select name="tipo_operacion" id="" name="tipo_identidad_tipo" #tipo_identidad_tipo="ngModel"
-          [(ngModel)]="formF1.tipo_identidad.tipo" required [class.error]="tipo_identidad_tipo.invalid && submitInvalid"
-          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3">
+        <select
+          name="tipo_operacion"
+          id=""
+          name="tipo_identidad_tipo"
+          #tipo_identidad_tipo="ngModel"
+          [(ngModel)]="formF1.tipo_identidad.tipo"
+          required
+          [class.error]="tipo_identidad_tipo.invalid && submitInvalid"
+          class="block bg-gray-50 text-wrap h-auto border min-h-[35px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2 px-3"
+        >
           <option value=""></option>
           <option value="Patrimonio Autónomo">Patrimonio Autónomo</option>
           <option value="Fondo de Capital Privado">
             Fondo de Capital Privado
           </option>
-          <option value="Fondo deInversiónColectiva">
-            Fondo deInversiónColectiva
+          <option value="Fondo de Inversión Colectiva">
+            Fondo de Inversión Colectiva
           </option>
           <option value="Otros">Otros</option>
         </select>
@@ -215,59 +337,98 @@
     <div class="col-span-12 p-1">
       <div class="inputs">
         <div class="row col-span-12 grid grid-cols-12">
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+          >
             <p class="mb-1">Tipo de Identificación</p>
 
-            <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
+            <select
+              [name]="'otro_tipo_documento'"
+              #otro_tipo_documento="ngModel"
+              required
               class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               [class.error]="otro_tipo_documento.invalid && submitInvalid"
-              [(ngModel)]="formF1.identificacion_de_importador.tipo_documento">
+              [(ngModel)]="formF1.identificacion_de_importador.tipo_documento"
+            >
               <option *ngFor="let doc of selectDocPN" [value]="doc.code">
                 {{ doc.name }}
               </option>
             </select>
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6">
-            <div class="col-span-5" [class.col-span-6]="
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6"
+          >
+            <div
+              class="col-span-5"
+              [class.col-span-6]="
                 formF1.identificacion_de_importador.tipo_documento != 'NIT'
-              ">
+              "
+            >
               <p class="text-base mb-1">Número de identificación</p>
 
-              <input type="text" (change)="checkDv1(3)"
+              <input
+                type="text"
+                (change)="checkDv1(3)"
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [name]="'otro_documento'" id="" [class.error]="otro_documento.invalid && submitInvalid"
-                #otro_documento="ngModel" [(ngModel)]="
+                [name]="'otro_documento'"
+                id=""
+                [class.error]="otro_documento.invalid && submitInvalid"
+                #otro_documento="ngModel"
+                [(ngModel)]="
                   formF1.identificacion_de_importador.numero_documento
-                " required onlyAlfaNums />
+                "
+                required
+                onlyAlfaNums
+              />
             </div>
-            <div class="col-span-1 pl-2" *ngIf="
+            <div
+              class="col-span-1 pl-2"
+              *ngIf="
                 formF1.identificacion_de_importador.tipo_documento == 'NIT'
-              ">
+              "
+            >
               <p class="text-base mb-1">D.V</p>
               <div class="dv w-[35px]">
-                <input type="text" placeholder="" required [name]="'otro_documento_dv'"
-                  #identificacion_otro_dv="ngModel" [(ngModel)]="formF1.identificacion_de_importador.dv"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1">
+                <input
+                  type="text"
+                  placeholder=""
+                  required
+                  [name]="'otro_documento_dv'"
+                  #identificacion_otro_dv="ngModel"
+                  [(ngModel)]="formF1.identificacion_de_importador.dv"
+                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                />
               </div>
             </div>
           </div>
-          <div class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1">
+          <div
+            class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1"
+          >
             <p class="text-base w-full">Nombre o razón social del importador</p>
 
-            <input type="text" placeholder="" [name]="'nombre_otro'" #otro_nombre="ngModel"
-              style="text-transform: uppercase" required
+            <input
+              type="text"
+              placeholder=""
+              [name]="'nombre_otro'"
+              #otro_nombre="ngModel"
+              style="text-transform: uppercase"
+              required
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [class.error]="otro_nombre.invalid && submitInvalid" [(ngModel)]="
+              [class.error]="otro_nombre.invalid && submitInvalid"
+              [(ngModel)]="
                 formF1.identificacion_de_importador.nombre_razon_social
-              " />
+              "
+            />
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="flex justify-center gap-2 mt-2">
-    <button id="step3"
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+    <button
+      id="step3"
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Continuar
     </button>
   </div>

@@ -40,16 +40,24 @@ export class PdfModalComponent implements OnInit {
     nombre: '',
     documento: ''
   }
+  empresa = ''
+  existuser = false
   fechaActual: Date = new Date();
   loader = false;
   loader2 = false;
   constructor(private formService: FormService, private pdfService: PdfService) {
 
+    
   }
   ngOnInit(): void {
     const data = this.formService.getUser()
     if (data) {
       this.usuario = data
+      this.existuser = true
+    }
+    const forms = this.formService.getForm()
+    if (forms) {
+      this.empresa = forms.empresa
     }
   }
   closedModal() {
@@ -57,10 +65,12 @@ export class PdfModalComponent implements OnInit {
   }
 
   validateForm(step1Form: NgForm) {
-    if (step1Form.valid && this.form.empresa !== 'corficolombiana' ) {
+    console.log(this.form)
+    if (step1Form.valid ) {
       this.loader2 = true
       this.submitInvalid = false;
       this.formService.saveUser(this.usuario.nombre, this.usuario.documento);
+      this.existuser = true
       setTimeout(() => {
         this.loader2 = false
       }, 500);

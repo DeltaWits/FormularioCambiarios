@@ -1,1 +1,1 @@
-export const primaryButtons = ['#9EC72D', '#00185f'];
+export const primaryButtons = ['#0065BD', '#00185f'];

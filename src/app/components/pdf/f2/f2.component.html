@@ -58,7 +58,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha del Tramite</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_operacion.fecha_tramite }}
           </p>
@@ -67,7 +67,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_operacion.nit_imc }}
             </p>
@@ -75,7 +75,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_operacion.dv }}
             </p>
@@ -87,7 +87,7 @@
             <span class="text-[10px]">(Uso exclusivo IMC)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_operacion.numero_declaracion }}
           </p>
@@ -96,14 +96,16 @@
       <div class="col-span-12 p-1">
         <h4 class="text-10px w-100 font-semibold text-start">
           III. Identificación de la operación anterior
-          <span class="text-10px">(Para cambio de formulario o corrección)</span>
+          <span class="text-10px"
+            >(Para cambio de formulario o corrección)</span
+          >
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha de la operación inicial</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
           </p>
@@ -112,7 +114,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.nit_imc }}
             </p>
@@ -120,7 +122,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.dv }}
             </p>
@@ -131,7 +133,7 @@
             Deuda externa <span class="text-10px">(si aplica)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior.numero_deuda_externa
@@ -143,7 +145,7 @@
             Número de declaración de cambio
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior
@@ -213,8 +215,7 @@
                 type="checkbox"
                 disabled
                 [attr.checked]="
-                  form.data.declaracion_detalle.informacion_consolidada ===
-                  'NO'
+                  form.data.declaracion_detalle.informacion_consolidada === 'NO'
                     ? true
                     : null
                 "
@@ -263,18 +264,16 @@
         <div class="col-span-2 mtr-2 flex gap-1">
           <p class="text-10px">Otros</p>
           <input
-          type="checkbox"
-          disabled
-          [attr.checked]="
-            form.data.tipo_identidad.tipo === 'Otros'
-              ? true
-              : null
-          "
-        />
+            type="checkbox"
+            disabled
+            [attr.checked]="
+              form.data.tipo_identidad.tipo === 'Otros' ? true : null
+            "
+          />
         </div>
         <!-- <div class="col-span-8 mt-1 mtr-2">
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.tipo_identidad.otros }}
           </p>
@@ -293,7 +292,7 @@
               <th class="py-2 text-10px">Número de identificación</th>
               <th class="py-2 text-10px">dv</th>
               <th class="py-2 text-10px">
-                Nombre o razón social del importador
+                Nombre o razón social del exportador
               </th>
             </tr>
           </thead>
@@ -337,15 +336,20 @@
               </td>
               <td class="py-0.5 text-10px">
                 {{
-                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion | dolarFormat: '$'
+                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion
+                    | dolarFormat : ""
                 }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.descripcion_de_la_operacion.tasa_de_cambio | dolarFormat: '$' }}
+                {{
+                  form.data.descripcion_de_la_operacion.tasa_de_cambio
+                    | dolarFormat : ""
+                }}
               </td>
               <td class="py-0.5 text-10px">
                 {{
-                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion | dolarFormat: '$'
+                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion
+                    | dolarFormat : ""
                 }}
               </td>
             </tr>
@@ -357,12 +361,11 @@
           VIII. Información requerida para la DIAN
         </h4>
         <p class="text-10px text-justify mt-2">
-          Si la mercancía ingresa del
-          exterior al Territorio Aduanero Nacional, debe relacionar el número de
-          Aceptación de la Declaración de Importación. Si la mercancía ingresa
-          del exterior a la Zona Franca o es un envió courrier debe relacionar
-          el número de la Factura Comercial expedida por el proveedor del
-          exterior, la cual puede ser Alfanumérica.
+          Si la mercancía sale del Territorio Aduanero Nacional al exterior,
+          debe relacionar el Número de la Declaración de Exportación Definitiva
+          DEX. Si la Mercancía sale al exterior desde la Zona Franca o es un
+          envío Currier, debe relacionar el número de la factura comercial, la
+          cual puede ser alfanumérica.
         </p>
       </div>
       <div class="col-span-12 p-2 border">
@@ -370,7 +373,7 @@
           <thead class="p-2 border-b-[1px] border-b-1px border-black">
             <tr>
               <th class="py-2 text-10px">
-                Número de declaración de importación y/o factura comercial
+                Número de declaración de exportación y/o factura comercial
               </th>
               <th class="py-2 text-10px">Numeral cambiario</th>
               <th class="py-2 text-10px">Valor reintegrado DEX en USD</th>
@@ -388,39 +391,52 @@
                 {{ form.data.informacion_DIAN[i].numeral_cambiario }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.informacion_DIAN[i].valor_reintegrado_en_USD | dolarFormat: '$' }}
-              </td>
-            </tr>
-            <tr class=" border-b-[1px] border-b-1px">
-              <td class="py-1 text-10px text-start" colspan="2">
-                Total Valor FOB
-              </td>
-              <td class="py-1 text-10px">
-                {{ form.data.informacion_DIAN_total.total_valorFoB | dolarFormat: '$' }}
-              </td>
-            </tr>
-            <tr class=" border-b-[1px] border-b-1px">
-              <td class="py-1 text-10px text-start" colspan="2">
-                Total gastos exportación
-              </td>
-              <td class="py-1 text-10px">
                 {{
-                  form.data.informacion_DIAN_total.total_gastos_de_exportacion | dolarFormat: '$' 
+                  form.data.informacion_DIAN[i].valor_reintegrado_en_USD
+                    | dolarFormat : ""
                 }}
               </td>
             </tr>
-            <tr class=" border-b-[1px] border-b-1px">
+            <tr class="border-b-[1px] border-b-1px">
+              <td class="py-1 text-10px text-start" colspan="2">
+                Total Valor FOB
+              </td>
+              <td class="py-1 text-10px text-center |">
+                {{
+                  form.data.informacion_DIAN_total.total_valorFoB
+                    | dolarFormat : ""
+                }}
+              </td>
+            </tr>
+            <tr class="border-b-[1px] border-b-1px">
+              <td class="py-1 text-10px text-start" colspan="2">
+                Total gastos exportación
+              </td>
+              <td class="py-1 text-10px text-center">
+                {{
+                  form.data.informacion_DIAN_total.total_gastos_de_exportacion
+                    | dolarFormat : ""
+                }}
+              </td>
+            </tr>
+            <tr class="border-b-[1px] border-b-1px">
               <td class="py-1 text-10px text-start" colspan="2">Deducciones</td>
-              <td class="py-1 text-10px">
-                {{ form.data.informacion_DIAN_total.Deducciones | dolarFormat: '$' }}
+              <td class="py-1 text-10px text-center">
+                {{
+                  form.data.informacion_DIAN_total.Deducciones
+                    | dolarFormat : ""
+                }}
               </td>
             </tr>
             <tr class="">
               <td class="py-1 text-10px text-start" colspan="2">
                 Reintegro Neto
               </td>
-              <td class="py-1 text-10px">
-                {{ form.data.informacion_DIAN_total.Reintegro_neto | dolarFormat: '$' }}
+              <td class="py-1 text-10px text-center">
+                {{
+                  form.data.informacion_DIAN_total.Reintegro_neto
+                    | dolarFormat : ""
+                }}
               </td>
             </tr>
           </tbody>
@@ -428,7 +444,11 @@
       </div>
       <div class="col-span-12 p-2 border flex flex-wrap mt-2">
         <p class="text-10px text-justify mt-1">Observaciones</p>
-        <div class="w-[90%] text-start p-2 border-b-[1px] border-b-1px text-10px  min-h-100px"> {{ form.data.observaciones }}</div>
+        <div
+          class="w-[90%] text-start p-2 border-b-[1px] border-b-1px text-10px min-h-100px"
+        >
+          {{ form.data.observaciones }}
+        </div>
       </div>
       <div class="col-span-12 p-1 mt-2">
         <p class="text-[8px] text-justify">
@@ -454,11 +474,15 @@
       <div class="col-span-12 border p-2 grid grid-cols-12">
         <div class="col-span-6 pr-1">
           <p class="text-10px">Nombre</p>
-          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.nombre }}</div>
+          <div class="px-3 py-1 border text-10px min-h-15px uppercase">
+            {{ usuario.nombre }}
+          </div>
           <p class="text-10px mt-2">Documento</p>
-          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.documento }}</div>
+          <div class="px-3 py-1 border text-10px min-h-15px">
+            {{ usuario.documento }}
+          </div>
         </div>
-        
+
         <div class="col-span-6">
           <p class="text-10px">Firma</p>
           <div class="p-5 border-b-[1px] border-b-1px pt-4"></div>

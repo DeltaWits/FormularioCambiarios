@@ -1,135 +1,202 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="validateForm(step1Form)"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
-        <h3 class="font-semibold text-lg">Identificación del inversionista (nacional o extranjero) o fondo de inversion
-          (Portafolio)
+        <h3 class="font-semibold text-lg">
+          Identificación del inversionista (nacional o extranjero) o fondo de
+          inversion (Portafolio)
         </h3>
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
           <div class="row col-span-12 grid grid-cols-12">
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
               <p class="mb-1">Tipo de Identificación</p>
 
-              <select [name]="'otro_tipo_documento'" #otro_tipo_documento="ngModel" required
+              <select
+                [name]="'otro_tipo_documento'"
+                #otro_tipo_documento="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_tipo_documento.invalid && submitInvalid"
-                [(ngModel)]="formF4.identificacion_del_inversionista.tipo_identificacion">
+                [(ngModel)]="
+                  formF4.identificacion_del_inversionista.tipo_identificacion
+                "
+              >
                 <option *ngFor="let doc of selectDocR" [value]="doc.code">
                   {{ doc.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6">
-              <div class="col-span-5" [class.col-span-6]="
-                    true
-                  ">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6"
+            >
+              <div class="col-span-5" [class.col-span-6]="true">
                 <p class="text-base mb-1">Número de identificación</p>
 
-                <input type="text"
+                <input
+                  type="text"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                  [name]="'identificacion_del_inversionista_'" id=""
-                  [class.error]="identificacion_del_inversionista_.invalid && submitInvalid"
-                  #identificacion_del_inversionista_="ngModel" [(ngModel)]="
-                      formF4.identificacion_del_inversionista.numero_identifiacion
-                    " required onlyAlfaNums/>
+                  [name]="'identificacion_del_inversionista_'"
+                  id=""
+                  [class.error]="
+                    identificacion_del_inversionista_.invalid && submitInvalid
+                  "
+                  #identificacion_del_inversionista_="ngModel"
+                  [(ngModel)]="
+                    formF4.identificacion_del_inversionista.numero_identifiacion
+                  "
+                  required
+                  onlyAlfaNums
+                />
               </div>
-
             </div>
 
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Nombre</p>
 
-              <input type="text" placeholder="" [name]="'nombre_otro2'" #otro_nombre3="ngModel"
-                style="text-transform: uppercase" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="otro_nombre3.invalid && submitInvalid" [(ngModel)]="
-                    formF4.identificacion_del_inversionista.nombre
-                  " />
-            </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
-              <p class="text-base">País</p>
-
-              <input type="text" placeholder="" required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                name="identificacion_del_inversionista.pais" #identificacion_del_inversionista_telefono="ngModel"
-                [class.error]="identificacion_del_inversionista_telefono.invalid && submitInvalid" [(ngModel)]="
-                                      formF4.identificacion_del_inversionista.pais " list="pais2" />
-                <datalist id="pais2">
-                  <option
-                    *ngFor="let pais of paises"
-                    [value]="pais.Codigo"
-                    [selected]="pais.Codigo === 'CO'"
-                  >
-                    {{ pais.Codigo }} : {{ pais.Nombre }}
-                  </option>
-                </datalist>
-            </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
-              <p class="text-base w-full">Correo</p>
-
-              <input type="email" email placeholder="" [name]="'nombre_otro_correo'" #otro_nombre_correo="ngModel"
+              <input
+                type="text"
+                placeholder=""
+                [name]="'nombre_otro2'"
+                #otro_nombre3="ngModel"
+                style="text-transform: uppercase"
                 required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="otro_nombre_correo.invalid && submitInvalid" 
-                [(ngModel)]="
-                                formF4.identificacion_del_inversionista.correo
-                              " 
-                              appEmailDomainValidator/>
+                [class.error]="otro_nombre3.invalid && submitInvalid"
+                [(ngModel)]="formF4.identificacion_del_inversionista.nombre"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+            >
+              <p class="text-base">País</p>
+
+              <input
+                type="text"
+                placeholder=""
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                name="identificacion_del_inversionista.pais"
+                #identificacion_del_inversionista_telefono="ngModel"
+                [class.error]="
+                  identificacion_del_inversionista_telefono.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="formF4.identificacion_del_inversionista.pais"
+                list="pais2"
+              />
+              <datalist id="pais2">
+                <option
+                  *ngFor="let pais of paises"
+                  [value]="pais.Codigo"
+                  [selected]="pais.Codigo === 'CO'"
+                >
+                  {{ pais.Codigo }} : {{ pais.Nombre }}
+                </option>
+              </datalist>
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
+              <p class="text-base w-full">Correo</p>
+
+              <input
+                type="email"
+                email
+                placeholder=""
+                [name]="'nombre_otro_correo'"
+                #otro_nombre_correo="ngModel"
+                required
+                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                [class.error]="otro_nombre_correo.invalid && submitInvalid"
+                [(ngModel)]="formF4.identificacion_del_inversionista.correo"
+                appEmailDomainValidator
+              />
+            </div>
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-4 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Código CIIU</p>
 
-              <input type="text" placeholder="" [name]="'identificacion_del_inversionista.codigo_CIIU'"
-                #identificacion_del_inversionista_codigo_CIIU="ngModel" style="text-transform: uppercase" required
+              <input
+                type="text"
+                placeholder=""
+                [name]="'identificacion_del_inversionista.codigo_CIIU'"
+                #identificacion_del_inversionista_codigo_CIIU="ngModel"
+                style="text-transform: uppercase"
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="identificacion_del_inversionista_codigo_CIIU.invalid && submitInvalid" [(ngModel)]="
-                                            formF4.identificacion_del_inversionista.codigo_CIIU
-                                          " list="codigo_CIIU" />
+                [class.error]="
+                  identificacion_del_inversionista_codigo_CIIU.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="
+                  formF4.identificacion_del_inversionista.codigo_CIIU
+                "
+                list="codigo_CIIU"
+              />
 
               <datalist id="codigo_CIIU">
-
-                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
                   {{ item.Nombre }}
                 </option>
               </datalist>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">Teléfono (Nvl. nacional)</p>
 
-              <input type="text" placeholder="" [name]="'nombre_otro_telefono3'" #otro_nombre_telefono3="ngModel"
-                style="text-transform: uppercase" required
+              <input
+                type="text"
+                placeholder=""
+                [name]="'nombre_otro_telefono3'"
+                #otro_nombre_telefono3="ngModel"
+                style="text-transform: uppercase"
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="otro_nombre_telefono3.invalid && submitInvalid" [(ngModel)]="
-                                formF4.identificacion_del_inversionista.telefono
-                              " />
+                [class.error]="otro_nombre_telefono3.invalid && submitInvalid"
+                [(ngModel)]="formF4.identificacion_del_inversionista.telefono"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-6 p-1">
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-6 p-1"
+            >
               <p class="text-base">Dirección (Nvl. nacional)</p>
 
-              <input type="text" placeholder="" required
+              <input
+                type="text"
+                placeholder=""
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                name="identificacion_del_inversionista.direccion" #identificacion_del_inversionista_direccion="ngModel"
+                name="identificacion_del_inversionista.direccion"
+                #identificacion_del_inversionista_direccion="ngModel"
                 [class.error]="
-                                      identificacion_del_inversionista_direccion.invalid &&
-                                      submitInvalid
-                                    " [(ngModel)]="
-                                      formF4.identificacion_del_inversionista.direccion " />
+                  identificacion_del_inversionista_direccion.invalid &&
+                  submitInvalid
+                "
+                [(ngModel)]="formF4.identificacion_del_inversionista.direccion"
+              />
             </div>
-
-
           </div>
         </div>
       </div>
-
-
     </div>
-
-
   </div>
   <div class="col-span-12 mt-4 grid grid-cols-12">
     <div class="col-span-12">
@@ -139,154 +206,249 @@
       <div class="inputs">
         <!-- {{ formF4.descripcionde_la_operacion }} -->
         <div class="row col-span-12 grid grid-cols-12">
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+          >
             <div class="flex gap-1">
-              <p class="text-base flex gap-1">Numeral cambiario</p> <app-tool-img
-                [numerales]="numeralesCambiarios"></app-tool-img>
+              <p class="text-base flex gap-1">Numeral cambiario</p>
+              <app-tool-img [numerales]="numeralesCambiarios"></app-tool-img>
             </div>
-            <select id="small"
+            <select
+              id="small"
               class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              required [name]="'otro_numeral_cambiario' " id=""
-              [class.error]="otro_numeral_cambiario.invalid && submitInvalid" #otro_numeral_cambiario="ngModel"
-              [(ngModel)]="
-                              formF4.descripcionde_la_operacion.numeral_cambiario
-                            ">
-
+              required
+              [name]="'otro_numeral_cambiario'"
+              id=""
+              [class.error]="otro_numeral_cambiario.invalid && submitInvalid"
+              #otro_numeral_cambiario="ngModel"
+              [(ngModel)]="formF4.descripcionde_la_operacion.numeral_cambiario"
+            >
               <option value="" selected>------</option>
-              <option [value]="item.codigo" *ngFor="let item of numeralesCambiarios">{{item.codigo}}</option>
+              <option
+                [value]="item.codigo"
+                *ngFor="let item of numeralesCambiarios"
+              >
+                {{ item.codigo }}
+              </option>
             </select>
-
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+          >
             <p class="">Cod. Mda. Negociación</p>
 
-            <select [name]="'cod_mda_negociacion' " #cod_mda_negociacion="ngModel" required
+            <select
+              [name]="'cod_mda_negociacion'"
+              #cod_mda_negociacion="ngModel"
+              required
               class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              required [class.error]="cod_mda_negociacion.invalid && submitInvalid" [(ngModel)]="
-                            formF4.descripcionde_la_operacion.codigo_moneda
-                          ">
+              required
+              [class.error]="cod_mda_negociacion.invalid && submitInvalid"
+              [(ngModel)]="formF4.descripcionde_la_operacion.codigo_moneda"
+            >
               <option value="">Seleccionar moneda</option>
               <option *ngFor="let moneda of monedas" [value]="moneda.code">
                 {{ moneda.code }} {{ moneda.name }}
               </option>
             </select>
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+          >
             <p class="text-base">Vr. Total Mda Negociación</p>
 
-            <input type="text" placeholder="" (change)="selectTasa(1)"
+            <input
+              type="text"
+              placeholder=""
+              (change)="selectTasa(1)"
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [name]="'valor_t_mda_nego' " #valor_t_mda_nego="ngModel" placeholder="" required
-              [class.error]="valor_t_mda_nego.invalid && submitInvalid" [(ngModel)]="
-                            formF4.descripcionde_la_operacion.valor_moneda_negociacion
-                          " dolarFormat />
+              [name]="'valor_t_mda_nego'"
+              #valor_t_mda_nego="ngModel"
+              placeholder=""
+              required
+              [class.error]="valor_t_mda_nego.invalid && submitInvalid"
+              [(ngModel)]="
+                formF4.descripcionde_la_operacion.valor_moneda_negociacion
+              "
+              dolarFormat
+            />
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+          >
             <p class="text-base">Tasa de cambio a dólar</p>
 
-            <input type="text" placeholder="" (change)="selectTasa(1)"
+            <input
+              type="text"
+              placeholder=""
+              (change)="selectTasa(1)"
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [name]="'tasa_cambio'" #descripcionde_la_operacion_tasa_cambio_dolar="ngModel" placeholder="" required
-              [class.error]="descripcionde_la_operacion_tasa_cambio_dolar.invalid && submitInvalid" [(ngModel)]="
-                            formF4.descripcionde_la_operacion.tasa_cambio_dolar
-                          " dolarFormat />
+              [name]="'tasa_cambio'"
+              #descripcionde_la_operacion_tasa_cambio_dolar="ngModel"
+              placeholder=""
+              required
+              [class.error]="
+                descripcionde_la_operacion_tasa_cambio_dolar.invalid &&
+                submitInvalid
+              "
+              [(ngModel)]="formF4.descripcionde_la_operacion.tasa_cambio_dolar"
+              dolarFormat
+            />
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+          >
             <p class="text-base w-full">Valor total en dólares</p>
 
-            <input type="text" placeholder=""
+            <input
+              type="text"
+              placeholder=""
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              disabled [name]="'numero_cambiario'" #numero_cambiario="ngModel" placeholder=""
-              [class.error]="numero_cambiario.invalid && submitInvalid" [(ngModel)]="
-                            formF4.descripcionde_la_operacion.valor_total_dolares
-                          " />
-
+              disabled
+              [name]="'numero_cambiario'"
+              #numero_cambiario="ngModel"
+              placeholder=""
+              [class.error]="numero_cambiario.invalid && submitInvalid"
+              [(ngModel)]="
+                formF4.descripcionde_la_operacion.valor_total_dolares
+              "
+            />
           </div>
 
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+          >
             <p class="mb-1">Moneda de registro</p>
 
-            <input type="text" [name]="'moneda_registro' " #moneda_registro2="ngModel" disabled
+            <input
+              type="text"
+              [name]="'moneda_registro'"
+              #moneda_registro2="ngModel"
+              disabled
               class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [defaultValue]="'COP'" [class.error]="moneda_registro2.invalid && submitInvalid" [(ngModel)]="
-                                      formF4.descripcionde_la_operacion.moneda_registro
-                                    " />
+              [defaultValue]="'COP'"
+              [class.error]="moneda_registro2.invalid && submitInvalid"
+              [(ngModel)]="formF4.descripcionde_la_operacion.moneda_registro"
+            />
           </div>
 
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1"
+          >
             <p class="text-base mb-1">Tasa de cambio a pesos</p>
 
-            <input type="text" placeholder="" (change)="selectTasa(2)"
+            <input
+              type="text"
+              placeholder=""
+              (change)="selectTasa(2)"
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              [name]="'tasa_cambio_pesos'" #descripcionde_la_operacion_tasa_cambio_pesos="ngModel" placeholder=""
-              required [class.error]="descripcionde_la_operacion_tasa_cambio_pesos.invalid && submitInvalid"
-              [(ngModel)]="
-                                      formF4.descripcionde_la_operacion.tasa_cambio_pesos
-                                    " />
+              [name]="'tasa_cambio_pesos'"
+              #descripcionde_la_operacion_tasa_cambio_pesos="ngModel"
+              placeholder=""
+              required
+              [class.error]="
+                descripcionde_la_operacion_tasa_cambio_pesos.invalid &&
+                submitInvalid
+              "
+              [(ngModel)]="formF4.descripcionde_la_operacion.tasa_cambio_pesos"
+            />
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-3 xl:col-span-3 p-1 flex flex-wrap"
+          >
             <p class="text-base w-full">Valor total en pesos</p>
 
-            <input type="text" placeholder=""
+            <input
+              type="text"
+              placeholder=""
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              disabled [name]="'valor_total_pesos'" #valor_total_pesos="ngModel" placeholder=""
-              [class.error]="valor_total_pesos.invalid && submitInvalid" [(ngModel)]="
-                                      formF4.descripcionde_la_operacion.valor_total_pesos
-                                    " dolarFormat />
-
+              disabled
+              [name]="'valor_total_pesos'"
+              #valor_total_pesos="ngModel"
+              placeholder=""
+              [class.error]="valor_total_pesos.invalid && submitInvalid"
+              [(ngModel)]="formF4.descripcionde_la_operacion.valor_total_pesos"
+              dolarFormat
+            />
           </div>
-          <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1">
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1"
+          >
             <div class="flex gap-1">
               <p class="mb-1" for="">Participaciones</p>
               <app-tool1
-                [content]="'Número adquirido de acciones, cuotas, partes de interés o aportes en que se encuentra representado el capital de la  empresa receptora de inversión. \n Nota: este campo no debe ser diligenciado en los siguientes casos:  \n 1. Inversión extranjera en Colombia \n 2. Inversión colombiana en el exterior \n 3. Cuando el destino corresponda a actos o contratos sin participación en el capital de una empresa ' "></app-tool1>
+                [content]="
+                  'Número adquirido de acciones, cuotas, partes de interés o aportes en que se encuentra representado el capital de la  empresa receptora de inversión. \n Nota: este campo no debe ser diligenciado en los siguientes casos:  \n 1. Inversión extranjera en Colombia \n 2. Inversión colombiana en el exterior \n 3. Cuando el destino corresponda a actos o contratos sin participación en el capital de una empresa '
+                "
+              ></app-tool1>
             </div>
 
-            <input type="number" placeholder=""
+            <input
+              type="text"
+              placeholder=""
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              name="descripcionde_la_operacion_participaciones" #descripcionde_la_operacion_participaciones="ngModel"
+              name="descripcionde_la_operacion_participaciones"
+              #descripcionde_la_operacion_participaciones="ngModel"
               [class.error]="
                 descripcionde_la_operacion_participaciones.invalid &&
                 submitInvalid
-              " [(ngModel)]="
-                formF4.descripcionde_la_operacion.participaciones" />
+              "
+              [(ngModel)]="formF4.descripcionde_la_operacion.participaciones"
+              onlyNumbers
+            />
           </div>
-          <div *ngIf=" formF4.descripcionde_la_operacion.participaciones == '0'"
-            class="col-span-12  lg:col-span-6  p-1">
+          <div
+            *ngIf="formF4.descripcionde_la_operacion.participaciones == '0'"
+            class="col-span-12 lg:col-span-6 p-1"
+          >
             <p class="text-base mb-1">Motivo sin participaciones</p>
 
-            <select type="text" placeholder="" required
+            <select
+              type="text"
+              placeholder=""
+              required
               class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-              name="descripcionde_la_operacion_motivo" #descripcionde_la_operacion_motivo="ngModel" [class.error]="
-                descripcionde_la_operacion_motivo.invalid &&
-                submitInvalid
-              " [(ngModel)]="
-                formF4.descripcionde_la_operacion.motivo_sin_participaciones " 
-                >
-                <option value="1. Inversión a Plazos">1. Inversión a Plazos</option>
-                <option value="2. Prima en Colocación de Aportes">2. Prima en Colocación de Aportes</option>
-                <option value="3. Aumento valor Nominal sin emisión de participación">
-                  3. Aumento valor Nominal sin emisión de participación</option>
-                <option value="4. Capital no representado en participaciones">
-                  4. Capital no representado en participaciones</option>
-                </select>
+              name="descripcionde_la_operacion_motivo"
+              #descripcionde_la_operacion_motivo="ngModel"
+              [class.error]="
+                descripcionde_la_operacion_motivo.invalid && submitInvalid
+              "
+              [(ngModel)]="
+                formF4.descripcionde_la_operacion.motivo_sin_participaciones
+              "
+            >
+              <option value="1. Inversión a Plazos">
+                1. Inversión a Plazos
+              </option>
+              <option value="2. Prima en Colocación de Aportes">
+                2. Prima en Colocación de Aportes
+              </option>
+              <option
+                value="3. Aumento valor Nominal sin emisión de participación"
+              >
+                3. Aumento valor Nominal sin emisión de participación
+              </option>
+              <option value="4. Capital no representado en participaciones">
+                4. Capital no representado en participaciones
+              </option>
+            </select>
           </div>
         </div>
       </div>
 
       <!-- <div class="w-full flex justify-end">
               <button type="button" *ngIf="formF4.descripcionde_la_operacion.length < 10" (click)="agregarImportador()"
-                class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                class="text-white mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                 Agregar operación
               </button>
             </div> -->
     </div>
-   
   </div>
 
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Guardar
     </button>
   </div>

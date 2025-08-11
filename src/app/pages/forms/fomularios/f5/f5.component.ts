@@ -73,7 +73,8 @@ export class F5Component implements OnInit {
       numero_cambiario: '',
       valor_total_dolares: '',
     }],
-    observaciones: ''
+    observaciones: '',
+    valor_total_operaciones: 0
 
   }
 

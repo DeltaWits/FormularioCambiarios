@@ -1,7 +1,14 @@
-<app-pop-up-alert *ngIf="ShowPopUp === true" (showPopUp)="showActivePopUp($event)"
-  [Messagge]="MessaggePopUp"></app-pop-up-alert>
+<app-pop-up-alert
+  *ngIf="ShowPopUp === true"
+  (showPopUp)="showActivePopUp($event)"
+  [Messagge]="MessaggePopUp"
+></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" (keydown.enter)="$event.preventDefault()" #step1Form="ngForm">
+<form
+  (ngSubmit)="validateForm(step1Form)"
+  (keydown.enter)="$event.preventDefault()"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 mt-4 grid grid-cols-12">
       <div class="col-span-12">
@@ -9,61 +16,103 @@
       </div>
       <div class="col-span-12 p-1">
         <div class="inputs">
-          <div class="row col-span-12 grid grid-cols-12" *ngFor="
+          <div
+            class="row col-span-12 grid grid-cols-12"
+            *ngFor="
               let importador of formF2.identificacion_de_exportador;
               let i = index
-            ">
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between">
+            "
+          >
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 p-1 flex flex-col justify-between"
+            >
               <p class="mb-1">Tipo de Identificación</p>
 
-              <select [name]="'otro_tipo_documento' + i" #otro_tipo_documento="ngModel" required
+              <select
+                [name]="'otro_tipo_documento' + i"
+                #otro_tipo_documento="ngModel"
+                required
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                [class.error]="otro_tipo_documento.invalid && submitInvalid" [(ngModel)]="
-                  formF2.identificacion_de_exportador.tipo_documento
-                ">
+                [class.error]="otro_tipo_documento.invalid && submitInvalid"
+                [(ngModel)]="formF2.identificacion_de_exportador.tipo_documento"
+              >
                 <option *ngFor="let doc of selectDocPN" [value]="doc.code">
                   {{ doc.name }}
                 </option>
               </select>
             </div>
-            <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6">
-              <div class="col-span-5" [class.col-span-6]="
+            <div
+              class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4 p-1 grid grid-cols-6"
+            >
+              <div
+                class="col-span-5"
+                [class.col-span-6]="
                   formF2.identificacion_de_exportador.tipo_documento != 'NIT'
-                ">
+                "
+              >
                 <p class="text-base">Número de identificación</p>
 
-                <input type="text" (change)="checkDvArray(i)"
+                <input
+                  type="text"
+                  (change)="checkDvArray(i)"
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
-                  [name]="'otro_documento' + i" id="" [class.error]="otro_documento.invalid && submitInvalid"
-                  #otro_documento="ngModel" [(ngModel)]="
+                  [name]="'otro_documento' + i"
+                  id=""
+                  [class.error]="otro_documento.invalid && submitInvalid"
+                  #otro_documento="ngModel"
+                  [(ngModel)]="
                     formF2.identificacion_de_exportador.numero_documento
-                  " required  onlyAlfaNums />
+                  "
+                  required
+                  onlyAlfaNums
+                />
               </div>
-              <div class="col-span-1 pl-2" *ngIf="
+              <div
+                class="col-span-1 pl-2"
+                *ngIf="
                   formF2.identificacion_de_exportador.tipo_documento == 'NIT'
-                ">
+                "
+              >
                 <p class="text-base">D.V</p>
                 <div class="dv w-[35px]">
-                  <input type="text" placeholder="" required [name]="'otro_documento_dv' + i"
-                    #identificacion_otro_dv="ngModel" [(ngModel)]="formF2.identificacion_de_exportador.dv"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1" />
+                  <input
+                    type="text"
+                    placeholder=""
+                    required
+                    [name]="'otro_documento_dv' + i"
+                    #identificacion_otro_dv="ngModel"
+                    [(ngModel)]="formF2.identificacion_de_exportador.dv"
+                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                  />
                 </div>
               </div>
             </div>
-            <div class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1">
+            <div
+              class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1"
+            >
               <p class="text-base w-full">
-                Nombre o razón social del importador
+                Nombre o razón social del exportador
               </p>
 
-              <input type="text" placeholder="" [name]="'nombre_otro' + i" #otro_nombre="ngModel"
-                style="text-transform: uppercase" required
+              <input
+                type="text"
+                placeholder=""
+                [name]="'nombre_otro' + i"
+                #otro_nombre="ngModel"
+                style="text-transform: uppercase"
+                required
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[90%] px-2.5 py-1"
-                [class.error]="otro_nombre.invalid && submitInvalid" [(ngModel)]="
+                [class.error]="otro_nombre.invalid && submitInvalid"
+                [(ngModel)]="
                   formF2.identificacion_de_exportador.nombre_razon_social
-                " />
-              <button *ngIf="formF2.identificacion_de_exportador.length > 1"
+                "
+              />
+              <button
+                *ngIf="formF2.identificacion_de_exportador.length > 1"
                 class="text-black hover:bg-gray-100 focus:ring-4 hover:border-white focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-600 text-sm font-medium px-1 py-0.5 hover:text-gray-900 focus:z-10"
-                type="button" (click)="deleteImportador(i)">
+                type="button"
+                (click)="deleteImportador(i)"
+              >
                 <i class="fa fa-trash"></i>
               </button>
             </div>
@@ -71,9 +120,13 @@
         </div>
 
         <div class="w-full flex justify-end">
-          <button type="button" *ngIf="formF2.identificacion_de_exportador.length < 10" (click)="agregarImportador()"
-            class="text-blue-button mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-            Agregar importador
+          <button
+            type="button"
+            *ngIf="formF2.identificacion_de_exportador.length < 10"
+            (click)="agregarImportador()"
+            class="text-white mt-2 bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+          >
+            Agregar exportador
           </button>
         </div>
       </div>
@@ -81,7 +134,8 @@
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+    >
       Continuar
     </button>
   </div>

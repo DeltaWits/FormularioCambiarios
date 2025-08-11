@@ -1,4 +1,6 @@
-<div class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4">
+<div
+  class="container max-w-[1280px] relative shadow bg-white rounded-lg container-s p-4"
+>
   <h1 class="w-full font-semibold text-2xl text-center">
     F2: Operaciones de Cambio por Exportaciones de Bienes
   </h1>
@@ -22,10 +24,17 @@
           </p>
         </div>
         <div class="tabs mt-4 w-full">
-          <ul class="flex flex-wrap text-base font-medium text-center text-gray-500 border-b border-gray-200">
+          <ul
+            class="flex flex-wrap text-base font-medium text-center text-gray-500 border-b border-gray-200"
+          >
             <li class="mr-2">
-              <a (click)="stepNavigator = 1" aria-current="page" [class.active]="stepNavigator == 1"
-                class="inline-block p-4 bg-gray-200 rounded-t-lg">Parte 1</a>
+              <a
+                (click)="stepNavigator = 1"
+                aria-current="page"
+                [class.active]="stepNavigator == 1"
+                class="inline-block p-4 bg-gray-200 rounded-t-lg"
+                >Parte 1</a
+              >
             </li>
             <!-- <li class="mr-2">
               <button type="button" [disabled]="formF2.steps.step1 == false" (click)="stepNavigator = 2"
@@ -34,25 +43,42 @@
               </button>
             </li> -->
             <li class="mr-2">
-              <button type="button" [disabled]="formF2.steps.step1 == false" (click)="stepNavigator = 2"
-                aria-current="page" di [class.active]="stepNavigator == 2" class="h-full p-4 bg-gray-200 rounded-t-lg">
+              <button
+                type="button"
+                [disabled]="formF2.steps.step1 == false"
+                (click)="stepNavigator = 2"
+                aria-current="page"
+                di
+                [class.active]="stepNavigator == 2"
+                class="h-full p-4 bg-gray-200 rounded-t-lg"
+              >
                 Parte 2
               </button>
             </li>
           </ul>
         </div>
         <div class="w-full bg-white min-h-[300px] lg:px-10">
-          <app-f2step1 *ngIf="stepNavigator == 1" (step)="changeStep($event)" [formF2]="formF2" [monedas]="monedas"
-            [formId]="formID"></app-f2step1>
+          <app-f2step1
+            *ngIf="stepNavigator == 1"
+            (step)="changeStep($event)"
+            [formF2]="formF2"
+            [monedas]="monedas"
+            [formId]="formID"
+          ></app-f2step1>
           <!-- <app-f2step2 *ngIf="stepNavigator == 2" (step)="changeStep($event)" [formF2]="formF2" [monedas]="monedas"
             [formId]="formID"></app-f2step2> -->
-          <app-f2step3 *ngIf="stepNavigator == 2" (step)="changeStep($event)" [formF2]="formF2" [monedas]="monedas"
-            [formId]="formID"></app-f2step3>
+          <app-f2step3
+            *ngIf="stepNavigator == 2"
+            (step)="changeStep($event)"
+            [formF2]="formF2"
+            [monedas]="monedas"
+            [formId]="formID"
+          ></app-f2step3>
         </div>
       </div>
       <!-- <div class="flex justify-end gap-2">
         <button
-          class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+          class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
           Guardar
         </button>
       </div> -->

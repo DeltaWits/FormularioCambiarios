@@ -175,7 +175,7 @@ export class F6step2Component {
     //     code: code,
     //   };
     // });
-    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    const fileUrl = './assets/paises.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {

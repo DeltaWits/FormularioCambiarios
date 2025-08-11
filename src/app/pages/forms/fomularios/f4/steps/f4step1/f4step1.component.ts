@@ -290,7 +290,7 @@ export class F4step1Component implements AfterViewInit {
     //     code: code,
     //   };
     // });
-    const fileUrl = '../../../../../../../assets/paises.xlsx';
+    const fileUrl = './assets/paises.xlsx';
     fetch(fileUrl)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {

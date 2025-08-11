@@ -55,6 +55,7 @@
                   #otro_nombre="ngModel"
                   style="text-transform: uppercase"
                   required
+                  onlyAlfaNums
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="otro_nombre.invalid && submitInvalid"
                   [(ngModel)]="usuario.nombre"
@@ -72,13 +73,14 @@
                   #otro_documento="ngModel"
                   style="text-transform: uppercase"
                   required
+                  onlyAlfaNums
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="otro_documento.invalid && submitInvalid"
                   [(ngModel)]="usuario.documento"
                 />
               </div>
             </div>
-            <button class="bg-green-button rounded py-1 px-2" type="submit">
+            <button class="bg-green-button text-white rounded py-1 px-2" type="submit">
               <div role="status" *ngIf="loader2">
                 <svg
                   aria-hidden="true"
@@ -97,11 +99,11 @@
                   />
                 </svg>
               </div>
-              <p *ngIf="!loader2" class="pt-1">Guardar datos</p>
+              <p *ngIf="!loader2" class="pt-1 text-white">Guardar datos</p>
             </button>
           </form>
         </div>
-        <div *ngIf="" class="px-4 py-2 flex w-full justify-end border-t">
+        <div *ngIf="empresa == 'corficolombiana' || existuser" class="px-4 py-2 flex w-full justify-end border-t">
           <button
             type="button"
             (click)="sendHtmlToApi()"
@@ -125,7 +127,7 @@
                 />
               </svg>
             </div>
-            <p *ngIf="!loader" class="pt-1">Descargar PDF</p>
+            <p *ngIf="!loader" class="pt-1 text-white">Descargar PDF</p>
           </button>
         </div>
       </div>

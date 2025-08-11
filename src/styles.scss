@@ -93,16 +93,17 @@ form input[type="radio"] {
     background-color: inherit;
     // font-style: italic;
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 200 !important;
     padding: 8px 16px;
     border-radius: 30px;
-    background: #9ec72d;
-    color: #00185f !important;
+    background: #0065bd;
+    text-shadow: none !important  ;
+    color: #ffffff !important;
   }
   .introjs-button:focus {
     border: none;
 
-    background: #9ec72d;
+    background: #0065bd;
     box-shadow: none !important;
   }
   .introjs-button:hover {

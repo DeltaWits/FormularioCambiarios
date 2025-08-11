@@ -56,7 +56,7 @@
       <div class="col-span-3 p-1">
         <p class="text-10px text-start pb-1">Operación de</p>
         <p
-          class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+          class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
         >
           {{ form.data.tipo_de_operacion.ingreso_o_egreso }}
         </p>
@@ -70,7 +70,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha del Tramite</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.fecha_tramine }}
           </p>
@@ -79,7 +79,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.nit_imc }}
             </p>
@@ -87,7 +87,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_declaracion.dv }}
             </p>
@@ -99,7 +99,7 @@
             <span class="text-[10px]">(Uso exclusivo IMC)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_declaracion.numero_declaracion }}
           </p>
@@ -115,7 +115,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Fecha de la operación inicial</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
           </p>
@@ -124,7 +124,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Nit del IMC</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.nit_imc }}
             </p>
@@ -132,7 +132,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_operacion_anterior.dv }}
             </p>
@@ -143,7 +143,7 @@
             Deuda externa <span class="text-[10px]">(si aplica)</span>
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior.numero_deuda_externa
@@ -155,7 +155,7 @@
             Número de declaración de cambio
           </p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{
               form.data.identificacion_operacion_anterior
@@ -184,7 +184,7 @@
                 type="checkbox"
                 disabled
                 [attr.checked]="
-                  form.data.declaracion_detalle.devolucion === true
+                  form.data.declaracion_detalle.devolucion === 'SI'
                     ? true
                     : null
                 "
@@ -196,13 +196,14 @@
                 type="checkbox"
                 disabled
                 [attr.checked]="
-                  form.data.declaracion_detalle.devolucion === false
+                  form.data.declaracion_detalle.devolucion === 'NO'
                     ? true
                     : null
                 "
               />
             </div>
           </div>
+          
         </div>
         <div class="text-10px flex w-full justify-between mt-2">
           <p class="text-10px">Información consolidada</p>
@@ -213,7 +214,7 @@
                 type="checkbox"
                 disabled
                 [attr.checked]="
-                  form.data.declaracion_detalle.informacion_consolidada === true
+                  form.data.declaracion_detalle.informacion_consolidada === 'SI'
                     ? true
                     : null
                 "
@@ -225,8 +226,7 @@
                 type="checkbox"
                 disabled
                 [attr.checked]="
-                  form.data.declaracion_detalle.informacion_consolidada ===
-                  false
+                  form.data.declaracion_detalle.informacion_consolidada === 'NO'
                     ? true
                     : null
                 "
@@ -286,7 +286,7 @@
         </div>
         <!-- <div class="col-span-8 mt-1  mtr-2">
           <p
-            class="text-10px  text-center px-2 pb-1.5 w-full min-h-15px border rounded-sm"
+            class="text-10px  text-center px-2 p-1.5 w-full min-h-15px border rounded-sm"
           >
             {{ form.data.tipo_identidad.otros }}
           </p>
@@ -302,7 +302,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tipo de Identificación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_empresa.tipo_identificacion }}
           </p>
@@ -311,7 +311,7 @@
           <div class="col-span-9 pr-1">
             <p class="text-10px text-start pb-1">Número de identificación</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_empresa.numero_identifiacion }}
             </p>
@@ -319,7 +319,7 @@
           <div class="col-span-3 pl-1">
             <p class="text-10px text-start pb-1">DV</p>
             <p
-              class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+              class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
               {{ form.data.identificacion_de_la_empresa.dv }}
             </p>
@@ -328,7 +328,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Nombre o razón social</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_empresa.nombre }}
           </p>
@@ -336,7 +336,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Teléfono</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_empresa.telefono }}
           </p>
@@ -344,7 +344,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Dirección</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_empresa.direccion }}
           </p>
@@ -352,7 +352,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Ciudad</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.identificacion_de_la_empresa.ciudad }}
           </p>
@@ -367,7 +367,7 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Cod. Mda. Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
             {{ form.data.descripcion_de_la_operacion.cod_mda_negociacion }}
           </p>
@@ -375,25 +375,25 @@
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Vr. Total Mda Negociación</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_de_la_operacion.vr_total_mda_negociacion }}
+            {{ form.data.descripcion_de_la_operacion.vr_total_mda_negociacion | dolarFormat: '' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Tasa de cambio a dólar</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_de_la_operacion.tasa_de_cambio_dolar | dolarFormat: '$'}}
+            {{ form.data.descripcion_de_la_operacion.tasa_de_cambio_dolar | dolarFormat: '' }}
           </p>
         </div>
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1">Valor total en dólares</p>
           <p
-            class="text-10px text-center px-2 pb-1.5 min-h-15px w-full border rounded-sm"
+            class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.descripcion_de_la_operacion.valor_total_dolares | dolarFormat: '$'}}
+            {{ form.data.descripcion_de_la_operacion.valor_total_dolares | dolarFormat: '' }}
           </p>
         </div>
       </div>
@@ -423,7 +423,7 @@
               </td>
               <td class="py-0.5 text-10px">
                 {{
-                  form.data.informacion_de_la_operacion[i].valor_total_dolares | dolarFormat: '$'
+                  form.data.informacion_de_la_operacion[i].valor_total_dolares   | dolarFormat: ''
                 }}
               </td>
             </tr>
@@ -458,7 +458,7 @@
       <div class="col-span-12 border p-2 grid grid-cols-12">
         <div class="col-span-6 pr-1">
           <p class="text-10px">Nombre</p>
-          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.nombre }}</div>
+          <div class="px-3 py-1 border text-10px min-h-15px uppercase">{{ usuario.nombre }}</div>
           <p class="text-10px mt-2">Documento</p>
           <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.documento }}</div>
         </div>

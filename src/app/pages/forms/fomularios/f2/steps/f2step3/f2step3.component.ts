@@ -151,10 +151,10 @@ export class F2step3Component {
         const decimalPlaces = resultado.toString().includes('.')
           ? resultado.toString().split('.')[1].length
           : 0;
-        const fractionDigits = Math.min(decimalPlaces, 10);
+        const fractionDigits = Math.min(decimalPlaces, 2);
         operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
-          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
+          maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           useGrouping: true,
         });
       } else {
@@ -198,18 +198,18 @@ export class F2step3Component {
 
       // Guardar resultados con formato europeo
       totales.total_valorFoB = sumaFOB.toLocaleString('de-DE', {
-        minimumFractionDigits: 4,
-        maximumFractionDigits: 4
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
       });
 
       totales.total_gastos_de_exportacion = sumaGastos.toLocaleString('de-DE', {
-        minimumFractionDigits: 4,
-        maximumFractionDigits: 4
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
       });
 
       totales.Reintegro_neto = reintegroNeto.toLocaleString('de-DE', {
-        minimumFractionDigits: 4,
-        maximumFractionDigits: 4
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
       });
     }
   }

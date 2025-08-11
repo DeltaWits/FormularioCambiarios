@@ -137,10 +137,10 @@ export class F1step3Component implements OnInit {
         const decimalPlaces = resultado.toString().includes('.') 
         ? resultado.toString().split('.')[1].length 
         : 0;
-        const fractionDigits = Math.min(decimalPlaces, 10);
+        const fractionDigits = Math.min(decimalPlaces, 2);
         operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: fractionDigits<4? fractionDigits : 4,
-          maximumFractionDigits: fractionDigits<4? fractionDigits : 4,
+          minimumFractionDigits: fractionDigits<2? fractionDigits : 2,
+          maximumFractionDigits: fractionDigits<2? fractionDigits : 2,
           useGrouping: true,
         });
       } else {

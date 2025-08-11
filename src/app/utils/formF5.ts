@@ -49,6 +49,7 @@ export interface IFormF5 {
     valor_total_dolares: string,
   }],
   observaciones: string
+  valor_total_operaciones?: number
 }
 
 export const numeralesCambiariosF5Ingreso = [{ codigo: '1070', texto: 'Venta de petróleo crudo y gas natural de producción nacional' },

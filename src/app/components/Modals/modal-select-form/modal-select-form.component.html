@@ -1,8 +1,15 @@
-<div [class.hidden]="!status"
-  class="fixed inset-0 z-30 hid bg-gray-400 bg-opacity-75 transition-opacity h-screen w-screen flex justify-center items-center">
-  <div id="popup-modal" class="p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] flex items-center">
-    <div class="relative w-full max-w-md max-h-full flex justify-center items-center">
-      <div class="relative bg-white rounded-lg shadow ">
+<div
+  [class.hidden]="!status"
+  class="fixed inset-0 z-30 hid bg-gray-400 bg-opacity-75 transition-opacity h-screen w-screen flex justify-center items-center"
+>
+  <div
+    id="popup-modal"
+    class="p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] flex items-center"
+  >
+    <div
+      class="relative w-full max-w-md max-h-full flex justify-center items-center"
+    >
+      <div class="relative bg-white rounded-lg shadow">
         <!-- <button
           type="button"
           (click)="closedModal()"
@@ -33,7 +40,7 @@
           </div>
         </div>
         <div class="px-5 pb-4 pt-2 text-center">
-          <h3 class="mb-5 text-base font-normal text-black ">
+          <h3 class="mb-5 text-base font-normal text-black">
             Selecciona el tipo de formulario que deseas diligenciar
           </h3>
           <form [formGroup]="addForm">
@@ -48,9 +55,16 @@
               maxlength="100"
               [(ngModel)]="form.Informacion_cliente.datos_tributarios.pqNoRenta"
             ></textarea> -->
-            <div class="flex justify-between border-0 bg-gray-200 rounded text-sm shadow">
-              <select name="tipo" formControlName="tipo" id="" required
-                class="bg-gray-50 text-sm px-2 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1">
+            <div
+              class="flex justify-between border-0 bg-gray-200 rounded text-sm shadow"
+            >
+              <select
+                name="tipo"
+                formControlName="tipo"
+                id=""
+                required
+                class="bg-gray-50 text-sm px-2 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+              >
                 <option class="max-w-[300px]" value="F1">
                   F1: Operaciones de Cambio por Importaciones de Bienes
                 </option>
@@ -77,17 +91,24 @@
                   Deuda ...
                 </option>
               </select>
-
-
             </div>
-            <div *ngIf="addForm.controls['tipo'].invalid && !submitInvalid" class="alertInput">
-              <p *ngIf="addForm.controls['tipo'].errors?.['required'] " class="">
+            <div
+              *ngIf="addForm.controls['tipo'].invalid && !submitInvalid"
+              class="alertInput"
+            >
+              <p
+                *ngIf="addForm.controls['tipo'].errors?.['required'] "
+                class=""
+              >
                 El campo del correo es obligatorio
               </p>
             </div>
 
-            <button type="button" (click)="validateForm()"
-              class="mt-2 text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10">
+            <button
+              type="button"
+              (click)="validateForm()"
+              class="mt-2 text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 text-sm font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+            >
               Continuar
             </button>
           </form>

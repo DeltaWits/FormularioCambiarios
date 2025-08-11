@@ -4,7 +4,11 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" (keydown.enter)="$event.preventDefault()" #step1Form="ngForm">
+<form
+  (ngSubmit)="validateForm(step1Form)"
+  (keydown.enter)="$event.preventDefault()"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden lg:block lg:col-span-3 xl:col-span-5"></div>
@@ -226,11 +230,25 @@
         <p class="text-base">Devolución</p>
         <div class="flex gap-1 justify-center items-center h-9">
           <label for="">SI</label>
-          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF2.declaracion_detalle.devolucion" required value="SI">
+          <input
+            type="radio"
+            name="tipo_operacion_devolucion"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF2.declaracion_detalle.devolucion"
+            required
+            value="SI"
+          />
           <label class="ml-2" for="">NO</label>
-          <input type="radio" name="tipo_operacion_devolucion" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF2.declaracion_detalle.devolucion" required value="NO">
+          <input
+            type="radio"
+            name="tipo_operacion_devolucion"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF2.declaracion_detalle.devolucion"
+            required
+            value="NO"
+          />
         </div>
       </div>
       <div class="col-span-12 flex items-center justify-between p-1">
@@ -239,18 +257,31 @@
           <app-tool1
             [content]="
               'Indique si usted es proveedor de servicios de pago agregado que está entregando información consolidada'
-              "
+            "
           ></app-tool1>
         </div>
         <div class="flex gap-1 justify-center items-center h-9">
           <label for="">SI</label>
-          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF2.declaracion_detalle.informacion_consolidada" required value="SI">
+          <input
+            type="radio"
+            name="informacion_consolidada"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF2.declaracion_detalle.informacion_consolidada"
+            required
+            value="SI"
+          />
           <label class="ml-2" for="">NO</label>
-          <input type="radio" name="informacion_consolidada" id="" #tipo_de_operacion_devolucion="ngModel"
-            [(ngModel)]="formF2.declaracion_detalle.informacion_consolidada" required value="NO">
+          <input
+            type="radio"
+            name="informacion_consolidada"
+            id=""
+            #tipo_de_operacion_devolucion="ngModel"
+            [(ngModel)]="formF2.declaracion_detalle.informacion_consolidada"
+            required
+            value="NO"
+          />
         </div>
-       
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6 mt-4">
@@ -275,8 +306,8 @@
           <option value="Fondo de Capital Privado">
             Fondo de Capital Privado
           </option>
-          <option value="Fondo deInversiónColectiva">
-            Fondo deInversiónColectiva
+          <option value="Fondo de Inversión Colectiva">
+            Fondo de Inversión Colectiva
           </option>
           <option value="Otros">Otros</option>
         </select>
@@ -296,7 +327,7 @@
             [class.error]="tipo_identidad_otros.invalid && submitInvalid"
             [(ngModel)]="formF2.tipo_identidad.otros"
           />
-        </div>  
+        </div>
       </div> -->
     </div>
   </div>
@@ -374,7 +405,7 @@
           <div
             class="col-span-12 md:col-span-6 xl:col-span-5 p-1 flex flex-wrap gap-x-1"
           >
-            <p class="text-base w-full">Nombre o razón social del importador</p>
+            <p class="text-base w-full">Nombre o razón social del exportador</p>
 
             <input
               type="text"
@@ -396,7 +427,7 @@
   </div>
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
     >
       Continuar
     </button>

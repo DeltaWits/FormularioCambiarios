@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { DolarFormatDirective } from './components/formats/formaDolar';
 import { OnlyalfanumericComponent } from './components/formats/onlyalfanumeric.component';
 import { EmailDomainValidatorDirective } from './components/formats/emailvalidator';
+import { OnlyNumbersComponent } from './components/formats/onlyNums';
 
 @NgModule({
-  declarations: [OnlyalfanumericComponent, EmailDomainValidatorDirective],
+  declarations: [OnlyalfanumericComponent, EmailDomainValidatorDirective ,OnlyNumbersComponent],
   imports: [CommonModule, FormsModule,DolarFormatDirective],
-  exports: [DolarFormatDirective, OnlyalfanumericComponent, EmailDomainValidatorDirective]
+  exports: [DolarFormatDirective, OnlyalfanumericComponent, OnlyNumbersComponent, EmailDomainValidatorDirective]
 })
 export class SharedModule { }

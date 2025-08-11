@@ -4,7 +4,11 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="validateForm(step1Form)"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden xl:block xl:col-span-3"></div>
@@ -279,24 +283,33 @@
         <h3 class="font-semibold text-lg">Destino de la inversión</h3>
       </div>
       <div class="col-span-12">
-        <select 
-        name="destino_inversion_code" 
-        id="" 
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"  
-        required
-        [class.error]="
-          destino_inversion_code.invalid && submitInvalid
-        "
-        #destino_inversion_code="ngModel" 
-        [(ngModel)]="formF4.destino_inversion_code">
+        <select
+          name="destino_inversion_code"
+          id=""
+          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          required
+          [class.error]="destino_inversion_code.invalid && submitInvalid"
+          (change)="formF4.destino_inversion = ''"
+          #destino_inversion_code="ngModel"
+          [(ngModel)]="formF4.destino_inversion_code"
+        >
           <option value=""></option>
           <option value="IECO">IECO - INVERSIÓN EXTRANJERA EN COLOMBIA</option>
-          <option value="ICEX">ICEX - INVERSIÓN COLOMBIANA EN EL EXTERIOR</option>
-          <option value="IEPO">IEPO - INVERSIÓN EXTRANJERA EN COLOMBIA DE PORTAFOLIO</option>
-          <option value="IFAE">IFAE - INVERSIÓN FINANCIERA Y EN ACTIVOS EN EL EXTERIOR</option>
+          <option value="ICEX">
+            ICEX - INVERSIÓN COLOMBIANA EN EL EXTERIOR
+          </option>
+          <option value="IEPO">
+            IEPO - INVERSIÓN EXTRANJERA EN COLOMBIA DE PORTAFOLIO
+          </option>
+          <option value="IFAE">
+            IFAE - INVERSIÓN FINANCIERA Y EN ACTIVOS EN EL EXTERIOR
+          </option>
         </select>
       </div>
-      <div *ngIf="formF4.destino_inversion_code == 'IECO'" class="col-span-12 grid grid-cols-12 gap-y-2 mt-2">
+      <div
+        *ngIf="formF4.destino_inversion_code == 'IECO'"
+        class="col-span-12 grid grid-cols-12 gap-y-2 mt-2"
+      >
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -516,7 +529,10 @@
           </div>
         </div>
       </div>
-      <div *ngIf="formF4.destino_inversion_code == 'ICEX'" class="col-span-12 lg:col-span-6 mt-2">
+      <div
+        *ngIf="formF4.destino_inversion_code == 'ICEX'"
+        class="col-span-12 lg:col-span-6 mt-2"
+      >
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -534,7 +550,10 @@
         </div>
       </div>
 
-      <div *ngIf="formF4.destino_inversion_code == 'IFAE'" class="col-span-12 lg:col-span-6 mt-2">
+      <div
+        *ngIf="formF4.destino_inversion_code == 'IFAE'"
+        class="col-span-12 lg:col-span-6 mt-2"
+      >
         <div class="col-span-12 lg:col-span-6 flex gap-2">
           <input
             type="radio"
@@ -554,8 +573,10 @@
         </div>
       </div>
 
-      
-      <div *ngIf="formF4.destino_inversion_code == 'IEPO'" class="col-span-12 lg:col-span-6 flex gap-2 mt-2">
+      <div
+        *ngIf="formF4.destino_inversion_code == 'IEPO'"
+        class="col-span-12 lg:col-span-6 flex gap-2 mt-2"
+      >
         <input
           type="radio"
           name="destino_inversion"
@@ -589,7 +610,6 @@
               <select
                 [name]="'Identificacion_de_la_empresa_reseptora_tipo_documento'"
                 #Identificacion_de_la_empresa_reseptora_tipo_documento="ngModel"
-               
                 class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_tipo_documento.invalid &&
@@ -671,7 +691,6 @@
                 [name]="'Identificacion_de_la_empresa_reseptora_otro2'"
                 #Identificacion_de_la_empresa_reseptora_nombre3="ngModel"
                 style="text-transform: uppercase"
-                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="
                   Identificacion_de_la_empresa_reseptora_nombre3.invalid &&
@@ -688,7 +707,6 @@
               <input
                 type="text"
                 placeholder=""
-                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.pais"
                 #Identificacion_de_la_empresa_reseptora_pais="ngModel"
@@ -700,11 +718,8 @@
                 list="pais2"
               />
               <datalist id="pais2">
-                <option
-                  *ngFor="let pais of paises"
-                  [value]="pais.Codigo"
-                >
-                {{ pais.Codigo }} : {{ pais.Nombre }}
+                <option *ngFor="let pais of paises" [value]="pais.Codigo">
+                  {{ pais.Codigo }} : {{ pais.Nombre }}
                 </option>
               </datalist>
             </div>
@@ -716,7 +731,6 @@
               <input
                 type="text"
                 placeholder=""
-                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora_codigo_CIIU"
                 #Identificacion_de_la_empresa_reseptora_codigo_CIIU="ngModel"
@@ -730,7 +744,7 @@
                 list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU">
-                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -781,7 +795,6 @@
                 name="nombre_otro_telefono3"
                 #otro_nombre_telefono3="ngModel"
                 pattern="^[0-9]{7,15}$"
-                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [class.error]="otro_nombre_telefono3.invalid && submitInvalid"
                 [(ngModel)]="
@@ -807,7 +820,6 @@
               <input
                 type="text"
                 placeholder=""
-                
                 class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 name="Identificacion_de_la_empresa_reseptora.direccion"
                 #Identificacion_de_la_empresa_reseptora_direccion="ngModel"
@@ -835,7 +847,6 @@
                 <select
                   [name]="'otro_tipo_documento2'"
                   #otro_tipo_documento2="ngModel"
-                 
                   class="bg-gray-50 px-2 border min-h-[34px] border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="otro_tipo_documento2.invalid && submitInvalid"
                   [(ngModel)]="
@@ -891,7 +902,6 @@
                     <input
                       type="text"
                       placeholder=""
-                      
                       [name]="'informacion_administrador_del_encargo_dv'"
                       #informacion_administrador_del_encargo__dv="ngModel"
                       [(ngModel)]="
@@ -914,7 +924,6 @@
                   [name]="'informacion_administrador_del_encargo_nombre'"
                   #informacion_administrador_del_encargo_nombre="ngModel"
                   style="text-transform: uppercase"
-                  
                   class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [class.error]="
                     informacion_administrador_del_encargo_nombre.invalid &&
@@ -933,7 +942,7 @@
 
     <div class="col-span-12 flex justify-center gap-2 mt-2 w-full">
       <button
-        class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+        class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
       >
         Continuar
       </button>

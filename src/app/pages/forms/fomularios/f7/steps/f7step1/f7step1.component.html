@@ -4,7 +4,11 @@
   [Messagge]="MessaggePopUp"
 ></app-pop-up-alert>
 <!-- {{ formId }} -->
-<form (ngSubmit)="validateForm(step1Form)" #step1Form="ngForm">
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="validateForm(step1Form)"
+  #step1Form="ngForm"
+>
   <div class="grid grid-cols-12 pt-4">
     <div class="col-span-12 grid grid-cols-12 justify-end p-1">
       <div class="hidden xl:block xl:col-span-3"></div>
@@ -249,7 +253,7 @@
                 list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU">
-                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -361,17 +365,16 @@
                 list="pais2"
               />
               <div *ngIf="isLoadingPaises" class="mt-2">
-                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900"></div>
+                <div
+                  class="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900"
+                ></div>
               </div>
               <div *ngIf="errorLoadingPaises" class="mt-2 text-red-500">
                 Error al cargar los países. Por favor, inténtelo de nuevo.
               </div>
               <datalist id="pais2">
-                <option
-                  *ngFor="let pais of paises"
-                  [value]="pais.Codigo"
-                >
-                {{ pais.Codigo }} : {{ pais.Nombre }}
+                <option *ngFor="let pais of paises" [value]="pais.Codigo">
+                  {{ pais.Codigo }} : {{ pais.Nombre }}
                 </option>
               </datalist>
             </div>
@@ -395,7 +398,10 @@
                   formF7.informacion_del_acreedor.tipo_presario_deudor
                 "
               >
-                <option *ngFor="let tipo of tipoPresarioDeudor" [value]="tipo.descripcion">
+                <option
+                  *ngFor="let tipo of tipoPresarioDeudor"
+                  [value]="tipo.descripcion"
+                >
                   {{ tipo.descripcion }}
                 </option>
               </select>
@@ -439,7 +445,7 @@
                 list="codigo_CIIU"
               />
               <datalist id="codigo_CIIU2">
-                <option *ngFor="let item of ciiu" [value]="item.codigo.slice(3, 8)">
+                <option *ngFor="let item of ciiu" [value]="item.codigo">
                   {{ item.Nombre }}
                 </option>
               </datalist>
@@ -452,7 +458,7 @@
 
   <div class="flex justify-center gap-2 mt-2">
     <button
-      class="mt-2 text-base text-blue-button bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
+      class="mt-2 text-base text-white bg-green-button hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-2xl border border-gray-200 font-medium px-7 py-1.5 hover:text-gray-900 focus:z-10"
     >
       Guardar
     </button>

@@ -27,6 +27,8 @@ export class F5step1Component implements OnInit {
 
   textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
+  
+  ciudades: { Nombre: string | any; codigo: string }[] = [];
   submitInvalid = false
   @Input() formF5: IFormF5 = {
     tipo_de_operacion: {
@@ -79,6 +81,7 @@ export class F5step1Component implements OnInit {
     private router: Router
   ) { }
   ngOnInit(): void {
+    this.getCiudades()
     // console.log("monedas", this.monedas)
   }
   onSwitchChange(num: number) {
@@ -182,4 +185,28 @@ export class F5step1Component implements OnInit {
   showActivePopUp(status: boolean) {
     this.ShowPopUp = status;
   }
+
+  async getCiudades() {
+      const fileUrl = './assets/ciudades.xlsx';
+      fetch(fileUrl)
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => {
+          if (arrayBuffer) {
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+              type: 'array',
+            });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            this.ciudades = XLSX.utils.sheet_to_json(worksheet, {
+              raw: true,
+            });
+            // Los datos del archivo Excel están disponibles en this.excelData
+          } else {
+            console.error('No se pudo cargar el archivo Excel.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al cargar el archivo Excel:', error);
+        });
+    }
 }

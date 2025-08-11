@@ -11,11 +11,12 @@ import { IFormF5, numeralesCambiariosF5Ingreso, numeralesCambiariosF5Egreso } fr
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
 import { ToolImgComponent } from "../../../../../../components/Modals/tool-img/tool-img.component";
+import { dolarFormatPipe } from "../../../../../../pipes/currency-format.pipe";
 
 @Component({
   selector: 'app-f5step2',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgIf, NgFor, PopUpAlertComponent, ToolImgComponent],
+  imports: [FormsModule, ReactiveFormsModule, SharedModule, NgIf, NgFor, PopUpAlertComponent, ToolImgComponent, dolarFormatPipe],
   templateUrl: './f5step2.component.html',
   styleUrl: './f5step2.component.scss'
 })
@@ -33,7 +34,8 @@ export class F5step2Component {
       numero_cambiario: '',
       valor_total_dolares: '',
     }],
-    observaciones: ''
+    observaciones: '',
+    valor_total_operaciones: 0
   }
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
@@ -57,25 +59,40 @@ export class F5step2Component {
     this.loadExcelFromCiiu()
   }
 
+  totalOperaciones = 0
+  parseNumber(numStr: string): number {
+    return parseFloat(
+      numStr
+        .replace(/\./g, '')  // Remove thousand separators
+        .replace(',', '.')   // Replace comma with decimal point
+    );
+  }
   validateForm(step1Form: NgForm) {
 
     if (step1Form.valid) {
       this.submitInvalid = false;
-      // if (this.formF5.informacion_DIAN_total.Reintegro_neto == this.formF5.descripcion_de_la_operacion.valor_total_dolares) {
-      this.formF5.steps.step1 = true
-      this.formService.saveFormDataFId(this.formF5, this.formId, true);
+
+      const operaciones = Math.round(this.parseNumber(this.formF5.valor_total_operaciones));
+      const dolares = Math.round(this.parseNumber(this.formF5.descripcion_de_la_operacion.valor_total_dolares));
+      // Check if values are valid numbers
+      // console.log("operaciones", this.formF5.valor_total_operaciones)
+      // console.log("dolares", this.formF5.descripcion_de_la_operacion.valor_total_dolares)
+      // console.log(operaciones, dolares)
+      if (operaciones === dolares) {
+        this.formF5.steps.step1 = true
+        this.formService.saveFormDataFId(this.formF5, this.formId, true);
 
 
-      this.router.navigateByUrl('/forms');
-      // } else {
-      //   this.showActivePopUp(true);
+        this.router.navigateByUrl('/forms');
+      } else {
+        this.showActivePopUp(true);
 
-      //   this.MessaggePopUp.titulo = 'Alerta';
-      //   this.MessaggePopUp.descripcion =
-      //     'El reintegro neto debe ser igual al valor total en dólares';
-      //   this.MessaggePopUp.tipe = 'alert';
+        this.MessaggePopUp.titulo = 'Alerta';
+        this.MessaggePopUp.descripcion =
+          'El valor total de las operaciones debe ser igual al valor total en dólares';
+        this.MessaggePopUp.tipe = 'alert';
 
-      // }
+      }
     } else {
       // console.log("entro", step1Form.valid)
       this.submitInvalid = true;
@@ -107,24 +124,24 @@ export class F5step2Component {
 
   selectTasa() {
     const operacion = this.formF5.descripcion_de_la_operacion;
-  
+
     if (
       operacion.tasa_de_cambio_dolar !== '' &&
       operacion.vr_total_mda_negociacion !== ''
     ) {
       const tasaDeCambio = operacion.tasa_de_cambio_dolar.toString();
       const vrTotal = operacion.vr_total_mda_negociacion.toString();
-  
+
       if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
         const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
         const decimalPlaces = resultado.toString().includes('.')
           ? resultado.toString().split('.')[1].length
           : 0;
-        const fractionDigits = Math.min(decimalPlaces, 10);
-  
+        const fractionDigits = Math.min(decimalPlaces, 2);
+
         operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
-          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
+          maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           useGrouping: true,
         });
       } else {
@@ -173,5 +190,46 @@ export class F5step2Component {
       .catch((error) => {
         console.error('Error al cargar el archivo Excel:', error);
       });
+  }
+  validateTotalOperacion(i: number) {
+    console.log("validateTotalOperacion", i)
+    const operacion = this.formF5.informacion_de_la_operacion;
+    const totales = this.formF5.valor_total_operaciones;
+
+    const infoActual = operacion[i];
+
+    // Validar que existan valores para operar
+    if (
+      infoActual?.valor_total_dolares &&
+      infoActual?.numero_cambiario
+    ) {
+      let sumaFOB = 0;
+      let sumaGastos = 0;
+
+      operacion.forEach((info: any) => {
+        const monto = parseFloat(info.valor_total_dolares);
+
+        if (!isNaN(monto)) {
+          if (info.numero_cambiario !== '1510') {
+            sumaFOB += monto;
+          } else {
+            sumaGastos += monto;
+          }
+        }
+      });
+
+      const reintegroNeto = sumaFOB + sumaGastos;
+      console.log("reintegroNeto", reintegroNeto)
+      // Guardar resultados con formato europeo
+      this.formF5.valor_total_operaciones = reintegroNeto.toLocaleString('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      this.formF5.valor_total_operaciones = reintegroNeto.toLocaleString('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
   }
 }

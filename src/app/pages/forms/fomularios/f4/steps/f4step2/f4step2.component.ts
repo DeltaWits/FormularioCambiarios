@@ -307,11 +307,11 @@ export class F4step2Component implements OnInit {
         const decimalPlaces = resultado.toString().includes('.')
           ? resultado.toString().split('.')[1].length
           : 0;
-        const fractionDigits = Math.min(decimalPlaces, 10);
+        const fractionDigits = Math.min(decimalPlaces, 2);
         
         this.formF4.descripcionde_la_operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
-          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
+          maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           useGrouping: true,
         });
       } else {
@@ -331,11 +331,11 @@ export class F4step2Component implements OnInit {
         const decimalPlaces = resultado.toString().includes('.')
           ? resultado.toString().split('.')[1].length
           : 0;
-        const fractionDigits = Math.min(decimalPlaces, 10);
+        const fractionDigits = Math.min(decimalPlaces, 2);
         
         this.formF4.descripcionde_la_operacion.valor_total_pesos = resultado.toLocaleString('de-DE', {
-          minimumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
-          maximumFractionDigits: fractionDigits < 4 ? fractionDigits : 4,
+          minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
+          maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           useGrouping: true,
         });
       } else {
@@ -350,7 +350,7 @@ export class F4step2Component implements OnInit {
       //     code: code,
       //   };
       // });
-      const fileUrl = '../../../../../../../assets/paises.xlsx';
+      const fileUrl = './assets/paises.xlsx';
       fetch(fileUrl)
         .then((response) => response.arrayBuffer())
         .then((arrayBuffer) => {
