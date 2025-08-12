@@ -90,7 +90,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa(i)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_t_mda_nego' + i"
                 #valor_t_mda_nego="ngModel"
                 placeholder=""
@@ -114,7 +114,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa(i)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'tasa_cambio' + i"
                 #numero_cambiario="ngModel"
                 placeholder=""
@@ -201,7 +201,7 @@
               </p>
               <input
                 type="text"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento_factura' + i"
                 id=""
                 [class.error]="otro_documento_factura.invalid && submitInvalid"
@@ -257,7 +257,7 @@
   <div class="col-span-12">
     <p class="text-base">Observaciones</p>
     <textarea
-      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
       [name]="'observaciones'"
       #observaciones="ngModel"
       [class.error]="observaciones.invalid && submitInvalid"

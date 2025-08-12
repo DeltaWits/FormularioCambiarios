@@ -93,7 +93,7 @@
                 [class.error]="
                   tipo_de_operacion_fecha_presentacion.invalid && submitInvalid
                 "
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@
                 identificacion_del_informe_fecha_tramite.invalid &&
                 submitInvalid
               "
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             />
           </div>
           <div
@@ -130,7 +130,7 @@
               <input
                 type="number"
                 (change)="checkDv1(1)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 disabled
                 name="identificacion_del_informe_nit_imc"
                 id=""
@@ -156,7 +156,7 @@
                   [class.error]="
                     identificacion_del_informe_dv.invalid && submitInvalid
                   "
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 />
               </div>
             </div>
@@ -174,7 +174,7 @@
                 formF3A.tipo_de_operacion.tipo == '' ||
                 formF3A.tipo_de_operacion.tipo == 'Inicial'
               "
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
               required
               name="identificacion_del_informe.numero_declaracion"
               #identificacion_del_informe_numero_declaracion="ngModel"
@@ -255,7 +255,7 @@
                       <input
                         type="text"
                         (change)="checkDv1(3)"
-                        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                         [name]="'descripcion_de_la_operacion_documento'"
                         id=""
                         [class.error]="
@@ -287,7 +287,7 @@
                           [name]="'otro_documento_dv'"
                           #identificacion_otro_dv="ngModel"
                           [(ngModel)]="formF3A.descripcion_de_la_operacion.dv"
-                          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                         />
                       </div>
                     </div>
@@ -306,7 +306,7 @@
                       #descripcion_de_la_operacion_nombre_deudor="ngModel"
                       style="text-transform: uppercase"
                       required
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_nombre_deudor.invalid &&
                         submitInvalid
@@ -328,7 +328,7 @@
                       #descripcion_de_la_operacion_nombre_acreedor="ngModel"
                       style="text-transform: uppercase"
                       required
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [class.error]="
                         descripcion_de_la_operacion_nombre_acreedor.invalid &&
                         submitInvalid
@@ -373,7 +373,7 @@
                     <input
                       type="text"
                       placeholder=""
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'valor_t_mda_nego'"
                       #valor_t_mda_nego="ngModel"
                       placeholder=""
@@ -394,7 +394,7 @@
                     <input
                       type="text"
                       placeholder=""
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'numero_cambiario'"
                       #numero_cambiario="ngModel"
                       placeholder=""
@@ -427,7 +427,7 @@
                   </p>
                   <select
                     placeholder="Código: descripcion"
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     required
                     name="razon_por_no_desembolso_o_no_genero_declaracion"
                     #razon_por_no_desembolso_o_no_genero_declaracion="ngModel"
@@ -440,15 +440,14 @@
                         .Codigo_y_descripcion
                     "
                   >
-                    <option class="max-w-[600px]" value="" selected>
-                      ------
-                    </option>
+                    <option class="" value="" selected>------</option>
                     <option
                       [value]="item"
-                      class="max-w-[600px]"
+                      class="text-xs"
                       *ngFor="let item of razonNoGeneroDeselbolso"
                     >
-                      {{ item }}
+                      {{ item.slice(0, 150) }}
+                      {{ item.length > 150 ? "..." : "" }}
                     </option>
                   </select>
                 </div>
@@ -509,7 +508,7 @@
                     <p class="text-base">Valor moneda negociación</p>
                     <input
                       type="text"
-                      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                       [name]="'valor_total_moneda' + i"
                       id=""
                       required

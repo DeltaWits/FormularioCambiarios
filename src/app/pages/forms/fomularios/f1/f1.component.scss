@@ -7,7 +7,7 @@
   margin: 0;
 
   p {
-    font-size: 12px;
+    font-size: 10px !important;
     padding: 0;
     color: red;
     margin: 0;
@@ -16,4 +16,7 @@
 .active {
   background: white;
   color: #00185f;
+}
+.text-10px {
+  font-size: 10px;
 }

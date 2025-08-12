@@ -49,7 +49,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa()"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_t_mda_nego'"
                 #valor_t_mda_nego="ngModel"
                 placeholder=""
@@ -70,7 +70,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa()"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'tasa_cambio'"
                 #numero_cambiario3="ngModel"
                 placeholder=""
@@ -140,7 +140,7 @@
               </p>
               <input
                 type="text"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento_factura' + i"
                 id=""
                 [class.error]="otro_documento_factura.invalid && submitInvalid"
@@ -158,13 +158,13 @@
               </div>
 
               <!-- <input type="number" placeholder="" disabled [placeholder]="'No disponible'"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'numero_cambiariosss' + i" #numero_cambiarioss="ngModel"
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
                 [(ngModel)]="formF2.informacion_DIAN[i].numeral_cambiario" /> -->
               <select
                 (change)="validateDIAN(i)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'numero_cambiariosss' + i"
                 #numero_cambiarioss="ngModel"
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
@@ -227,7 +227,7 @@
           type="text"
           placeholder=""
           disabled
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           [name]="'total_valorFoB'"
           #total_valorFoB="ngModel"
           [class.error]="total_valorFoB.invalid && submitInvalid"
@@ -241,7 +241,7 @@
           type="text"
           placeholder=""
           disabled
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           [name]="'total_gastosFoB'"
           #total_gastosFoB="ngModel"
           [class.error]="total_valorFoB.invalid && submitInvalid"
@@ -257,7 +257,7 @@
           type="text"
           placeholder=""
           (change)="validateDIAN(0)"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           [name]="'total_deduccion'"
           #total_deduccion="ngModel"
           [class.error]="total_deduccion.invalid && submitInvalid"
@@ -272,7 +272,7 @@
           placeholder=""
           disabled
           [placeholder]="'No disponible'"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           [name]="'total_valorr'"
           #total_valorr="ngModel"
           [class.error]="total_valorr.invalid && submitInvalid"
@@ -285,7 +285,7 @@
 
       <textarea
         placeholder=""
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         [name]="'observaciones'"
         #observaciones="ngModel"
         [class.error]="observaciones.invalid && submitInvalid"

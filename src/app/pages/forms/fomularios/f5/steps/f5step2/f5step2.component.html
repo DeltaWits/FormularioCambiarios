@@ -49,7 +49,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa()"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_t_mda_nego'"
                 #valor_t_mda_nego="ngModel"
                 placeholder=""
@@ -70,7 +70,7 @@
                 type="text"
                 placeholder=""
                 (change)="selectTasa()"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'descripcion_de_la_operacion.tasa_de_cambio_dolar'"
                 #descripcion_de_la_operacion_tasa_de_cambio_dolar="ngModel"
                 placeholder=""
@@ -154,9 +154,8 @@
                 type="number"
                 placeholder=""
                 required=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'numero_cambiariosss' + i"
-                
                 (change)="validateTotalOperacion(i)"
                 #numero_cambiarioss="ngModel"
                 [class.error]="numero_cambiarioss.invalid && submitInvalid"
@@ -231,12 +230,8 @@
             Agregar Operación
           </button>
         </div>
-
-        
       </div>
-      <div
-        class="col-span-3 p-1 flex flex-wrap relative mb-10"
-      >
+      <div class="col-span-3 p-1 flex flex-wrap relative mb-10">
         <p class="text-base w-full">Valor total operaciones</p>
 
         <input
@@ -249,19 +244,19 @@
           placeholder=""
           disabled=""
           [class.error]="totalOperacionesR.invalid && submitInvalid"
-          [(ngModel)]="
-            formF5.valor_total_operaciones
-          "
+          [(ngModel)]="formF5.valor_total_operaciones"
           dolarFormat
         />
-        <span class="absolute left-2 top-[100%] text-xs text-gray-500">= {{ formF5.descripcion_de_la_operacion.valor_total_dolares}}</span>
+        <span class="absolute left-2 top-[100%] text-xs text-gray-500"
+          >= {{ formF5.descripcion_de_la_operacion.valor_total_dolares }}</span
+        >
       </div>
     </div>
   </div>
   <div class="col-span-12">
     <p class="text-base">Observaciones</p>
     <textarea
-      class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
       [name]="'observaciones'"
       #observaciones="ngModel"
       [class.error]="observaciones.invalid && submitInvalid"

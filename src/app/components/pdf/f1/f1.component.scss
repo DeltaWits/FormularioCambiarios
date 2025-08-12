@@ -1,4 +1,3 @@
-
 td {
   border: 1px #bbb9b9 solid;
 }
@@ -11,9 +10,14 @@ td {
 .py-1 p {
   font-weight: 800;
 }
-.mtr-2{
- margin-top: 10px;
+.mtr-2 {
+  margin-top: 10px;
 }
 .min-h-15px {
   min-height: 24px;
+}
+input:disabled {
+  background-color: #2563eb !important;
+  cursor: not-allowed;
+  color: #fff !important;
 }

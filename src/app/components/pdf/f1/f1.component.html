@@ -5,10 +5,15 @@
     src="assets/img/vigilado-superintendencia-financiera-de-colombia.png"
     alt=""
   />
+  <img
+    class="w-3 absolute left-0 bottom-12"
+    src="http://localhost:3030/assets/img/vigilado-superintendencia-financiera-de-colombia.png"
+    alt=""
+  />
   <div class="mt-0.5">
     <div class="grid grid-cols-12 px-5">
-      <div class="col-span-8 p-3">
-        <h1 class="text-center text-base font-semibold m-0">
+      <div class="col-span-8 px-3 pt-3">
+        <h1 class="text-center text-sm font-semibold m-0">
           Información de datos mínimos requeridos para las <br />
           Operaciones de Cambio por Importaciones de Bienes. <br />
           <span class="text-10px"
@@ -17,28 +22,30 @@
           >
         </h1>
       </div>
-      <div class="col-span-4 p-3">
+      <div class="col-span-4 px-3 pt-3">
         <div>
-          <h4 class="text-10px w-100 font-semibold text-start">
+          <h4 class="text-xs w-100 font-semibold text-start">
             I. Tipo de operación
           </h4>
           <div class="grid grid-cols-12">
             <div class="col-span-10 border p-1 py-1.5">
-              <p class="text-10px text-end">Inicial</p>
+              <p class="text-10px text-end font-semibold">Inicial</p>
             </div>
             <div
               class="col-span-2 border border-l-0 p-1 py-1.5"
               [class.bg-black]="form.data.tipo_de_operacion == 'Inicial'"
             ></div>
             <div class="col-span-10 border-y-0 border p-1 py-1.5">
-              <p class="text-10px text-end">Corrección</p>
+              <p class="text-10px text-end font-semibold">Corrección</p>
             </div>
             <div
               class="col-span-2 border-l-0 border border-y-0 p-1 py-1.5"
               [class.bg-black]="form.data.tipo_de_operacion == 'Corrección'"
             ></div>
             <div class="col-span-10 border p-1 py-1.5">
-              <p class="text-10px text-end">Cambio de formulario</p>
+              <p class="text-10px text-end font-semibold">
+                Cambio de formulario
+              </p>
             </div>
             <div
               class="col-span-2 border-l-0 border p-1 py-1.5"
@@ -50,13 +57,15 @@
         </div>
       </div>
       <div class="col-span-12 px-1 pb-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+        <h4 class="text-xs w-100 font-semibold text-start">
           II. Identificación de la declaración
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">Fecha del Tramite</p>
+          <p class="text-10px text-start pb-1 font-semibold text-black">
+            Fecha del Tramite
+          </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
@@ -65,7 +74,9 @@
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
           <div class="col-span-9 pr-1">
-            <p class="text-10px text-start pb-1">Nit del IMC</p>
+            <p class="text-10px text-start pb-1 font-semibold text-black">
+              Nit del IMC
+            </p>
             <p
               class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
@@ -73,7 +84,7 @@
             </p>
           </div>
           <div class="col-span-3 pl-1">
-            <p class="text-10px text-start pb-1">DV</p>
+            <p class="text-10px text-start pb-1 font-semibold text-black">DV</p>
             <p
               class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
@@ -82,7 +93,7 @@
           </div>
         </div>
         <div class="col-span-4 p-1">
-          <p class="text-10px text-start pb-1">
+          <p class="text-10px text-start pb-1 font-semibold text-black">
             Número de declaración
             <span class="text-10px">(Uso exclusivo IMC)</span>
           </p>
@@ -94,14 +105,18 @@
         </div>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+        <h4 class="text-xs w-100 font-semibold text-start">
           III. Identificación de la operación anterior
-          <span class="text-10px">(Para cambio de formulario o corrección)</span>
+          <span class="text-10px"
+            >(Para cambio de formulario o corrección)</span
+          >
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">Fecha de la operación inicial</p>
+          <p class="text-10px text-start pb-1 font-semibold text-black">
+            Fecha de la operación inicial
+          </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
@@ -110,7 +125,9 @@
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
           <div class="col-span-9 pr-1">
-            <p class="text-10px text-start pb-1">Nit del IMC</p>
+            <p class="text-10px text-start pb-1 font-semibold text-black">
+              Nit del IMC
+            </p>
             <p
               class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
@@ -118,7 +135,7 @@
             </p>
           </div>
           <div class="col-span-3 pl-1">
-            <p class="text-10px text-start pb-1">DV</p>
+            <p class="text-10px text-start pb-1 font-semibold text-black">DV</p>
             <p
               class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
             >
@@ -127,7 +144,7 @@
           </div>
         </div>
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">
+          <p class="text-10px text-start pb-1 font-semibold text-black">
             Deuda externa <span class="text-10px">(si aplica)</span>
           </p>
           <p
@@ -139,7 +156,7 @@
           </p>
         </div>
         <div class="col-span-3 p-1">
-          <p class="text-10px text-start pb-1">
+          <p class="text-10px text-start pb-1 font-semibold text-black">
             Número de declaración de cambio
           </p>
           <p
@@ -152,94 +169,120 @@
           </p>
         </div>
       </div>
-      <div class="col-span-6 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+      <div class="col-span-5 p-1">
+        <h4 class="text-xs w-100 font-semibold text-start">
           IV. Detalle de la declaración
         </h4>
       </div>
-      <div class="col-span-6 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+      <div class="col-span-7 p-1">
+        <h4 class="text-xs w-full font-semibold text-start">
           V. Tipo de entidad
         </h4>
       </div>
-      <div class="col-span-6 border px-2 pt-2 mr-2">
+      <div class="col-span-5 border p-2 mr-2">
         <div class="text-10px flex w-full justify-between">
-          <p class="text-10px">Devolución</p>
+          <p class="text-10px font-semibold text-black">Devolución</p>
           <div class="flex gap-2">
             <div class="flex gap-1">
               <p class="text-10px">SI</p>
               <input
                 type="checkbox"
-                disabled
-                [attr.checked]="form.data.declaracion_detalle.devolucion === 'SI' ? true : null"/>
+                [attr.checked]="
+                  form.data.declaracion_detalle.devolucion === 'SI'
+                    ? true
+                    : null
+                "
+              />
             </div>
             <div class="flex gap-1">
               <p class="text-10px">NO</p>
               <input
                 type="checkbox"
-                disabled
-                [attr.checked]="form.data.declaracion_detalle.devolucion === 'NO' ? true : null"/>
+                [attr.checked]="
+                  form.data.declaracion_detalle.devolucion === 'NO'
+                    ? true
+                    : null
+                "
+              />
             </div>
           </div>
         </div>
         <div class="text-10px flex w-full justify-between mt-2">
-          <p class="text-10px">Información consolidada</p>
+          <p class="text-10px font-semibold text-black">
+            Información consolidada
+          </p>
           <div class="flex gap-2">
             <div class="flex gap-1">
               <p class="text-10px">SI</p>
               <input
                 type="checkbox"
-                disabled 
-                [attr.checked]="form.data.declaracion_detalle.informacion_consolidada === 'SI' ? true : null"
+                [attr.checked]="
+                  form.data.declaracion_detalle.informacion_consolidada === 'SI'
+                    ? true
+                    : null
+                "
               />
             </div>
             <div class="flex gap-1">
               <p class="text-10px">NO</p>
               <input
                 type="checkbox"
-                disabled 
-                [attr.checked]="form.data.declaracion_detalle.informacion_consolidada === 'NO' ? true : null"
+                [attr.checked]="
+                  form.data.declaracion_detalle.informacion_consolidada === 'NO'
+                    ? true
+                    : null
+                "
               />
             </div>
           </div>
         </div>
       </div>
-      <div class="col-span-6 border px-2 pt-2 grid grid-cols-12">
-        <div class="col-span-4 flex flex-col items-center">
-          <p class="text-10px">Patrimonio Autónomo</p>
+      <div class="col-span-7 border px-2 pt-2 grid grid-cols-12">
+        <div class="col-span-3 flex flex-col items-center">
+          <p class="text-10px font-semibold text-black">Patrimonio Autónomo</p>
           <input
             type="checkbox"
-            disabled
-            [attr.checked]="form.data.tipo_identidad.tipo === 'Patrimonio Autónomo' ? true : null"
+            [attr.checked]="
+              form.data.tipo_identidad.tipo === 'Patrimonio Autónomo'
+                ? true
+                : null
+            "
           />
         </div>
         <div class="col-span-4 flex flex-col items-center">
-          <p class="text-10px">Fondo de Capital Privado</p>
+          <p class="text-10px font-semibold text-black">
+            Fondo de Capital Privado
+          </p>
           <input
             type="checkbox"
-            disabled
-            [attr.checked]="form.data.tipo_identidad.tipo === 'Fondo de Capital Privado' ? true : null"
+            [attr.checked]="
+              form.data.tipo_identidad.tipo === 'Fondo de Capital Privado'
+                ? true
+                : null
+            "
           />
         </div>
         <div class="col-span-4 flex flex-col items-center">
-          <p class="text-10px">Fondo de Inv Colectiva</p>
+          <p class="text-10px font-semibold text-black">
+            Fondo de Inv Colectiva
+          </p>
           <input
             type="checkbox"
-            disabled
-            [attr.checked]="form.data.tipo_identidad.tipo === 'Fondo deInversiónColectiva' ? true : null"
+            [attr.checked]="
+              form.data.tipo_identidad.tipo === 'Fondo deInversiónColectiva'
+                ? true
+                : null
+            "
           />
         </div>
-        <div class="col-span-2 mt-1 mtr-2 flex gap-1">
-          <p class="text-10px">Otros</p>
+        <div class="col-span-1 flex flex-col items-center">
+          <p class="text-10px font-semibold text-black">Otros</p>
           <input
-          type="checkbox"
-          disabled
-          [attr.checked]="
-            form.data.tipo_identidad.tipo === 'Otros'
-              ? true
-              : null
-          "
-        />
+            type="checkbox"
+            [attr.checked]="
+              form.data.tipo_identidad.tipo === 'Otros' ? true : null
+            "
+          />
         </div>
         <!-- <div class="col-span-8 mt-1  mtr-2">
           <p
@@ -250,7 +293,7 @@
         </div> -->
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+        <h4 class="text-xs w-100 font-semibold text-start">
           VI. Identificación del importador
         </h4>
       </div>
@@ -277,7 +320,7 @@
               <td class="py-0.5 text-10px">
                 {{ form.data.identificacion_de_importador.dv }}
               </td>
-              <td class="py-0.5 text-10px">
+              <td class="py-0.5 text-10px uppercase">
                 {{ form.data.identificacion_de_importador.nombre_razon_social }}
               </td>
             </tr>
@@ -285,7 +328,7 @@
         </table>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+        <h4 class="text-xs w-100 font-semibold text-start">
           VII. Descripción de la operación
         </h4>
       </div>
@@ -319,16 +362,19 @@
               <td class="py-0.5 text-10px">
                 {{
                   form.data.descripcion_de_la_operacion[i]
-                    .vr_total_mda_negociacion | dolarFormat: ''
+                    .vr_total_mda_negociacion | dolarFormat : ""
                 }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.descripcion_de_la_operacion[i].tasa_de_cambio }}
+                {{
+                  form.data.descripcion_de_la_operacion[i].tasa_de_cambio
+                    | dolarFormat : ""
+                }}
               </td>
               <td class="py-0.5 text-10px">
                 {{
                   form.data.descripcion_de_la_operacion[i]
-                    .vr_total_mda_negociacion  | dolarFormat: ''
+                    .vr_total_mda_negociacion | dolarFormat : ""
                 }}
               </td>
             </tr>
@@ -336,16 +382,16 @@
         </table>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start mb-2">
+        <h4 class="text-xs w-100 font-semibold text-start mb-2">
           VIII. Información requerida para la DIAN
         </h4>
-        <p class="text-10px text-justify mt-4">
-          Si la mercancía ingresa del
-          exterior al Territorio Aduanero Nacional, debe relacionar el número de
-          Aceptación de la Declaración de Importación. Si la mercancía ingresa
-          del exterior a la Zona Franca o es un envió courrier debe relacionar
-          el número de la Factura Comercial expedida por el proveedor del
-          exterior, la cual puede ser Alfanumérica.
+        <p class="text-10px text-justify">
+          Si la mercancía ingresa del exterior al Territorio Aduanero Nacional,
+          debe relacionar el número de Aceptación de la Declaración de
+          Importación. Si la mercancía ingresa del exterior a la Zona Franca o
+          es un envió courrier debe relacionar el número de la Factura Comercial
+          expedida por el proveedor del exterior, la cual puede ser
+          Alfanumérica.
         </p>
       </div>
       <div class="col-span-12 p-2 border">
@@ -367,18 +413,20 @@
                 {{ form.data.informacion_DIAN[i].numero_o_factura }}
               </td>
               <td class="py-0.5 text-10px">
-                {{ form.data.informacion_DIAN[i].valor_FOB | dolarFormat: '' }}
+                {{ form.data.informacion_DIAN[i].valor_FOB | dolarFormat : "" }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-span-12 p-2 border flex flex-wrap mt-2">
-        <p class="text-10px text-justify mt-1">Observaciones</p>
-        <div class="w-[90%] text-start p-2 text-10px  min-h-100px"> {{ form.data.observaciones }}</div>
+        <p class="text-10px text-justify mt-1 font-semibold">Observaciones</p>
+        <div class="w-[90%] text-start p-2 text-10px min-h-100px">
+          {{ form.data.observaciones }}
+        </div>
       </div>
       <div class="col-span-12 p-1 mt-2">
-        <p class="text-[8px] text-justify">
+        <p class="text-10px text-justify">
           Declaro bajo gravedad de juramento que la información aquí
           suministrada es cierta, completa y actualizada, corresponde a los
           datos mínimos de las operaciones de cambio requeridos por las
@@ -394,21 +442,25 @@
         </p>
       </div>
       <div class="col-span-12 p-1">
-        <h4 class="text-10px w-100 font-semibold text-start">
+        <h4 class="text-xs w-100 font-semibold text-start">
           IX. Identificación del declarante
         </h4>
       </div>
-      <div class="col-span-12 border p-2 grid grid-cols-12">
+      <div class="col-span-12 border p-2 grid grid-cols-12 gap-4">
         <div class="col-span-6 pr-1">
-          <p class="text-10px min">Nombre</p>
-          <div class="px-3 py-1 border text-10px min-h-15px uppercase">{{ usuario.nombre }}</div>
-          <p class="text-10px mt-2">Documento</p>
-          <div class="px-3 py-1 border text-10px min-h-15px">{{ usuario.documento }}</div>
+          <p class="text-10px min font-semibold">Nombre</p>
+          <div class="px-3 py-1 border text-10px min-h-15px uppercase">
+            {{ usuario.nombre }}
+          </div>
+          <p class="text-10px mt-2 font-semibold">Documento</p>
+          <div class="px-3 py-1 border text-10px min-h-15px">
+            {{ usuario.documento }}
+          </div>
         </div>
-        
-        <div class="col-span-6">
-          <p class="text-10px">Firma</p>
-          <div class="p-5 border-b-[1px] border-b-1px pt-4"></div>
+
+        <div class="col-span-6 flex justify-between items-start flex-col">
+          <p class="text-10px font-semibold text-start">Firma</p>
+          <div class="p-5 border-b-[1px] border-b-1px pt-4 w-full"></div>
         </div>
       </div>
     </div>

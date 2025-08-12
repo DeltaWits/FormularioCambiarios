@@ -53,7 +53,7 @@
         [class.error]="
           identificacion_de_la_operacion_fecha_tramite.invalid && submitInvalid
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
       />
     </div>
     <div
@@ -65,7 +65,7 @@
         <input
           type="number"
           (change)="checkDv1(1)"
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           disabled
           name="identificacion_de_la_operacion_nit_imc"
           id=""
@@ -91,7 +91,7 @@
             [class.error]="
               identificacion_de_la_operacion_dv.invalid && submitInvalid
             "
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           />
         </div>
       </div>
@@ -107,7 +107,7 @@
           formF2.tipo_de_operacion == '' ||
           formF2.tipo_de_operacion == 'Inicial'
         "
-        class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         required
         name="identificacion_de_la_operacion.numero_declaracion"
         #identificacion_de_la_operacion_numero_declaracion="ngModel"
@@ -143,7 +143,7 @@
           "
           [(ngModel)]="formF2.identificacion_operacion_anterior.fecha_operacion"
           required
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
         />
       </div>
       <div
@@ -155,7 +155,7 @@
           <input
             type="number"
             (change)="checkDv1(2)"
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             name="identificacion_operacion_anterior_nit_imc"
             id=""
             [class.error]="
@@ -179,7 +179,7 @@
                 identificacion_operacion_anterior_dv.invalid && submitInvalid
               "
               [(ngModel)]="formF2.identificacion_operacion_anterior.dv"
-              class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             />
           </div>
         </div>
@@ -190,7 +190,7 @@
         <input
           type="number"
           placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_operacion.deuda_externa"
           #identificacion_operacion_anterior_numero_deuda_externa="ngModel"
           [class.error]="
@@ -208,7 +208,7 @@
         <input
           type="number"
           placeholder=""
-          class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
           name="identificacion_de_la_operacion_anterio.numero_declaracion"
           #identificacion_operacion_anterior_numero_declaracion_cambio="ngModel"
           [class.error]="
@@ -289,7 +289,7 @@
       <div class="col-span-12 md:col-span-6 p-1">
         <div class="flex gap-1">
           <p class="" for="">Tipo de entidad</p>
-          <app-tool1 [content]="textTipoIdentidad"></app-tool1>
+          <!-- <app-tool1 [content]="textTipoIdentidad"></app-tool1 Tipo de entidadol1> -->
         </div>
         <select
           name="tipo_operacion"
@@ -320,7 +320,7 @@
           <label class="text-base">¿Cual?</label>
           <input
             placeholder=""
-            class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
             required
             name="tipo_identidad_otros"
             #tipo_identidad_otros="ngModel"
@@ -370,7 +370,7 @@
               <input
                 type="text"
                 (change)="checkDv1(3)"
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'otro_documento'"
                 id=""
                 [class.error]="otro_documento.invalid && submitInvalid"
@@ -397,7 +397,7 @@
                   [name]="'otro_documento_dv'"
                   #identificacion_otro_dv="ngModel"
                   [(ngModel)]="formF2.identificacion_de_exportador.dv"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 />
               </div>
             </div>

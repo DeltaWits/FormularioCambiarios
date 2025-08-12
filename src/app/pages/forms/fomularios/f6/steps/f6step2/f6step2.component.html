@@ -26,7 +26,7 @@
               <select
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'codigo_proposito_prestamo'"
                 #codigo_proposito_prestamo="ngModel"
                 placeholder=""
@@ -43,7 +43,8 @@
                   *ngFor="let tipo of codigoPropositoPrestamo"
                   [value]="tipo.id + ' - ' + tipo.descripcion"
                 >
-                  {{ tipo.id + " - " + tipo.descripcion }}
+                  {{ tipo.id + " - " + tipo.descripcion.slice(0, 150)
+                  }}{{ tipo.descripcion.length > 150 ? "..." : "" }}
                 </option>
               </select>
             </div>
@@ -75,7 +76,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'valor_moneda_estipulada3'"
                 #valor_moneda_estipulada3="ngModel"
                 placeholder=""
@@ -122,7 +123,7 @@
               <input
                 type="text"
                 placeholder=""
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'tasa_interes3'"
                 #tasa_interes="ngModel"
                 placeholder=""
@@ -139,7 +140,7 @@
                 type="text"
                 placeholder=""
                 required
-                class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                 [name]="'descripcion_del_prestamo_plazo3'"
                 #descripcion_del_prestamo_plazo="ngModel"
                 placeholder=""
@@ -222,7 +223,7 @@
                 <p class="text-base">Fecha</p>
                 <input
                   type="date"
-                  class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                   [name]="'otro_documento_factura' + i"
                   id=""
                   required
@@ -350,15 +351,22 @@
                   class="col-span-12 md:col-span-6 lg:col-span-3 p-1 flex flex-wrap"
                 >
                   <p class="text-base w-full">Código moneda a indexar</p>
-                  <input
-                    type="number"
+                  <select
                     placeholder=""
-                    class="bg-gray-50 px-2 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-1"
                     [name]="'codigo_moneda' + i"
                     #codigo_moneda="ngModel"
                     [class.error]="codigo_moneda.invalid && submitInvalid"
                     [(ngModel)]="item.codigo_moneda"
-                  />
+                  >
+                    <option value="">Seleccionar moneda</option>
+                    <option
+                      *ngFor="let moneda of monedas"
+                      [value]="moneda.code"
+                    >
+                      {{ moneda.code }} {{ moneda.name }}
+                    </option>
+                  </select>
                 </div>
                 <div class="col-span-1 flex justify-start items-end">
                   <button
