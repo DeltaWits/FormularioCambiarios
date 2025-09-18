@@ -88,12 +88,12 @@
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1 font-semibold text-black">
-            Fecha del Tramite
+            Fecha del trámite
           </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.identificacion_de_la_declaracion.fecha_tramite }}
+            {{ form.data.identificacion_de_la_declaracion.fecha_tramite | date:'yyyy/MM/dd' }}
           </p>
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
@@ -144,7 +144,7 @@
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
+            {{ form.data.identificacion_operacion_anterior.fecha_operacion | date:'yyyy/MM/dd' }}
           </p>
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
@@ -196,7 +196,26 @@
       <div class="col-span-12 p-1">
         <h4 class="text-xs w-100 font-semibold text-start">
           IV. Destino de la inversion
-          <span class="text-xs">IECO - INVERSIÓN EXTRANJERA EN COLOMBIA</span>
+          <span
+            *ngIf="form.data.destino_inversion_code === 'IECO'"
+            class="text-xs"
+            >IECO - INVERSIÓN EXTRANJERA EN COLOMBIA</span
+          >
+          <span
+            *ngIf="form.data.destino_inversion_code === 'ICEX'"
+            class="text-xs"
+            >ICEX - INVERSIÓN COLOMBIANA EN EL EXTERIOR</span
+          >
+          <span
+            *ngIf="form.data.destino_inversion_code === 'IEPO'"
+            class="text-xs"
+            >IEPO - INVERSIÓN EXTRANJERA EN COLOMBIA DE PORTAFOLIO</span
+          >
+          <span
+            *ngIf="form.data.destino_inversion_code === 'IFAE'"
+            class="text-xs"
+            >IFAE - INVERSIÓN FINANCIERA Y EN ACTIVOS EN EL EXTERIOR</span
+          >
         </h4>
       </div>
       <div class="grid grid-cols-12 col-span-12 border p-2">
@@ -577,7 +596,7 @@
           class="col-span-9 p-1"
         >
           <p class="text-10px text-start pb-1 font-semibold text-black">
-            Participaciones
+            Motivo sin participaciones
           </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"

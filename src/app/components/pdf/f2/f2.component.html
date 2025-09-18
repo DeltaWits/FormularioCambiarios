@@ -64,12 +64,12 @@
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1 font-semibold text-black">
-            Fecha del Tramite
+            Fecha del trámite
           </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.identificacion_de_la_operacion.fecha_tramite }}
+            {{ form.data.identificacion_de_la_operacion.fecha_tramite | date:'yyyy/MM/dd' }}
           </p>
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
@@ -120,7 +120,7 @@
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.identificacion_operacion_anterior.fecha_operacion }}
+            {{ form.data.identificacion_operacion_anterior.fecha_operacion | date:'yyyy/MM/dd' }}
           </p>
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
@@ -361,7 +361,7 @@
               </td>
               <td class="py-0.5 text-10px">
                 {{
-                  form.data.descripcion_de_la_operacion.vr_total_mda_negociacion
+                  form.data.descripcion_de_la_operacion.valor_total_dolares
                     | dolarFormat : ""
                 }}
               </td>

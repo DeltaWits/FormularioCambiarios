@@ -27,7 +27,7 @@ export class F5step1Component implements OnInit {
 
   textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
-  
+
   ciudades: { Nombre: string | any; codigo: string }[] = [];
   submitInvalid = false
   @Input() formF5: IFormF5 = {
@@ -38,7 +38,7 @@ export class F5step1Component implements OnInit {
     // tipo_de_moneda_operacion: '',
     identificacion_de_la_declaracion: {
 
-      fecha_tramine: '',
+      fecha_tramite: '',
       nit_imc: '',
       dv: '',
       numero_declaracion: ''
@@ -187,26 +187,26 @@ export class F5step1Component implements OnInit {
   }
 
   async getCiudades() {
-      const fileUrl = './assets/ciudades.xlsx';
-      fetch(fileUrl)
-        .then((response) => response.arrayBuffer())
-        .then((arrayBuffer) => {
-          if (arrayBuffer) {
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
-              type: 'array',
-            });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            this.ciudades = XLSX.utils.sheet_to_json(worksheet, {
-              raw: true,
-            });
-            // Los datos del archivo Excel están disponibles en this.excelData
-          } else {
-            console.error('No se pudo cargar el archivo Excel.');
-          }
-        })
-        .catch((error) => {
-          console.error('Error al cargar el archivo Excel:', error);
-        });
-    }
+    const fileUrl = './assets/ciudades.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciudades = XLSX.utils.sheet_to_json(worksheet, {
+            raw: true,
+          });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
 }

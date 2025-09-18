@@ -4,11 +4,12 @@ import { HeaderComponent } from '../header/header.component';
 import { NgFor,NgIf } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { dolarFormatPipe } from 'src/app/pipes/currency-format.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-f6',
   standalone: true,
-  imports: [HeaderComponent, NgFor, dolarFormatPipe,NgIf],
+  imports: [HeaderComponent, NgFor, dolarFormatPipe,NgIf,DatePipe],
   templateUrl: './f6.component.html',
   styleUrl: './f6.component.scss'
 })

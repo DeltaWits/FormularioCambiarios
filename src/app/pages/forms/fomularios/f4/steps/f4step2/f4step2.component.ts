@@ -64,7 +64,7 @@ export class F4step2Component implements OnInit {
   }
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
-  
+
   paises: { Nombre: string | any; Codigo: string }[] = [];
   ciiu: any;
   submitInvalid = false
@@ -84,7 +84,7 @@ export class F4step2Component implements OnInit {
     private router: Router
   ) {
     this.formF4.descripcionde_la_operacion.moneda_registro = 'COP';
-    
+
   }
   ngOnInit(): void {
     this.chagenIDOptions();
@@ -101,7 +101,7 @@ export class F4step2Component implements OnInit {
     }
   }
   chagenIDOptions() {
-    if (this.formF4.destino_inversion == 'EMPA2') {
+    if (this.formF4.destino_inversion == 'EMPA') {
       this.selectDocR = [{
         code: 'TI',
         name: 'Tarjeta de identidad',
@@ -293,22 +293,22 @@ export class F4step2Component implements OnInit {
   //   );
   // }
   selectTasa(num: number) {
-  
+
     // Validate required fields
     if (
-      this.formF4.descripcionde_la_operacion.tasa_cambio_dolar !== '' && 
+      this.formF4.descripcionde_la_operacion.tasa_cambio_dolar !== '' &&
       this.formF4.descripcionde_la_operacion.valor_moneda_negociacion !== ''
     ) {
       const tasaDeCambio = this.formF4.descripcionde_la_operacion.tasa_cambio_dolar.toString();
       const vrTotal = this.formF4.descripcionde_la_operacion.valor_moneda_negociacion.toString();
-      
+
       if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
         const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
         const decimalPlaces = resultado.toString().includes('.')
           ? resultado.toString().split('.')[1].length
           : 0;
         const fractionDigits = Math.min(decimalPlaces, 2);
-        
+
         this.formF4.descripcionde_la_operacion.valor_total_dolares = resultado.toLocaleString('de-DE', {
           minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
@@ -318,7 +318,7 @@ export class F4step2Component implements OnInit {
         this.formF4.descripcionde_la_operacion.valor_total_dolares = '';
       }
     }
-  
+
     // Calculate pesos if needed
     if (
       this.formF4.descripcionde_la_operacion.tasa_cambio_pesos !== '' &&
@@ -332,7 +332,7 @@ export class F4step2Component implements OnInit {
           ? resultado.toString().split('.')[1].length
           : 0;
         const fractionDigits = Math.min(decimalPlaces, 2);
-        
+
         this.formF4.descripcionde_la_operacion.valor_total_pesos = resultado.toLocaleString('de-DE', {
           minimumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
           maximumFractionDigits: fractionDigits < 2 ? fractionDigits : 2,
@@ -343,54 +343,54 @@ export class F4step2Component implements OnInit {
       }
     }
   }
-  async   getPaises() {
-      // this.paises = Object.keys(countries).map((code) => {
-      //   return {
-      //     name: (countries as { [code: string]: Country })[code].name,
-      //     code: code,
-      //   };
-      // });
-      const fileUrl = './assets/paises.xlsx';
-      fetch(fileUrl)
-        .then((response) => response.arrayBuffer())
-        .then((arrayBuffer) => {
-          if (arrayBuffer) {
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
-              type: 'array',
-            });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            this.paises = XLSX.utils.sheet_to_json(worksheet, {
-              raw: true,
-            });
-            // Los datos del archivo Excel están disponibles en this.excelData
-          } else {
-            console.error('No se pudo cargar el archivo Excel.');
-          }
-        })
-        .catch((error) => {
-          console.error('Error al cargar el archivo Excel:', error);
-        });
-    }
+  async getPaises() {
+    // this.paises = Object.keys(countries).map((code) => {
+    //   return {
+    //     name: (countries as { [code: string]: Country })[code].name,
+    //     code: code,
+    //   };
+    // });
+    const fileUrl = './assets/paises.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.paises = XLSX.utils.sheet_to_json(worksheet, {
+            raw: true,
+          });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
   async loadExcelFromCiiu() {
-      const fileUrl = './assets/ciiu.xlsx';
-      fetch(fileUrl)
-        .then((response) => response.arrayBuffer())
-        .then((arrayBuffer) => {
-          if (arrayBuffer) {
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
-              type: 'array',
-            });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-            // Los datos del archivo Excel están disponibles en this.excelData
-          } else {
-            console.error('No se pudo cargar el archivo Excel.');
-          }
-        })
-        .catch((error) => {
-          console.error('Error al cargar el archivo Excel:', error);
-        });
-    }
+    const fileUrl = './assets/ciiu.xlsx';
+    fetch(fileUrl)
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => {
+        if (arrayBuffer) {
+          const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+            type: 'array',
+          });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          this.ciiu = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          // Los datos del archivo Excel están disponibles en this.excelData
+        } else {
+          console.error('No se pudo cargar el archivo Excel.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al cargar el archivo Excel:', error);
+      });
+  }
 }

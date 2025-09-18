@@ -4,11 +4,12 @@ import { HeaderComponent } from '../header/header.component';
 import { NgFor } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { dolarFormatPipe } from 'src/app/pipes/currency-format.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-f5',
   standalone: true,
-  imports: [HeaderComponent, NgFor ,dolarFormatPipe],
+  imports: [HeaderComponent, NgFor ,dolarFormatPipe,DatePipe],
   templateUrl: './f5.component.html',
   styleUrl: './f5.component.scss'
 })

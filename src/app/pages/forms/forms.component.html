@@ -59,7 +59,8 @@
             <tr>
               <th class="py-2">Número</th>
               <th>Tipo formulario</th>
-              <th>Fecha</th>
+              <th>Fecha creación</th>
+              <th>Fecha trámite</th>
               <th>Estado</th>
               <th>Opciones</th>
             </tr>
@@ -75,6 +76,15 @@
               <td>{{ i + 1 }}</td>
               <td>{{ form.tipo }}</td>
               <td>{{ form.fecha_create }}</td>
+              <td>
+                {{
+                  form.data.identificacion_de_la_operacion?.fecha_tramite ??
+                    form.data.identificacion_de_la_declaracion?.fecha_tramite ??
+                    form.data.tipo_de_solicictud?.fecha_solicitud ??
+                    form.data.identificacion_del_informe?.fecha_tramite ??
+                    "No aplica"
+                }}
+              </td>
               <td>
                 {{ form.estado == "resuelto" ? "Completado" : "pendiente" }}
               </td>

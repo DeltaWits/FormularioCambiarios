@@ -53,7 +53,7 @@
         <p
           class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
         >
-          {{ form.data.tipo_de_solicictud.fecha_solicitud }}
+          {{ form.data.tipo_de_solicictud.fecha_solicitud | date:'yyyy/MM/dd' }}
         </p>
       </div>
       <div class="col-span-3 p-1">
@@ -342,7 +342,7 @@
               *ngFor="let item of form.data.plan_de_armonizacion; let i = index"
             >
               <td class="py-0.5 text-10px">
-                {{ form.data.plan_de_armonizacion[i].fecha }}
+                {{ form.data.plan_de_armonizacion[i].fecha | date:'yyyy/MM/dd' }}
               </td>
               <td class="py-0.5 text-10px">
                 {{ form.data.plan_de_armonizacion[i].valor_cuota }}

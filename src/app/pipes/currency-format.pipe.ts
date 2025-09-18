@@ -15,11 +15,8 @@ export class dolarFormatPipe implements PipeTransform {
     
     // Convertir a string y limpiar espacios
     let strValue = value.toString().trim();
-    
-    // Si ya está en el formato correcto (1.234,56), devolverlo tal cual
-    if (/^\d{1,3}(\.\d{3})*(,\d{1,2})?$/.test(strValue)) {
-      return currency ? `${currency} ${strValue}` : strValue;
-    }
+    console.log(strValue)
+
     
     // Manejar números con punto como separador de miles y coma como decimal
     if (strValue.includes('.')) {

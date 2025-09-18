@@ -33,7 +33,7 @@ export class F5Component implements OnInit {
     // tipo_de_moneda_operacion: '',
     identificacion_de_la_declaracion: {
 
-      fecha_tramine: '',
+      fecha_tramite: '',
       nit_imc: '',
       dv: '',
       numero_declaracion: ''
@@ -108,7 +108,7 @@ export class F5Component implements OnInit {
       this.formF5 = this.formsD.forms[index].data
     }
     if (this.formF5.identificacion_de_la_declaracion
-      .fecha_tramine == '') {
+      .fecha_tramite == '') {
       this.setFechaTramiteHoy()
       this.formF5.identificacion_de_la_declaracion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
       this.formF5.identificacion_de_la_declaracion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
@@ -122,6 +122,6 @@ export class F5Component implements OnInit {
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    this.formF5.identificacion_de_la_declaracion.fecha_tramine = `${yyyy}-${mm}-${dd}`;
+    this.formF5.identificacion_de_la_declaracion.fecha_tramite = `${yyyy}-${mm}-${dd}`;
   }
 }

@@ -77,7 +77,7 @@
         <p
           class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
         >
-          {{ form.data.tipo_de_operacion.fecha_presentacion }}
+          {{ form.data.tipo_de_operacion.fecha_presentacion | date:'yyyy/MM/dd'}}
         </p>
       </div>
 
@@ -89,12 +89,12 @@
       <div class="grid grid-cols-12 col-span-12 border p-2">
         <div class="col-span-3 p-1">
           <p class="text-10px text-start pb-1 font-semibold text-black">
-            Fecha del Tramite
+            Fecha del trámite
           </p>
           <p
             class="text-10px text-center px-2 p-1.5 min-h-15px w-full border rounded-sm"
           >
-            {{ form.data.identificacion_del_informe.fecha_tramite }}
+            {{ form.data.identificacion_del_informe.fecha_tramite | date:'yyyy/MM/dd' }}
           </p>
         </div>
         <div class="col-span-3 grid grid-cols-12 p-1">
@@ -379,7 +379,7 @@
       </div>
       <div class="col-span-12 p-1">
         <h4 class="text-xs w-100 font-semibold text-start">
-          VII. Identificación del declarante
+          VI. Identificación del declarante
         </h4>
       </div>
       <div class="col-span-12 border p-2 grid grid-cols-12 gap-4">

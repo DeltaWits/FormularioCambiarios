@@ -114,7 +114,7 @@ export class F2Component implements OnInit {
     if (this.formF2.identificacion_de_la_operacion
       .fecha_tramite == '') {
       this.setFechaTramiteHoy()
-      this.formF2.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '80020318622';
+      this.formF2.identificacion_de_la_operacion.nit_imc = this.formsD.empresa == 'corficolombiana' ? '890300653' : '800203186';
       this.formF2.identificacion_de_la_operacion.dv = this.formsD.empresa == 'corficolombiana' ? '6' : '5';
 
     }

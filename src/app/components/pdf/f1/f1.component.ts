@@ -4,11 +4,12 @@ import { IForm } from 'src/app/utils/formsData';
 import { NgFor, NgIf } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { dolarFormatPipe } from 'src/app/pipes/currency-format.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-f1',
   standalone: true,
-  imports: [HeaderComponent, NgFor, NgIf,dolarFormatPipe],
+  imports: [HeaderComponent, NgFor, NgIf,dolarFormatPipe,DatePipe],
   templateUrl: './f1.component.html',
   styleUrl: './f1.component.scss',
 })

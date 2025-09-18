@@ -39,8 +39,7 @@
           <!-- <app-tool1 [content]="textTipoOperacion"></app-tool1> -->
         </div>
         <input
-          type="text"
-          disabled
+          type="date"
           name="tipo_operacion_fecha_solicitud"
           id=""
           #tipo_de_operacion_fecha_solicitud="ngModel"
@@ -65,7 +64,6 @@
           id=""
           #tipo_de_operacion_numero_de_credito="ngModel"
           [(ngModel)]="formF7.tipo_de_solicictud.numero_de_credito"
-          required
           [class.error]="
             tipo_de_operacion_numero_de_credito.invalid && submitInvalid
           "
