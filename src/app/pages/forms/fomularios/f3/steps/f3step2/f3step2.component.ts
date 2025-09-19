@@ -59,6 +59,13 @@ export class F3step2Component implements OnInit {
   ngOnInit(): void {
     this.validateNumerales()
   }
+  parseNumber(numStr: string): number {
+    return parseFloat(
+      numStr
+        .replace(/\./g, '')  // Remove thousand separators
+        .replace(',', '.')   // Replace comma with decimal point
+    );
+  }
   validateNumerales() {
     if (this.formF3.tipo_de_operacion.ingreso_o_egreso == 'Ingreso') {
       this.numeralesCambiarios = numeralesCambiariosF3Ingreso
@@ -69,26 +76,26 @@ export class F3step2Component implements OnInit {
   validateForm(step1Form: NgForm) {
     if (step1Form.valid) {
       this.submitInvalid = false;
-  
+
       // Get the total stipulated value and clean it
-      const totalStipulated = this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada;
-      const totalStipulatedClean = parseFloat(totalStipulated?.replace(/,/g, '.').replace(/\./g, '') || '0');
-  
+      const totalStipulatedClean = parseFloat(this.parseNumber(this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada).toString());
+
       // Calculate sum of numeral values
       let suma = 0;
       this.formF3.informacion_de_numerales.forEach((numeral) => {
         const valor = numeral.valor_moneda_estipulada;
-        const valorClean = parseFloat(valor?.replace(/,/g, '.').replace(/\./g, '') || '0');
+        const valorClean = parseFloat(valor);
+        console.log(valorClean, valor)
         suma += valorClean;
       });
-  
-      // Round both numbers to 4 decimal places for accurate comparison
-      const sumaRounded = Math.round(suma * 10000) / 10000;
-      const totalRounded = Math.round(totalStipulatedClean * 10000) / 10000;
-  
+
+      // Check if values are valid numbers
+
+      // Round both numbers to 4 decimal places for comparison
+      const sumaRounded = Math.round(parseFloat(suma.toString()));
+      const totalRounded = Math.round(parseFloat(totalStipulatedClean));
       // Check if values are valid numbers
       const isValidNumbers = !isNaN(sumaRounded) && !isNaN(totalRounded);
-  
       if (isValidNumbers && sumaRounded === totalRounded) {
         this.formF3.steps.step1 = true;
         this.formService.saveFormDataFId(this.formF3, this.formId, true);
@@ -189,7 +196,7 @@ export class F3step2Component implements OnInit {
   selectTasa(num: number) {
 
     const detalle = this.formF3.detalle_de_la_declaracion;
-    if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
+    if ((num === 1 || num === 3) && detalle.tasa_de_cambio_dolar !== '') {
 
       if (
         detalle.tasa_de_cambio_dolar !== '' &&
@@ -215,7 +222,9 @@ export class F3step2Component implements OnInit {
         detalle.valor_total_dolares = '';
       }
 
-    } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
+    }
+    console.log(num)
+    if ((num === 2 || num === 3) && detalle.tasa_cambio_moneda_negociacion !== '') {
 
       if (
         detalle.tasa_cambio_moneda_negociacion !== '' &&
