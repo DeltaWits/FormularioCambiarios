@@ -5,22 +5,34 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/services/form.service';
 import { SharedModule } from 'src/app/shared.module';
-import { IFormF3, numeralesCambiariosF3Egreso, numeralesCambiariosF3Ingreso } from 'src/app/utils/formF3';
+import {
+  IFormF3,
+  numeralesCambiariosF3Egreso,
+  numeralesCambiariosF3Ingreso,
+} from 'src/app/utils/formF3';
 import { tiposDocumentos } from 'src/app/utils/formsData';
 import { exchangeRates } from 'src/app/utils/monedas';
-import { PopUpAlertComponent } from "../../../../../../components/Modals/pop-up-alert/pop-up-alert.component";
+import { PopUpAlertComponent } from '../../../../../../components/Modals/pop-up-alert/pop-up-alert.component';
 import { ToolImgComponent } from 'src/app/components/Modals/tool-img/tool-img.component';
 
 @Component({
   selector: 'app-f3step2',
   standalone: true,
-  imports: [FormsModule, ToolImgComponent, ReactiveFormsModule, SharedModule, NgFor, NgIf, PopUpAlertComponent],
+  imports: [
+    FormsModule,
+    ToolImgComponent,
+    ReactiveFormsModule,
+    SharedModule,
+    NgFor,
+    NgIf,
+    PopUpAlertComponent,
+  ],
   templateUrl: './f3step2.component.html',
-  styleUrl: './f3step2.component.scss'
+  styleUrl: './f3step2.component.scss',
 })
 export class F3step2Component implements OnInit {
   @Input() monedas: any = [];
-  @Input() formId = ''
+  @Input() formId = '';
   @Input() formF3: IFormF3 = {
     detalle_de_la_declaracion: {
       codigo_moneda: '',
@@ -31,19 +43,21 @@ export class F3step2Component implements OnInit {
 
       valor_moneda_stipulada: '',
     },
-    informacion_de_numerales: [{
-      numeral_cambiario: '',
-      valor_total_moneda: '',
-      valor_dolares: '',
-      valor_moneda_estipulada: '',
-    }]
-  }
+    informacion_de_numerales: [
+      {
+        numeral_cambiario: '',
+        valor_total_moneda: '',
+        valor_dolares: '',
+        valor_moneda_estipulada: '',
+      },
+    ],
+  };
   // textTipoOperacion = textTipoOperacion
   @Output() step = new EventEmitter<string>();
-  submitInvalid = false
-  numeralesCambiarios: any = []
+  submitInvalid = false;
+  numeralesCambiarios: any = [];
   ShowPopUp = false;
-  exchangeRates = exchangeRates
+  exchangeRates = exchangeRates;
   MessaggePopUp = {
     titulo: 'titulo',
     descripcion: 'texto explicativo',
@@ -55,22 +69,69 @@ export class F3step2Component implements OnInit {
     // private route: ActivatedRoute,
     private formService: FormService,
     private router: Router
-  ) { }
+  ) {}
   ngOnInit(): void {
-    this.validateNumerales()
+    this.validateNumerales();
   }
-  parseNumber(numStr: string): number {
-    return parseFloat(
-      numStr
-        .replace(/\./g, '')  // Remove thousand separators
-        .replace(',', '.')   // Replace comma with decimal point
-    );
+  parseNumber(numStr: string | number): number {
+    // Handle if already a number
+    if (typeof numStr === 'number') {
+      return numStr;
+    }
+    // Handle empty or invalid strings
+    if (!numStr || typeof numStr !== 'string') {
+      return 0;
+    }
+
+    // Detect format based on content
+    const hasDot = numStr.includes('.');
+    const hasComma = numStr.includes(',');
+
+    let cleaned: string;
+
+    if (hasDot && hasComma) {
+      // Has both: German format (1.234,56) or US format with thousands (1,234.56)
+      // Check which appears last to determine decimal separator
+      const lastDotIndex = numStr.lastIndexOf('.');
+      const lastCommaIndex = numStr.lastIndexOf(',');
+
+      if (lastCommaIndex > lastDotIndex) {
+        // German format: dot is thousand separator, comma is decimal
+        cleaned = numStr.replace(/\./g, '').replace(',', '.');
+      } else {
+        // US format: comma is thousand separator, dot is decimal
+        cleaned = numStr.replace(/,/g, '');
+      }
+    } else if (hasComma) {
+      // Only comma: assume it's decimal separator (German format like 370,01)
+      cleaned = numStr.replace(',', '.');
+    } else if (hasDot) {
+      // Only dot: could be decimal (370.01) or thousands (1.234)
+      // If there are more than 3 digits after the last dot, it's a thousand separator
+      // If 1-2 digits after dot, it's likely decimal
+      const parts = numStr.split('.');
+      const afterDot = parts[parts.length - 1];
+
+      if (parts.length > 2 || (parts.length === 2 && afterDot.length > 2)) {
+        // Multiple dots or more than 2 digits after dot = thousand separator
+        cleaned = numStr.replace(/\./g, '');
+      } else {
+        // Single dot with 1-2 digits after = decimal separator
+        cleaned = numStr;
+      }
+    } else {
+      // No separators: just a plain number
+      cleaned = numStr;
+    }
+
+    const result = parseFloat(cleaned);
+    return isNaN(result) ? 0 : result;
   }
   validateNumerales() {
     if (this.formF3.tipo_de_operacion.ingreso_o_egreso == 'Ingreso') {
-      this.numeralesCambiarios = numeralesCambiariosF3Ingreso
+      this.numeralesCambiarios = numeralesCambiariosF3Ingreso;
     } else {
-      this.numeralesCambiarios = numeralesCambiariosF3Egreso
+      this.numeralesCambiarios = numeralesCambiariosF3Egreso;
     }
   }
   validateForm(step1Form: NgForm) {
@@ -78,22 +139,22 @@ export class F3step2Component implements OnInit {
       this.submitInvalid = false;
 
       // Get the total stipulated value and clean it
-      const totalStipulatedClean = parseFloat(this.parseNumber(this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada).toString());
+      const totalStipulatedClean = this.parseNumber(
+        this.formF3.detalle_de_la_declaracion.valor_moneda_stipulada
+      );
 
       // Calculate sum of numeral values
       let suma = 0;
       this.formF3.informacion_de_numerales.forEach((numeral) => {
         const valor = numeral.valor_moneda_estipulada;
-        const valorClean = parseFloat(valor);
-        console.log(valorClean, valor)
+        const valorClean = this.parseNumber(valor);
         suma += valorClean;
       });
 
-      // Check if values are valid numbers
+      // Round both numbers to 2 decimal places for comparison
+      const sumaRounded = Math.round(suma * 100) / 100;
+      const totalRounded = Math.round(totalStipulatedClean * 100) / 100;
 
-      // Round both numbers to 4 decimal places for comparison
-      const sumaRounded = Math.round(parseFloat(suma.toString()));
-      const totalRounded = Math.round(parseFloat(totalStipulatedClean));
       // Check if values are valid numbers
       const isValidNumbers = !isNaN(sumaRounded) && !isNaN(totalRounded);
       if (isValidNumbers && sumaRounded === totalRounded) {
@@ -125,87 +186,22 @@ export class F3step2Component implements OnInit {
       valor_total_moneda: '',
       valor_dolares: '',
       valor_moneda_estipulada: '',
-    })
+    });
   }
   deleteInfo(index: number) {
-    this.formF3.informacion_de_numerales.splice(
-      index,
-      1,
-    );
+    this.formF3.informacion_de_numerales.splice(index, 1);
   }
-  // agregarImportador() {
-  //   this.formF3.detalle_de_la_declaracion.push({
-  //     numero_cambiario: '',
-  //     cod_mda_negociacion: '',
-  //     vr_total_mda_negociacion: '',
-  //     tasa_de_cambio: '',
-  //     valor_total_dolares: '',
-  //   })
-  // }
-  // deleteImportador(index: number) {
-  //   this.formF3.detalle_de_la_declaracion.splice(
-  //     index,
-  //     1,
-  //   );
-  // }
-  // selectTasa(num: number) {
-  //   const detalle = this.formF3.detalle_de_la_declaracion;
-
-  //   // Limpiar y convertir valor total moneda
-  //   const valorMonedaLimpio = detalle.valor_total_moneda
-  //     ?.replace(/\./g, '')
-  //     ?.replace(',', '.');
-
-  //   const valorTotal = parseFloat(valorMonedaLimpio);
-
-  //   if (!isNaN(valorTotal)) {
-  //     if (num === 1 && detalle.tasa_de_cambio_dolar !== '') {
-  //       const tasa = parseFloat(
-  //         detalle.tasa_de_cambio_dolar.toString().replace(',', '.')
-  //       );
-
-  //       if (!isNaN(tasa)) {
-  //         const resultado = tasa * valorTotal;
-
-  //         detalle.valor_total_dolares = resultado.toLocaleString('de-DE', {
-  //           minimumFractionDigits: 2,
-  //           maximumFractionDigits: 2
-  //         });
-  //       } else {
-  //         detalle.valor_total_dolares = '';
-  //       }
-
-  //     } else if (num === 2 && detalle.tasa_cambio_moneda_negociacion !== '') {
-  //       const tasa = parseFloat(
-  //         detalle.tasa_cambio_moneda_negociacion.toString().replace(',', '.')
-  //       );
-
-  //       if (!isNaN(tasa)) {
-  //         const resultado = tasa * valorTotal;
-
-  //         detalle.valor_moneda_stipulada = resultado.toLocaleString('de-DE', {
-  //           minimumFractionDigits: 2,
-  //           maximumFractionDigits: 2
-  //         });
-  //       } else {
-  //         detalle.valor_moneda_stipulada = '';
-  //       }
-  //     }
-  //   }
-  // }
   selectTasa(num: number) {
-
     const detalle = this.formF3.detalle_de_la_declaracion;
     if ((num === 1 || num === 3) && detalle.tasa_de_cambio_dolar !== '') {
-
       if (
         detalle.tasa_de_cambio_dolar !== '' &&
         detalle.valor_total_moneda !== ''
       ) {
-        const tasaDeCambio = detalle.tasa_de_cambio_dolar.toString();
-        const vrTotal = detalle.valor_total_moneda.toString();
-        if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
-          const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const tasaDeCambio = this.parseNumber(detalle.tasa_de_cambio_dolar);
+        const vrTotal = this.parseNumber(detalle.valor_total_moneda);
+        if (!isNaN(tasaDeCambio) && !isNaN(vrTotal)) {
+          const resultado = tasaDeCambio * vrTotal;
           const decimalPlaces = resultado.toString().includes('.')
             ? resultado.toString().split('.')[1].length
             : 0;
@@ -221,19 +217,21 @@ export class F3step2Component implements OnInit {
       } else {
         detalle.valor_total_dolares = '';
       }
-
     }
-    console.log(num)
-    if ((num === 2 || num === 3) && detalle.tasa_cambio_moneda_negociacion !== '') {
-
+    if (
+      (num === 2 || num === 3) &&
+      detalle.tasa_cambio_moneda_negociacion !== ''
+    ) {
       if (
         detalle.tasa_cambio_moneda_negociacion !== '' &&
         detalle.valor_total_moneda !== ''
       ) {
-        const tasaDeCambio = detalle.tasa_cambio_moneda_negociacion.toString();
-        const vrTotal = detalle.valor_total_moneda.toString();
-        if (!isNaN(parseFloat(tasaDeCambio)) && !isNaN(parseFloat(vrTotal))) {
-          const resultado = parseFloat(tasaDeCambio) * parseFloat(vrTotal);
+        const tasaDeCambio = this.parseNumber(
+          detalle.tasa_cambio_moneda_negociacion
+        );
+        const vrTotal = this.parseNumber(detalle.valor_total_moneda);
+        if (!isNaN(tasaDeCambio) && !isNaN(vrTotal)) {
+          const resultado = tasaDeCambio * vrTotal;
           const decimalPlaces = resultado.toString().includes('.')
             ? resultado.toString().split('.')[1].length
             : 0;
